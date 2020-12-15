@@ -2,11 +2,7 @@
 title: Azure CLI Script Example - Create Batch account - Batch service
 description: This script creates an Azure Batch account in Batch service mode and shows how to query or update various properties of the account.
 ms.topic: sample
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/29/2018 
 ms.custom: devx-track-azurecli
 ---
 
@@ -18,7 +14,7 @@ authenticated either via shared key credentials or an Azure Active Directory tok
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- This tutorial requires version 2.0.20 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed. 
+- This tutorial requires version 2.0.20 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed. 
 
 ## Example script
 
@@ -29,7 +25,7 @@ authenticated either via shared key credentials or an Azure Active Directory tok
 Run the following command to remove the
 resource group and all resources associated with it.
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
@@ -39,20 +35,15 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [az group create](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [az batch account create](https://docs.azure.cn/cli/batch/account#az_batch_account_create) | Creates the Batch account. |
-| [az storage account create](https://docs.azure.cn/cli/storage/account#az_storage_account_create) | Creates a storage account. |
-| [az batch account set](https://docs.azure.cn/cli/batch/account#az_batch_account_set) | Updates properties of the Batch account.  |
-| [az batch account show](https://docs.azure.cn/cli/batch/account#az_batch_account_show) | Retrieves details of the specified Batch account.  |
-| [az batch account keys list](https://docs.azure.cn/cli/batch/account/keys#az_batch_account_keys_list) | Retrieves the access keys of the specified Batch account.  |
-| [az batch account login](https://docs.azure.cn/cli/batch/account#az_batch_account_login) | Authenticates against the specified Batch account for further CLI interaction.  |
-| [az group delete](https://docs.azure.cn/cli/group#az_group_delete) | Deletes a resource group including all nested resources. |
+| [az group create](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Creates the Batch account. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Creates a storage account. |
+| [az batch account set](/cli/azure/batch/account#az-batch-account-set) | Updates properties of the Batch account.  |
+| [az batch account show](/cli/azure/batch/account#az-batch-account-show) | Retrieves details of the specified Batch account.  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az-batch-account-keys-list) | Retrieves the access keys of the specified Batch account.  |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Authenticates against the specified Batch account for further CLI interaction.  |
+| [az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
-
-
-
-<!-- Update_Description: new article about scripts/batch cli sample create account -->
-<!--NEW.date: 12/21/2020-->
+For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).

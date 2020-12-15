@@ -4,18 +4,15 @@ titleSuffix: Azure Load Balancer
 description: In this article, get started configuring the distribution mode for Azure Load Balancer to support source IP affinity.
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/19/2019
+ms.author: allensu
 ---
 
 # Configure the distribution mode for Azure Load Balancer
@@ -35,7 +32,7 @@ The tuple is composed of the:
 
 The hash is used to map traffic to the available servers. The algorithm provides stickiness only within a transport session. Packets that are in the same session are directed to the same datacenter IP behind the load-balanced endpoint. When the client starts a new session from the same source IP, the source port changes and causes the traffic to go to a different datacenter endpoint.
 
-:::image type="content" source="./media/load-balancer-distribution-mode/load-balancer-distribution.png" alt-text="Five-tuple hash-based distribution mode":::
+![Five-tuple hash-based distribution mode](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## Source IP affinity mode
 
@@ -43,7 +40,7 @@ The load balancer can also be configured by using the source IP affinity distrib
 
 The following figure illustrates a two-tuple configuration. Notice how the two-tuple runs through the load balancer to virtual machine 1 (VM1). VM1 is then backed up by VM2 and VM3.
 
-:::image type="content" source="./media/load-balancer-distribution-mode/load-balancer-session-affinity.png" alt-text="Two-tuple session affinity distribution mode":::
+![Two-tuple session affinity distribution mode](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
 Source IP affinity mode solves an incompatibility between Azure Load Balancer and Remote Desktop Gateway (RD Gateway). By using this mode, you can build an RD Gateway farm in a single cloud service.
 
@@ -76,7 +73,7 @@ You can change the configuration of the distribution mode by modifying the load-
 
 For virtual machines deployed with Resource Manager, use PowerShell to change the load-balancer distribution settings on an existing load-balancing rule. The following command updates the distribution mode: 
 
-```powershell
+```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
 $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -84,7 +81,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 
 For classic virtual machines, use Azure PowerShell to change the distribution settings. Add an Azure endpoint to a virtual machine and configure the load balancer distribution mode:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
@@ -120,7 +117,7 @@ When the `LoadBalancerDistribution` element isn't present, Azure Load Balancer u
 
 When endpoints are part of a load-balanced endpoint set, the distribution mode must be configured on the load-balanced endpoint set:
 
-```powershell
+```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
@@ -159,7 +156,7 @@ Use the Azure classic deployment model to change an existing deployment configur
 #### Request
 
 ```http
-POST https://management.core.chinacloudapi.cn/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
 Content-Type: application/xml
 ```
 
@@ -202,7 +199,3 @@ Date: Thu, 16 Oct 2014 22:49:21 GMT
 * [Azure Load Balancer overview](load-balancer-overview.md)
 * [Get started with configuring an internet-facing load balancer](quickstart-load-balancer-standard-public-powershell.md)
 * [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
-
-
-<!-- Update_Description: new article about load balancer distribution mode -->
-<!--NEW.date: 12/21/2020-->

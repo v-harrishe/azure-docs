@@ -3,7 +3,7 @@ title: Overview of IPv6 - Azure Load Balancer
 description: With this learning path, get started with IPv6 support for Azure Load Balancer and load-balanced VMs.
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 keywords: ipv6, azure load balancer, dual stack, public ip, native ipv6, mobile, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -11,11 +11,8 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/24/2018
+ms.author: allensu
 ---
 
 # Overview of IPv6 for Azure Load Balancer
@@ -34,7 +31,7 @@ Basic SKU Internet-facing load balancers can be deployed with an IPv6 address. I
 
 The following picture illustrates the IPv6 functionality for Azure Load Balancer.
 
-:::image type="content" source="./media/load-balancer-ipv6-overview/load-balancer-ipv6.png" alt-text="Azure Load Balancer with IPv6":::
+![Azure Load Balancer with IPv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
 
 Once deployed, an IPv4 or IPv6-enabled Internet client can communicate with the public IPv4 or IPv6 addresses (or hostnames) of the Azure Internet-facing Load Balancer. The load balancer routes the IPv6 packets to the private IPv6 addresses of the VMs using network address translation (NAT). The IPv6 Internet client cannot communicate directly with the IPv6 address of the VMs.
 
@@ -89,7 +86,3 @@ Learn how to deploy a load balancer with IPv6.
 * [Deploy a load balancer with IPv6 using a template](load-balancer-ipv6-internet-template.md)
 * [Deploy a load balancer with IPv6 using Azure PowerShell](load-balancer-ipv6-internet-ps.md)
 * [Deploy a load balancer with IPv6 using Azure CLI](load-balancer-ipv6-internet-cli.md)
-
-
-<!-- Update_Description: new article about load balancer ipv6 overview -->
-<!--NEW.date: 12/21/2020-->

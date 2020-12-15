@@ -1,13 +1,9 @@
 ---
 title: Tutorial - Render a Blender scene using Azure Batch and Batch Explorer
 description: Tutorial - How to render multiple frames from a Blender scene using Azure Batch and the Batch Explorer client application
-
-
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+author: mscurrell
+ms.author: markscu
+ms.date: 08/02/2018
 ms.topic: tutorial
 ---
 
@@ -24,14 +20,11 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-You need a Standard Pay-in-Advance Offer subscription or other Azure purchase option to use rendering applications in Batch on a pay-per-use basis. Pay-per-use licensing isn't supported if you use a free Azure offer that provides a monetary credit.
+You need a pay-as-you-go subscription or other Azure purchase option to use rendering applications in Batch on a pay-per-use basis. Pay-per-use licensing isn't supported if you use a free Azure offer that provides a monetary credit.
 
 You need an Azure Batch account with an associated storage account.  See any of the Batch Quickstarts articles, such as the [CLI article](./quick-create-cli.md) to create a Batch account.
 
-A low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) core quota of at least 50 cores is required for the VM size and number of VMs specified in this tutorial; the default quota can be used, but a smaller VM size will have to be used which will mean the images take longer to render. The process for requesting an increased core quota is detailed in [this article](./batch-quota-limit.md).
-
-<!--Not Available on FEATURE low-priority-->
-
+A low-priority core quota of at least 50 cores is required for the VM size and number of VMs specified in this tutorial; the default quota can be used, but a smaller VM size will have to be used which will mean the images take longer to render. The process for requesting an increased core quota is detailed in [this article](./batch-quota-limit.md).
 
 Finally, [Batch Explorer](https://azure.github.io/BatchExplorer/) has to be installed; it is available for Windows, OSX, and Linux. It is optional, but if [Blender](https://www.blender.org/download/) is installed then the sample model file can be viewed.
 
@@ -80,10 +73,7 @@ Create a Batch pool using rendering Azure Marketplace VM image that contains the
 * Select the button ‘Create pool for later use’
   * Leave the Pool name as “blender-windows”
   * Set the ‘Dedicated vm count’ to “0”
-  * Set the ‘Low priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) vm count’ to “3”
-
-<!--Not Available on FEATURE Low priority-->
-
+  * Set the ‘Low priority vm count’ to “3”
   * Set the ‘Node size’ to “Standard_F16” – another VM size can be selected, but time to render a frame will mainly be dependent on the number of cores.
 * Select the green button to create the pool
   * The pool will be created almost immediately, but it will take a few minutes for the VMs to be allocated and started.
@@ -165,8 +155,3 @@ To learn more about cloud-scale rendering, see the options for the Batch Renderi
 
 > [!div class="nextstepaction"]
 > [Batch Rendering service](batch-rendering-service.md)
-
-
-
-<!-- Update_Description: new article about tutorial rendering batchexplorer blender -->
-<!--NEW.date: 12/21/2020-->

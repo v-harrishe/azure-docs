@@ -2,14 +2,11 @@
 title: IP Groups in Azure Firewall 
 description: IP groups allow you to group and manage IP addresses for Azure Firewall rules.
 services: firewall
-
+author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/30/2020
+ms.author: victorh
 ---
 
 # IP Groups in Azure Firewall
@@ -41,7 +38,7 @@ An IP Group can be created using the Azure portal, Azure CLI, or REST API. For m
 1. In the Azure portal search bar, type **IP Groups** and select it. You can see the list of the IP Groups, or you can select **Add** to create a new IP Group.
 2. Select an IP Group to open the overview page. You can edit, add, or delete IP addresses or IP Groups.
 
-   :::image type="content" source="media/ip-groups/overview.png" alt-text="IP Groups overview":::
+   ![IP Groups overview](media/ip-groups/overview.png)
 
 ## Manage an IP Group
 
@@ -49,7 +46,7 @@ You can see all the IP addresses in the IP Group and the rules or resources that
 
 1. To view or edit the IP addresses, select **IP Addresses** under **Settings** on the left pane.
 2. To add a single or multiple IP address(es), select **Add IP Addresses**. This opens the **Drag or Browse** page for an upload, or you can enter the address manually.
-3. Selecting the ellipses (**…**) to the right to edit or delete IP addresses. To edit or delete multiple IP addresses, select the boxes and select **Edit** or **Delete** at the top.
+3.    Selecting the ellipses (**…**) to the right to edit or delete IP addresses. To edit or delete multiple IP addresses, select the boxes and select **Edit** or **Delete** at the top.
 4. Finally, can export the file in the CSV file format.
 
 > [!NOTE]
@@ -60,7 +57,7 @@ You can see all the IP addresses in the IP Group and the rules or resources that
 
 You can now select **IP Group** as a **Source type** or **Destination type** for the IP address(es) when you create Azure Firewall DNAT, application, or network rules.
 
-:::image type="content" source="media/ip-groups/fw-ipgroup.png" alt-text="IP Groups in Firewall":::
+![IP Groups in Firewall](media/ip-groups/fw-ipgroup.png)
 
 ## Region availability
 
@@ -74,18 +71,14 @@ You can have a maximum of 100 IP Groups per firewall with a maximum 5000 individ
 
 The following Azure PowerShell cmdlets can be used to create and manage IP Groups:
 
-- [New-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](https://docs.microsoft.com/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule?view=azps-3.4.0)
-- [New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
-- [New-AzFirewallNatRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
+- [New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule?view=azps-3.4.0)
+- [New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
+- [New-AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
 
 ## Next steps
 
 - Learn how to [deploy and configure an Azure Firewall](tutorial-firewall-deploy-portal.md).
-
-
-<!-- Update_Description: new article about ip groups -->
-<!--NEW.date: 12/21/2020-->

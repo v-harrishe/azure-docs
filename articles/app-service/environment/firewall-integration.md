@@ -1,14 +1,11 @@
 ---
 title: Lock down outbound traffic
 description: Learn how to integrate with Azure Firewall to secure outbound traffic from within an App Service environment.
-
+author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/24/2020
+ms.author: ccompy
 ms.custom: seodec18, references_regions
 
 ---
@@ -140,11 +137,11 @@ With an Azure Firewall, you automatically get everything below configured with t
 
 | Endpoint |
 |----------|
-|microsoftgraph.chinacloudapi.cn:443 |
+|graph.microsoft.com:443 |
 |login.live.com:443 |
 |login.windows.com:443 |
-|login.chinacloudapi.cn:443 |
-|login.partner.microsoftonline.cn:443 |
+|login.windows.net:443 |
+|login.microsoftonline.com:443 |
 |client.wns.windows.com:443 |
 |definitionupdates.microsoft.com:443 |
 |go.microsoft.com:80 |
@@ -169,8 +166,8 @@ With an Azure Firewall, you automatically get everything below configured with t
 |crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
 |cacerts.digicert.com:80 |
-|azperfcounters1.blob.core.chinacloudapi.cn:443 |
-|azurewatsonanalysis-prod.core.chinacloudapi.cn:443 |
+|azperfcounters1.blob.core.windows.net:443 |
+|azurewatsonanalysis-prod.core.windows.net:443 |
 |global.metrics.nsatc.net:80 |
 |global.metrics.nsatc.net:443 |
 |az-prod.metrics.nsatc.net:443 |
@@ -180,59 +177,59 @@ With an Azure Firewall, you automatically get everything below configured with t
 |antares-black.antares.metrics.nsatc.net:443 |
 |antares-red.antares.metrics.nsatc.net:443 |
 |prod.microsoftmetrics.com:443 |
-|maupdateaccount.blob.core.chinacloudapi.cn:443 |
+|maupdateaccount.blob.core.windows.net:443 |
 |clientconfig.passport.net:443 |
 |packages.microsoft.com:443 |
 |schemas.microsoft.com:80 |
 |schemas.microsoft.com:443 |
-|management.core.chinacloudapi.cn:443 |
-|management.core.chinacloudapi.cn:80 |
-|management.chinacloudapi.cn:443 |
+|management.core.windows.net:443 |
+|management.core.windows.net:80 |
+|management.azure.com:443 |
 |www.msftconnecttest.com:80 |
 |shavamanifestcdnprod1.azureedge.net:443 |
 |validation-v2.sls.microsoft.com:443 |
 |flighting.cp.wd.microsoft.com:443 |
 |dmd.metaservices.microsoft.com:80 |
-|admin.core.chinacloudapi.cn:443 |
+|admin.core.windows.net:443 |
 |prod.warmpath.msftcloudes.com:443 |
 |prod.warmpath.msftcloudes.com:80 |
-|gcs.prod.monitoring.core.chinacloudapi.cn:80|
-|gcs.prod.monitoring.core.chinacloudapi.cn:443|
-|azureprofileruploads.blob.core.chinacloudapi.cn:443 |
-|azureprofileruploads2.blob.core.chinacloudapi.cn:443 |
-|azureprofileruploads3.blob.core.chinacloudapi.cn:443 |
-|azureprofileruploads4.blob.core.chinacloudapi.cn:443 |
-|azureprofileruploads5.blob.core.chinacloudapi.cn:443 |
-|azperfmerges.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads1.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads10.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads2.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads3.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads4.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads6.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads7.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads8.blob.core.chinacloudapi.cn:443 | 
-|azprofileruploads9.blob.core.chinacloudapi.cn:443 |
-|azureprofilerfrontdoor.chinacloudapp.cn:443 |
+|gcs.prod.monitoring.core.windows.net:80|
+|gcs.prod.monitoring.core.windows.net:443|
+|azureprofileruploads.blob.core.windows.net:443 |
+|azureprofileruploads2.blob.core.windows.net:443 |
+|azureprofileruploads3.blob.core.windows.net:443 |
+|azureprofileruploads4.blob.core.windows.net:443 |
+|azureprofileruploads5.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 | 
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
 |settings-win.data.microsoft.com:443 |
-|maupdateaccount2.blob.core.chinacloudapi.cn:443 |
-|maupdateaccount3.blob.core.chinacloudapi.cn:443 |
+|maupdateaccount2.blob.core.windows.net:443 |
+|maupdateaccount3.blob.core.windows.net:443 |
 |dc.services.visualstudio.com:443 |
-|gmstorageprodsn1.blob.core.chinacloudapi.cn:443 |
-|gmstorageprodsn1.file.core.chinacloudapi.cn:443 |
-|gmstorageprodsn1.queue.core.chinacloudapi.cn:443 |
-|gmstorageprodsn1.table.core.chinacloudapi.cn:443 |
+|gmstorageprodsn1.blob.core.windows.net:443 |
+|gmstorageprodsn1.file.core.windows.net:443 |
+|gmstorageprodsn1.queue.core.windows.net:443 |
+|gmstorageprodsn1.table.core.windows.net:443 |
 |rteventservice.trafficmanager.net:443 |
 |ctldl.windowsupdate.com:80 |
 |ctldl.windowsupdate.com:443 |
-|global-dsms.dsms.core.chinacloudapi.cn:443 |
+|global-dsms.dsms.core.windows.net:443 |
 
 #### Wildcard HTTP/HTTPS dependencies 
 
 | Endpoint |
 |----------|
-|gr-Prod-\*.chinacloudapp.cn:443 |
-| \*.management.chinacloudapi.cn:443 |
+|gr-Prod-\*.cloudapp.net:443 |
+| \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
 | \*.identity.azure.net:443 |
@@ -243,7 +240,7 @@ With an Azure Firewall, you automatically get everything below configured with t
 
 | Endpoint |
 |----------|
-|wawsinfraprodbay063.blob.core.chinacloudapi.cn:443 |
+|wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
 |auth.docker.io:443 |
 |production.cloudflare.docker.com:443 |
@@ -315,20 +312,20 @@ Linux is not available in US Gov regions and is thus not listed as an optional c
 | \*.management.usgovcloudapi.net:80 |
 | \*.update.microsoft.com:80 |
 |admin.core.usgovcloudapi.net:80 |
-|azperfmerges.blob.core.chinacloudapi.cn:80 |
-|azperfmerges.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads1.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads10.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads2.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads3.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads4.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads5.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads6.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads7.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads8.blob.core.chinacloudapi.cn:80 |
-|azprofileruploads9.blob.core.chinacloudapi.cn:80 |
-|azureprofilerfrontdoor.chinacloudapp.cn:80 |
-|azurewatsonanalysis.usgovchinacloudapp.cn:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azprofileruploads1.blob.core.windows.net:80 |
+|azprofileruploads10.blob.core.windows.net:80 |
+|azprofileruploads2.blob.core.windows.net:80 |
+|azprofileruploads3.blob.core.windows.net:80 |
+|azprofileruploads4.blob.core.windows.net:80 |
+|azprofileruploads5.blob.core.windows.net:80 |
+|azprofileruploads6.blob.core.windows.net:80 |
+|azprofileruploads7.blob.core.windows.net:80 |
+|azprofileruploads8.blob.core.windows.net:80 |
+|azprofileruploads9.blob.core.windows.net:80 |
+|azureprofilerfrontdoor.cloudapp.net:80 |
+|azurewatsonanalysis.usgovcloudapp.net:80 |
 |cacerts.digicert.com:80 |
 |client.wns.windows.com:80 |
 |crl.microsoft.com:80 |
@@ -344,12 +341,12 @@ Linux is not available in US Gov regions and is thus not listed as an optional c
 |gcwsprodgmdm2billing.table.core.usgovcloudapi.net:80 |
 |global.metrics.nsatc.net:80 |
 |go.microsoft.com:80 |
-|gr-gcws-prod-bd3.usgovchinacloudapp.cn:80 |
-|gr-gcws-prod-bn1.usgovchinacloudapp.cn:80 |
-|gr-gcws-prod-dd3.usgovchinacloudapp.cn:80 |
-|gr-gcws-prod-dm2.usgovchinacloudapp.cn:80 |
-|gr-gcws-prod-phx20.usgovchinacloudapp.cn:80 |
-|gr-gcws-prod-sn5.usgovchinacloudapp.cn:80 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:80 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:80 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:80 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:80 |
 |login.live.com:80 |
 |login.microsoftonline.us:80 |
 |management.core.usgovcloudapi.net:80 |
@@ -372,20 +369,20 @@ Linux is not available in US Gov regions and is thus not listed as an optional c
 |\*.management.usgovcloudapi.net:443 |
 |\*.update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
-|azperfmerges.blob.core.chinacloudapi.cn:443 |
-|azperfmerges.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads1.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads10.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads2.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads3.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads4.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads5.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads6.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads7.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads8.blob.core.chinacloudapi.cn:443 |
-|azprofileruploads9.blob.core.chinacloudapi.cn:443 |
-|azureprofilerfrontdoor.chinacloudapp.cn:443 |
-|azurewatsonanalysis.usgovchinacloudapp.cn:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads5.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 |
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
+|azurewatsonanalysis.usgovcloudapp.net:443 |
 |cacerts.digicert.com:443 |
 |client.wns.windows.com:443 |
 |crl.microsoft.com:443 |
@@ -402,12 +399,12 @@ Linux is not available in US Gov regions and is thus not listed as an optional c
 |gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
 |global.metrics.nsatc.net:443 |
 |go.microsoft.com:443 |
-|gr-gcws-prod-bd3.usgovchinacloudapp.cn:443 |
-|gr-gcws-prod-bn1.usgovchinacloudapp.cn:443 |
-|gr-gcws-prod-dd3.usgovchinacloudapp.cn:443 |
-|gr-gcws-prod-dm2.usgovchinacloudapp.cn:443 |
-|gr-gcws-prod-phx20.usgovchinacloudapp.cn:443 |
-|gr-gcws-prod-sn5.usgovchinacloudapp.cn:443 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:443 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:443 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:443 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:443 |
 |login.live.com:443 |
 |login.microsoftonline.us:443 |
 |management.core.usgovcloudapi.net:443 |
@@ -433,15 +430,9 @@ Linux is not available in US Gov regions and is thus not listed as an optional c
 |global-dsms.dsms.core.usgovcloudapi.net:443 |
 
 <!--Image references-->
-
 [1]: ./media/firewall-integration/firewall-apprule.png
 [2]: ./media/firewall-integration/firewall-serviceendpoints.png
 [3]: ./media/firewall-integration/firewall-ntprule.png
 [4]: ./media/firewall-integration/firewall-routetable.png
 [5]: ./media/firewall-integration/firewall-topology.png
 [6]: ./media/firewall-integration/firewall-ntprule-monitor.png
-
-
-
-<!-- Update_Description: new article about firewall integration -->
-<!--NEW.date: 12/21/2020-->

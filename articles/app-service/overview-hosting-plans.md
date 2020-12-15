@@ -4,21 +4,17 @@ description: Learn how App Service plans work in Azure App Service, how they're 
 keywords: app service, azure app service, scale, scalable, scalability, app service plan, app service cost
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/01/2020
 ms.custom: seodec18
 
 ---
 # Azure App Service plan overview
 
-In App Service (Web Apps, API Apps, or Mobile Apps), an app always runs in an _App Service plan_. In addition, [Azure Functions](../azure-functions/functions-scale.md#app-service-plan) also has the option of running in an _App Service plan_. An App Service plan defines a set of compute resources for a web app to run. These compute resources are analogous to the [_server farm_](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Server_farm) in conventional web hosting. One or more apps can be configured to run on the same computing resources (or in the same App Service plan).
+In App Service (Web Apps, API Apps, or Mobile Apps), an app always runs in an _App Service plan_. In addition, [Azure Functions](../azure-functions/functions-scale.md#app-service-plan) also has the option of running in an _App Service plan_. An App Service plan defines a set of compute resources for a web app to run. These compute resources are analogous to the [_server farm_](https://wikipedia.org/wiki/Server_farm) in conventional web hosting. One or more apps can be configured to run on the same computing resources (or in the same App Service plan).
 
 When you create an App Service plan in a certain region (for example, West Europe), a set of compute resources is created for that plan in that region. Whatever apps you put into this App Service plan run on these compute resources as defined by your App Service plan. Each App Service plan defines:
 
-- Region (China North, China East, etc.)
+- Region (West US, East US, etc.)
 - Number of VM instances
 - Size of VM instances (Small, Medium, Large)
 - Pricing tier (Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated)
@@ -31,7 +27,7 @@ The _pricing tier_ of an App Service plan determines what App Service features y
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Each tier also provides a specific subset of App Service features. These features include custom domains and TLS/SSL certificates, autoscaling, deployment slots, backups, Traffic Manager integration, and more. The higher the tier, the more features are available. To find out which features are supported in each pricing tier, see [App Service plan details](https://www.azure.cn/pricing/details/app-service/plans/).
+Each tier also provides a specific subset of App Service features. These features include custom domains and TLS/SSL certificates, autoscaling, deployment slots, backups, Traffic Manager integration, and more. The higher the tier, the more features are available. To find out which features are supported in each pricing tier, see [App Service plan details](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 <a name="new-pricing-tier-premiumv3"></a>
 
@@ -44,7 +40,7 @@ Each tier also provides a specific subset of App Service features. These feature
 > - Medium (4 CPU cores, 16 GiB of memory) 
 > - Large (8 CPU cores, 32 GiB of memory)  
 >
-> For **PremiumV3** pricing information, see [App Service Pricing](https://www.azure.cn/pricing/details/app-service/).
+> For **PremiumV3** pricing information, see [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/).
 >
 > To get started with the new **PremiumV3** pricing tier, see [Configure PremiumV3 tier for App Service](app-service-configure-premium-tier.md).
 
@@ -62,7 +58,7 @@ For information on scaling out an app, see [Scale instance count manually or aut
 
 ## How much does my App Service plan cost?
 
-This section describes how App Service apps are billed. For detailed, region-specific pricing information, see [App Service Pricing](https://www.azure.cn/pricing/details/app-service/).
+This section describes how App Service apps are billed. For detailed, region-specific pricing information, see [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/).
 
 Except for **Free** tier, an App Service plan carries a charge on the compute resources it uses.
 
@@ -77,7 +73,7 @@ You don't get charged for using the App Service features that are available to y
 - IP-based TLS connections - There's an hourly charge for each IP-based TLS connection, but some **Standard** tier or above gives you one IP-based TLS connection for free. SNI-based TLS connections are free.
 
 > [!NOTE]
-> If you integrate App Service with another Azure service, you may need to consider charges from these other services. For example, if you use Azure Traffic Manager to scale your app geographically, Azure Traffic Manager also charges you based on your usage. To estimate your cross-services cost in Azure, see [Pricing calculator](https://www.azure.cn/pricing/calculator/). 
+> If you integrate App Service with another Azure service, you may need to consider charges from these other services. For example, if you use Azure Traffic Manager to scale your app geographically, Azure Traffic Manager also charges you based on your usage. To estimate your cross-services cost in Azure, see [Pricing calculator](https://azure.microsoft.com/pricing/calculator/). 
 
 Want to optimize and save on your cloud spending?
 
@@ -111,7 +107,3 @@ This way you can allocate a new set of resources for your app and gain greater c
 
 > [!div class="nextstepaction"]
 > [Manage an App Service plan](app-service-plan-manage.md)
-
-
-<!-- Update_Description: new article about overview hosting plans -->
-<!--NEW.date: 12/21/2020-->

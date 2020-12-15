@@ -3,17 +3,14 @@ title: Azure Load Balancer Floating IP configuration
 description: Overview of Azure Load Balancer Floating IP
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/13/2020
+ms.author: allensu
 
 ---
 
@@ -45,7 +42,3 @@ Without Floating IP, Azure exposes a traditional load balancing IP address mappi
 - Learn about [Health Probes](load-balancer-custom-probe-overview.md).
 - Learn about [Standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md).
 - Learn more about [Network Security Groups](../virtual-network/network-security-groups-overview.md).
-
-
-<!-- Update_Description: new article about load balancer floating ip -->
-<!--NEW.date: 12/21/2020-->

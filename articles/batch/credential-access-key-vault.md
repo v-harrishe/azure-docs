@@ -2,11 +2,7 @@
 title: Securely access Key Vault with Batch
 description: Learn how to programmatically access your credentials from Key Vault using Azure Batch.
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/28/2020 
 ms.custom: devx-track-azurepowershell
 ---
 
@@ -37,7 +33,7 @@ Next, use the `makecert` tool to create self-signed certificate files called `ba
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch requires a `.pfx` file. Use the [pvk2pfx](https://docs.azure.cn/windows-hardware/drivers/devtest/pvk2pfx) tool to convert the `.cer` and `.pvk` files created by `makecert` to a single `.pfx` file.
+Batch requires a `.pfx` file. Use the [pvk2pfx](/windows-hardware/drivers/devtest/pvk2pfx) tool to convert the `.cer` and `.pvk` files created by `makecert` to a single `.pfx` file.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -96,7 +92,7 @@ if($psModuleCheck.count -eq 0) {
 Now you're ready to access Key Vault in scripts running on your Batch nodes. To access Key Vault from a script, all you need is for your script to authenticate against Azure AD using the certificate. To do this in PowerShell, use the following example commands. Specify the appropriate GUID for **Thumbprint**, **App ID** (the ID of your service principal), and **Tenant ID** (the tenant where your service principal exists).
 
 ```powershell
-Add-AzureRmAccount -Environment AzureChinaCloud -ServicePrincipal -CertificateThumbprint -ApplicationId
+Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
 ```
 
 Once authenticated, access KeyVault as you normally would.
@@ -112,7 +108,3 @@ These are the credentials to use in your script.
 - Learn more about [Azure Key Vault](../key-vault/general/overview.md).
 - Review the [Azure Security Baseline for Batch](security-baseline.md).
 - Learn about Batch features such as [configuring access to compute nodes](pool-endpoint-configuration.md), [using Linux compute nodes](batch-linux-nodes.md), and [using private endpoints](private-connectivity.md).
-
-
-<!-- Update_Description: new article about credential access key vault -->
-<!--NEW.date: 12/21/2020-->

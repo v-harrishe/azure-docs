@@ -2,11 +2,7 @@
 title: Use private endpoints with Azure Batch accounts
 description: Learn how to connect privately to an Azure Batch account by using private endpoints. 
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/28/2020
 ms.custom: references_regions
 ---
 
@@ -39,7 +35,7 @@ Use the following steps to create a private Batch account using the Azure portal
    - **Virtual network**: Select your virtual network.
    - **Subnet**: Select your subnet.
    - **Integrate with private DNS zone**:	Select **Yes**. To connect privately with your private endpoint, you need a DNS record. We recommend that you integrate your private endpoint with a private DNS zone. You can also use your own DNS servers or create DNS records by using the host files on your virtual machines.
-   - **Private DNS Zone**:	Select privatelink.\<region\>.batch.chinacloudapi.cn. The private DNS zone is determined automatically. You can't change it by using the Azure portal.
+   - **Private DNS Zone**:	Select privatelink.\<region\>.batch.azure.com. The private DNS zone is determined automatically. You can't change it by using the Azure portal.
 8. Select **Review + create**, then wait for Azure to validate your configuration.
 9. When you see the **Validation passed** message, select **Create**.
 
@@ -96,7 +92,7 @@ When you're creating the private endpoint, you can integrate it with a [private 
 
 ## Pricing
 
-For details on costs related to private endpoints, see [Azure Private Link pricing](https://www.azure.cn/pricing/details/private-link/).
+For details on costs related to private endpoints, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
 
 ## Current limitations and best practices
 
@@ -113,8 +109,3 @@ When creating your private Batch account, keep in mind the following:
 - Learn how to [create Batch pools without public IP addresses](batch-pool-no-public-ip-address.md)
 - Learn how to [create Batch pools with specified public IP addresses](create-pool-public-ip.md).
 - Learn about [Azure Private Link](../private-link/private-link-overview.md).
-
-
-
-<!-- Update_Description: new article about private connectivity -->
-<!--NEW.date: 12/21/2020-->

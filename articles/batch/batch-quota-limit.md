@@ -2,11 +2,7 @@
 title: Service quotas and limits
 description: Learn about default Azure Batch quotas, limits, and constraints, and how to request quota increases
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/03/2020
 ms.custom: seodec18
 ---
 
@@ -42,7 +38,7 @@ The updated mechanism will enforce the VM series quotas, in addition to the tota
 
 It is possible to determine if VM series quota enforcement has been enabled for a Batch account by checking:
 
-* The Batch account [dedicatedCoreQuotaPerVMFamilyEnforced](https://docs.microsoft.com/rest/api/batchmanagement/batchaccount/get#batchaccount) API property.
+* The Batch account [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API property.
 
 * Text on the Batch account **Quotas** page in the portal.
 
@@ -58,15 +54,12 @@ Pool size limits are set by the Batch service. Unlike [resource quotas](#resourc
 
 | **Resource** | **Maximum Limit** |
 | --- | --- |
-| **Compute nodes in [inter-node communication enabled pool](batch-mpi.md)** ||
+| **Compute nodes in [inter-node communication enabled pool](batch-mpi.md)**  ||
 | Batch service pool allocation mode | 100 |
 | Batch subscription pool allocation mode | 80 |
 | **Compute nodes in [pool created with a managed image resource](batch-custom-images.md)**<sup>1</sup> ||
 | Dedicated nodes | 2000 |
-| Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes | 1000 |
-
-<!--Not Available on FEATURE Low-priority-->
-
+| Low-priority nodes | 1000 |
 
 <sup>1</sup> For pools that are not inter-node communication enabled.
 
@@ -87,7 +80,7 @@ Additional limits set by the Batch service. Unlike [resource quotas](#resource-q
 
 ## View Batch quotas
 
-To view your Batch account quotas in the [Azure portal](https://portal.azure.cn):
+To view your Batch account quotas in the [Azure portal](https://portal.azure.com):
 
 1. Select **Batch accounts**, then select the Batch account you're interested in.
 1. Select **Quotas** on the Batch account's menu.
@@ -97,7 +90,7 @@ To view your Batch account quotas in the [Azure portal](https://portal.azure.cn)
 
 ## Increase a quota
 
-You can request a quota increase for your Batch account or your subscription using the [Azure portal](https://portal.azure.cn). The type of quota increase depends on the pool allocation mode of your Batch account. To request a quota increase, you must include the VM series you would like to increase the quota for. When the quota increase is applied, it is applied to all series of VMs.
+You can request a quota increase for your Batch account or your subscription using the [Azure portal](https://portal.azure.com). The type of quota increase depends on the pool allocation mode of your Batch account. To request a quota increase, you must include the VM series you would like to increase the quota for. When the quota increase is applied, it is applied to all series of VMs.
 
 1. Select the **Help + support** tile on your portal dashboard, or the question mark (**?**) in the upper-right corner of the portal.
 1. Select **New support request** > **Basics**.
@@ -120,20 +113,14 @@ You can request a quota increase for your Batch account or your subscription usi
        Quota types include:
 
        * **Per Batch account**  
-         Values specific to a single Batch account, including dedicated and low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) cores, and number of jobs and pools.
-
-<!--Not Available on FEATURE low-priority-->
-
+         Values specific to a single Batch account, including dedicated and low-priority cores, and number of jobs and pools.
         
        * **Per region**  
          Values that apply to all Batch accounts in a region and includes the number of Batch accounts per region per subscription.
 
-       Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) quota is a single value across all VM series. If you need constrained SKUs, you must select **Low-priority cores** and include the VM families to request.
+       Low-priority quota is a single value across all VM series. If you need constrained SKUs, you must select **Low-priority cores** and include the VM families to request.
 
-<!--Not Available on FEATURE Low-priority-->
-
-
-    1. Select a **Severity** according to your [business impact](https://support.azure.cn/support/plans/response).
+    1. Select a **Severity** according to your [business impact](https://aka.ms/supportseverity).
 
        Select **Next**.
 
@@ -165,7 +152,3 @@ These resources are allocated in the subscription that contains the virtual netw
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png
 [quota_increase]: ./media/batch-quota-limit/quota-increase.png
-
-
-<!-- Update_Description: new article about batch quota limit -->
-<!--NEW.date: 12/21/2020-->

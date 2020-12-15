@@ -1,14 +1,11 @@
 ---
 title: Use Key Vault references
 description: Learn how to set up Azure App Service and Azure Functions to use Azure Key Vault references. Make Key Vault secrets available to your application code.
-
+author: mattchenderson
 
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/09/2019
+ms.author: mahender
 ms.custom: seodec18
 
 ---
@@ -40,7 +37,7 @@ A Key Vault reference is of the form `@Microsoft.KeyVault({referenceString})`, w
 > [!div class="mx-tdBreakAll"]
 > | Reference string                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | The **SecretUri** should be the full data-plane URI of a secret in Key Vault, including a version, e.g., https://myvault.vault.azure.cn/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | SecretUri=_secretUri_                                                       | The **SecretUri** should be the full data-plane URI of a secret in Key Vault, including a version, e.g., https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | The **VaultName** should the name of your Key Vault resource. The **SecretName** should be the name of the target secret. The **SecretVersion** should be the version of the secret to use. |
 
 > [!NOTE] 
@@ -49,7 +46,7 @@ For example, a complete reference would look like the following:
 
 
 ```
-@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.cn/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
 
 Alternatively:
@@ -203,8 +200,3 @@ You can also use one of the built-in detectors to get additional information.
 3. Select **Diagnose and solve problems**.
 4. Choose **Availability and Performance** and select **Function app down or reporting errors.**
 5. Click on **Key Vault Application Settings Diagnostics.**
-
-
-
-<!-- Update_Description: new article about app service key vault references -->
-<!--NEW.date: 12/21/2020-->

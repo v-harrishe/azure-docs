@@ -5,11 +5,7 @@ description: Learn how to configure a ASP.NET Core app in the native Windows ins
 ms.devlang: dotnet
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 
 ---
@@ -29,7 +25,7 @@ This guide provides key concepts and instructions for ASP.NET Core developers. I
 
 In App Service, the Windows instances already have all the supported .NET Core versions installed. To show the .NET Core runtime and SDK versions available to you, navigate to `https://<app-name>.scm.azurewebsites.net/DebugConsole` and run the following command in the browser-based console:
 
-```azurecli
+```azurecli-interactive
 dotnet --info
 ```
 
@@ -39,15 +35,15 @@ dotnet --info
 
 ## Show .NET Core version
 
-To show the current .NET Core version, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To show the current .NET Core version, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-To show all supported .NET Core versions, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To show all supported .NET Core versions, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
 ```
 
@@ -57,15 +53,15 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-windows"  
 
-Set the target framework in the project file for your ASP.NET Core project. For more information, see [Select the .NET Core version to use](https://docs.microsoft.com/dotnet/core/versions/selection) in .NET Core documentation.
+Set the target framework in the project file for your ASP.NET Core project. For more information, see [Select the .NET Core version to use](/dotnet/core/versions/selection) in .NET Core documentation.
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-Run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) to set the .NET Core version to 3.1:
+Run the following command in the [Cloud Shell](https://shell.azure.com) to set the .NET Core version to 3.1:
 
-```azurecli
+```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
 ```
 
@@ -86,7 +82,7 @@ If you deploy your app using Git or zip packages with build automation turned on
 
 The following example specifies the two variables to a series of commands, separated by commas.
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
@@ -129,23 +125,23 @@ namespace SomeNamespace
 If you configure an app setting with the same name in App Service and in *appsettings.json*, for example, the App Service value takes precedence over the *appsettings.json* value. The local *appsettings.json* value lets you debug the app locally, but the App Service value lets your run the app in product with production settings. Connection strings work in the same way. This way, you can keep your application secrets outside of your code repository and access the appropriate values without changing your code.
 
 > [!NOTE]
-> Note the [hierarchical configuration data](https://docs.azure.cn/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.json* is accessed using the `:` delimiter that's standard to .NET Core. To override a specific hierarchical configuration setting in App Service, set the app setting name with the same delimited format in the key. you can run the following example in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+> Note the [hierarchical configuration data](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.json* is accessed using the `:` delimiter that's standard to .NET Core. To override a specific hierarchical configuration setting in App Service, set the app setting name with the same delimited format in the key. you can run the following example in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
 ```
 
 ## Deploy multi-project solutions
 
-When a Visual Studio solution includes multiple projects, the Visual Studio publish process already includes selecting the project to deploy. When you deploy to the App Service deployment engine, such as with Git or with ZIP deploy, with build automation turned on, the App Service deployment engine picks the first Web Site or Web Application Project it finds as the App Service app. You can specify which project App Service should use by specifying the `PROJECT` app setting. For example, run the following in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+When a Visual Studio solution includes multiple projects, the Visual Studio publish process already includes selecting the project to deploy. When you deploy to the App Service deployment engine, such as with Git or with ZIP deploy, with build automation turned on, the App Service deployment engine picks the first Web Site or Web Application Project it finds as the App Service app. You can specify which project App Service should use by specifying the `PROJECT` app setting. For example, run the following in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
 ```
 
 ## Access diagnostic logs
 
-ASP.NET Core provides a [built-in logging provider for App Service](https://docs.azure.cn/aspnet/core/fundamentals/logging/#azure-app-service). In *Program.cs* of your project, add the provider to your application through the `ConfigureLogging` extension method, as shown in the following example:
+ASP.NET Core provides a [built-in logging provider for App Service](/aspnet/core/fundamentals/logging/#azure-app-service). In *Program.cs* of your project, add the provider to your application through the `ConfigureLogging` extension method, as shown in the following example:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -160,27 +156,27 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-You can then configure and generate logs with the [standard .NET Core pattern](https://docs.azure.cn/aspnet/core/fundamentals/logging).
+You can then configure and generate logs with the [standard .NET Core pattern](/aspnet/core/fundamentals/logging).
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-For more information on troubleshooting ASP.NET Core apps in App Service, see [Troubleshoot ASP.NET Core on Azure App Service and IIS](https://docs.azure.cn/aspnet/core/test/troubleshoot-azure-iis)
+For more information on troubleshooting ASP.NET Core apps in App Service, see [Troubleshoot ASP.NET Core on Azure App Service and IIS](/aspnet/core/test/troubleshoot-azure-iis)
 
 ## Get detailed exceptions page
 
-When your ASP.NET Core app generates an exception in the Visual Studio debugger, the browser displays a detailed exception page, but in App Service that page is replaced by a generic **HTTP 500** error or **An error occurred while processing your request.** message. To display the detailed exception page in App Service, Add the `ASPNETCORE_ENVIRONMENT` app setting to your app by running the following command in the <a target="_blank" href="https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) " >Cloud Shell</a>.
+When your ASP.NET Core app generates an exception in the Visual Studio debugger, the browser displays a detailed exception page, but in App Service that page is replaced by a generic **HTTP 500** error or **An error occurred while processing your request.** message. To display the detailed exception page in App Service, Add the `ASPNETCORE_ENVIRONMENT` app setting to your app by running the following command in the <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
 ```
 
 ## Detect HTTPS session
 
-In App Service, [SSL termination](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/TLS_termination_proxy) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to know if the user requests are encrypted or not, configure the Forwarded Headers Middleware in *Startup.cs*:
+In App Service, [SSL termination](https://wikipedia.org/wiki/TLS_termination_proxy) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to know if the user requests are encrypted or not, configure the Forwarded Headers Middleware in *Startup.cs*:
 
-- Configure the middleware with [ForwardedHeadersOptions](https://docs.azure.cn/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) to forward the `X-Forwarded-For` and `X-Forwarded-Proto` headers in `Startup.ConfigureServices`.
+- Configure the middleware with [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) to forward the `X-Forwarded-For` and `X-Forwarded-Proto` headers in `Startup.ConfigureServices`.
 - Add private IP address ranges to the known networks, so that the middleware can trust the App Service load balancer.
-- Invoke the [UseForwardedHeaders](https://docs.azure.cn/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling other middleware.
+- Invoke the [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) method in `Startup.Configure` before calling other middleware.
 
 Putting all three elements together, your code looks like the following example:
 
@@ -209,7 +205,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-For more information, see [Configure ASP.NET Core to work with proxy servers and load balancers](https://docs.azure.cn/aspnet/core/host-and-deploy/proxy-load-balancer).
+For more information, see [Configure ASP.NET Core to work with proxy servers and load balancers](/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ::: zone pivot="platform-linux"
 
@@ -232,8 +228,3 @@ For more information, see [Configure ASP.NET Core to work with proxy servers and
 > [App Service Linux FAQ](faq-app-service-linux.md)
 
 ::: zone-end
-
-
-
-<!-- Update_Description: new article about configure language dotnetcore -->
-<!--NEW.date: 12/21/2020-->

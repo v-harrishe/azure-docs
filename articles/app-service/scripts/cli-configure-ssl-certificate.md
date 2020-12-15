@@ -1,16 +1,12 @@
 ---
-title: CLI - Upload and bind TLS/SSL cert to an app
+title: 'CLI: Upload and bind TLS/SSL cert to an app'
 description: Learn how to use the Azure CLI to automate deployment and management of your App Service app. This sample shows how to bind a custom TLS/SSL certificate to an app.
 tags: azure-service-management
 
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
 ms.topic: sample
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/11/2017
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
 
@@ -23,9 +19,9 @@ This sample script creates an app in App Service with its related resources, the
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the CLI locally, you need Azure CLI version 2.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install the Azure CLI](https://docs.azure.cn/cli/install-azure-cli).
+If you choose to install and use the CLI locally, you need Azure CLI version 2.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install the Azure CLI]( /cli/azure/install-azure-cli).
 
 ## Sample script
 
@@ -39,20 +35,15 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [`az group create`](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) | Creates an App Service plan. |
-| [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) | Creates an App Service app. |
-| [`az webapp config hostname add`](https://docs.azure.cn/cli/webapp/config/hostname#az_webapp_config_hostname_add) | Maps a custom domain to an App Service app. |
-| [`az webapp config ssl upload`](https://docs.azure.cn/cli/webapp/config/ssl#az_webapp_config_ssl_upload) | Uploads a TLS/SSL certificate to an App Service app. |
-| [`az webapp config ssl bind`](https://docs.azure.cn/cli/webapp/config/ssl#az_webapp_config_ssl_bind) | Binds an uploaded TLS/SSL certificate to an App Service app. |
+| [`az group create`](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Creates an App Service plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Creates an App Service app. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname#az-webapp-config-hostname-add) | Maps a custom domain to an App Service app. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl#az-webapp-config-ssl-upload) | Uploads a TLS/SSL certificate to an App Service app. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl#az-webapp-config-ssl-bind) | Binds an uploaded TLS/SSL certificate to an App Service app. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
+For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
 
 Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
-
-
-
-<!-- Update_Description: new article about cli configure ssl certificate -->
-<!--NEW.date: 12/21/2020-->

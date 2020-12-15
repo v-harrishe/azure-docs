@@ -1,14 +1,10 @@
 ---
-title: Tutorial - ASP.NET app with Azure SQL Database 
+title: 'Tutorial: ASP.NET app with Azure SQL Database' 
 description: Learn how to deploy a C# ASP.NET app to Azure and to Azure SQL Database
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/25/2018
 ms.custom: "devx-track-csharp, mvc, devcenter, vs-azure, seodec18"
 ---
 
@@ -16,7 +12,7 @@ ms.custom: "devx-track-csharp, mvc, devcenter, vs-azure, seodec18"
 
 [Azure App Service](overview.md) provides a highly scalable, self-patching web hosting service. This tutorial shows you how to deploy a data-driven ASP.NET app in App Service and connect it to [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md). When you're finished, you have an ASP.NET app running in Azure and connected to SQL Database.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png" alt-text="Published ASP.NET application in Azure App Service":::
+![Published ASP.NET application in Azure App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
 In this tutorial, you learn how to:
 
@@ -44,7 +40,7 @@ If you've installed Visual Studio already, add the workloads in Visual Studio by
 * [Download the sample project](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
 * Extract (unzip) the  *dotnet-sqldb-tutorial-master.zip* file.
 
-The sample project contains a basic [ASP.NET MVC](https://www.asp.net/mvc) create-read-update-delete (CRUD) app using [Entity Framework Code First](https://docs.azure.cn/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+The sample project contains a basic [ASP.NET MVC](https://www.asp.net/mvc) create-read-update-delete (CRUD) app using [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 ### Run the app
 
@@ -52,7 +48,7 @@ Open the *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* file in Visual Studio
 
 Type `Ctrl+F5` to run the app without debugging. The app is displayed in your default browser. Select the **Create New** link and create a couple *to-do* items.
 
-:::image type="content" source="media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png" alt-text="New ASP.NET Project dialog box":::
+![New ASP.NET Project dialog box](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
 Test the **Edit**, **Details**, and **Delete** links.
 
@@ -62,17 +58,17 @@ The app uses a database context to connect with the database. In this sample, th
 
 In the **Solution Explorer**, right-click your **DotNetAppSqlDb** project and select **Publish**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png" alt-text="Publish from Solution Explorer":::
+![Publish from Solution Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 Select **Azure** as your target, click next, and make sure that **Azure App Service (Windows)** is selected and click next again.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png" alt-text="Publish from project overview page":::
+![Publish from project overview page](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
 ### Sign in to Azure
 
-In the **Publish** dialog, click **Add an account** from the account manager drop down, and then sign in to your Azure subscription. If you're already signed into a Azure account, make sure that account holds your Azure subscription. If the signed-in Azure account doesn't have your Azure subscription, click it to add the correct account.
+In the **Publish** dialog, click **Add an account** from the account manager drop down, and then sign in to your Azure subscription. If you're already signed into a Microsoft account, make sure that account holds your Azure subscription. If the signed-in Microsoft account doesn't have your Azure subscription, click it to add the correct account.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png" alt-text="Sign in to Azure":::
+![Sign in to Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > If you're already signed in, don't select **Create** yet.
@@ -81,7 +77,7 @@ In the **Publish** dialog, click **Add an account** from the account manager dro
 
 You can keep the generated web app name, or change it to another unique name (valid characters are `a-z`, `0-9`, and `-`). The web app name is used as part of the default URL for your app (`<app_name>.azurewebsites.net`, where `<app_name>` is your web app name). The web app name needs to be unique across all apps in Azure.
 
-:::image type="content" source="media/app-service-web-tutorial-dotnet-sqldatabase/wan.png" alt-text="Create app service dialog":::
+![Create app service dialog](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
 ### Create a resource group
 
@@ -101,13 +97,13 @@ You can keep the generated web app name, or change it to another unique name (va
 
 2. In the **Configure App Service Plan** dialog, configure the new App Service plan with the following settings:
 
-   :::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png" alt-text="Create App Service plan":::
+   ![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
    | Setting  | Suggested value | For more information |
    | ----------------- | ------------ | ----|
    |**App Service Plan**| myAppServicePlan | [App Service plans](../app-service/overview-hosting-plans.md) |
-   |**Location**| West Europe | [Azure regions](https://azure.microsoft.com/regions/) |
-   |**Size**| Free | [Pricing tiers](https://www.azure.cn/pricing/details/app-service/)|
+   |**Location**| West Europe | [Azure regions](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+   |**Size**| Free | [Pricing tiers](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 3. The **Publish** dialog shows the resources you've configured. Click **Finish**.
 
@@ -120,17 +116,17 @@ Before creating a database, you need a [logical SQL server](../azure-sql/databas
 
 1. Click **Configure** next to SQL Server Database under **Connected Services**.
 
-   :::image type="content" source="media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png" alt-text="Create a SQL Database":::
+   ![Create a SQL Database](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 2. In the **Azure SQL Database** dialog, click **New** next to **Database Server**.
 
-   A unique server name is generated. This name is used as part of the default URL for your server, `<server_name>.database.chinacloudapi.cn`. It must be unique across all servers in Azure SQL. You can change the server name, but for this tutorial, keep the generated value.
+   A unique server name is generated. This name is used as part of the default URL for your server, `<server_name>.database.windows.net`. It must be unique across all servers in Azure SQL. You can change the server name, but for this tutorial, keep the generated value.
 
-3. Add an administrator username and password. For password complexity requirements, see [Password Policy](https://docs.microsoft.com/sql/relational-databases/security/password-policy).
+3. Add an administrator username and password. For password complexity requirements, see [Password Policy](/sql/relational-databases/security/password-policy).
 
    Remember this username and password. You need them to manage the server later.
 
-   :::image type="content" source="media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png" alt-text="Create server":::
+   ![Create server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
    > [!IMPORTANT]
    > Even though your password in the connection strings is masked (in Visual Studio and also in App Service), the fact that it's maintained somewhere adds to the attack surface of your app. App Service can use [managed service identities](overview-managed-identity.md) to eliminate this risk by removing the need to maintain secrets in your code or app configuration at all. For more information, see [Next steps](#next-steps).
@@ -144,13 +140,13 @@ Before creating a database, you need a [logical SQL server](../azure-sql/databas
    * Keep the default generated **Database Name**.
    * Select **Create**.
 
-    :::image type="content" source="media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png" alt-text="Configure database":::
+    ![Configure database](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
 2. In the **Database connection String Name**, type _MyDbConnection_. This name must match the connection string that is referenced in _Models/MyDatabaseContext.cs_.
 
 3. Enter the Admin username and password you used in [Create a server](#create-a-server) step 3 into the Database username and password respectively.
 
-    :::image type="content" source="media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png" alt-text="Configure database connection string":::
+    ![Configure database connection string](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
 
 4. Select **Finish**.
 
@@ -158,7 +154,7 @@ Once the wizard finishes creating the Azure resources, click **Publish** to depl
 
 Add a few to-do items.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png" alt-text="Published ASP.NET application in Azure app":::
+![Published ASP.NET application in Azure app](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
 Congratulations! Your data-driven ASP.NET application is running live in Azure App Service.
 
@@ -180,7 +176,7 @@ Select the database that you created earlier. The connection you created earlier
 
 Type the database administrator password you created earlier and click **Connect**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png" alt-text="Configure database connection from Visual Studio":::
+![Configure database connection from Visual Studio](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
 
 ### Allow client connection from your computer
 
@@ -190,7 +186,7 @@ The dialog is already filled with your computer's public IP address.
 
 Make sure that **Add my client IP** is selected and click **OK**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png" alt-text="Create firewall rule":::
+![Create firewall rule](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
 Once Visual Studio finishes creating the firewall setting for your SQL Database instance, your connection shows up in **SQL Server Object Explorer**.
 
@@ -198,13 +194,13 @@ Here, you can perform the most common database operations, such as run queries, 
 
 Expand your connection > **Databases** > **&lt;your database>** > **Tables**. Right-click on the `Todoes` table and select **View Data**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png" alt-text="Explore SQL Database objects":::
+![Explore SQL Database objects](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
 ## Update app with Code First Migrations
 
 You can use the familiar tools in Visual Studio to update your database and app in Azure. In this step, you use Code First Migrations in Entity Framework to make a change to your database schema and publish it to Azure.
 
-For more information about using Entity Framework Code First Migrations, see [Getting Started with Entity Framework 6 Code First using MVC 5](https://docs.azure.cn/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
+For more information about using Entity Framework Code First Migrations, see [Getting Started with Entity Framework 6 Code First using MVC 5](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 ### Update your data model
 
@@ -302,7 +298,7 @@ Just like before, right-click your project and select **Publish**.
 
 Click **Configure** to open the publish settings.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png" alt-text="Open publish settings":::
+![Open publish settings](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
 In the wizard, click **Next**.
 
@@ -310,7 +306,7 @@ Make sure that the connection string for your SQL Database is populated in **MyD
 
 Select **Execute Code First Migrations (runs on application start)**, then click **Save**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png" alt-text="Enable Code First Migrations in Azure app":::
+![Enable Code First Migrations in Azure app](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
 
 ### Publish your changes
 
@@ -320,7 +316,7 @@ In the publish page, click **Publish**.
 
 Try adding to-do items again and select **Done**, and they should show up in your homepage as a completed item.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png" alt-text="Azure app after Code First Migration":::
+![Azure app after Code First Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 All your existing to-do items are still displayed. When you republish your ASP.NET application, existing data in your SQL Database is not lost. Also, Code First Migrations only changes the data schema and leaves your existing data intact.
 
@@ -344,11 +340,11 @@ Expand the **myResourceGroup** resource group, you created when you first create
 
 Right-click your Azure app and select **View Streaming Logs**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png" alt-text="Enable log streaming":::
+![Enable log streaming](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
 The logs are now streamed into the **Output** window.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png" alt-text="Log streaming in Output window":::
+![Log streaming in Output window](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
 However, you don't see any of the trace messages yet. That's because when you first select **View Streaming Logs**, your Azure app sets the trace level to `Error`, which only logs error events (with the `Trace.TraceError()` method).
 
@@ -360,7 +356,7 @@ Right-click your Azure app again and select **View Settings**.
 
 In the **Application Logging (File System)** dropdown, select **Verbose**. Click **Save**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png" alt-text="Change trace level to Verbose":::
+![Change trace level to Verbose](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
 > [!TIP]
 > You can experiment with different trace levels to see what types of messages are displayed for each level. For example, the **Information** level includes all logs created by `Trace.TraceInformation()`, `Trace.TraceWarning()`, and `Trace.TraceError()`, but not logs created by `Trace.WriteLine()`.
@@ -378,23 +374,23 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 To stop the log-streaming service, click the **Stop monitoring** button in the **Output** window.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png" alt-text="Stop log streaming":::
+![Stop log streaming](./media/app-service-web-tutorial-dotnet-sqldatabase/stop-streaming.png)
 
 ## Manage your Azure app
 
-Go to the [Azure portal](https://portal.azure.cn) to manage the web app. Search for and select **App Services**.
+Go to the [Azure portal](https://portal.azure.com) to manage the web app. Search for and select **App Services**.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png" alt-text="Search for Azure App Services":::
+![Search for Azure App Services](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
 Select the name of your Azure app.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png" alt-text="Portal navigation to Azure app":::
+![Portal navigation to Azure app](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 
 You have landed in your app's page.
 
 By default, the portal shows the **Overview** page. This page gives you a view of how your app is doing. Here, you can also perform basic management tasks like browse, stop, start, restart, and delete. The tabs on the left side of the page show the different configuration pages you can open.
 
-:::image type="content" source="./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-blade.png" alt-text="App Service page in Azure portal":::
+![App Service page in Azure portal](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-blade.png)
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
@@ -425,7 +421,3 @@ Want to optimize and save on your cloud spending?
 
 > [!div class="nextstepaction"]
 > [Start analyzing costs with Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-
-
-<!-- Update_Description: new article about app service web tutorial dotnet sqldatabase -->
-<!--NEW.date: 12/21/2020-->

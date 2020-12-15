@@ -1,14 +1,11 @@
 ---
 title: Azure security baseline for Azure Firewall
 description: The Azure Firewall security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-
+author: msmbaldwin
 ms.service: firewall
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/05/2020
+ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -55,7 +52,7 @@ Azure Firewall service tags can be used in the network rules destination field a
 
 Additionally, customer-defined tags such as IP groups are also supported and can be used in a network rule or an application rule. FQDN tags in application rules are supported to allow the required outbound network traffic through your firewall.
 
-Note that you cannot create your own service tag, nor specify which IP addresses are included within a tag. Azure manages the address prefixes encompassed by the service tag, and automatically updates the service tag as addresses change.
+Note that you cannot create your own service tag, nor specify which IP addresses are included within a tag. Microsoft manages the address prefixes encompassed by the service tag, and automatically updates the service tag as addresses change.
 
  
 
@@ -107,7 +104,7 @@ You may also use Azure Blueprints to simplify large-scale Azure deployments by p
 
 ### 2.1: Use approved time synchronization sources
 
-**Guidance**: Azure maintains time sources for Azure resources for Azure Firewall. Customers need to create a network rule to allow this access, or for a time server that you use in their environment.
+**Guidance**: Microsoft maintains time sources for Azure resources for Azure Firewall. Customers need to create a network rule to allow this access, or for a time server that you use in their environment.
 
 - [NTP server access](protect-windows-virtual-desktop.md#additional-considerations)
 
@@ -231,9 +228,9 @@ Alternatively, you may enable and on-board data to Azure Sentinel.
 
 **Guidance**: Azure AD has built-in roles that must be explicitly assigned and are queryable. Use the Azure AD PowerShell module to perform ad hoc queries to discover accounts that are members of administrative groups.
 
-- [How to get a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [How to get a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [How to get members of a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [How to get members of a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -243,7 +240,7 @@ Alternatively, you may enable and on-board data to Azure Sentinel.
 
 **Guidance**: Create standard operating procedures around the use of dedicated administrative accounts. Use Azure Security Center Identity and Access Management to monitor the number of administrative accounts.
 
-You can also enable a Just-In-Time / Just-Enough-Access by using Azure AD Privileged Identity Management Privileged Roles for Azure Services, and Azure Resource Manager.
+You can also enable a Just-In-Time / Just-Enough-Access by using Azure AD Privileged Identity Management Privileged Roles for Microsoft Services, and Azure Resource Manager.
 
 - [Learn more about Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
@@ -277,7 +274,7 @@ You can also enable a Just-In-Time / Just-Enough-Access by using Azure AD Privil
 
 **Guidance**: Use PAWs (privileged access workstations) with multi-factor authentication(MFA) configured to log into and configure Azure Firewall and related resources. 
 
-- [Learn about Privileged Access Workstations](https://docs.azure.cn/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
+- [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
 
 - [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -387,7 +384,7 @@ You can streamline this process by creating Diagnostic Settings for Azure Active
 
 **Guidance**: Leverage a third-party solution from Azure Marketplace on network perimeters that monitors for unauthorized transfer of sensitive information and blocks such transfers while alerting information security professionals. 
 
-For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities. 
+For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities. 
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -429,7 +426,7 @@ Follow Azure Security Center recommendations for encryption at rest and encrypti
 
 ### 4.8: Encrypt sensitive information at rest
 
-**Guidance**: Use encryption at rest on all Azure resources using Azure Firewall and related resources. Azure recommends allowing Azure to manage your encryption keys, however there is the option for you to manage your own keys in some instances. 
+**Guidance**: Use encryption at rest on all Azure resources using Azure Firewall and related resources. Microsoft recommends allowing Azure to manage your encryption keys, however there is the option for you to manage your own keys in some instances. 
 
 - [Understand encryption at rest in Azure](../security/fundamentals/encryption-atrest.md)
 
@@ -521,7 +518,7 @@ Use Azure Resource Graph to query/discover Azure Firewall resources within their
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resources Manager by configuring "Block access" for the "21Vianet Azure Management" App. 
+**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resources Manager by configuring "Block access" for the "Microsoft Azure Management" App. 
 
 - [How to configure Conditional Access to block access to Azure Resources Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -581,9 +578,9 @@ Azure policy is not fully supported at this time.
 
 **Guidance**: Use Azure DevOps to securely store and manage your code like custom Azure policies and Azure Resource Manager templates. To access the resources you manage in Azure DevOps, you can grant or deny permissions to specific users, built-in security groups, or groups defined in Azure Active Directory (Azure AD) if integrated with Azure DevOps, or Active Directory if integrated with TFS.
 
-- [How to store code in Azure DevOps](https://docs.azure.cn/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [About permissions and groups in Azure DevOps](https://docs.azure.cn/azure/devops/organizations/security/about-permissions)
+- [About permissions and groups in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -633,7 +630,7 @@ Azure policy is not fully supported at this time.
 
 - [Deploy Azure Firewall using a template](deploy-template.md)
 
-- [Microsoft Network Azure Firewalls template reference](https://docs.azure.cn/azure/templates/microsoft.network/azurefirewalls)
+- [Microsoft Network Azure Firewalls template reference](/azure/templates/microsoft.network/azurefirewalls)
 
 - [About Azure Automation](../automation/automation-intro.md)
 
@@ -647,7 +644,7 @@ Azure policy is not fully supported at this time.
 
 - [Deploy Azure Firewall using a template](deploy-template.md)
 
-- [Microsoft Network Azure Firewalls template reference](https://docs.azure.cn/azure/templates/microsoft.network/azurefirewalls)
+- [Microsoft Network Azure Firewalls template reference](/azure/templates/microsoft.network/azurefirewalls)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -659,7 +656,7 @@ Azure policy is not fully supported at this time.
 
 - [Deploy Azure Firewall using a template](deploy-template.md)
 
-- [Microsoft Network Azure Firewalls template reference](https://docs.azure.cn/azure/templates/microsoft.network/azurefirewalls)
+- [Microsoft Network Azure Firewalls template reference](/azure/templates/microsoft.network/azurefirewalls)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -669,9 +666,9 @@ Azure policy is not fully supported at this time.
 
 **Guidance**: Use Azure DevOps to securely store and manage your code like custom Azure policies, Azure Resource Manager templates. To protect resources you manage in Azure DevOps, you can grant or deny permissions to specific users, built-in security groups, or groups defined in Azure Active Directory (Azure AD) if integrated with Azure DevOps, or Active Directory if integrated with TFS.
 
-- [How to store code in Azure DevOps](https://docs.azure.cn/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [About permissions and groups in Azure DevOps](https://docs.azure.cn/azure/devops/organizations/security/about-permissions)
+- [About permissions and groups in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -721,7 +718,7 @@ Additionally, clearly mark subscriptions (for ex. production, non-prod) using ta
 
 ### 10.4: Provide security incident contact details and configure alert notifications for security incidents
 
-**Guidance**: Security incident contact information will be used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved. 
+**Guidance**: Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved. 
 
 - [How to set the Azure Security Center Security Contact](../security-center/security-center-provide-security-contact-details.md)
 
@@ -759,7 +756,7 @@ Continuous Export allows you to export alerts and recommendations either manuall
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: Follow the Azure Rules of Engagement to ensure your Penetration Tests are not in violation of Azure policies. Use Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications. 
+**Guidance**: Follow the Microsoft Rules of Engagement to ensure your Penetration Tests are not in violation of Microsoft policies. Use Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications. 
 
 - [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -773,7 +770,3 @@ Continuous Export allows you to export alerts and recommendations either manuall
 
 - See the [Azure security benchmark](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
-
-
-<!-- Update_Description: new article about security baseline -->
-<!--NEW.date: 12/21/2020-->

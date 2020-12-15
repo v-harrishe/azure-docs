@@ -1,15 +1,12 @@
 ---
 title: Create an ASE with ARM
 description: Learn how to create an external or ILB App Service environment by using an Azure Resource Manager template.
-
+author: ccompy
 
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/13/2017
+ms.author: ccompy
 ms.custom: seodec18
 ---
 # Create an ASE by using an Azure Resource Manager template
@@ -99,7 +96,7 @@ After the TLS/SSL certificate is successfully generated and converted to a base6
 The parameters in the *azuredeploy.parameters.json* file are listed here:
 
 * *appServiceEnvironmentName*: The name of the ILB ASE being configured.
-* *existingAseLocation*: Text string containing the Azure region where the ILB ASE was deployed.  For example: "South China North".
+* *existingAseLocation*: Text string containing the Azure region where the ILB ASE was deployed.  For example: "South Central US".
 * *pfxBlobString*: The based64-encoded string representation of the .pfx file. Use the code snippet shown earlier and copy the string contained in "exportedcert.pfx.b64". Paste it in as the value of the *pfxBlobString* attribute.
 * *password*: The password used to secure the .pfx file.
 * *certificateThumbprint*: The certificate's thumbprint. If you retrieve this value from PowerShell (for example, *$certificate.Thumbprint* from the earlier code snippet), you can use the value as is. If you copy the value from the Windows certificate dialog box, remember to strip out the extraneous spaces. The *certificateThumbprint* should look something like  AF3143EB61D43F6727842115BB7F17BBCECAECAE.
@@ -116,7 +113,7 @@ An abbreviated example of *azuredeploy.parameters.json* is shown here:
       "value": "yourASENameHere"
     },
     "existingAseLocation": {
-      "value": "China East 2"
+      "value": "East US 2"
     },
     "pfxBlobString": {
       "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
@@ -158,14 +155,14 @@ ASEv1 uses a different pricing model from ASEv2. In ASEv1, you pay for each vCPU
 
 To create an ASEv1 by using a Resource Manager template, see [Create an ILB ASE v1 with a Resource Manager template][ILBASEv1Template].
 
-<!--Links-->
 
-[quickstartilbasecreate]: https://www.azure.cn/documentation/templates/201-web-app-asev2-ilb-create
-[quickstartasev2create]: https://www.azure.cn/documentation/templates/201-web-app-asev2-create
-[quickstartconfiguressl]: https://www.azure.cn/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
-[quickstartwebapponasev2create]: https://www.azure.cn/documentation/templates/201-web-app-asp-app-on-asev2-create
+<!--Links-->
+[quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
+[quickstartasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
+[quickstartconfiguressl]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
+[quickstartwebapponasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
 [examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
-[configuringDefaultSSLCertificate]: https://www.azure.cn/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
+[configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
 [MakeASEfromTemplate]: ./create-from-template.md
@@ -176,16 +173,12 @@ To create an ASEv1 by using a Resource Manager template, see [Create an ILB ASE 
 [NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: https://docs.microsoft.com/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: https://www.azure.cn/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/ag-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
-
-
-<!-- Update_Description: new article about create from template -->
-<!--NEW.date: 12/21/2020-->

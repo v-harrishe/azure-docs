@@ -2,14 +2,11 @@
 title: Overview of Azure Firewall logs and metrics
 description: You can monitor Azure Firewall using firewall logs. You can also use activity logs to audit operations on Azure Firewall resources.
 services: firewall
-
+author: vhorne
 ms.service: firewall
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/10/2020
+ms.author: victorh
 ---
 
 # Azure Firewall logs and metrics
@@ -91,7 +88,7 @@ Metrics are lightweight and can support near real-time scenarios making them use
      "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
      "operationName": "AzureFirewallDnsProxyLog",
      "properties": {
-         "msg": "DNS Request: 11.5.0.7:48197 – 15676 AAA IN md-l1l1pg5lcmkq.blob.core.chinacloudapi.cn. udp 55 false 512 NOERROR - 0 2.000301956s"
+         "msg": "DNS Request: 11.5.0.7:48197 – 15676 AAA IN md-l1l1pg5lcmkq.blob.core.windows.net. udp 55 false 512 NOERROR - 0 2.000301956s"
      }
    }
    ```
@@ -174,7 +171,3 @@ The following metrics are available for Azure Firewall:
 - To learn how to monitor Azure Firewall logs and metrics, see [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md).
 
 - To learn more about metrics in Azure Monitor, see [Metrics in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
-
-
-<!-- Update_Description: new article about logs and metrics -->
-<!--NEW.date: 12/21/2020-->

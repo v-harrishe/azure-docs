@@ -2,14 +2,11 @@
 title: Azure Firewall FQDN filtering in network rules
 description: How to use Azure Firewall FQDN filtering in network rules
 services: firewall
-
+author: vhorne
 ms.service: firewall
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/06/2020
+ms.author: victorh
 ---
 
 # Use FQDN filtering in network rules
@@ -36,8 +33,3 @@ When a new DNS resolution takes place, new IP addresses are added to firewall ru
 ## Next steps
 
 [Azure Firewall DNS settings](dns-settings.md)
-
-
-
-<!-- Update_Description: new article about fqdn filtering network rules -->
-<!--NEW.date: 12/21/2020-->

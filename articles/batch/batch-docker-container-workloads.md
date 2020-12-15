@@ -2,11 +2,7 @@
 title: Container workloads
 description: Learn how to run and scale apps from container images on Azure Batch. Create a pool of compute nodes that support running container tasks.
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/06/2020
 ms.custom: "seodec18, devx-track-csharp"
 ---
 # Run container applications on Azure Batch
@@ -52,7 +48,7 @@ You can also create custom images from VMs running Docker on Windows.
 
 ### Linux support
 
-For Linux container workloads, Batch currently supports the following Linux images published by Azure Azure Batch in the Azure Marketplace without the need for a custom image.
+For Linux container workloads, Batch currently supports the following Linux images published by Microsoft Azure Batch in the Azure Marketplace without the need for a custom image.
 
 #### VM sizes without RDMA
 
@@ -82,14 +78,11 @@ Additional considerations for using a custom Linux image:
 
 - To take advantage of the GPU performance of Azure N-series sizes when using a custom image, pre-install NVIDIA drivers. Also, you need to install the Docker Engine Utility for NVIDIA GPUs, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker).
 
-- To access the Azure RDMA network, use an RDMA-capable VM size. Necessary RDMA drivers are installed in the CentOS HPC(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) and Ubuntu images supported by Batch. Additional configuration may be needed to run MPI workloads. See [Use RDMA-capable or GPU-enabled instances in Batch pool](batch-pool-compute-intensive-sizes.md).
-
-<!--Not Available on FEATURE HPC-->
-
+- To access the Azure RDMA network, use an RDMA-capable VM size. Necessary RDMA drivers are installed in the CentOS HPC and Ubuntu images supported by Batch. Additional configuration may be needed to run MPI workloads. See [Use RDMA-capable or GPU-enabled instances in Batch pool](batch-pool-compute-intensive-sizes.md).
 
 ## Container configuration for Batch pool
 
-To enable a Batch pool to run container workloads, you must specify [ContainerConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.containerconfiguration) settings in the pool's [VirtualMachineConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) object. (This article provides links to the Batch .NET API reference. Corresponding settings are in the [Batch Python](https://docs.azure.cn/python/api/overview/azure/batch) API.)
+To enable a Batch pool to run container workloads, you must specify [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) settings in the pool's [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) object. (This article provides links to the Batch .NET API reference. Corresponding settings are in the [Batch Python](/python/api/overview/azure/batch) API.)
 
 You can create a container-enabled pool with or without prefetched container images, as shown in the following examples. The pull (or prefetch) process lets you pre-load container images from either Docker Hub or another container registry on the Internet. For best performance, use an [Azure container registry](../container-registry/container-registry-intro.md) in the same region as the Batch account.
 
@@ -210,7 +203,7 @@ StartTask startTaskContainer = new StartTask( commandLine: "<native-host-command
 // Create pool
 CloudPool pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    virtualMachineSize: "Standard_NC6s_v3",
+    virtualMachineSize: "Standard_NC6",
     virtualMachineConfiguration: virtualMachineConfiguration);
 
 // Start the task in the pool
@@ -231,13 +224,13 @@ image_ref_to_use = batch.models.ImageReference(
 
 # Specify a container registry
 container_registry = batch.models.ContainerRegistry(
-        registry_server="myRegistry.azurecr.cn",
+        registry_server="myRegistry.azurecr.io",
         user_name="myUsername",
         password="myPassword")
 
 # Create container configuration, prefetching Docker images from the container registry
 container_conf = batch.models.ContainerConfiguration(
-        container_image_names = ["myRegistry.azurecr.cn/samples/myImage"],
+        container_image_names = ["myRegistry.azurecr.io/samples/myImage"],
         container_registries =[container_registry])
 
 new_pool = batch.models.PoolAddParameter(
@@ -253,14 +246,14 @@ new_pool = batch.models.PoolAddParameter(
 ```csharp
 // Specify a container registry
 ContainerRegistry containerRegistry = new ContainerRegistry(
-    registryServer: "myContainerRegistry.azurecr.cn",
+    registryServer: "myContainerRegistry.azurecr.io",
     userName: "myUserName",
     password: "myPassword");
 
 // Create container configuration, prefetching Docker images from the container registry
 ContainerConfiguration containerConfig = new ContainerConfiguration();
 containerConfig.ContainerImageNames = new List<string> {
-        "myContainerRegistry.azurecr.cn/tensorflow/tensorflow:latest-gpu" };
+        "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" };
 containerConfig.ContainerRegistries = new List<ContainerRegistry> { containerRegistry } );
 
 // VM configuration
@@ -273,7 +266,7 @@ virtualMachineConfiguration.ContainerConfiguration = containerConfig;
 CloudPool pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: 4,
-    virtualMachineSize: "Standard_NC6s_v3",
+    virtualMachineSize: "Standard_NC6",
     virtualMachineConfiguration: virtualMachineConfiguration);
 ...
 ```
@@ -282,11 +275,11 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 To run a container task on a container-enabled pool, specify container-specific settings. Settings include the image to use, registry, and container run options.
 
-- Use the `ContainerSettings` property of the task classes to configure container-specific settings. These settings are defined by the [TaskContainerSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskcontainersettings) class. Note that the `--rm` container option doesn't require an additional `--runtime` option since it is taken care of by Batch.
+- Use the `ContainerSettings` property of the task classes to configure container-specific settings. These settings are defined by the [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) class. Note that the `--rm` container option doesn't require an additional `--runtime` option since it is taken care of by Batch.
 
-- If you run tasks on container images, the [cloud task](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) and [job manager task](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) require container settings. However, the [start task](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.starttask), [job preparation task](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), and [job release task](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) do not require container settings (that is, they can run within a container context or directly on the node).
+- If you run tasks on container images, the [cloud task](/dotnet/api/microsoft.azure.batch.cloudtask) and [job manager task](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) require container settings. However, the [start task](/dotnet/api/microsoft.azure.batch.starttask), [job preparation task](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), and [job release task](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) do not require container settings (that is, they can run within a container context or directly on the node).
 
-- For Windows, tasks must be run with [ElevationLevel](https://docs.microsoft.com/rest/api/batchservice/task/add#elevationlevel) set to `admin`. 
+- For Windows, tasks must be run with [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) set to `admin`. 
 
 - For Linux, Batch will map the user/group permission to the container. If access to any folder within the container requires Administrator permission, you may need to run the task as pool scope with admin elevation level. This will ensure Batch runs the task as root in the container context. Otherwise, a non-admin user may not have access to those folders.
 
@@ -304,7 +297,7 @@ If the container image for a Batch task is configured with an [ENTRYPOINT](https
 
 - To override the default ENTRYPOINT, or if the image doesn't have an ENTRYPOINT, set a command line appropriate for the container, for example, `/app/myapp` or `/bin/sh -c python myscript.py`.
 
-Optional [ContainerRunOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) are additional arguments you provide to the `docker create` command that Batch uses to create and run the container. For example, to set a working directory for the container, set the `--workdir <directory>` option. See the [docker create](https://docs.docker.com/engine/reference/commandline/create/) reference for additional options.
+Optional [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) are additional arguments you provide to the `docker create` command that Batch uses to create and run the container. For example, to set a working directory for the container, set the `--workdir <directory>` option. See the [docker create](https://docs.docker.com/engine/reference/commandline/create/) reference for additional options.
 
 ### Container task working directory
 
@@ -366,8 +359,3 @@ containerTask.ContainerSettings = cmdContainerSettings;
 - For information on installing and using Docker CE on Linux, see the [Docker](https://docs.docker.com/engine/installation/) documentation.
 - Learn how to [Use a managed custom image to create a pool of virtual machines](batch-custom-images.md).
 - Learn more about the [Moby project](https://mobyproject.org/), a framework for creating container-based systems.
-
-
-
-<!-- Update_Description: new article about batch docker container workloads -->
-<!--NEW.date: 12/21/2020-->

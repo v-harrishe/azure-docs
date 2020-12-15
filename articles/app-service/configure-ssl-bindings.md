@@ -4,11 +4,7 @@ description: Secure HTTPS access to your custom domain by creating a TLS/SSL bin
 tags: buy-ssl-certificates
 
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
 ---
@@ -16,12 +12,12 @@ ms.custom: seodec18
 
 This article shows you how to secure the [custom domain](app-service-web-tutorial-custom-domain.md) in your [App Service app](./index.yml) or [function app](../azure-functions/index.yml) by creating a certificate binding. When you're finished, you can access your App Service app at the `https://` endpoint for your custom DNS name (for example, `https://www.contoso.com`). 
 
-:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Web app with custom TLS/SSL certificate":::
+![Web app with custom TLS/SSL certificate](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 Securing a [custom domain](app-service-web-tutorial-custom-domain.md) with a certificate involves two steps:
 
 - [Add a private certificate to App Service](configure-ssl-certificate.md) that satisfies all the [private certificate requirements](configure-ssl-certificate.md#private-certificate-requirements).
-- Create a TLS binding to the corresponding custom domain. This second step is covered by this article.
+-  Create a TLS binding to the corresponding custom domain. This second step is covered by this article.
 
 In this tutorial, you learn how to:
 
@@ -51,14 +47,14 @@ To follow this how-to guide:
 
 Do the following steps:
 
-In the <a href="https://portal.azure.cn" target="_blank">Azure portal</a>, from the left menu, select **App Services** > **\<app-name>**.
+In the <a href="https://portal.azure.com" target="_blank">Azure portal</a>, from the left menu, select **App Services** > **\<app-name>**.
 
 From the left navigation of your app, start the **TLS/SSL Binding** dialog by:
 
 - Selecting **Custom domains** > **Add binding**
 - Selecting **TLS/SSL settings** > **Add TLS/SSL binding**
 
-:::image type="content" source="./media/configure-ssl-bindings/secure-domain-launch.png" alt-text="Add binding to domain":::
+![Add binding to domain](./media/configure-ssl-bindings/secure-domain-launch.png)
 
 In **Custom Domain**, select the custom domain you want to add a binding for.
 
@@ -82,11 +78,11 @@ Use the following table to help you configure the TLS binding in the **TLS/SSL B
 |-|-|
 | Custom domain | The domain name to add the TLS/SSL binding for. |
 | Private Certificate Thumbprint | The certificate to bind. |
-| TLS/SSL Type | <ul><li>**[SNI SSL](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Server_Name_Indication)** - Multiple SNI SSL bindings may be added. This option allows multiple TLS/SSL certificates to secure multiple domains on the same IP address. Most modern browsers (including Internet Explorer, Chrome, Firefox, and Opera) support SNI (for more information, see [Server Name Indication](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Server_Name_Indication)).</li><li>**IP SSL** - Only one IP SSL binding may be added. This option allows only one TLS/SSL certificate to secure a dedicated public IP address. After you configure the binding, follow the steps in [Remap records for IP SSL](#remap-records-for-ip-ssl).<br/>IP SSL is supported only in **Standard** tier or above. </li></ul> |
+| TLS/SSL Type | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Multiple SNI SSL bindings may be added. This option allows multiple TLS/SSL certificates to secure multiple domains on the same IP address. Most modern browsers (including Internet Explorer, Chrome, Firefox, and Opera) support SNI (for more information, see [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** - Only one IP SSL binding may be added. This option allows only one TLS/SSL certificate to secure a dedicated public IP address. After you configure the binding, follow the steps in [Remap records for IP SSL](#remap-records-for-ip-ssl).<br/>IP SSL is supported only in **Standard** tier or above. </li></ul> |
 
 Once the operation is complete, the custom domain's TLS/SSL state is changed to **Secure**.
 
-:::image type="content" source="./media/configure-ssl-bindings/secure-domain-finished.png" alt-text="TLS/SSL binding successful":::
+![TLS/SSL binding successful](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > A **Secure** state in the **Custom domains** means that it is secured with a certificate, but App Service doesn't check if the certificate is self-signed or expired, for example, which can also cause browsers to show an error or warning.
@@ -130,7 +126,7 @@ By default, anyone can still access your app using HTTP. You can redirect all HT
 
 In your app page, in the left navigation, select **SSL settings**. Then, in **HTTPS Only**, select **On**.
 
-:::image type="content" source="./media/configure-ssl-bindings/enforce-https.png" alt-text="Enforce HTTPS":::
+![Enforce HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
 When the operation is complete, navigate to any of the HTTP URLs that point to your app. For example:
 
@@ -140,17 +136,17 @@ When the operation is complete, navigate to any of the HTTP URLs that point to y
 
 ## Enforce TLS versions
 
-Your app allows [TLS](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Transport_Layer_Security) 1.2 by default, which is the recommended TLS level by industry standards, such as [PCI DSS](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Payment_Card_Industry_Data_Security_Standard). To enforce different TLS versions, follow these steps:
+Your app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 by default, which is the recommended TLS level by industry standards, such as [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). To enforce different TLS versions, follow these steps:
 
 In your app page, in the left navigation, select **SSL settings**. Then, in **TLS version**, select the minimum TLS version you want. This setting controls the inbound calls only. 
 
-:::image type="content" source="./media/configure-ssl-bindings/enforce-tls1-2.png" alt-text="Enforce TLS 1.1 or 1.2":::
+![Enforce TLS 1.1 or 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
 When the operation is complete, your app rejects all connections with lower TLS versions.
 
 ## Handle TLS termination
 
-In App Service, [TLS termination](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/TLS_termination_proxy) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to check if the user requests are encrypted or not, inspect the `X-Forwarded-Proto` header.
+In App Service, [TLS termination](https://wikipedia.org/wiki/TLS_termination_proxy) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to check if the user requests are encrypted or not, inspect the `X-Forwarded-Proto` header.
 
 Language specific configuration guides, such as the [Linux Node.js configuration](configure-language-nodejs.md#detect-https-session) guide, shows you how to detect an HTTPS session in your application code.
 
@@ -168,7 +164,3 @@ Language specific configuration guides, such as the [Linux Node.js configuration
 
 * [Use a TLS/SSL certificate in your code in Azure App Service](configure-ssl-certificate-in-code.md)
 * [FAQ : App Service Certificates](./faq-configuration-and-management.md)
-
-
-<!-- Update_Description: new article about configure ssl bindings -->
-<!--NEW.date: 12/21/2020-->

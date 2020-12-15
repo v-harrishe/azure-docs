@@ -1,10 +1,10 @@
 ---
-title: Tutorial - Configure port forwarding - Azure portal
+title: "Tutorial: Configure port forwarding - Azure portal"
 titleSuffix: Azure Load Balancer
 description: This tutorial shows how to configure port forwarding using Azure Load Balancer to create connections to VMs in an Azure virtual network.
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
@@ -12,11 +12,8 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 02/26/2019
+ms.author: allensu
 ms.custom: seodec18
 ---
 
@@ -34,9 +31,9 @@ In this tutorial, you set up port forwarding on an Azure Load Balancer. You lear
 > * Create load balancer inbound NAT port-forwarding rules.
 > * Install and configure IIS on the VMs to view load balancing and port forwarding in action.
 
-If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin. 
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin. 
 
-For all steps in this tutorial, sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
+For all steps in this tutorial, sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
 
 ## Prerequisites
 
@@ -50,10 +47,10 @@ First, create a public Standard load balancer that can balance traffic load over
 2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
 
     | Setting                 | Value                                              |
-    | --- | --- |
+    | ---                     | ---                                                |
     | Subscription               | Select your subscription.    |    
     | Resource group         | Select **Create new** and type *MyResourceGroupLB* in the text box.|
-    | Name                   | *myLoadBalancer* |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Select **West Europe**.                                        |
     | Type          | Select **Public**.                                        |
     | SKU           | Select **Standard**.                          |
@@ -76,11 +73,11 @@ In this section you'll need to replace the following parameters in the steps wit
 
 | Parameter                   | Value                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>** | myResourceGroupLB (Select existing resource group) |
+| **\<resource-group-name>**  | myResourceGroupLB (Select existing resource group) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>** | West Europe      |
-| **\<IPv4-address-space>** | 10.3.0.0\16          |
-| **\<subnet-name>** | myBackendSubnet        |
+| **\<region-name>**          | West Europe      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.3.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -119,7 +116,7 @@ In this section you'll need to replace the following parameters in the steps wit
    1. For **Select a load balancer**, drop down and select **MyLoadBalancer**. 
    1. Under **Select a backend pool**, select **Create new**, then type *MyBackendPool*, and select **Create**. 
    
-   :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png" alt-text="Create a virtual network":::
+   ![Create a virtual network](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
    
 1. Select the **Management** tab, or select **Next** > **Management**. Under **Monitoring**, set **Boot diagnostics** to **Off**.
    
@@ -157,7 +154,7 @@ Create a network security group (NSG) rule for the VMs to allow inbound internet
    
 1. Select **Add**. 
    
-   :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png" alt-text="Create an NSG rule":::
+   ![Create an NSG rule](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    
 ## Create load balancer resources
 
@@ -200,7 +197,7 @@ To allow the load balancer to monitor VM status, you use a health probe. The hea
    
 1. Select **OK**.
    
-   :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png" alt-text="Add a probe":::
+   ![Add a probe](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
 
 ### Create a load balancer rule
 
@@ -223,7 +220,7 @@ The load balancer rule named **MyLoadBalancerRule** listens to port 80 in the fr
    
 1. Select **OK**.
    
-   :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png" alt-text="Add a load balancer rule":::
+   ![Add a load balancer rule](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
 ## Create an inbound NAT port-forwarding rule
 
@@ -278,7 +275,7 @@ Use PowerShell to install IIS and replace the default IIS web page with a page t
 
 2. Run the following commands to install IIS and replace the default IIS web page:
    
-   ```powershell
+   ```powershell-interactive
     # Install IIS
       Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
@@ -300,7 +297,7 @@ Use PowerShell to install IIS and replace the default IIS web page with a page t
    
    The customized IIS web server default page appears in the browser. The message reads either **Hello World from MyVM1**, or **Hello World from MyVM2**.
    
-   :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/9-load-balancer-test.png" alt-text="New IIS default page"::: 
+   ![New IIS default page](./media/tutorial-load-balancer-port-forwarding-portal/9-load-balancer-test.png) 
    
 1. Refresh the browser to see the load balancer distribute traffic across VMs. Sometimes the **MyVM1** page appears, and other times the **MyVM2** page appears, as the load balancer distributes the requests to each back-end VM.
    
@@ -343,8 +340,3 @@ To learn more about Azure Load Balancer, continue to more load balancer tutorial
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-
-
-
-<!-- Update_Description: new article about tutorial load balancer port forwarding portal -->
-<!--NEW.date: 12/21/2020-->

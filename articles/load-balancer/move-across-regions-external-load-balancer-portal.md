@@ -1,14 +1,11 @@
 ---
 title: Move an Azure external load balancer to another Azure region by using the Azure portal
 description: Use an Azure Resource Manager template to move an external load balancer from one Azure region to another by using the Azure portal.
-
+author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/17/2019
+ms.author: allensu
 ---
 
 # Move an external load balancer to another region by using the Azure portal
@@ -39,7 +36,7 @@ The following procedures show how to prepare the external load balancer for the 
 
 ### Export the public IP template and deploy the public IP from the portal
 
-1. Sign in to the [Azure portal](https://portal.azure.cn) and select **Resource groups**.
+1. Sign in to the [Azure portal](https://portal.azure.com) and select **Resource groups**.
 2. Locate the resource group that contains the source public IP and select it.
 3. Select **Settings** > **Export template**.
 4. Select **Deploy** under **Export template**.
@@ -61,7 +58,7 @@ The following procedures show how to prepare the external load balancer for the 
 
     Select **Save** in the editor.
 
-9. Select **TEMPLATE** > **Edit template** to open the template.json file in the online editor.
+9.  Select **TEMPLATE** > **Edit template** to open the template.json file in the online editor.
 
 10. To edit the target region to which the public IP will be moved, change the **location** property under **resources**:
 
@@ -89,7 +86,7 @@ The following procedures show how to prepare the external load balancer for the 
              ]
     ```
   
-    To get region location codes, see [Azure locations](https://azure.microsoft.com/global-infrastructure/locations/). The code for a region is the region name with no spaces. For example, the code for China North is **chinanorth**.
+    To get region location codes, see [Azure locations](https://azure.microsoft.com/global-infrastructure/locations/). The code for a region is the region name with no spaces. For example, the code for Central US is **centralus**.
     
 12. You can also change other parameters in the template if you want to or need to, depending on your requirements:
 
@@ -155,7 +152,7 @@ The following procedures show how to prepare the external load balancer for the 
 
 ### Export the external load balancer template and deploy the load balancer from the Azure portal
 
-1. Sign in to the [Azure portal](https://portal.azure.cn) and select **Resource groups**.
+1. Sign in to the [Azure portal](https://portal.azure.com) and select **Resource groups**.
 2. Locate the resource group that contains the source external load balancer and select it.
 3. Select **Settings** > **Export template**.
 4. Select **Deploy** under **Export template**.
@@ -176,9 +173,9 @@ The following procedures show how to prepare the external load balancer for the 
 
     ```
 
-6. To edit value of the target public IP that you moved in the preceding steps, you must first obtain the resource ID and then paste it into the parameters.json file. To obtain the ID:
+6.  To edit value of the target public IP that you moved in the preceding steps, you must first obtain the resource ID and then paste it into the parameters.json file. To obtain the ID:
 
-    1. In another browser tab or window, sign in to the [Azure portal](https://portal.azure.cn) and select **Resource groups**.
+    1. In another browser tab or window, sign in to the [Azure portal](https://portal.azure.com) and select **Resource groups**.
     2. Locate the target resource group that contains the public IP that you moved in the preceding steps. Select it.
     3. Select **Settings** > **Properties**.
     4. In the blade to the right, highlight the **Resource ID** and copy it to the clipboard. Alternatively, you can select **copy to clipboard** to the right of the **Resource ID** path.
@@ -200,7 +197,7 @@ The following procedures show how to prepare the external load balancer for the 
     6. Select **Save** in the online editor.
 
 
-7. If you've configured outbound NAT and outbound rules for the load balancer, you'll see a third entry in this file for the external ID of the outbound public IP. Repeat the preceding steps in the **target region** to obtain the ID for the outbound public IP. Paste that ID into the parameters.json file:
+7.  If you've configured outbound NAT and outbound rules for the load balancer, you'll see a third entry in this file for the external ID of the outbound public IP. Repeat the preceding steps in the **target region** to obtain the ID for the outbound public IP. Paste that ID into the parameters.json file:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -221,8 +218,8 @@ The following procedures show how to prepare the external load balancer for the 
         },
     ```
 
-8. Select **TEMPLATE** > **Edit template** to open the template.json file in the online editor.
-9. To edit the target region to which the external load balancer configuration will be moved, change the **location** property under **resources** in the template.json file:
+8.  Select **TEMPLATE** > **Edit template** to open the template.json file in the online editor.
+9.  To edit the target region to which the external load balancer configuration will be moved, change the **location** property under **resources** in the template.json file:
 
     ```json
         "resources": [
@@ -237,7 +234,7 @@ The following procedures show how to prepare the external load balancer for the 
                 },
     ```
 
-10. To get region location codes, see [Azure locations](https://azure.microsoft.com/global-infrastructure/locations/). The code for a region is the region name with no spaces. For example, the code for China North is **chinanorth**.
+10. To get region location codes, see [Azure locations](https://azure.microsoft.com/global-infrastructure/locations/). The code for a region is the region name with no spaces. For example, the code for Central US is **centralus**.
 
 11. You can also change other parameters in the template if you want to or need to, depending on your requirements:
 
@@ -414,7 +411,3 @@ In this tutorial, you moved an Azure external load balancer from one region to a
 
 - [Move resources to a new resource group or subscription](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 - [Move Azure VMs to another region](../site-recovery/azure-to-azure-tutorial-migrate.md)
-
-
-<!-- Update_Description: new article about move across regions external load balancer portal -->
-<!--NEW.date: 12/21/2020-->

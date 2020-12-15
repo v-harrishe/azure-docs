@@ -2,14 +2,11 @@
 title: Upgrade from Basic Public to Standard Public - Azure Load Balancer
 description: This article shows you how to upgrade Azure Public Load Balancer from Basic SKU to Standard SKU
 services: load-balancer
-
+author: irenehua
 ms.service: load-balancer
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/23/2020
+ms.author: irenehua
 ---
 
 # Upgrade Azure Public Load Balancer
@@ -39,7 +36,7 @@ An Azure PowerShell script is available that does the following:
 
 * **Here are our recommended steps:
 
-    1. To do the tasks in this quickstart, sign in to the [Azure portal](https://portal.azure.cn).
+    1. To do the tasks in this quickstart, sign in to the [Azure portal](https://portal.azure.com).
  
     1. Select **All resources** on the left menu, and then select the **Basic Public IP Address associated with Basic Load Balancer** from the resource list.
    
@@ -78,11 +75,11 @@ This command also installs the required Az modules.
 
 ### Install using the script directly
 
-If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 To run the script:
 
-1. Use `Connect-AzAccount -Environment AzureChinaCloud` to connect to Azure.
+1. Use `Connect-AzAccount` to connect to Azure.
 
 1. Use `Import-Module Az` to import the Az modules.
 
@@ -126,8 +123,3 @@ You can send an email to slbupgradesupport@microsoft.com, open a support case wi
 ## Next steps
 
 [Learn about Standard Load Balancer](load-balancer-overview.md)
-
-
-
-<!-- Update_Description: new article about upgrade basic standard -->
-<!--NEW.date: 12/21/2020-->

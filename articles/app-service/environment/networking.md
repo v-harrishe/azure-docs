@@ -1,14 +1,11 @@
 ---
 title: App Service Environment Networking
 description: App Service Environment networking details
-
+author: ccompy
 ms.assetid: 6f262f63-aef5-4598-88d2-2f2c2f2bfc24
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/16/2020
+ms.author: ccompy
 ms.custom: seodec18
 ---
 
@@ -38,7 +35,7 @@ The ASE uses addresses in the outbound subnet to support the infrastructure used
 
 ## Ports
 
-The ASE receives application traffic on ports 80 and 443. There are no inbound or outbound port requirements for the ASE. 
+The ASE receives application traffic on ports 80 and 443.  There are no inbound or outbound port requirements for the ASE. 
 
 ## Extra configurations
 
@@ -50,7 +47,7 @@ The apps in your ASE will use the DNS that your VNet is configured with. If you 
 
 ## Preview limitation
 
-There are a few networking features that aren't available with ASEv3. The things that aren't available in ASEv3 include:
+There are a few networking features that aren't available with ASEv3.  The things that aren't available in ASEv3 include:
 
 • FTP
 • Remote debug
@@ -64,8 +61,3 @@ There are a few networking features that aren't available with ASEv3. The things
 	
 	
 
-
-
-
-<!-- Update_Description: new article about networking -->
-<!--NEW.date: 12/21/2020-->

@@ -1,15 +1,12 @@
 ---
 title: Networking considerations
 description: Learn about the ASE network traffic and how to set network security groups and user defined routes with your ASE.
-
+author: ccompy
 
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/27/2020
+ms.author: ccompy
 ms.custom: seodec18
 ---
 # Networking considerations for an App Service Environment #
@@ -106,13 +103,13 @@ If you change the DNS setting of the VNet that your ASE is in, you will need to 
 
 In addition to the ASE functional dependencies, there are a few extra items related to the portal experience. Some of the capabilities in the Azure portal depend on direct access to _SCM site_. For every app in Azure App Service, there are two URLs. The first URL is to access your app. The second URL is to access the SCM site, which is also called the _Kudu console_. Features that use the SCM site include:
 
-- Web jobs
-- Functions
-- Log streaming
-- Kudu
-- Extensions
-- Process Explorer
-- Console
+-   Web jobs
+-   Functions
+-   Log streaming
+-   Kudu
+-   Extensions
+-   Process Explorer
+-   Console
 
 When you use an ILB ASE, the SCM site isn't accessible from outside the VNet. Some capabilities will not work from the app portal because they require access to the SCM site of an app. You can connect to the SCM site directly instead of using the portal. 
 
@@ -144,7 +141,7 @@ When an app has its own IP-based SSL address, the ASE reserves two ports to map 
 
 [Network Security Groups][NSGs] provide the ability to control network access within a VNet. When you use the portal, there's an implicit deny rule at the lowest priority to deny everything. What you build are your allow rules.
 
-In an ASE, you don't have access to the VMs used to host the ASE itself. They're in a Azure-managed subscription. If you want to restrict access to the apps on the ASE, set NSGs on the ASE subnet. In doing so, pay careful attention to the ASE dependencies. If you block any dependencies, the ASE stops working.
+In an ASE, you don't have access to the VMs used to host the ASE itself. They're in a Microsoft-managed subscription. If you want to restrict access to the apps on the ASE, set NSGs on the ASE subnet. In doing so, pay careful attention to the ASE dependencies. If you block any dependencies, the ASE stops working.
 
 NSGs can be configured through the Azure portal or via PowerShell. The information here shows the Azure portal. You create and manage NSGs in the portal as a top-level resource under **Networking**.
 
@@ -222,7 +219,6 @@ When Service Endpoints is enabled on a subnet with an Azure SQL instance, all Az
 ![Service Endpoints][8]
 
 <!--Image references-->
-
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png
 [2]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow2.png
 [3]: ./media/network_considerations_with_an_app_service_environment/networkase-ipaddresses.png
@@ -233,7 +229,6 @@ When Service Endpoints is enabled on a subnet with an Azure SQL instance, all Az
 [8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
 <!--Links-->
-
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
 [MakeASEfromTemplate]: ./create-from-template.md
@@ -244,19 +239,15 @@ When Service Endpoints is enabled on a subnet with an Azure SQL instance, all Az
 [NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
-[mobileapps]: https://docs.microsoft.com/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: https://www.azure.cn/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/ag-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ASEManagement]: ./management-addresses.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [forcedtunnel]: ./forced-tunnel-support.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
-
-
-<!-- Update_Description: new article about network info -->
-<!--NEW.date: 12/21/2020-->

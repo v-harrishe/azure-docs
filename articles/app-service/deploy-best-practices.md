@@ -2,15 +2,12 @@
 title: Deployment best practices 
 description: Learn about the key mechanisms of deploying to Azure App Service. Find language-specific recommendations and other caveats.
 keywords: azure app service, web app, deploy, deployment, pipelines, build
-
+author: jasonfreeberg
 
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/31/2019
+ms.author: jafreebe
 ---
 
 # Deployment Best Practices
@@ -64,7 +61,7 @@ There are examples below for common automation frameworks.
 
 ### Use Azure DevOps
 
-App Service has [built-in continuous delivery](deploy-continuous-deployment.md) for containers through the Deployment Center. Navigate to your app in the [Azure portal](https://portal.azure.cn/) and select **Deployment Center** under **Deployment**. Follow the instructions to select your repository and branch. This will configure a DevOps build and release pipeline to automatically build, tag, and deploy your container when new commits are pushed to your selected branch.
+App Service has [built-in continuous delivery](deploy-continuous-deployment.md) for containers through the Deployment Center. Navigate to your app in the [Azure portal](https://portal.azure.com/) and select **Deployment Center** under **Deployment**. Follow the instructions to select your repository and branch. This will configure a DevOps build and release pipeline to automatically build, tag, and deploy your container when new commits are pushed to your selected branch.
 
 ### Use GitHub Actions
 
@@ -126,7 +123,7 @@ In your script, log in using `az login --service-principal`, providing the princ
 
 ### Java
 
-Use the Kudu [zipdeploy/](deploy-zip.md) API for deploying JAR applications, and [wardeploy/](deploy-zip.md#deploy-war-file) for WAR apps. If you are using Jenkins, you can use those APIs directly in your deployment phase. For more information, see [this article](https://docs.azure.cn/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
+Use the Kudu [zipdeploy/](deploy-zip.md) API for deploying JAR applications, and [wardeploy/](deploy-zip.md#deploy-war-file) for WAR apps. If you are using Jenkins, you can use those APIs directly in your deployment phase. For more information, see [this article](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
 ### Node
 
@@ -150,13 +147,9 @@ If your App Service Plan is using over 90% of available CPU or memory, the under
 
 For more information on best practices, visit [App Service Diagnostics](./overview-diagnostics.md) to find out actionable best practices specific to your resource.
 
-- Navigate to your Web App in the [Azure portal](https://portal.azure.cn).
+- Navigate to your Web App in the [Azure portal](https://portal.azure.com).
 - Click on **Diagnose and solve problems** in the left navigation, which opens App Service Diagnostics.
 - Choose **Best Practices** homepage tile.
 - Click **Best Practices for Availability & Performance** or **Best Practices for Optimal Configuration** to view the current state of your app in regards to these best practices.
 
-You can also use this link to directly open App Service Diagnostics for your resource: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.partner.onmschina.cn/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.
-
-
-<!-- Update_Description: new article about deploy best practices -->
-<!--NEW.date: 12/21/2020-->
+You can also use this link to directly open App Service Diagnostics for your resource: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

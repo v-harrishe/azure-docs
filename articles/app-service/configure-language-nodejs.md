@@ -4,11 +4,7 @@ description: Learn how to configure a Node.js app in the native Windows instance
 ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 
 ---
@@ -23,15 +19,15 @@ This guide provides key concepts and instructions for Node.js developers who dep
 
 ::: zone pivot="platform-windows"  
 
-To show the current Node.js version, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To show the current Node.js version, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
-To show all supported Node.js versions, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To show all supported Node.js versions, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp list-runtimes | grep node
 ```
 
@@ -39,15 +35,15 @@ az webapp list-runtimes | grep node
 
 ::: zone pivot="platform-linux"
 
-To show the current Node.js version, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To show the current Node.js version, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-To show all supported Node.js versions, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To show all supported Node.js versions, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp list-runtimes --linux | grep NODE
 ```
 
@@ -57,9 +53,9 @@ az webapp list-runtimes --linux | grep NODE
 
 ::: zone pivot="platform-windows"  
 
-To set your app to a [supported Node.js version](#show-nodejs-version), run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) to set `WEBSITE_NODE_DEFAULT_VERSION` to a supported version:
+To set your app to a [supported Node.js version](#show-nodejs-version), run the following command in the [Cloud Shell](https://shell.azure.com) to set `WEBSITE_NODE_DEFAULT_VERSION` to a supported version:
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_NODE_DEFAULT_VERSION="10.15"
 ```
 
@@ -72,9 +68,9 @@ This setting specifies the Node.js version to use, both at runtime and during au
 
 ::: zone pivot="platform-linux"
 
-To set your app to a [supported Node.js version](#show-nodejs-version), run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To set your app to a [supported Node.js version](#show-nodejs-version), run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "NODE|10.14"
 ```
 
@@ -134,7 +130,7 @@ If you deploy your app using Git or zip packages with build automation turned on
 
 The following example specifies the two variables to a series of commands, separated by commas.
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
@@ -153,9 +149,9 @@ The Node.js containers come with [PM2](https://pm2.keymetrics.io/), a production
 
 ### Run custom command
 
-App Service can start your app using a custom command, such as an executable like *run.sh*. For example, to run `npm run start:prod`, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+App Service can start your app using a custom command, such as an executable like *run.sh*. For example, to run `npm run start:prod`, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
 ```
 
@@ -174,9 +170,9 @@ To start your app using `npm start`, just make sure a `start` script is in the *
 }
 ```
 
-To use a custom *package.json* in your project, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To use a custom *package.json* in your project, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
 ```
 
@@ -196,9 +192,9 @@ You can also configure a custom start file with the following extensions:
 - A *.js* file
 - A [PM2 file](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) with the extension *.json*, *.config.js*, *.yaml*, or *.yml*
 
-To add a custom start file, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
+To add a custom start file, run the following command in the [Cloud Shell](https://shell.azure.com):
 
-```azurecli
+```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
 ```
 
@@ -316,7 +312,7 @@ fi
 
 ## Detect HTTPS session
 
-In App Service, [SSL termination](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/TLS_termination_proxy) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to check if the user requests are encrypted or not, inspect the `X-Forwarded-Proto` header.
+In App Service, [SSL termination](https://wikipedia.org/wiki/TLS_termination_proxy) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to check if the user requests are encrypted or not, inspect the `X-Forwarded-Proto` header.
 
 Popular web frameworks let you access the `X-Forwarded-*` information in your standard app pattern. In [Express](https://expressjs.com/), you can use [trust proxies](https://expressjs.com/guide/behind-proxies.html). For example:
 
@@ -371,8 +367,3 @@ When a working Node.js app behaves differently in App Service or has errors, try
 
 ::: zone-end
 
-
-
-
-<!-- Update_Description: new article about configure language nodejs -->
-<!--NEW.date: 12/21/2020-->

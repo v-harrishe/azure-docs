@@ -4,7 +4,7 @@ titleSuffix: Azure Load Balancer
 description: Overview of Azure Load Balancer features, architecture, and implementation. Learn how the Load Balancer works and how to use it in the cloud.
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for. 
 ms.devlang: na
@@ -12,11 +12,8 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 1/14/2020
+ms.author: allensu
 
 ---
 
@@ -64,28 +61,23 @@ Key scenarios that you can accomplish using Standard Load Balancer include:
 
 - Load balance TCP and UDP flow on all ports simultaneously using **[HA ports](./load-balancer-ha-ports-overview.md)**.
 
-<a name="securebydefault"></a>
-### Secure by default
+### <a name="securebydefault"></a>Secure by default
 
 Standard Load Balancer is built on the zero trust network security model at its core. Standard Load Balancer secure by default and is part of your virtual network. The virtual network is a private and isolated network.  This means Standard Load Balancers and Standard Public IP addresses are closed to inbound flows unless opened by Network Security Groups. NSGs are used to explicitly permit allowed traffic.  If you do not have an NSG on a subnet or NIC of your virtual machine resource, traffic is not allowed to reach this resource. To learn more about NSGs and how to apply them for your scenario, see [Network Security Groups](../virtual-network/network-security-groups-overview.md).
 Basic Load Balancer is open to the internet by default. In addition, Load Balancer does not store customer data.
 
 ## Pricing and SLA
 
-For Standard Load Balancer pricing information, see [Load Balancer pricing](https://www.azure.cn/pricing/details/load-balancer/).
+For Standard Load Balancer pricing information, see [Load Balancer pricing](https://azure.microsoft.com/pricing/details/load-balancer/).
 Basic Load Balancer is offered at no charge.
 See [SLA for Load Balancer](https://aka.ms/lbsla). Basic Load Balancer has no SLA.
 
 ## What's new?
 
-Subscribe to the RSS feed and view the latest Azure Load Balancer feature updates on the [Azure Updates](https://www.azure.cn/updates/?category=networking&query=load%20balancer) page.
+Subscribe to the RSS feed and view the latest Azure Load Balancer feature updates on the [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) page.
 
 ## Next steps
 
 See [Create a public standard load balancer](quickstart-load-balancer-standard-public-portal.md) to get started with using a load balancer.
 
 For more information on Azure Load Balancer limitations and components see [Azure Load Balancer components](./components.md) and [Azure Load Balancer concepts](./concepts.md)
-
-
-<!-- Update_Description: new article about load balancer overview -->
-<!--NEW.date: 12/21/2020-->

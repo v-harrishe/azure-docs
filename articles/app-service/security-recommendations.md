@@ -1,22 +1,19 @@
 ---
 title: Security recommendations
 description: Implement the security recommendations to help fulfill your security obligations as stated in our shared responsibility model. Improve the security of your app.
-
+author: msmbaldwin
 manager: barbkess
 
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/17/2019
+ms.author: mbaldwin
 ms.custom: security-recommendations
 
 ---
 
 # Security recommendations for App Service
 
-This article contains security recommendations for Azure App Service. Implementing these recommendations will help you fulfill your security obligations as described in our shared responsibility model and will improve the overall security for your Web App solutions. For more information on what Azure does to fulfill service provider responsibilities, read [Azure infrastructure security](../security/fundamentals/infrastructure.md).
+This article contains security recommendations for Azure App Service. Implementing these recommendations will help you fulfill your security obligations as described in our shared responsibility model and will improve the overall security for your Web App solutions. For more information on what Microsoft does to fulfill service provider responsibilities, read [Azure infrastructure security](../security/fundamentals/infrastructure.md).
 
 ## General
 
@@ -38,10 +35,10 @@ This article contains security recommendations for Azure App Service. Implementi
 | Recommendation | Comments |
 |-|-|
 | Redirect HTTP to HTTPs | By default, clients can connect to web apps by using both HTTP or HTTPS. We recommend redirecting HTTP to HTTPs because HTTPS uses the SSL/TLS protocol to provide a secure connection, which is both encrypted and authenticated. |
-| Encrypt communication to Azure resources | When your app connects to Azure resources, such as [SQL Database](https://www.azure.cn/home/features/sql-database/) or [Azure Storage](../storage/index.yml), the connection stays in Azure. Since the connection goes through the shared networking in Azure, you should always encrypt all communication. |
+| Encrypt communication to Azure resources | When your app connects to Azure resources, such as [SQL Database](https://azure.microsoft.com/services/sql-database/) or [Azure Storage](../storage/index.yml), the connection stays in Azure. Since the connection goes through the shared networking in Azure, you should always encrypt all communication. |
 | Require the latest TLS version possible | Since 2018 new Azure App Service apps use TLS 1.2. Newer versions of TLS include security improvements over older protocol versions. |
 | Use FTPS | App Service supports both FTP and FTPS for deploying your files. Use FTPS instead of FTP when possible. When one or both of these protocols are not in use, you should [disable them](deploy-ftp.md#enforce-ftps). |
-| Secure application data | Don't store application secrets, such as database credentials, API tokens, or private keys in your code or configuration files. The commonly accepted approach is to access them as [environment variables](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Environment_variable) using the standard pattern in your language of choice. In Azure App Service, you can define environment variables through [app settings](./configure-common.md) and [connection strings](./configure-common.md). App settings and connection strings are stored encrypted in Azure. The app settings are decrypted only before being injected into your app's process memory when the app starts. The encryption keys are rotated regularly. Alternatively, you can integrate your Azure App Service app with [Azure Key Vault](../key-vault/index.yml) for advanced secrets management. By [accessing the Key Vault with a managed identity](../key-vault/general/tutorial-net-create-vault-azure-web-app.md), your App Service app can securely access the secrets you need. |
+| Secure application data | Don't store application secrets, such as database credentials, API tokens, or private keys in your code or configuration files. The commonly accepted approach is to access them as [environment variables](https://wikipedia.org/wiki/Environment_variable) using the standard pattern in your language of choice. In Azure App Service, you can define environment variables through [app settings](./configure-common.md) and [connection strings](./configure-common.md). App settings and connection strings are stored encrypted in Azure. The app settings are decrypted only before being injected into your app's process memory when the app starts. The encryption keys are rotated regularly. Alternatively, you can integrate your Azure App Service app with [Azure Key Vault](../key-vault/index.yml) for advanced secrets management. By [accessing the Key Vault with a managed identity](../key-vault/general/tutorial-net-create-vault-azure-web-app.md), your App Service app can securely access the secrets you need. |
 
 ## Networking
 
@@ -60,8 +57,4 @@ This article contains security recommendations for Azure App Service. Implementi
 
 ## Next steps
 
-Check with your application provider to see if there are additional security requirements. For more information on developing secure applications, see [Secure Development Documentation](https://www.azure.cn/resources/develop-secure-applications-on-azure/).
-
-
-<!-- Update_Description: new article about security recommendations -->
-<!--NEW.date: 12/21/2020-->
+Check with your application provider to see if there are additional security requirements. For more information on developing secure applications, see [Secure Development Documentation](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

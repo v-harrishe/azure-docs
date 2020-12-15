@@ -10,13 +10,9 @@ metadata:
   ms.service: load-balancer
   ms.topic: landing-page
   ms.collection: collection
-  
-  
-  author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-  ms.author: v-yeche
+  author: asudbring
+  ms.author: allensu
+  ms.date: 05/07/2020 #Required; mm/dd/yyyy format.
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
 
@@ -35,7 +31,7 @@ landingContent:
           - text: Load Balancer components
             url: components.md
           - text: What's new?
-            url: https://www.azure.cn/updates/?category=networking&query=load%20balancer
+            url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
           - text: Load Balancer SKUs
             url: skus.md     
   # Card (optional)
@@ -119,14 +115,10 @@ landingContent:
       - linkListType: reference
         links:
           - text: Azure PowerShell
-            url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
+            url: /powershell/module/az.network/?view=azps-2.5.0#load_balancer
           - text: Azure CLI
-            url: https://docs.azure.cn/cli/network/lb
+            url: /cli/azure/network/lb?view=azure-cli-latest
           - text: ARM templates
-            url: https://docs.azure.cn/templates/microsoft.network/loadbalancers#quickstart-templates
+            url: /azure/templates/microsoft.network/loadbalancers#quickstart-templates
           - text: Frequently asked Load Balancer questions
             url: load-balancer-faqs.md
-
-
-<!-- Update_Description: new article about index. -->
-<!--NEW.date: 12/21/2020-->

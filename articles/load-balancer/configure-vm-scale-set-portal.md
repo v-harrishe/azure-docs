@@ -1,15 +1,11 @@
 ---
 title: Configure virtual machine scale set with an existing Azure Load Balancer - Azure portal
 description: Learn how to configure a virtual machine scale set with an existing Azure Load Balancer by using the Azure portal.
-
-
+author: asudbring
+ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 03/25/2020
 ---
 
 # Configure a virtual machine scale set with an existing Azure Load Balancer using the Azure portal
@@ -24,7 +20,7 @@ In this article, you'll learn how to configure a virtual machine scale set with 
 
 ## Sign in to the Azure portal
 
-Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
+Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
 
 
 
@@ -43,19 +39,19 @@ In this section, you'll create a virtual machine scale set in the Azure portal w
 
     | Setting                        | Value                                                                                                 |
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
-    | **Project details** |                                                                                                       |
+    | **Project details**            |                                                                                                       |
     | Subscription                   | Select your Azure subscription                                                                        |
     | Resource Group                 | Select  Create new, enter **myResourceGroup**, then select OK, or select an existing  resource group. |
-    | **Scale set details** |                                                                                                       |
-    | Virtual machine scale set name | Enter **myVMSS** |
-    | Region                         | Select **China East 2** |
-    | Availability zone              | Select **None** |
-    | **Instance details** |                                                                                                       |
-    | Image                          | Select **Ubuntu Server 18.04 LTS** |
-    | Azure Spot instance            | Select **No** |
+    | **Scale set details**          |                                                                                                       |
+    | Virtual machine scale set name | Enter **myVMSS**                                                                                      |
+    | Region                         | Select **East US 2**                                                                                    |
+    | Availability zone              | Select **None**                                                                                       |
+    | **Instance details**           |                                                                                                       |
+    | Image                          | Select **Ubuntu Server 18.04 LTS**                                                                    |
+    | Azure Spot instance            | Select **No**                                                                                         |
     | Size                           | Leave at default                                                                                      |
-    | **Administrator account** |                                                                                                       |
-    | Authentication type            | Select **Password** |
+    | **Administrator account**      |                                                                                                       |
+    | Authentication type            | Select **Password**                                                                                   |
     | Username                       | Enter your admin username        |
     | Password                       | Enter your admin password    |
     | Confirm password               | Reenter your admin password |
@@ -71,10 +67,10 @@ In this section, you'll create a virtual machine scale set in the Azure portal w
     |-----------------------------------|----------------------------------------------------------|
     | **Virtual Network Configuration** |                                                          |
     | Virtual network                   | Select **myVNet** or your existing virtual network.      |
-    | **Load balancing** |                                                          |
-    | Use a load balancer               | Select **Yes** |
-    | **Load balancing settings** |                                                          |
-    | Load balancing options            | Select **Azure load balancer** |
+    | **Load balancing**                |                                                          |
+    | Use a load balancer               | Select **Yes**                                           |
+    | **Load balancing settings**       |                                                          |
+    | Load balancing options            | Select **Azure load balancer**                           |
     | Select a load balancer            | Select **myLoadBalancer** or your existing load balancer |
     | Select a backend pool             | Select **myBackendPool** or your existing backend pool.  |
 
@@ -94,8 +90,3 @@ In this article, you deployed a virtual machine scale set with an existing Azure
 
 - [What is Azure Load Balancer?](load-balancer-overview.md)
 - [What are virtual machine scale sets?](../virtual-machine-scale-sets/overview.md)
-
-
-
-<!-- Update_Description: new article about configure vm scale set portal -->
-<!--NEW.date: 12/21/2020-->

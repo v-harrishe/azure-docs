@@ -2,11 +2,7 @@
 title: High availability and disaster recovery
 description: Learn how to design your Batch application for a regional outage.
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/29/2019
 ---
 
 # Design your application for high availability
@@ -40,8 +36,3 @@ Consider the following points when designing a solution that can failover:
 
 - Learn more about creating Batch accounts with the [Azure portal](batch-account-create-portal.md), the [Azure CLI](./scripts/batch-cli-sample-create-account.md), [PowerShell](batch-powershell-cmdlets-get-started.md), or the [Batch management API](batch-management-dotnet.md).
 - Default quotas are associated with a Batch account; [this article](batch-quota-limit.md) details the default quota values and describes how the quotas can be increased.
-
-
-
-<!-- Update_Description: new article about high availability disaster recovery -->
-<!--NEW.date: 12/21/2020-->

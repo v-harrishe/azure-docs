@@ -1,14 +1,11 @@
 ---
 title: Move Azure internal Load Balancer to another Azure region using the Azure portal
 description: Use Azure Resource Manager template to move Azure internal Load Balancer from one Azure region to another using the Azure portal
-
+author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/18/2019
+ms.author: allensu
 ---
 
 # Move Azure internal Load Balancer to another region using the Azure portal
@@ -41,7 +38,7 @@ The following steps show how to prepare the internal load balancer for the move 
 
 ### Export the virtual network template and deploy from the Azure portal
 
-1. Login to the [Azure portal](https://portal.azure.cn) > **Resource Groups**.
+1. Login to the [Azure portal](https://portal.azure.com) > **Resource Groups**.
 2. Locate the Resource Group that contains the source virtual network and click on it.
 3. Select > **Settings** > **Export template**.
 4. Choose **Deploy** in the **Export template** blade.
@@ -85,7 +82,7 @@ The following steps show how to prepare the internal load balancer for the move 
 
     ```
 
-11. To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **China North** = **chinanorth**.
+11. To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
 12. You can also change other parameters in the **template.json** file if you choose, and are optional depending on your requirements:
 
@@ -192,7 +189,7 @@ The following steps show how to prepare the internal load balancer for the move 
 
 ### Export the internal load balancer template and deploy from Azure PowerShell
 
-1. Login to the [Azure portal](https://portal.azure.cn) > **Resource Groups**.
+1. Login to the [Azure portal](https://portal.azure.com) > **Resource Groups**.
 2. Locate the Resource Group that contains the source internal load balancer and click on it.
 3. Select > **Settings** > **Export template**.
 4. Choose **Deploy** in the **Export template** blade.
@@ -216,7 +213,7 @@ The following steps show how to prepare the internal load balancer for the move 
 
 6. To edit value of the target virtual network that was moved above, you must first obtain the resource ID and then copy and paste it into the **parameters.json** file. To obtain the ID:
 
-    1. Login to the [Azure portal](https://portal.azure.cn) > **Resource Groups** in another browser tab or window.
+    1. Login to the [Azure portal](https://portal.azure.com) > **Resource Groups** in another browser tab or window.
     2. Locate the target resource group that contains the moved virtual network from the steps above, and click on it.
     3. Select > **Settings** > **Properties**.
     4. In the blade to the right, highlight the **Resource ID** and copy it to the clipboard.  Alternatively, you can click on the **copy to clipboard** button to the right of the **Resource ID** path.
@@ -253,7 +250,7 @@ The following steps show how to prepare the internal load balancer for the move 
                 },
     ```
 
-9. To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **China North** = **chinanorth**.
+9.  To obtain region location codes, see [Azure Locations](https://azure.microsoft.com/global-infrastructure/locations/).  The code for a region is the region name with no spaces, **Central US** = **centralus**.
 
 10. You can also change other parameters in the template if you choose, and are optional depending on your requirements:
 
@@ -402,7 +399,3 @@ In this tutorial, you moved an Azure internal load balancer from one region to a
 
 - [Move resources to a new resource group or subscription](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 - [Move Azure VMs to another region](../site-recovery/azure-to-azure-tutorial-migrate.md)
-
-
-<!-- Update_Description: new article about move across regions internal load balancer portal -->
-<!--NEW.date: 12/21/2020-->

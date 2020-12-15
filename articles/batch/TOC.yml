@@ -157,10 +157,7 @@
       href: batch-pool-compute-intensive-sizes.md
     - name: Use Linux compute nodes
       href: batch-linux-nodes.md
-    - name: Use low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs
-
-<!--Not Available on FEATURE low-priority-->
-
+    - name: Use low-priority VMs
       href: batch-low-pri-vms.md
     - name: Checking for pool and node errors
       href: batch-pool-node-error-checking.md
@@ -237,29 +234,29 @@
       - name: Rendering architectures
         href: batch-rendering-architectures.md
     - name: Data processing with Batch and Data Factory
-      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fbatch%2ftoc.json
+      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Reference
   items:
   - name: Azure CLI
-    href: https://docs.azure.cn/cli/batch
+    href: /cli/azure/batch
   - name: Azure PowerShell
-    href: https://docs.microsoft.com/powershell/module/az.batch
+    href: /powershell/module/az.batch
   - name: .NET
-    href: https://docs.azure.cn/dotnet/api/overview/batch
+    href: /dotnet/api/overview/azure/batch
   - name: Java
-    href: https://docs.azure.cn/java/api/overview/batch
+    href: /java/api/overview/azure/batch
   - name: Node.js
-    href: https://docs.azure.cn/javascript/api/overview/azure/batch
+    href: /javascript/api/overview/azure/batch
   - name: Python
-    href: https://docs.azure.cn/python/api/overview/azure/batch
+    href: /python/api/overview/azure/batch
   - name: REST
     items:
     - name: Batch Service
-      href: https://docs.microsoft.com/rest/api/batchservice
+      href: /rest/api/batchservice
     - name: Batch Management
-      href: https://docs.microsoft.com/rest/api/batchmanagement/
+      href: /rest/api/batchmanagement/
   - name: Resource Manager template
-    href: https://docs.azure.cn/templates/microsoft.batch/allversions
+    href: /azure/templates/microsoft.batch/allversions
   - name: Batch Analytics
     href: batch-analytics.md
     items:
@@ -289,36 +286,28 @@
 - name: Resources
   items:
   - name: Azure updates
-    href: https://www.azure.cn/updates/
+    href: https://azure.microsoft.com/updates/
   - name: Batch community
     href: https://github.com/Azure/Batch
   - name: Batch feedback
-    href: https://support.azure.cn/support/contact//forums/269742-batch
-  - name: Azure Q&A question page for Batch
-    href: https://docs.microsoft.com/answers/topics/azure-batch.html
+    href: https://feedback.azure.com/forums/269742-batch
+  - name: Microsoft Q&A question page for Batch
+    href: /answers/topics/azure-batch.html
   - name: Batch Shipyard
     href: https://github.com/Azure/batch-shipyard
   - name: Blog
-    href: https://docs.microsoft.com/archive/blogs/windowshpc/
-  - name: HPC(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) on Azure
-
-<!--Not Available on FEATURE HPC-->
-
-    href: https://docs.azure.cn/architecture/topics/high-performance-computing/
+    href: /archive/blogs/windowshpc/
+  - name: HPC on Azure
+    href: /azure/architecture/topics/high-performance-computing/
   - name: Pricing
-    href: https://www.azure.cn/pricing/details/batch/
+    href: https://azure.microsoft.com/pricing/details/batch/
   - name: Pricing calculator
-    href: https://www.azure.cn/pricing/calculator/
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: Resource Manager template
-    href: https://docs.azure.cn/templates/microsoft.batch/batchaccounts
+    href: /azure/templates/microsoft.batch/batchaccounts
   - name: Service updates
-    href: https://www.azure.cn/updates/?product=batch&updatetype=&platform=
+    href: https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-batch
   - name: Videos
-    href: https://www.azure.cn/video-center/
-
-
-
-<!-- Update_Description: new article about TOC. -->
-<!--NEW.date: 12/21/2020-->
+    href: https://azure.microsoft.com/documentation/videos/index/?services=batch

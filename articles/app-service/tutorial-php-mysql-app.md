@@ -1,15 +1,11 @@
 ---
-title: Tutorial - PHP app with MySQL 
+title: 'Tutorial: PHP app with MySQL' 
 description: Learn how to get a PHP app working in Azure, with connection to a MySQL database in Azure. Laravel is used in the tutorial.
 
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ---
@@ -146,7 +142,7 @@ php artisan serve
 
 Navigate to `http://localhost:8000` in a browser. Add a few tasks in the page.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/mysql-connect-success.png" alt-text="PHP connects successfully to MySQL":::
+![PHP connects successfully to MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
 To stop PHP, type `Ctrl + C` in the terminal.
 
@@ -160,11 +156,11 @@ In this step, you create a MySQL database in [Azure Database for MySQL](../mysql
 
 ### Create a MySQL server
 
-In the local Shell, create a server in Azure Database for MySQL with the [`az mysql server create`](https://docs.azure.cn/cli/mysql/server?view=azure-cli-latest&preserve-view=true#az_mysql_server_create) command.
+In the Cloud Shell, create a server in Azure Database for MySQL with the [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest&preserve-view=true#az-mysql-server-create) command.
 
-In the following command, substitute a unique server name for the *\<mysql-server-name>* placeholder, a user name for the *\<admin-user>*, and a password for the *\<admin-password>* placeholder. The server name is used as part of your MySQL endpoint (`https://<mysql-server-name>.mysql.database.chinacloudapi.cn`), so the name needs to be unique across all servers in Azure. For details on selecting MySQL DB SKU, see [Create an Azure Database for MySQL server](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server).
+In the following command, substitute a unique server name for the *\<mysql-server-name>* placeholder, a user name for the *\<admin-user>*, and a password for the *\<admin-password>*  placeholder. The server name is used as part of your MySQL endpoint (`https://<mysql-server-name>.mysql.database.azure.com`), so the name needs to be unique across all servers in Azure. For details on selecting MySQL DB SKU, see [Create an Azure Database for MySQL server](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server).
 
-```azurecli
+```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
 ```
 
@@ -174,21 +170,21 @@ When the MySQL server is created, the Azure CLI shows information similar to the
 {
   "administratorLogin": "&lt;admin-user&gt;",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "&lt;mysql-server-name&gt;.mysql.database.chinacloudapi.cn",
+  "fullyQualifiedDomainName": "&lt;mysql-server-name&gt;.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/&lt;mysql-server-name&gt;",
   "location": "westeurope",
   "name": "&lt;mysql-server-name&gt;",
   "resourceGroup": "myResourceGroup",
   ...
-  - &lt; Output has been truncated for readability &gt;
+  -  &lt; Output has been truncated for readability &gt;
 }
 </pre>
 
 ### Configure server firewall
 
-In the local Shell, create a firewall rule for your MySQL server to allow client connections by using the [`az mysql server firewall-rule create`](https://docs.azure.cn/cli/mysql/server/firewall-rule?view=azure-cli-latest&preserve-view=true#az_mysql_server_firewall_rule_create) command. When both starting IP and end IP are set to 0.0.0.0, the firewall is only opened for other Azure resources. 
+In the Cloud Shell, create a firewall rule for your MySQL server to allow client connections by using the [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest&preserve-view=true#az-mysql-server-firewall-rule-create) command. When both starting IP and end IP are set to 0.0.0.0, the firewall is only opened for other Azure resources. 
 
-```azurecli
+```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
@@ -196,9 +192,9 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > You can be even more restrictive in your firewall rule by [using only the outbound IP addresses your app uses](overview-inbound-outbound-ips.md#find-outbound-ips).
 >
 
-In the local Shell, run the command again to allow access from your local computer by replacing *\<your-ip-address>* with [your local IPv4 IP address](https://www.whatsmyip.org/).
+In the Cloud Shell, run the command again to allow access from your local computer by replacing *\<your-ip-address>* with [your local IPv4 IP address](https://www.whatsmyip.org/).
 
-```azurecli
+```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
 ```
 
@@ -207,7 +203,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 In the local terminal window, connect to the MySQL server in Azure. Use the value you specified previously for _&lt;admin-user>_ and _&lt;mysql-server-name>_. When prompted for a password, use the password you specified when you created the database in Azure.
 
 ```bash
-mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.chinacloudapi.cn -P 3306 -p
+mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
 ```
 
 ### Create a production database
@@ -249,7 +245,7 @@ APP_DEBUG=true
 APP_KEY=
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql-server-name>.mysql.database.chinacloudapi.cn
+DB_HOST=<mysql-server-name>.mysql.database.azure.com
 DB_DATABASE=sampledb
 DB_USERNAME=phpappuser@<mysql-server-name>
 DB_PASSWORD=MySQLAzure2017
@@ -322,7 +318,7 @@ Navigate to `http://localhost:8000`. If the page loads without errors, the PHP a
 
 Add a few tasks in the page.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/mysql-connect-success.png" alt-text="PHP connects successfully to Azure Database for MySQL":::
+![PHP connects successfully to Azure Database for MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
 To stop PHP, type `Ctrl + C` in the terminal.
 
@@ -376,12 +372,12 @@ In this step, you deploy the MySQL-connected PHP application to Azure App Servic
 
 ### Configure database settings
 
-In App Service, you set environment variables as _app settings_ by using the [`az webapp config appsettings set`](https://docs.azure.cn/cli/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az_webapp_config_appsettings_set) command.
+In App Service, you set environment variables as _app settings_ by using the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) command.
 
 The following command configures the app settings `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`. Replace the placeholders _&lt;app-name>_ and _&lt;mysql-server-name>_.
 
-```azurecli
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.chinacloudapi.cn" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
 You can use the PHP [getenv](https://www.php.net/manual/en/function.getenv.php) method to access the settings. the Laravel code uses an [env](https://laravel.com/docs/5.4/helpers#method-env) wrapper over the PHP `getenv`. For example, the MySQL configuration in _config/database.php_ looks like the following code:
@@ -407,9 +403,9 @@ In the local terminal window, use `php artisan` to generate a new application ke
 php artisan key:generate --show
 ```
 
-In the local Shell, set the application key in the App Service app by using the [`az webapp config appsettings set`](https://docs.azure.cn/cli/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az_webapp_config_appsettings_set) command. Replace the placeholders _&lt;app-name>_ and _&lt;outputofphpartisankey:generate>_.
+In the Cloud Shell, set the application key in the App Service app by using the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) command. Replace the placeholders _&lt;app-name>_ and _&lt;outputofphpartisankey:generate>_.
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
@@ -421,9 +417,9 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Set the virtual application path for the app. This step is required because the [Laravel application lifecycle](https://laravel.com/docs/5.4/lifecycle) begins in the _public_ directory instead of the application's root directory. Other PHP frameworks whose lifecycle start in the root directory can work without manual configuration of the virtual application path.
 
-In the local Shell, set the virtual application path by using the [`az resource update`](https://docs.azure.cn/cli/resource#az_resource_update) command. Replace the _&lt;app-name>_ placeholder.
+In the Cloud Shell, set the virtual application path by using the [`az resource update`](/cli/azure/resource#az-resource-update) command. Replace the _&lt;app-name>_ placeholder.
 
-```azurecli
+```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
@@ -617,7 +613,7 @@ php artisan serve
 
 To see the task status change, navigate to `http://localhost:8000` and select the checkbox.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/complete-checkbox.png" alt-text="Added check box to task":::
+![Added check box to task](./media/tutorial-php-mysql-app/complete-checkbox.png)
 
 To stop PHP, type `Ctrl + C` in the terminal.
 
@@ -639,7 +635,7 @@ git push azure master
 
 Once the `git push` is complete, navigate to the Azure app and test the new functionality.
 
-:::image type="content" source="media/tutorial-php-mysql-app/complete-checkbox-published.png" alt-text="Model and database changes published to Azure":::
+![Model and database changes published to Azure](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
 If you added any tasks, they are retained in the database. Updates to the data schema leave existing data intact.
 
@@ -649,9 +645,9 @@ If you added any tasks, they are retained in the database. Updates to the data s
 
 While the PHP application runs in Azure App Service, you can get the console logs piped to your terminal. That way, you can get the same diagnostic messages to help you debug application errors.
 
-To start log streaming, use the [`az webapp log tail`](https://docs.azure.cn/cli/webapp/log?view=azure-cli-latest&preserve-view=true#az_webapp_log_tail) command in the local Shell.
+To start log streaming, use the [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest&preserve-view=true#az-webapp-log-tail) command in the Cloud Shell.
 
-```azurecli
+```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
@@ -676,17 +672,17 @@ To stop log streaming at any time, type `Ctrl`+`C`.
 
 ## Manage the Azure app
 
-Go to the [Azure portal](https://portal.azure.cn) to manage the app you created.
+Go to the [Azure portal](https://portal.azure.com) to manage the app you created.
 
 From the left menu, click **App Services**, and then click the name of your Azure app.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/access-portal.png" alt-text="Portal navigation to Azure app":::
+![Portal navigation to Azure app](./media/tutorial-php-mysql-app/access-portal.png)
 
 You see your app's Overview page. Here, you can perform basic management tasks like  stop, start, restart, browse, and delete.
 
 The left menu provides pages for configuring your app.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/web-app-blade.png" alt-text="App Service page in Azure portal":::
+![App Service page in Azure portal](./media/tutorial-php-mysql-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -713,8 +709,3 @@ Or, check out other resources:
 
 > [!div class="nextstepaction"]
 > [Configure PHP app](configure-language-php.md)
-
-
-
-<!-- Update_Description: new article about tutorial php mysql app -->
-<!--NEW.date: 12/21/2020-->

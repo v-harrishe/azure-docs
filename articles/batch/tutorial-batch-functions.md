@@ -3,11 +3,8 @@ title: Tutorial - Trigger a Batch job using Azure Functions
 description: Tutorial - Apply OCR to scanned documents as they're added to a storage blob
 ms.devlang: dotnet
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 05/30/2019
+ms.author: peshultz
 ms.custom: "mvc, devx-track-csharp"
 ---
 
@@ -25,14 +22,14 @@ In this tutorial, you'll learn how to trigger a Batch job using [Azure Functions
 
 ## Prerequisites
 
-* An Azure subscription. If you don't have one, create a [trial account](https://www.azure.cn/free/) before you begin.
+* An Azure subscription. If you don't have one, create a [free account](https://azure.microsoft.com/free/) before you begin.
 * An Azure Batch account and a linked Azure Storage account. See [Create a Batch account](quick-create-portal.md#create-a-batch-account) for more information on how to create and link accounts.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 
 ## Sign in to Azure
 
-Sign in to the [Azure portal](https://portal.azure.cn).
+Sign in to the [Azure portal](https://portal.azure.com).
 
 ## Create a Batch pool and Batch job using Batch Explorer
 
@@ -126,8 +123,3 @@ For more examples of using the .NET API to schedule and process Batch workloads,
 
 > [!div class="nextstepaction"]
 > [Batch C# samples](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-
-<!-- Update_Description: new article about tutorial batch functions -->
-<!--NEW.date: 12/21/2020-->

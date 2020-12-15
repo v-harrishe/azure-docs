@@ -2,11 +2,7 @@
 title: Use a TLS/SSL certificate in code
 description: Learn how to use client certificates in your code. Authenticate with remote resources with a client certificate, or run cryptographic tasks with them.
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
 
@@ -29,19 +25,19 @@ To follow this how-to guide:
 
 ## Find the thumbprint
 
-In the <a href="https://portal.azure.cn" target="_blank">Azure portal</a>, from the left menu, select **App Services** > **\<app-name>**.
+In the <a href="https://portal.azure.com" target="_blank">Azure portal</a>, from the left menu, select **App Services** > **\<app-name>**.
 
 From the left navigation of your app, select **TLS/SSL settings**, then select **Private Key Certificates (.pfx)** or **Public Key Certificates (.cer)**.
 
 Find the certificate you want to use and copy the thumbprint.
 
-:::image type="content" source="./media/configure-ssl-certificate/create-free-cert-finished.png" alt-text="Copy the certificate thumbprint":::
+![Copy the certificate thumbprint](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
 ## Make the certificate accessible
 
-To access a certificate in your app code, add its thumbprint to the `WEBSITE_LOAD_CERTIFICATES` app setting, by running the following command in the <a target="_blank" href="https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) " >Cloud Shell</a>:
+To access a certificate in your app code, add its thumbprint to the `WEBSITE_LOAD_CERTIFICATES` app setting, by running the following command in the <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
@@ -49,7 +45,7 @@ To make all your certificates accessible, set the value to `*`.
 
 ## Load certificate in Windows apps
 
-The `WEBSITE_LOAD_CERTIFICATES` app setting makes the specified certificates accessible to your Windows hosted app in the Windows certificate store, in [Current User\My](https://docs.azure.cn/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
+The `WEBSITE_LOAD_CERTIFICATES` app setting makes the specified certificates accessible to your Windows hosted app in the Windows certificate store, in [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
 In C# code, you access the certificate by the certificate thumbprint. The following code loads a certificate with the thumbprint `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
@@ -83,7 +79,7 @@ using (X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUs
 }
 ```
 
-In Java code, you access the certificate from the "Windows-MY" store using the Subject Common Name field (see [Public key certificate](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Public_key_certificate)). The following code shows how to load a private key certificate:
+In Java code, you access the certificate from the "Windows-MY" store using the Subject Common Name field (see [Public key certificate](https://en.wikipedia.org/wiki/Public_key_certificate)). The following code shows how to load a private key certificate:
 
 ```java
 import org.springframework.web.bind.annotation.RestController;
@@ -109,9 +105,9 @@ For languages that don't support or offer insufficient support for the Windows c
 If you need to load a certificate file that you upload manually, it's better to upload the certificate using [FTPS](deploy-ftp.md) instead of [Git](deploy-local-git.md), for example. You should keep sensitive data like a private certificate out of source control.
 
 > [!NOTE]
-> ASP.NET and ASP.NET Core on Windows must access the certificate store even if you load a certificate from a file. To load a certificate file in a Windows .NET app, load the current user profile with the following command in the <a target="_blank" href="https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) " >Cloud Shell</a>:
+> ASP.NET and ASP.NET Core on Windows must access the certificate store even if you load a certificate from a file. To load a certificate file in a Windows .NET app, load the current user profile with the following command in the <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 >
-> ```azurecli
+> ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
 >
@@ -172,7 +168,3 @@ To see how to load a TLS/SSL certificate from a file in Node.js, PHP, Python, Ja
 * [Enforce HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Enforce TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [FAQ : App Service Certificates](./faq-configuration-and-management.md)
-
-
-<!-- Update_Description: new article about configure ssl certificate in code -->
-<!--NEW.date: 12/21/2020-->

@@ -2,14 +2,11 @@
 title: Deploy Azure Firewall with Availability Zones using PowerShell
 description: In this article, you learn how to deploy an Azure Firewall with Availability Zones using the Azure PowerShell. 
 services: firewall
-
+author: vhorne
 ms.service: firewall
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/19/2019
+ms.author: victorh
 ---
 
 # Deploy an Azure Firewall with Availability Zones using Azure PowerShell
@@ -18,7 +15,7 @@ Azure Firewall can be configured during deployment to span multiple Availability
 
 This feature enables the following scenarios:
 
-- You can increase availability to 99.99% uptime. For more information, see the Azure Firewall [Service Level Agreement (SLA)](https://www.azure.cn/support/legal/sla/azure-firewall/v1_0/). The 99.99% uptime SLA is offered when two or more Availability Zones are selected.
+- You can increase availability to 99.99% uptime. For more information, see the Azure Firewall [Service Level Agreement (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). The 99.99% uptime SLA is offered when two or more Availability Zones are selected.
 - You can also associate Azure Firewall to a specific zone just for proximity reasons, using the service standard 99.95% SLA.
 
 For more information about Azure Firewall Availability Zones, see [What is Azure Firewall?](overview.md)
@@ -44,13 +41,13 @@ $pip1 = New-AzPublicIpAddress `
   -Name "AzFwPublicIp1" `
   -ResourceGroupName "rg" `
   -Sku "Standard" `
-  -Location "chinanorth" `
+  -Location "centralus" `
   -AllocationMethod Static
 
 New-AzFirewall `
   -Name "azFw" `
   -ResourceGroupName $rgName `
-  -Location chinanorth `
+  -Location centralus `
   -VirtualNetwork $vnet `
   -PublicIpAddress @($pip1) `
   -Zone 1,2,3
@@ -59,7 +56,3 @@ New-AzFirewall `
 ## Next steps
 
 - [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
-
-
-<!-- Update_Description: new article about deploy availability zone powershell -->
-<!--NEW.date: 12/21/2020-->

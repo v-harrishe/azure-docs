@@ -2,21 +2,18 @@
 title: Azure Firewall certifications
 description: A list of Azure Firewall certifications for PCI, SOC, ISO, and ICSA Labs
 services: firewall
-
+author: vhorne
 ms.service: firewall
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/30/2020
+ms.author: victorh
 ---
 
 # Azure Firewall certifications
 
 Azure Firewall is Payment Card Industry (PCI), Service Organization Controls (SOC), International Organization for Standardization (ISO), ICSA Labs, and HITRUST compliant.
 
-The following certifications are for global Azure and Azure China Cloud.
+The following certifications are for global Azure and Azure Government.
 
 ## Global Azure certifications
 
@@ -78,9 +75,9 @@ The following Azure Firewall certifications are for global Azure:
 - WCAG 2.0
 
 
-## Azure China Cloud certifications
+## Azure Government certifications
 
-The following Azure Firewall certifications are for Azure China Cloud:
+The following Azure Firewall certifications are for Azure Government:
 
 - CJIS
 - CNSSI 1253
@@ -108,7 +105,7 @@ The following Azure Firewall certifications are for Azure China Cloud:
 
 ## ICSA Labs Corporate Firewall Certification
 
-:::image type="content" source="media/overview/icsa-cert-firewall-small.png" alt-text="ICSA certification":::
+![ICSA certification](media/overview/icsa-cert-firewall-small.png)
 
 ICSA Labs is a leading vendor in third-party testing and certification of security and health IT products, as well as network-connected devices. They measure product compliance, reliability, and performance for most of the world’s top technology vendors.
 
@@ -117,12 +114,7 @@ Azure Firewall is the first cloud firewall service to attain the ICSA Labs Corpo
 
 ## Next steps
 
-For more information about Azure compliance, see the following information.
+For more information about Microsoft compliance, see the following information.
 
 - [Microsoft Compliance Guide](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)
-- [Overview of Azure Azure compliance](https://www.trustcenter.cn/cloudservices/azure.html)
-
-
-
-<!-- Update_Description: new article about compliance certifications -->
-<!--NEW.date: 12/21/2020-->
+- [Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)

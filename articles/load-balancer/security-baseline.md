@@ -1,14 +1,11 @@
 ---
 title: Azure security baseline for Azure Load Balancer
 description: The Azure Load Balancer security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-
+author: msmbaldwin
 ms.service: load-balancer
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/28/2020
+ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -17,7 +14,7 @@ ms.custom: subject-security-benchmark
 
 # Azure security baseline for Azure Load Balancer
 
-The Azure Security Baseline for Azure Azure Load Balancer contains recommendations that will help you improve the security posture of your deployment. The baseline for this service is drawn from the [Azure Security Benchmark version 1.0](../security/benchmarks/overview.md), which provides recommendations on how you can secure your cloud solutions on Azure with our best practices guidance. For more information, see [Azure Security Baselines overview](../security/benchmarks/security-baselines-overview.md).
+The Azure Security Baseline for Microsoft Azure Load Balancer contains recommendations that will help you improve the security posture of your deployment. The baseline for this service is drawn from the [Azure Security Benchmark version 1.0](../security/benchmarks/overview.md), which provides recommendations on how you can secure your cloud solutions on Azure with our best practices guidance. For more information, see [Azure Security Baselines overview](../security/benchmarks/security-baselines-overview.md).
 
 ## Network security
 
@@ -69,7 +66,7 @@ Also send the flow logs to a Log Analytics workspace and then use Traffic Analyt
 
 ### 1.3: Protect critical web applications
 
-**Guidance**: Explicitly define internet connectivity and valid source IPs through outbound rules and network security groups with your Load Balancer to use Azure's threat intelligence for protecting your web applications.
+**Guidance**: Explicitly define internet connectivity and valid source IPs through outbound rules and network security groups with your Load Balancer to use Microsoft's threat intelligence for protecting your web applications.
 
 - [Integrate the Azure Firewall](../firewall/integrate-lb.md)
 
@@ -137,7 +134,7 @@ Azure Firewall threat intelligence-based filtering is used to alert on and/or bl
 
 Deploy the firewall solution of your choice at each of your organization's network boundaries to detect and/or block malicious traffic.
 
-- [Azure Marketplace](https://market.azure.cn/marketplace/apps/filter?search=Firewall)
+- [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 - [How to deploy Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -149,7 +146,7 @@ Deploy the firewall solution of your choice at each of your organization's netwo
 
 ### 1.7: Manage traffic to web applications
 
-**Guidance**: Explicitly define internet connectivity and valid source IPs through outbound rules and network security groups with your Load Balancer to use Azure's threat intelligence features to protect your web applications.
+**Guidance**: Explicitly define internet connectivity and valid source IPs through outbound rules and network security groups with your Load Balancer to use Microsoft's threat intelligence features to protect your web applications.
 
 - [Integrate the Azure Firewall](../firewall/integrate-lb.md)
 
@@ -161,7 +158,7 @@ Deploy the firewall solution of your choice at each of your organization's netwo
 
 **Guidance**: Use service tags in place of specific IP addresses when creating security rules. Specify the service tag name in the source or destination field of a rule to allow or deny the traffic for the corresponding service. 
 
-Azure manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change. 
+Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change. 
 
 By default, every network security group includes the service tag AzureLoadBalancer to permit health probe traffic. 
 
@@ -327,9 +324,9 @@ Stream logs to an event hub or a Log Analytics workspace. They can also be extra
 
 - [Load Balancer health probes](./load-balancer-custom-probe-overview.md)
 
-- [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor)
+- [Azure Monitor REST API](/rest/api/monitor)
 
-- [How to retrieve metrics via REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)
+- [How to retrieve metrics via REST API](/rest/api/monitor/metrics/list)
 
 - [Standard Load Balancer diagnostics with metrics, alerts, and resource health](./load-balancer-standard-diagnostics.md)
 
@@ -392,9 +389,9 @@ Not applicable as Azure Load Balancer is a core networking service that does not
 
 Inventory Pre-defined and built-in roles for certain resources with tools like Azure CLI, Azure PowerShell or the Azure portal.
 
-- [How to get a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [How to get a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [How to get members of a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [How to get members of a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center monitoring**: Yes
 
@@ -416,11 +413,11 @@ Inventory Pre-defined and built-in roles for certain resources with tools like A
 
 ### 4.7: Use host-based data loss prevention to enforce access control
 
-**Guidance**: Load Balancer is a pass through service that does not store customer data. It is a part of the underlying platform that is managed by Azure. 
+**Guidance**: Load Balancer is a pass through service that does not store customer data. It is a part of the underlying platform that is managed by Microsoft. 
 
-Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. 
+Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. 
 
-To ensure customer data in Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities. 
+To ensure customer data in Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities. 
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -450,7 +447,7 @@ Ensure appropriate (read) permissions in your tenant and enumerate all Azure sub
 
 - [How to create queries with Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
 
-- [How to view your Azure subscriptions](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [How to view your Azure subscriptions](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Understand Azure RBAC](../role-based-access-control/overview.md)
 
@@ -511,7 +508,7 @@ Ensure all Azure resources present in the environment are approved.
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Use Azure AD Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "21Vianet Azure Management" App.
+**Guidance**: Use Azure AD Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "Microsoft Azure Management" App.
 
 - [How to configure Conditional Access to block access to Azure Resources Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -545,7 +542,7 @@ Export Azure Resource Manager templates into JavaScript Object Notation (JSON) f
 
 Implement recommendations from Security Center as a secure configuration baseline for your Azure resources. 
 
-- [How to view available Azure Policy aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [How to view available Azure Policy aliases](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Tutorial: Create and manage policies to enforce compliance](../governance/policy/tutorials/create-and-manage.md)
 
@@ -577,9 +574,9 @@ Implement recommendations from Security Center as a secure configuration baselin
 
 Grant or deny permissions to specific users, built-in security groups, or groups defined in Azure Active Directory (Azure AD) if it is integrated with Azure DevOps, or in Active Directory if integrated with TFS.
 
-- [How to store code in Azure DevOps](https://docs.azure.cn/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [About permissions and groups in Azure DevOps](https://docs.azure.cn/azure/devops/organizations/security/about-permissions)
+- [About permissions and groups in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center monitoring**: Yes
 
@@ -661,7 +658,7 @@ Utilize the Security Center data connector to stream the alerts to Azure Sentine
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Azure policies. Use Azure's strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications. 
+**Guidance**: Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Microsoft policies. Use Microsoft's strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications. 
 
 - [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
@@ -675,7 +672,3 @@ Utilize the Security Center data connector to stream the alerts to Azure Sentine
 
 - See the [Azure security benchmark](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
-
-
-<!-- Update_Description: new article about security baseline -->
-<!--NEW.date: 12/21/2020-->

@@ -4,26 +4,22 @@ titleSuffix: Azure Load Balancer
 description: With this learning path, get started with Azure Standard Load Balancer and Availability Zones.
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 05/07/2020
+ms.author: allensu
 ---
 
 # Standard Load Balancer and Availability Zones
 
 Azure Standard Load Balancer supports availability zones scenarios. You can use standard load balancer to increase availability throughout your scenario by aligning resources with, and distribution across zones. Availability zones in combination with standard load balancer are an expansive and flexible feature set that can create many different scenarios.  Review this document to understand these [concepts](#concepts) and fundamental scenario [design guidance](#design).
 
-<a name="concepts"></a>
-## Availability Zones concepts applied to Load Balancer
+## <a name="concepts"></a> Availability Zones concepts applied to Load Balancer
 
 A load balancer inherits zone configuration from its components: 
 
@@ -101,8 +97,7 @@ When using zone-redundant frontends, the load balancer expands its internal heal
 
 Other zones who can reach this VM can continue to serve the VM from their respective frontends. During failure events, each zone may have different distributions of new flows while protecting the overall health of your service.
 
-<a name="design"></a>
-## Design considerations
+## <a name="design"></a> Design considerations
 
 Load balancer is flexible in the context of availability zones. You can choose to align to zones or be zone-redundant for each rule. Increased availability can come at the price of increased complexity. Design for availability for optimal performance.
 
@@ -114,8 +109,7 @@ Zone-redundancy doesn't imply hitless datapath or control plane; it's data plane
 
 Traffic flows using a zone at the time of zone failure may be affected but applications can recover. Traffic continues in the healthy zones within the region upon retransmission when Azure has converged around the zone failure.
 
-<a name="xzonedesign"></a>
-### Cross zone boundaries
+### <a name="xzonedesign"></a> Cross zone boundaries
 
 It's important to understand that anytime a service crosses zones, you share fate with not one zone but potentially multiple zones. As a result, your service may not have gained any availability over non-zonal deployments.
 
@@ -153,15 +147,11 @@ Your resources in zones not affected by failure will be available. Your service 
   - When a zone fails, does your service understand this failure and if the state is lost, how will you recover?
   - When a zone returns, does your application understand how to converge safely?
 
-Review [Azure cloud design patterns](https://docs.azure.cn/azure/architecture/patterns/) to improve the resiliency of your application to failure scenarios.
+Review [Azure cloud design patterns](/azure/architecture/patterns/) to improve the resiliency of your application to failure scenarios.
 
 ## Next steps
 - Learn more about [Availability Zones](../availability-zones/az-overview.md)
 - Learn more about [Standard Load Balancer](./load-balancer-overview.md)
 - Learn how to [load balance VMs within a zone using a Standard Load Balancer with a zonal frontend](./quickstart-load-balancer-standard-public-cli.md)
 - Learn how to [load balance VMs across zones using a Standard Load Balancer with a zone-redundant frontend](./quickstart-load-balancer-standard-public-cli.md)
-- Learn about [Azure cloud design patterns](https://docs.azure.cn/azure/architecture/patterns/) to improve the resiliency of your application to failure scenarios.
-
-
-<!-- Update_Description: new article about load balancer standard availability zones -->
-<!--NEW.date: 12/21/2020-->
+- Learn about [Azure cloud design patterns](/azure/architecture/patterns/) to improve the resiliency of your application to failure scenarios.

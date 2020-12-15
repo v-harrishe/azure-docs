@@ -1,17 +1,13 @@
 ---
-title: Quickstart - Create an internal load balancer by using a template
+title: 'Quickstart: Create an internal load balancer by using a template'
 description: This quickstart shows how to create an internal Azure load balancer by using an Azure Resource Manager template (ARM template).
 services: load-balancer
-
+author: asudbring
 ms.service: load-balancer
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
-
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.author: allensu
+ms.date: 09/14/2020
 ---
 
 # Quickstart: Create an internal load balancer to load balance VMs by using an ARM template
@@ -22,11 +18,11 @@ This quickstart describes how to use an Azure Resource Manager template (ARM tem
 
 If your environment meets the prerequisites and you're familiar with using ARM templates, select the **Deploy to Azure** button. The template will open in the Azure portal.
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Deploy to Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)
+[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-2-vms-internal-load-balancer%2Fazuredeploy.json)
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Review the template
 
@@ -36,12 +32,12 @@ The template used in this quickstart is from the [Azure Quickstart Templates](ht
 
 Multiple Azure resources have been defined in the template:
 
-- [**Microsoft.Storage/storageAccounts**](https://docs.azure.cn/azure/templates/microsoft.storage/storageaccounts): Virtual machine storage accounts for boot diagnostics.
-- [**Microsoft.Compute/availabilitySets**](https://docs.azure.cn/azure/templates/microsoft.compute/availabilitySets): Availability set for virtual machines.
-- [**Microsoft.Network/virtualNetworks**](https://docs.azure.cn/azure/templates/microsoft.network/virtualNetworks): Virtual network for load balancer and virtual machines.
-- [**Microsoft.Network/networkInterfaces**](https://docs.azure.cn/azure/templates/microsoft.network/networkInterfaces): Network interfaces for virtual machines.
-- [**Microsoft.Network/loadBalancers**](https://docs.azure.cn/azure/templates/microsoft.network/loadBalancers): Internal load balancer.
-- [**Microsoft.Compute/virtualMachines**](https://docs.azure.cn/azure/templates/microsoft.compute/virtualMachines): Virtual machines.
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): Virtual machine storage accounts for boot diagnostics.
+- [**Microsoft.Compute/availabilitySets**](/azure/templates/microsoft.compute/availabilitySets): Availability set for virtual machines.
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks): Virtual network for load balancer and virtual machines.
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkInterfaces): Network interfaces for virtual machines.
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadBalancers): Internal load balancer.
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualMachines): Virtual machines.
 
 To find more templates that are related to Azure Load Balancer, see [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
@@ -49,8 +45,8 @@ To find more templates that are related to Azure Load Balancer, see [Azure Quick
 
 **Azure CLI**
 
-```azurecli
-read -p "Enter the location (i.e. chinanorth): " location
+```azurecli-interactive
+read -p "Enter the location (i.e. westcentralus): " location
 resourceGroupName="myResourceGroupLB"
 templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json"
 
@@ -65,7 +61,7 @@ az deployment group create \
 
 ## Review deployed resources
 
-1. Sign in to the [Azure portal](https://portal.azure.cn).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
 1. Select **Resource groups** from the left pane.
 
@@ -77,9 +73,9 @@ az deployment group create \
 
 ## Clean up resources
 
-When no longer needed, you can use the [az group delete](https://docs.azure.cn/cli/group#az_group_delete) command to remove the resource group and all resources contained within.
+When no longer needed, you can use the [az group delete](/cli/azure/group#az-group-delete) command to remove the resource group and all resources contained within.
 
-```azurecli
+```azurecli-interactive
   az group delete \
     --name myResourceGroupLB
 ```
@@ -90,8 +86,3 @@ For a step-by-step tutorial that guides you through the process of creating a te
 
 > [!div class="nextstepaction"]
 > [Tutorial: Create and deploy your first ARM template](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
-
-
-
-<!-- Update_Description: new article about quickstart load balancer standard internal template -->
-<!--NEW.date: 12/21/2020-->

@@ -2,17 +2,14 @@
 title: Tutorial - Add authentication to a web app on Azure App Service | Azure
 description: In this tutorial, you learn how to enable authentication and authorization for a web app running on Azure App Service. Limit access to the web app to users in your organization​.
 services: active-directory, app-service-web
-
+author: rwike77
 manager: CelesteDG
 
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/09/2020
+ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 #Customer intent: As an application developer, enable authentication and authorization for a web app running on Azure App Service.
@@ -47,7 +44,7 @@ Whether you use an existing web app or create a new one, take note of the web ap
 
 You now have a web app running on App Service. Next, you enable authentication and authorization for the web app. You use Azure AD as the identity provider. For more information, see [Configure Azure AD authentication for your App Service application](configure-authentication-provider-aad.md).
 
-In the [Azure portal](https://portal.azure.cn) menu, select **Resource groups**, or search for and select **Resource groups** from any page.
+In the [Azure portal](https://portal.azure.com) menu, select **Resource groups**, or search for and select **Resource groups** from any page.
 
 In **Resource groups**, find and select your resource group. In **Overview**, select your app's management page.
 
@@ -90,8 +87,3 @@ In this tutorial, you learned how to:
 
 > [!div class="nextstepaction"]
 > [App service accesses storage](scenario-secure-app-access-storage.md)
-
-
-
-<!-- Update_Description: new article about scenario secure app authentication app service -->
-<!--NEW.date: 12/21/2020-->

@@ -1,15 +1,12 @@
 ---
 title: Configure forced tunneling
 description: Learn how to enable your App Service Environment to work when outbound traffic is forced tunneled in your virtual network.
-
+author: ccompy
 
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 05/29/2018
+ms.author: ccompy
 ms.custom: mvc, seodec18
 ---
 
@@ -48,7 +45,7 @@ If the network is already routing traffic on premises, then you need to create t
 > [!IMPORTANT]
 > The routes defined in a UDR must be specific enough to take precedence over any routes advertised by the ExpressRoute configuration. The preceding example uses the broad 0.0.0.0/0 address range. It can potentially be accidentally overridden by route advertisements that use more specific address ranges.
 >
-> App Service Environments aren't supported with ExpressRoute configurations that cross-advertise routes from the public-peering path to the private-peering path. ExpressRoute configurations with public peering configured receive route advertisements from Azure. The advertisements contain a large set of Azure Azure address ranges. If the address ranges are cross-advertised on the private-peering path, all outbound network packets from the App Service Environment's subnet are routed to a customer's on-premises network infrastructure. This network flow is not supported by default with App Service Environments. One solution to this problem is to stop cross-advertising routes from the public-peering path to the private-peering path. Another solution is to enable your App Service Environment to work in a forced tunnel configuration.
+> App Service Environments aren't supported with ExpressRoute configurations that cross-advertise routes from the public-peering path to the private-peering path. ExpressRoute configurations with public peering configured receive route advertisements from Microsoft. The advertisements contain a large set of Microsoft Azure address ranges. If the address ranges are cross-advertised on the private-peering path, all outbound network packets from the App Service Environment's subnet are routed to a customer's on-premises network infrastructure. This network flow is not supported by default with App Service Environments. One solution to this problem is to stop cross-advertising routes from the public-peering path to the private-peering path. Another solution is to enable your App Service Environment to work in a forced tunnel configuration.
 
 ![Direct internet access][1]
 
@@ -138,22 +135,16 @@ If communication between the ASE and its dependencies is broken, the ASE will go
 
 In addition to simply breaking communication, you can adversely affect your ASE by introducing too much latency. Too much latency can happen if your ASE is too far from your on premises network.  Examples of too far would include going across an ocean or continent to reach the on premises network. Latency can also be introduced due to intranet congestion or outbound bandwidth constraints.
 
-<!--IMAGES-->
 
+<!--IMAGES-->
 [1]: ./media/forced-tunnel-support/asedependencies.png
 [2]: ./media/forced-tunnel-support/forcedtunnelserviceendpoint.png
 [3]: ./media/forced-tunnel-support/forcedtunnelexceptstorage.png
 
 <!--Links-->
-
 [management]: ./management-addresses.md
 [network]: ./network-info.md
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table
-
-
-
-<!-- Update_Description: new article about forced tunnel support -->
-<!--NEW.date: 12/21/2020-->

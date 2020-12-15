@@ -2,11 +2,7 @@
 title: Azure CLI Script Example - Create Batch account - user subscription
 description: This script creates an Azure Batch account in user subscription mode. This account allocates compute nodes into your subscription.
 ms.topic: sample
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/29/2018 
 ms.custom: devx-track-azurecli
 ---
 
@@ -16,7 +12,7 @@ This script creates an Azure Batch account in user subscription mode. An account
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- This tutorial requires version 2.0.20 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.  
+- This tutorial requires version 2.0.20 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.  
 
 ## Example script
 
@@ -27,7 +23,7 @@ This script creates an Azure Batch account in user subscription mode. An account
 Run the following command to remove the
 resource group and all resources associated with it.
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
@@ -37,19 +33,14 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [az role assignment create](https://docs.azure.cn/cli/role#az-role-assignment-create) | Create a new role assignment for a user, group, or service principal. |
-| [az group create](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [az keyvault create](https://docs.azure.cn/cli/keyvault#az_keyvault_create) | Creates a key vault. |
-| [az keyvault set-policy](https://docs.azure.cn/cli/keyvault#az_keyvault_set_policy) | Update the security policy of the specified key vault. |
-| [az batch account create](https://docs.azure.cn/cli/batch/account#az_batch_account_create) | Creates the Batch account.  |
-| [az batch account login](https://docs.azure.cn/cli/batch/account#az_batch_account_login) | Authenticates against the specified Batch account for further CLI interaction.  |
-| [az group delete](https://docs.azure.cn/cli/group#az_group_delete) | Deletes a resource group including all nested resources. |
+| [az role assignment create](/cli/azure/role) | Create a new role assignment for a user, group, or service principal. |
+| [az group create](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
+| [az keyvault create](/cli/azure/keyvault#az-keyvault-create) | Creates a key vault. |
+| [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) | Update the security policy of the specified key vault. |
+| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Creates the Batch account.  |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Authenticates against the specified Batch account for further CLI interaction.  |
+| [az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
-
-
-
-<!-- Update_Description: new article about scripts/batch cli sample create user subscription account -->
-<!--NEW.date: 12/21/2020-->
+For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).

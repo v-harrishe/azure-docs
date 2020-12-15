@@ -3,7 +3,7 @@ title: Troubleshoot Azure Load Balancer
 description: Learn how to troubleshoot known issues with Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 manager: dcscontentpm
 ms.custom: seodoc18
 ms.service: load-balancer
@@ -11,11 +11,8 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/28/2020
+ms.author: allensu
 ---
 
 # Troubleshoot Azure Load Balancer
@@ -85,7 +82,7 @@ If all the preceding causes seem to be validated and resolved correctly, and the
         - If no incoming packets are observed on the backend pool VM, there is potentially a network security groups or UDR mis-configuration blocking the traffic. 
         - If no outgoing packets are observed on the backend pool VM, the VM needs to be checked for any unrelated issues (for example, Application blocking the probe port). 
     - Verify if the probe packets are being forced to another destination (possibly via UDR settings) before reaching the load balancer. This can cause the traffic to never reach the backend VM. 
-* Change the probe type (for example, HTTP to TCP), and configure the corresponding port in network security groups ACLs and firewall to validate if the issue is with the configuration of probe response. For more information about health probe configuration, see [Endpoint Load Balancing health probe configuration](https://docs.microsoft.com/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details).
+* Change the probe type (for example, HTTP to TCP), and configure the corresponding port in network security groups ACLs and firewall to validate if the issue is with the configuration of probe response. For more information about health probe configuration, see [Endpoint Load Balancing health probe configuration](/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details).
 
 ## Symptom: VMs behind Load Balancer are not responding to traffic on the configured data port
 
@@ -173,8 +170,4 @@ If you decide to open a support case, collect the following information for a qu
 
 ## Next steps
 
-If the preceding steps do not resolve the issue, open a [support ticket](https://www.azure.cn/support/options/).
-
-
-<!-- Update_Description: new article about load balancer troubleshoot -->
-<!--NEW.date: 12/21/2020-->
+If the preceding steps do not resolve the issue, open a [support ticket](https://azure.microsoft.com/support/options/).

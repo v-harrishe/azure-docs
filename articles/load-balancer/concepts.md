@@ -3,17 +3,14 @@ title: Azure Load Balancer concepts
 description: Overview of Azure Load Balancer concepts
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/13/2020
+ms.author: allensu
 
 ---
 
@@ -42,7 +39,7 @@ For more information, see [Configure the distribution mode for Azure Load Balanc
 
 The following image displays the hash-based distribution:
 
-:::image type="content" source="./media/load-balancer-overview/load-balancer-distribution.png" alt-text="Hash-based distribution":::
+![Hash-based distribution](./media/load-balancer-overview/load-balancer-distribution.png)
 
 *Figure: Hash-based distribution*
 
@@ -63,7 +60,3 @@ Load balancer doesn't directly interact with TCP or UDP or the application layer
 - Learn about [Health Probes](load-balancer-custom-probe-overview.md).
 - Learn about [Standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md).
 - Learn more about [Network Security Groups](../virtual-network/network-security-groups-overview.md).
-
-
-<!-- Update_Description: new article about concepts -->
-<!--NEW.date: 12/21/2020-->

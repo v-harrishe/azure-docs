@@ -4,18 +4,15 @@ titleSuffix: Azure Load Balancer
 description: Learn about high availability ports load balancing on an internal load balancer. 
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/19/2019
+ms.author: allensu
 ---
 
 # High availability ports overview
@@ -30,8 +27,7 @@ The HA ports load-balancing rules is configured when you set the front-end and b
 
 ## Why use HA ports?
 
-<a name="nva"></a>
-### Network virtual appliances
+### <a name="nva"></a>Network virtual appliances
 
 You can use NVAs to help secure your Azure workload from multiple types of security threats. When you use NVAs in these scenarios, they must be reliable and highly available, and they must scale out for demand.
 
@@ -46,7 +42,7 @@ For NVA HA scenarios, HA ports offer the following advantages:
 The following diagram presents a hub-and-spoke virtual network deployment. The spokes force-tunnel their traffic to the hub virtual network and through the NVA, before leaving the trusted space. The NVAs are behind an internal Standard Load Balancer with an HA ports configuration. All traffic can be processed and forwarded accordingly. When configured as show in the following diagram, an HA Ports load-balancing rule additionally provides flow symmetry for ingress and egress traffic.
 
 <a node="diagram"></a>
-:::image type="content" source="./media/load-balancer-ha-ports-overview/nvaha.png" alt-text="Diagram of hub-and-spoke virtual network, with NVAs deployed in HA mode":::
+![Diagram of hub-and-spoke virtual network, with NVAs deployed in HA mode](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
 > If you are using NVAs, confirm with their providers how to best use HA ports and to learn which scenarios are supported.
@@ -99,8 +95,3 @@ You can configure *one* public Standard Load Balancer resource for the backend r
 ## Next steps
 
 - [Learn about Standard Load Balancer](load-balancer-overview.md)
-
-
-
-<!-- Update_Description: new article about load balancer ha ports overview -->
-<!--NEW.date: 12/21/2020-->

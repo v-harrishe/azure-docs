@@ -4,11 +4,7 @@ description: Learn how to deploy your app to Azure App Service using FTP or FTPS
 
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 
@@ -23,23 +19,23 @@ The FTP/S endpoint for your app is already active. No configuration is necessary
 
 ## Open FTP dashboard
 
-1. In the [Azure portal](https://portal.azure.cn), search for and select **App Services**.
+1. In the [Azure portal](https://portal.azure.com), search for and select **App Services**.
 
-    :::image type="content" source="media/app-service-continuous-deployment/search-for-app-services.png" alt-text="Search for App services.":::
+    ![Search for App services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
 2. Select the web app you want to deploy.
 
-    :::image type="content" source="media/app-service-continuous-deployment/select-your-app.png" alt-text="Select your app.":::
+    ![Select your app.](media/app-service-continuous-deployment/select-your-app.png)
 
 3. Select **Deployment Center** > **FTP** > **Dashboard**.
 
-    :::image type="content" source="./media/app-service-deploy-ftp/open-dashboard.png" alt-text="Open FTP dashboard":::
+    ![Open FTP dashboard](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## Get FTP connection information
 
 In the FTP dashboard, select **Copy** to copy the FTPS endpoint and app credentials.
 
-:::image type="content" source="./media/app-service-deploy-ftp/ftp-dashboard.png" alt-text="Copy FTP information":::
+![Copy FTP information](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
 It's recommended that you use **App Credentials** to deploy to your app because it's unique to each app. However, if you click **User Credentials**, you can set user-level credentials that you can use for FTP/S login to all App Service apps in your subscription.
 
@@ -73,17 +69,17 @@ It's recommended that you use **App Credentials** to deploy to your app because 
 
 For enhanced security, you should allow FTP over TLS/SSL only. You can also disable both FTP and FTPS if you don't use FTP deployment.
 
-In your app's resource page in [Azure portal](https://portal.azure.cn), select **Configuration** > **General settings** from the left navigation.
+In your app's resource page in [Azure portal](https://portal.azure.com), select **Configuration** > **General settings** from the left navigation.
 
 To disable unencrypted FTP, select **FTPS Only** in **FTP state**. To disable both FTP and FTPS entirely, select **Disabled**. When finished, click **Save**. If using **FTPS Only**, you must enforce TLS 1.2 or higher by navigating to the **TLS/SSL settings** blade of your web app. TLS 1.0 and 1.1 are not supported with **FTPS Only**.
 
-:::image type="content" source="./media/app-service-deploy-ftp/disable-ftp.png" alt-text="Disable FTP/S":::
+![Disable FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
 ## Automate with scripts
 
-For FTP deployment using [Azure CLI](https://docs.azure.cn/cli), see [Create a web app and deploy files with FTP (Azure CLI)](./scripts/cli-deploy-ftp.md).
+For FTP deployment using [Azure CLI](/cli/azure), see [Create a web app and deploy files with FTP (Azure CLI)](./scripts/cli-deploy-ftp.md).
 
-For FTP deployment using [Azure PowerShell](https://docs.azure.cn/cli), see [Upload files to a web app using FTP (PowerShell)](./scripts/powershell-deploy-ftp.md).
+For FTP deployment using [Azure PowerShell](/cli/azure), see [Upload files to a web app using FTP (PowerShell)](./scripts/powershell-deploy-ftp.md).
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
@@ -120,7 +116,3 @@ enables version control, package restore, MSBuild, and more.
 ## More resources
 
 * [Azure App Service Deployment Credentials](deploy-configure-credentials.md)
-
-
-<!-- Update_Description: new article about deploy ftp -->
-<!--NEW.date: 12/21/2020-->

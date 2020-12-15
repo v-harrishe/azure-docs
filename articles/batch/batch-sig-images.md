@@ -2,11 +2,7 @@
 title: Use the Shared Image Gallery to create a custom image pool
 description: Custom image pools are an efficient way to configure compute nodes to run your Batch workloads.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
 ---
 
@@ -63,7 +59,7 @@ The following steps show how to prepare a VM, take a snapshot, and create an ima
 
 ### Prepare a VM
 
-If you are creating a new VM for the image, use a first party Azure Marketplace image supported by Batch as the base image for your managed image. Only first party images can be used as a base image. To get a full list of Azure Marketplace image references supported by Azure Batch, see the [List node agent SKUs](https://docs.azure.cn/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) operation.
+If you are creating a new VM for the image, use a first party Azure Marketplace image supported by Batch as the base image for your managed image. Only first party images can be used as a base image. To get a full list of Azure Marketplace image references supported by Azure Batch, see the [List node agent SKUs](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) operation.
 
 > [!NOTE]
 > You can't use a third-party image that has additional license and purchase terms as your base image. For information about these Marketplace images, see the guidance for [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) or [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VMs.
@@ -81,7 +77,7 @@ A snapshot is a full, read-only copy of a VHD. To create a snapshot of a VM's OS
 
 ### Create an image from one or more snapshots
 
-To create a managed image from a snapshot, use Azure command-line tools such as the [az image create](https://docs.azure.cn/cli/image#az-image-create) command. Create an image by specifying an OS disk snapshot and optionally one or more data disk snapshots.
+To create a managed image from a snapshot, use Azure command-line tools such as the [az image create](/cli/azure/image) command. Create an image by specifying an OS disk snapshot and optionally one or more data disk snapshots.
 
 ### Create a Shared Image Gallery
 
@@ -164,7 +160,7 @@ creds = ServicePrincipalCredentials(
     client_id=ad_client_id,
     secret=ad_secret,
     tenant=ad_tenant,
-    resource="https://batch.core.chinacloudapi.cn/"
+    resource="https://batch.core.windows.net/"
 )
 client = batch.BatchServiceClient(creds, batch_url)
 
@@ -205,20 +201,20 @@ client.pool.add(new_pool)
 
 Use the following steps to create a pool from a Shared Image in the Azure portal.
 
-1. Open the [Azure portal](https://portal.azure.cn).
+1. Open the [Azure portal](https://portal.azure.com).
 1. Go to **Batch accounts** and select your account.
 1. Select **Pools** and then **Add** to create a new pool.
 1. In the **Image Type** section, select **Shared Image Gallery**.
 1. Complete the remaining sections with information about your managed image.
 1. Select **OK**.
 
-:::image type="content" source="media/batch-sig-images/create-custom-pool.png" alt-text="Create a pool with from a Shared image with the portal.":::
+![Create a pool with from a Shared image with the portal.](media/batch-sig-images/create-custom-pool.png)
 
 ## Considerations for large pools
 
 If you plan to create a pool with hundreds or thousands of VMs or more using a Shared Image, use the following guidance.
 
-- **Shared Image Gallery replica numbers.** For every pool with up to 300 instances, we recommend you keep at least one replica. For example, if you are creating a pool with 3000 VMs, you should keep at least 10 replicas of your image. We always suggest keeping more replicas than minimum requirements for better performance.
+- **Shared Image Gallery replica numbers.**  For every pool with up to 300 instances, we recommend you keep at least one replica. For example, if you are creating a pool with 3000 VMs, you should keep at least 10 replicas of your image. We always suggest keeping more replicas than minimum requirements for better performance.
 
 - **Resize timeout.** If your pool contains a fixed number of nodes (if it doesn't autoscale), increase the `resizeTimeout` property of the pool depending on the pool size. For every 1000 VMs, the recommended resize timeout is at least 15 minutes. For example, the recommended resize timeout for a pool with 2000 VMs is at least 30 minutes.
 
@@ -226,8 +222,3 @@ If you plan to create a pool with hundreds or thousands of VMs or more using a S
 
 - For an in-depth overview of Batch, see [Batch service workflow and resources](batch-service-workflow-features.md).
 - Learn about the [Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md).
-
-
-
-<!-- Update_Description: new article about batch sig images -->
-<!--NEW.date: 12/21/2020-->
