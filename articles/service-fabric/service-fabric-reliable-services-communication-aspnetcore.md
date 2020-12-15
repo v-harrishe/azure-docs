@@ -2,7 +2,11 @@
 title: Service communication with the ASP.NET Core 
 description: Learn how to use ASP.NET Core in stateless and stateful Azure Service Fabric Reliable Services applications.
 ms.topic: conceptual
-ms.date: 10/12/2018
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 
@@ -14,7 +18,7 @@ This article is an in-depth guide to hosting ASP.NET Core services in Service Fa
 
 For an introductory tutorial on ASP.NET Core in Service Fabric and instructions on getting your development environment set up, see [Tutorial: Create and deploy an application with an ASP.NET Core Web API front-end service and a stateful back-end service](service-fabric-tutorial-create-dotnet-app.md).
 
-The rest of this article assumes you're already familiar with ASP.NET Core. If not, please read through the [ASP.NET Core fundamentals](/aspnet/core/fundamentals/index).
+The rest of this article assumes you're already familiar with ASP.NET Core. If not, please read through the [ASP.NET Core fundamentals](https://docs.azure.cn/aspnet/core/fundamentals/index).
 
 ## ASP.NET Core in the Service Fabric environment
 
@@ -88,7 +92,7 @@ Thus, both Kestrel and HTTP.sys `ICommunicationListener` implementations standar
 ## HTTP.sys in Reliable Services
 You can use HTTP.sys in Reliable Services by importing the **Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet package. This package contains `HttpSysCommunicationListener`, an implementation of `ICommunicationListener`. `HttpSysCommunicationListener` allows you to create an ASP.NET Core WebHost inside a reliable service by using HTTP.sys as the web server.
 
-HTTP.sys is built on the [Windows HTTP Server API](/windows/win32/http/http-api-start-page). This API uses the **HTTP.sys** kernel driver to process HTTP requests and route them to processes that run web applications. This allows multiple processes on the same physical or virtual machine to host web applications on the same port, disambiguated by either a unique URL path or host name. These features are useful in Service Fabric for hosting multiple websites in the same cluster.
+HTTP.sys is built on the [Windows HTTP Server API](https://docs.microsoft.com/windows/win32/http/http-api-start-page). This API uses the **HTTP.sys** kernel driver to process HTTP requests and route them to processes that run web applications. This allows multiple processes on the same physical or virtual machine to host web applications on the same port, disambiguated by either a unique URL path or host name. These features are useful in Service Fabric for hosting multiple websites in the same cluster.
 
 >[!NOTE]
 >HTTP.sys implementation works only on the Windows platform.
@@ -127,9 +131,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### Endpoint configuration
 
-An `Endpoint` configuration is required for web servers that use the Windows HTTP Server API, including HTTP.sys. Web servers that use the Windows HTTP Server API must first reserve their URL with HTTP.sys (this is normally accomplished with the [netsh](/windows/win32/http/netsh-commands-for-http) tool). 
+An `Endpoint` configuration is required for web servers that use the Windows HTTP Server API, including HTTP.sys. Web servers that use the Windows HTTP Server API must first reserve their URL with HTTP.sys (this is normally accomplished with the [netsh](https://docs.microsoft.com/windows/win32/http/netsh-commands-for-http) tool). 
 
-This action requires elevated privileges that your services don't have by default. The "http" or "https" options for the `Protocol` property of the `Endpoint` configuration in ServiceManifest.xml are used specifically to instruct the Service Fabric runtime to register a URL with HTTP.sys on your behalf. It does this by using the [*strong wildcard*](/windows/win32/http/urlprefix-strings) URL prefix.
+This action requires elevated privileges that your services don't have by default. The "http" or "https" options for the `Protocol` property of the `Endpoint` configuration in ServiceManifest.xml are used specifically to instruct the Service Fabric runtime to register a URL with HTTP.sys on your behalf. It does this by using the [*strong wildcard*](https://docs.microsoft.com/windows/win32/http/urlprefix-strings) URL prefix.
 
 For example, to reserve `http://+:80` for a service, use the following configuration in ServiceManifest.xml:
 
@@ -185,7 +189,7 @@ A dynamic port allocated by an `Endpoint` configuration provides only one port *
 ## Kestrel in Reliable Services
 You can use Kestrel in Reliable Services by importing the **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet package. This package contains `KestrelCommunicationListener`, an implementation of `ICommunicationListener`. `KestrelCommunicationListener` allows you to create an ASP.NET Core WebHost inside a reliable service by using Kestrel as the web server.
 
-Kestrel is a cross-platform web server for ASP.NET Core. Unlike HTTP.sys, Kestrel doesn't use a centralized endpoint manager. Also unlike HTTP.sys, Kestrel doesn't support port sharing between multiple processes. Each instance of Kestrel must use a unique port. For more on Kestrel, see the [Implementation Details](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
+Kestrel is a cross-platform web server for ASP.NET Core. Unlike HTTP.sys, Kestrel doesn't use a centralized endpoint manager. Also unlike HTTP.sys, Kestrel doesn't support port sharing between multiple processes. Each instance of Kestrel must use a unique port. For more on Kestrel, see the [Implementation Details](https://docs.azure.cn/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
 
 ![Kestrel diagram][4]
 
@@ -329,7 +333,7 @@ For HTTPS, it should have the Endpoint configured with HTTPS protocol without a 
 
 
 ## Service Fabric configuration provider
-App configuration in ASP.NET Core is based on key-value pairs established by the configuration provider. Read [Configuration in ASP.NET Core](/aspnet/core/fundamentals/configuration/) to understand more on general ASP.NET Core configuration support.
+App configuration in ASP.NET Core is based on key-value pairs established by the configuration provider. Read [Configuration in ASP.NET Core](https://docs.azure.cn/aspnet/core/fundamentals/configuration/) to understand more on general ASP.NET Core configuration support.
 
 This section describes how the Service Fabric configuration provider integrates with ASP.NET Core configuration by importing the `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet package.
 
@@ -442,7 +446,7 @@ public Startup()
 ```
 
 ### Configuration updates
-The Service Fabric configuration provider also supports configuration updates. You can use ASP.NET Core `IOptionsMonitor` to receive change notifications, and then use `IOptionsSnapshot` to reload configuration data. For more information, see [ASP.NET Core options](/aspnet/core/fundamentals/configuration/options).
+The Service Fabric configuration provider also supports configuration updates. You can use ASP.NET Core `IOptionsMonitor` to receive change notifications, and then use `IOptionsSnapshot` to reload configuration data. For more information, see [ASP.NET Core options](https://docs.azure.cn/aspnet/core/fundamentals/configuration/options).
 
 These options are supported by default. No further coding is needed to enable configuration updates.
 
@@ -508,10 +512,15 @@ Stateful services that are only called from within the cluster should use dynami
 ## Next steps
 [Debug your Service Fabric application by using Visual Studio](service-fabric-debugging-your-application.md)
 
-
 <!--Image references-->
+
 [0]:./media/service-fabric-reliable-services-communication-aspnetcore/webhost-standalone.png
 [1]:./media/service-fabric-reliable-services-communication-aspnetcore/webhost-servicefabric.png
 [2]:./media/service-fabric-reliable-services-communication-aspnetcore/integration.png
 [3]:./media/service-fabric-reliable-services-communication-aspnetcore/httpsys.png
 [4]:./media/service-fabric-reliable-services-communication-aspnetcore/kestrel.png
+
+
+
+<!-- Update_Description: new article about service fabric reliable services communication aspnetcore -->
+<!--NEW.date: 12/21/2020-->

@@ -2,7 +2,11 @@
 title: Configure managed identity support for a new Service Fabric cluster
 description: Here's how to enable managed identities support in a new Azure Service Fabric cluster
 ms.topic: article
-ms.date: 12/09/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Configure managed identity support for a new Service Fabric cluster
@@ -54,3 +58,7 @@ If the deployment fails with this message, it means the cluster is not on the re
 * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)
 * [Grant an Azure Service Fabric application access to other Azure resources](./how-to-grant-access-other-resources.md)
+
+
+<!-- Update_Description: new article about configure new azure service fabric enable managed identity -->
+<!--NEW.date: 12/21/2020-->

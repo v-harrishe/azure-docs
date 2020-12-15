@@ -1,8 +1,12 @@
 ---
 title: Service Fabric programming model overview 
-description: 'Service Fabric offers two frameworks for building services: the actor framework and the services framework. They offer distinct trade-offs in simplicity and control.'
+description: Service Fabric offers two frameworks for building services - the actor framework and the services framework. They offer distinct trade-offs in simplicity and control.
 ms.topic: conceptual
-ms.date: 01/07/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: sfrev
 ---
 # Service Fabric programming model overview
@@ -39,7 +43,7 @@ ASP.NET Core is an open-source, cross-platform framework for building modern clo
 
 ## Reliable Actors
 
-Built on top of Reliable Services, the Reliable Actor framework is an application framework that implements the [Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) pattern, based on the computational [actor model](https://en.wikipedia.org/wiki/Actor_model). The Reliable Actor framework uses independent units of compute and state with single-threaded execution called *actors*. The Reliable Actor framework provides built-in communication for actors and pre-set state persistence and scale-out configurations.
+Built on top of Reliable Services, the Reliable Actor framework is an application framework that implements the [Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) pattern, based on the computational [actor model](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Actor_model). The Reliable Actor framework uses independent units of compute and state with single-threaded execution called *actors*. The Reliable Actor framework provides built-in communication for actors and pre-set state persistence and scale-out configurations.
 
 Because Reliable Actors is an application framework built on Reliable Services, it is fully integrated with the Service Fabric platform and benefits from the full set of features offered by the platform.
 
@@ -56,3 +60,8 @@ Because Reliable Actors is an application framework built on Reliable Services, 
 [Reliable Actors overview](service-fabric-reliable-actors-introduction.md)
 
 [Service Fabric and ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+
+
+
+<!-- Update_Description: new article about service fabric choose framework -->
+<!--NEW.date: 12/21/2020-->

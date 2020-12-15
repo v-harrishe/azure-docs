@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Use Azure App Configuration to manage feature flags"
+title: Tutorial - Use Azure App Configuration to manage feature flags
 titleSuffix: Azure App Configuration
 description: In this tutorial, you learn how to manage feature flags separately from your application by using Azure App Configuration.
 services: azure-app-configuration
 documentationcenter: ''
-author: AlexandraKemperMS
+
 editor: ''
 
 ms.assetid: 
@@ -12,8 +12,11 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
-ms.author: alkemper
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "devx-track-csharp, mvc"
 
 #Customer intent: I want to control feature availability in my app by using App Configuration.
@@ -37,7 +40,7 @@ To add a new feature flag:
 
 1. Select **Feature Manager** > **+Add** to add a feature flag.
 
-    ![Feature flag list](./media/azure-app-configuration-feature-flags.png)
+    :::image type="content" source="./media/azure-app-configuration-feature-flags.png" alt-text="Feature flag list":::
 
 1. Enter a unique key name for the feature flag. You need this name to reference the flag in your code.
 
@@ -45,7 +48,7 @@ To add a new feature flag:
 
 1. Set the initial state of the feature flag. This state is usually *Off* or *On*. The *On* state changes to *Conditional* if you add a filter to the feature flag.
 
-    ![Feature flag creation](./media/azure-app-configuration-feature-flag-create.png)
+    :::image type="content" source="./media/azure-app-configuration-feature-flag-create.png" alt-text="Feature flag creation":::
 
 1. When the state is *On*, select **+Add filter** to specify any additional conditions to qualify the state. Enter a built-in or custom filter key, and then select **+Add parameter** to associate one or more parameters with the filter. Built-in filters include:
 
@@ -55,7 +58,7 @@ To add a new feature flag:
     | Microsoft.TimeWindow | {"Start": UTC time, "End": UTC time} |
     | Microsoft.Targeting | { "Audience": JSON blob defining users, groups, and rollout percentages. See an example under the `EnabledFor` element of [this settings file](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json) }
 
-    ![Feature flag filter](./media/azure-app-configuration-feature-flag-filter.png)
+    :::image type="content" source="./media/azure-app-configuration-feature-flag-filter.png" alt-text="Feature flag filter":::
 
 ## Update feature flag states
 
@@ -76,3 +79,8 @@ Feature flags created by the Feature Manager are stored and retrieved as regular
 In this tutorial, you learned how to manage feature flags and their states by using App Configuration. For more information about feature-management support in App Configuration and ASP.NET Core, see the following article:
 
 * [Use feature flags in an ASP.NET Core app](./use-feature-flags-dotnet-core.md)
+
+
+
+<!-- Update_Description: new article about manage feature flags -->
+<!--NEW.date: 12/21/2020-->

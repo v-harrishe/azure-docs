@@ -2,13 +2,16 @@
 title: Send Events to a web endpoint using Azure App Configuration
 description: Learn to use Azure App Configuration event subscriptions to send key-value modification events to a web endpoint
 services: azure-app-configuration
-author: AlexandraKemperMS
+
 ms.assetid: 
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: alkemper 
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-azurecli
 
 
@@ -21,34 +24,34 @@ In this article, you learn how to set up Azure App Configuration event subscript
 
 ## Prerequisites
 
-- Azure subscription - [create one for free](https://azure.microsoft.com/free/). You can optionally use the Azure Cloud Shell.
+- Azure subscription - [create one for free](https://www.azure.cn/free/). You can optionally use the Azure local Shell.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-If you choose to install and use the CLI locally, this article requires that you're running the latest version of Azure CLI (2.0.70 or later). To find the version, run `az --version`. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+If you choose to install and use the CLI locally, this article requires that you're running the latest version of Azure CLI (2.0.70 or later). To find the version, run `az --version`. If you need to install or upgrade, see [Install Azure CLI](https://docs.azure.cn/cli/install-azure-cli).
 
-If you aren't using Cloud Shell, you must first sign in using `az login`.
+If you aren't using local Shell, you must first sign in using `az login`.
 
 ## Create a resource group
 
 Event Grid topics are Azure resources, and must be placed in an Azure resource group. The resource group is a logical collection into which Azure resources are deployed and managed.
 
-Create a resource group with the [az group create](/cli/azure/group) command. 
+Create a resource group with the [az group create](https://docs.azure.cn/cli/group#az-group-create) command. 
 
-The following example creates a resource group named `<resource_group_name>` in the *westus* location.  Replace `<resource_group_name>` with a unique name for your resource group.
+The following example creates a resource group named `<resource_group_name>` in the *chinanorth* location.  Replace `<resource_group_name>` with a unique name for your resource group.
 
-```azurecli-interactive
-az group create --name <resource_group_name> --location westus
+```azurecli
+az group create --name <resource_group_name> --location chinanorth
 ```
 
 ## Create an App Configuration store
 
 Replace `<appconfig_name>` with a unique name for your configuration store, and `<resource_group_name>` with the resource group you created earlier. The name must be unique because it is used as a DNS name.
 
-```azurecli-interactive
+```azurecli
 az appconfig create \
   --name <appconfig_name> \
-  --location westus \
+  --location chinanorth \
   --resource-group <resource_group_name> \
   --sku free
 ```
@@ -59,7 +62,7 @@ Before subscribing to the topic, let's create the endpoint for the event message
 
 Replace `<your-site-name>` with a unique name for your web app. The web app name must be unique because it's part of the DNS entry.
 
-```azurecli-interactive
+```azurecli
 $sitename=<your-site-name>
 
 az group deployment create \
@@ -80,7 +83,7 @@ You subscribe to a topic to tell Event Grid which events you want to track and w
 
 The endpoint for your web app must include the suffix `/api/updates/`.
 
-```azurecli-interactive
+```azurecli
 appconfigId=$(az appconfig show --name <appconfig_name> --resource-group <resource_group_name> --query id --output tsv)
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
@@ -92,13 +95,13 @@ az eventgrid event-subscription create \
 
 View your web app again, and notice that a subscription validation event has been sent to it. Select the eye icon to expand the event data. Event Grid sends the validation event so the endpoint can verify that it wants to receive event data. The web app includes code to validate the subscription.
 
-![View subscription event](./media/quickstarts/event-grid/view-subscription-event.png)
+:::image type="content" source="./media/quickstarts/event-grid/view-subscription-event.png" alt-text="View subscription event":::
 
 ## Trigger an App Configuration event
 
 Now, let's trigger an event to see how Event Grid distributes the message to your endpoint. Create a key-value using the `<appconfig_name>` from earlier.
 
-```azurecli-interactive
+```azurecli
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 ```
 
@@ -125,7 +128,7 @@ If you plan to continue working with this App Configuration and event subscripti
 
 Replace `<resource_group_name>` with the resource group you created above.
 
-```azurecli-interactive
+```azurecli
 az group delete --name <resource_group_name>
 ```
 
@@ -136,3 +139,8 @@ Now that you know how to create topics and event subscriptions, learn more about
 - [Reacting to Key-Value Events](concept-app-configuration-event.md)
 - [About Event Grid](../event-grid/overview.md)
 - [Azure Event Grid handlers](../event-grid/event-handlers.md)
+
+
+
+<!-- Update_Description: new article about howto app configuration event -->
+<!--NEW.date: 12/21/2020-->

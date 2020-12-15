@@ -1,13 +1,16 @@
 ---
 title: How to use the WebJobs SDK
 description: Learn more about how to write code for the WebJobs SDK. Create event-driven background processing jobs that access data in Azure and third-party services.
-author: ggailey777
+
 
 ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 02/18/2019
-ms.author: glenga
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 #Customer intent: As an App Services developer, I want use the WebJobs SDK to be able to execute event-driven code in Azure.
 ---
 
@@ -80,7 +83,7 @@ The process for enabling development mode depends on the SDK version.
 
 #### Version 3.*x*
 
-Version 3.*x* uses the standard ASP.NET Core APIs. Call the [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) method on the [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) instance. Pass a string named `development`, as in this example:
+Version 3.*x* uses the standard ASP.NET Core APIs. Call the [`UseEnvironment`](https://docs.azure.cn/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) method on the [`HostBuilder`](https://docs.azure.cn/dotnet/api/microsoft.extensions.hosting.hostbuilder) instance. Pass a string named `development`, as in this example:
 
 ```cs
 static async Task Main()
@@ -118,11 +121,12 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>Managing concurrent connections (version 2.*x*)
+<a name="jobhost-servicepointmanager-settings"></a>
+### Managing concurrent connections (version 2.*x*)
 
-In version 3.*x*, the connection limit defaults to infinite connections. If for some reason you need to change this limit, you can use the [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) property of the [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) class.
+In version 3.*x*, the connection limit defaults to infinite connections. If for some reason you need to change this limit, you can use the [`MaxConnectionsPerServer`](https://docs.microsoft.com/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) property of the [`WinHttpHandler`](https://docs.microsoft.com/dotnet/api/system.net.http.winhttphandler) class.
 
-In version 2.*x*, you control the number of concurrent connections to a host by using the [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API. In 2.*x*, you should increase this value from the default of 2 before starting your WebJobs host.
+In version 2.*x*, you control the number of concurrent connections to a host by using the [ServicePointManager.DefaultConnectionLimit](https://docs.microsoft.com/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API. In 2.*x*, you should increase this value from the default of 2 before starting your WebJobs host.
 
 All outgoing HTTP requests that you make from a function by using `HttpClient` flow through `ServicePointManager`. After you reach the value set in `DefaultConnectionLimit`, `ServicePointManager` starts queueing requests before sending them. Suppose your `DefaultConnectionLimit` is set to 2 and your code makes 1,000 HTTP requests. Initially, only two requests are allowed through to the OS. The other 998 are queued until there's room for them. That means your `HttpClient` might time out because it appears to have made the request, but the request was never sent by the OS to the destination server. So you might see behavior that doesn't seem to make sense: your local `HttpClient` is taking 10 seconds to complete a request, but your service is returning every request in 200 ms. 
 
@@ -619,7 +623,7 @@ You configure the resolver by using dependency injection. These samples require 
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-You add the resolver by calling the [`ConfigureServices`] extension method on  [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder), as in this example:
+You add the resolver by calling the [`ConfigureServices`] extension method on  [`HostBuilder`](https://docs.azure.cn/dotnet/api/microsoft.extensions.hosting.hostbuilder), as in this example:
 
 ```cs
 static async Task Main(string[] args)
@@ -813,7 +817,7 @@ If you want to ensure that only one instance of a function runs even when there 
 
 ## Filters
 
-Function Filters (preview) provide a way to customize the WebJobs execution pipeline with your own logic. Filters are similar to [ASP.NET Core filters](/aspnet/core/mvc/controllers/filters). You can implement them as declarative attributes that are applied to your functions or classes. For more information, see [Function Filters](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
+Function Filters (preview) provide a way to customize the WebJobs execution pipeline with your own logic. Filters are similar to [ASP.NET Core filters](https://docs.azure.cn/aspnet/core/mvc/controllers/filters). You can implement them as declarative attributes that are applied to your functions or classes. For more information, see [Function Filters](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## Logging and monitoring
 
@@ -821,7 +825,7 @@ We recommend the logging framework that was developed for ASP.NET. The [Get star
 
 ### Log filtering
 
-Every log created by an `ILogger` instance has an associated `Category` and `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) is an enumeration, and the integer code indicates relative importance:
+Every log created by an `ILogger` instance has an associated `Category` and `Level`. [`LogLevel`](https://docs.azure.cn/dotnet/api/microsoft.extensions.logging.loglevel) is an enumeration, and the integer code indicates relative importance:
 
 |LogLevel    |Code|
 |------------|---|
@@ -833,7 +837,7 @@ Every log created by an `ILogger` instance has an associated `Category` and `Lev
 |Critical    | 5 |
 |None        | 6 |
 
-You can independently filter each category to a particular [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). For example, you might want to see all logs for blob trigger processing but only `Error` and higher for everything else.
+You can independently filter each category to a particular [`LogLevel`](https://docs.azure.cn/dotnet/api/microsoft.extensions.logging.loglevel). For example, you might want to see all logs for blob trigger processing but only `Error` and higher for everything else.
 
 #### Version 3.*x*
 
@@ -905,7 +909,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-The following custom implementation of [`ITelemetryInitializer`] lets you add your own [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) to the default [`TelemetryConfiguration`].
+The following custom implementation of [`ITelemetryInitializer`] lets you add your own [`ITelemetry`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetry) to the default [`TelemetryConfiguration`].
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -995,13 +999,19 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a id="nextsteps"></a> Next steps
+<a name="nextsteps"></a>
+## Next steps
 
 This article has provided code snippets that show how to handle common scenarios for working with the WebJobs SDK. For complete samples, see [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+[`TelemetryClient`]: https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient
+[`ConfigureServices`]: https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+[`ITelemetryInitializer`]: https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[`TelemetryConfiguration`]: https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
 [`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+
+
+
+<!-- Update_Description: new article about webjobs sdk how to -->
+<!--NEW.date: 12/21/2020-->

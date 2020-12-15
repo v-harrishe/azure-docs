@@ -1,10 +1,14 @@
 ---
 title: Replicate Azure VMs running in Proximity Placement Groups
 description: Learn how to replicate Azure VMs running in Proximity Placement Groups using Azure Site Recovery.
-author: Sharmistha-Rai
+
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 ---
 
@@ -21,15 +25,15 @@ In a typical scenario, you may have your virtual machines running in a proximity
 ## Considerations
 
 - The best effort will be to failover/failback the virtual machines into a proximity placement group. However, if VM is unable to be brought up inside Proximity Placement during failover/failback, then failover/failback will still happen, and virtual machines will be created outside of a proximity placement group.
--  If an Availability Set is pinned to a Proximity Placement Group and during failover/failback VMs in the availability set have an allocation constraint, then the virtual machines will be created outside of both the availability set and proximity placement group.
--  Site Recovery for Proximity Placement Groups is not supported for unmanaged disks.
+- If an Availability Set is pinned to a Proximity Placement Group and during failover/failback VMs in the availability set have an allocation constraint, then the virtual machines will be created outside of both the availability set and proximity placement group.
+- Site Recovery for Proximity Placement Groups is not supported for unmanaged disks.
 
 > [!NOTE]
 > Azure Site Recovery does not support failback from managed disks for Hyper-V to Azure scenarios. Hence, failback from Proximity Placement Group in Azure to Hyper-V is not supported.
 
 ## Prerequisites
 
-1. Make sure that you have the Azure PowerShell Az module. If you need to install or upgrade Azure PowerShell, follow this [Guide to install and configure Azure PowerShell](/powershell/azure/install-az-ps).
+1. Make sure that you have the Azure PowerShell Az module. If you need to install or upgrade Azure PowerShell, follow this [Guide to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2. The minimum Azure PowerShell Az version should be 4.1.0. To check the current version, use the below command -
     ```
 	Get-InstalledModule -Name Az
@@ -55,7 +59,7 @@ In a typical scenario, you may have your virtual machines running in a proximity
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
-$RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+$RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "chinanorth2"
 
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
 #Make sure to replace the variables $OSdiskName with OS disk name.
@@ -66,7 +70,7 @@ $OSdiskId = $OSdisk.Id
 $RecoveryOSDiskAccountType = $OSdisk.Sku.Name
 $RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
 
-$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $China EastCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
 #Make sure to replace the variables $datadiskName with data disk name.
 
@@ -76,7 +80,7 @@ $datadiskId1 = $datadisk[0].Id
 $RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
 $RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
 
-$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $China EastCacheStorageAccount.Id -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
 
@@ -112,11 +116,11 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryP
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
-$WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+$chinanorthCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragechinanorth" -ResourceGroupName "A2AdemoRG" -Location 'China North' -SkuName Standard_LRS -Kind Storage
 
 
-#Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
-Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
+#Use the recovery protection container, new cache storage account in China North and the source region VM resource group 
+Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $chinanorthCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
 
 14. To disable replication, follow the steps [here](./azure-to-azure-powershell.md#disable-replication).
@@ -216,3 +220,7 @@ To perform reprotect and failback for VMware to Azure, follow the steps outlined
 To perform failover for Hyper-V to Azure follow the steps outlined [here](./site-recovery-failover.md) and to perform failback, follow the steps outlined [here](./hyper-v-azure-failback.md).
 
 For more information, see [Failover in Site Recovery](site-recovery-failover.md).
+
+
+<!-- Update_Description: new article about how to enable replication proximity placement groups -->
+<!--NEW.date: 12/21/2020-->

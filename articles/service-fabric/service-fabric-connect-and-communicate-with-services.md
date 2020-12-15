@@ -2,7 +2,11 @@
 title: Connect and communicate with services in Azure Service Fabric 
 description: Learn how to resolve, connect, and communicate with services in Service Fabric.
 ms.topic: conceptual
-ms.date: 11/01/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # Connect and communicate with services in Service Fabric
@@ -155,12 +159,12 @@ It's important to remember that the Azure Load Balancer and the probe only know 
 ## Reliable Services: Built-in communication API options
 The Reliable Services framework ships with several pre-built communication options. The decision about which one will work best for you depends on the choice of the programming model, the communication framework, and the programming language that your services are written in.
 
-* **No specific protocol:**  If you don't have a particular choice of communication framework, but you want to get something up and running quickly, then the ideal option for you is [service remoting](service-fabric-reliable-services-communication-remoting.md), which allows strongly-typed remote procedure calls for Reliable Services and Reliable Actors. This is the easiest and fastest way to get started with service communication. Service remoting handles resolution of service addresses, connection, retry, and error handling. This is available for both C# and Java applications.
+* **No specific protocol:** If you don't have a particular choice of communication framework, but you want to get something up and running quickly, then the ideal option for you is [service remoting](service-fabric-reliable-services-communication-remoting.md), which allows strongly-typed remote procedure calls for Reliable Services and Reliable Actors. This is the easiest and fastest way to get started with service communication. Service remoting handles resolution of service addresses, connection, retry, and error handling. This is available for both C# and Java applications.
 * **HTTP**: For language-agnostic communication, HTTP provides an industry-standard choice with tools and HTTP servers available in many different languages, all supported by Service Fabric. Services can use any HTTP stack available, including [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md) for C# applications. Clients written in C# can leverage the `ICommunicationClient` and `ServicePartitionClient` classes, whereas for Java, use the `CommunicationClient` and `FabricServicePartitionClient` classes, [for service resolution, HTTP connections, and retry loops](service-fabric-reliable-services-communication.md).
 * **WCF**: If you have existing code that uses WCF as your communication framework, then you can use the `WcfCommunicationListener` for the server side and `WcfCommunicationClient` and `ServicePartitionClient` classes for the client. This however is only available for C# applications on Windows based clusters. For more details, see this article about [WCF-based implementation of the communication stack](service-fabric-reliable-services-communication-wcf.md).
 
 ## Using custom protocols and other communication frameworks
-Services can use any protocol or framework for communication, whether its a custom binary protocol over TCP sockets, or streaming events through [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) or [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric provides communication APIs that you can plug your communication stack into, while all the work to discover and connect is abstracted from you. See this article about the [Reliable Service communication model](service-fabric-reliable-services-communication.md) for more details.
+Services can use any protocol or framework for communication, whether its a custom binary protocol over TCP sockets, or streaming events through [Azure Event Hubs](https://www.azure.cn/home/features/event-hubs/) or [Azure IoT Hub](https://www.azure.cn/home/features/iot-hub/). Service Fabric provides communication APIs that you can plug your communication stack into, while all the work to discover and connect is abstracted from you. See this article about the [Reliable Service communication model](service-fabric-reliable-services-communication.md) for more details.
 
 ## Next steps
 Learn more about the concepts and APIs available in the [Reliable Services communication model](service-fabric-reliable-services-communication.md), then get started quickly with [service remoting](service-fabric-reliable-services-communication-remoting.md) or go in-depth to learn how to write a communication listener using [Web API with OWIN self-host](./service-fabric-reliable-services-communication-aspnetcore.md).
@@ -174,3 +178,8 @@ Learn more about the concepts and APIs available in the [Reliable Services commu
 [8]: ./media/service-fabric-connect-and-communicate-with-services/loadbalancerprobe.png
 [9]: ./media/service-fabric-connect-and-communicate-with-services/dns.png
 [10]: ./media/service-fabric-reverseproxy/internal-communication.png
+
+
+
+<!-- Update_Description: new article about service fabric connect and communicate with services -->
+<!--NEW.date: 12/21/2020-->

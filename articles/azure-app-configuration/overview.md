@@ -1,11 +1,15 @@
 ---
 title: What is Azure App Configuration?
 description: Read an overview of the Azure App Configuration service. Understand why you would want to use App Configuration, and learn how you can use it.
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/19/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # What is Azure App Configuration?
@@ -36,7 +40,7 @@ App Configuration offers the following benefits:
 * Encryption of sensitive information at rest and in transit
 * Native integration with popular frameworks
 
-App Configuration complements [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), which is used to store application secrets. App Configuration makes it easier to implement the following scenarios:
+App Configuration complements [Azure Key Vault](https://www.azure.cn/home/features/key-vault/), which is used to store application secrets. App Configuration makes it easier to implement the following scenarios:
 
 * Centralize management and distribution of hierarchical configuration data for different environments and geographies
 * Dynamically change application settings without the need to redeploy or restart an application
@@ -62,3 +66,8 @@ The easiest way to add an App Configuration store to your application is through
 * [Java Spring quickstart](./quickstart-java-spring-app.md)
 * [ASP.NET Core feature flag quickstart](./quickstart-feature-flag-aspnet-core.md)
 * [Spring Boot feature flag quickstart](./quickstart-feature-flag-spring-boot.md)
+
+
+
+<!-- Update_Description: new article about overview -->
+<!--NEW.date: 12/21/2020-->

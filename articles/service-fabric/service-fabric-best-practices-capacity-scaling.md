@@ -1,17 +1,20 @@
 ---
 title: Capacity planning and scaling for Azure Service Fabric 
 description: Best practices for planning and scaling Service Fabric clusters and applications.
-author: peterpogorski
+
 
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: pepogors
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 
 # Capacity planning and scaling for Azure Service Fabric
 
-Before you create any Azure Service Fabric cluster or scale compute resources that host your cluster, it's important to plan for capacity. For more information about planning for capacity, see [Planning the Service Fabric cluster capacity](./service-fabric-cluster-capacity.md). For further best-practice guidance for cluster scalability, see [Service Fabric scalability considerations](/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations).
+Before you create any Azure Service Fabric cluster or scale compute resources that host your cluster, it's important to plan for capacity. For more information about planning for capacity, see [Planning the Service Fabric cluster capacity](./service-fabric-cluster-capacity.md). For further best-practice guidance for cluster scalability, see [Service Fabric scalability considerations](https://docs.azure.cn/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations).
 
 In addition to considering node type and cluster characteristics, you should expect scaling operations to take longer than an hour to complete for a production environment. This consideration is true regardless of the number of VMs you're adding.
 
@@ -79,7 +82,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-To scale out manually, update the capacity in the SKU property of the desired [virtual machine scale set](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) resource.
+To scale out manually, update the capacity in the SKU property of the desired [virtual machine scale set](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) resource.
 
 ```json
 "sku": {
@@ -103,7 +106,7 @@ To scale in manually, follow these steps:
 3. Decrease the number of VMs by one in that node type. The highest VM instance will now be removed.
 4. Repeat steps 1 through 3 as needed until you provision the capacity you want. Don't scale in the number of instances in the primary node types to less than what the reliability tier warrants. See [Planning the Service Fabric cluster capacity](./service-fabric-cluster-capacity.md) for a list of recommended instances.
 
-To scale in manually, update the capacity in the SKU property of the desired [virtual machine scale set](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) resource.
+To scale in manually, update the capacity in the SKU property of the desired [virtual machine scale set](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) resource.
 
 ```json
 "sku": {
@@ -157,7 +160,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > When you scale in a cluster, you'll see the removed node/VM instance displayed in an unhealthy state in Service Fabric Explorer. For an explanation of this behavior, see [Behaviors you may observe in Service Fabric Explorer](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). You can:
-> * Call the [Remove-ServiceFabricNodeState command](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) with the appropriate node name.
+> * Call the [Remove-ServiceFabricNodeState command](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) with the appropriate node name.
 > * Deploy the [Service Fabric autoscale helper application](https://github.com/Azure/service-fabric-autoscale-helper/) on your cluster. This application ensures that the scaled-down nodes are cleared from Service Fabric Explorer.
 
 ## Reliability levels
@@ -173,7 +176,7 @@ The reliability level will determine the minimum number of nodes that your prima
 
 The minimum recommended reliability level is Silver.
 
-The reliability level is set in the properties section of the [Microsoft.ServiceFabric/clusters resource](/azure/templates/microsoft.servicefabric/2018-02-01/clusters), like this:
+The reliability level is set in the properties section of the [Microsoft.ServiceFabric/clusters resource](https://docs.azure.cn/azure/templates/microsoft.servicefabric/2018-02-01/clusters), like this:
 
 ```json
 "properties":{
@@ -188,7 +191,7 @@ The reliability level is set in the properties section of the [Microsoft.Service
 >
 > Use Bronze durability only for node types that run stateless workloads. For production workloads, run Silver or higher to ensure state consistency. Choose the right reliability based on the guidance in the [capacity planning documentation](./service-fabric-cluster-capacity.md).
 
-The durability level must be set in two resources. One is the extension profile of the [virtual machine scale set resource](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile):
+The durability level must be set in two resources. One is the extension profile of the [virtual machine scale set resource](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile):
 
 ```json
 "extensionProfile": {
@@ -203,7 +206,7 @@ The durability level must be set in two resources. One is the extension profile 
 }
 ```
 
-The other resource is under `nodeTypes` in the [Microsoft.ServiceFabric/clusters resource](/azure/templates/microsoft.servicefabric/2018-02-01/clusters): 
+The other resource is under `nodeTypes` in the [Microsoft.ServiceFabric/clusters resource](https://docs.azure.cn/azure/templates/microsoft.servicefabric/2018-02-01/clusters): 
 
 ```json
 "nodeTypes": [
@@ -221,3 +224,7 @@ The other resource is under `nodeTypes` in the [Microsoft.ServiceFabric/clusters
 * Learn about [Service Fabric support options](service-fabric-support.md).
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png
+
+
+<!-- Update_Description: new article about service fabric best practices capacity scaling -->
+<!--NEW.date: 12/21/2020-->

@@ -3,7 +3,11 @@ title: Specifying Service Fabric service endpoints
 description: How to describe endpoint resources in a service manifest, including how to set up HTTPS endpoints
 
 ms.topic: conceptual
-ms.date: 09/16/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: contperf-fy21q1
 ---
 # Specify resources in a service manifest
@@ -61,10 +65,12 @@ The following service manifest defines one TCP endpoint resource and two HTTP en
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          This name must match the string used in the RegisterServiceType call in Program.cs. -->
+
     <StatefulServiceType ServiceTypeName="Stateful1Type" HasPersistedState="true" />
   </ServiceTypes>
 
   <!-- Code package is your service executable. -->
+
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
       <ExeHost>
@@ -75,6 +81,7 @@ The following service manifest defines one TCP endpoint resource and two HTTP en
 
   <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently updateable and versioned set of custom configuration settings for your service. -->
+
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
@@ -82,6 +89,7 @@ The following service manifest defines one TCP endpoint resource and two HTTP en
       <!-- This endpoint is used by the communication listener to obtain the port number on which to
            listen. Note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
+
       <Endpoint Name="ServiceEndpoint1" Protocol="http"/>
       <Endpoint Name="ServiceEndpoint2" Protocol="http" Port="80"/>
       <Endpoint Name="ServiceEndpoint3" Protocol="https"/>
@@ -90,6 +98,7 @@ The following service manifest defines one TCP endpoint resource and two HTTP en
       <!-- This endpoint is used by the replicator for replicating the state of your service.
            This endpoint is configured through the ReplicatorSettings config section in the Settings.xml
            file under the ConfigPackage. -->
+
       <Endpoint Name="ReplicatorEndpoint" />
     </Endpoints>
   </Resources>
@@ -125,6 +134,7 @@ Here is an example ApplicationManifest demonstrating the configuration required 
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
        should match the Name and Version attributes of the ServiceManifest element defined in the
        ServiceManifest.xml file. -->
+
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Stateful1Pkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
@@ -139,6 +149,7 @@ Here is an example ApplicationManifest demonstrating the configuration required 
          Service Fabric PowerShell module.
 
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+
     <Service Name="Stateful1">
       <StatefulService ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_ ]">
         <UniformInt64Partition PartitionCount="[Stateful1_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
@@ -231,3 +242,7 @@ For a walk-through of packaging and deploying an existing application on a Servi
 
 > [!div class="nextstepaction"]
 > [Package and deploy an existing executable to Service Fabric](service-fabric-deploy-existing-app.md)
+
+
+<!-- Update_Description: new article about service fabric service manifest resources -->
+<!--NEW.date: 12/21/2020-->

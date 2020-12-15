@@ -1,11 +1,14 @@
 ---
 title: Azure security baseline for Azure App Configuration
 description: The Azure App Configuration security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-author: msmbaldwin
+
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.author: mbaldwin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -93,7 +96,7 @@ Note: If you have a regulatory or other requirement for IDS/IPS use, ensure that
 
 - [Azure Marketplace includes 3rd party IDS capabilities](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
-- [Microsoft Defender ATP EDR capability](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+- [Microsoft Defender ATP EDR capability](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -101,7 +104,7 @@ Note: If you have a regulatory or other requirement for IDS/IPS use, ensure that
 
 ### NS-6: Simplify network security rules
 
-**Guidance**: Use Azure Virtual Network Service Tags to define network access controls on network security groups or Azure Firewall configured for your App Configuration resources. You can use the service tag "AppConfiguration" in place of specific IP addresses when creating security rules for outbound traffic in your application's network. By specifying the service tag name in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
+**Guidance**: Use Azure Virtual Network Service Tags to define network access controls on network security groups or Azure Firewall configured for your App Configuration resources. You can use the service tag "AppConfiguration" in place of specific IP addresses when creating security rules for outbound traffic in your application's network. By specifying the service tag name in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Azure manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
 
 - [Understand and using Service Tags](../virtual-network/service-tags-overview.md)
 
@@ -116,7 +119,7 @@ Note: If you have a regulatory or other requirement for IDS/IPS use, ensure that
 ### IM-1: Standardize Azure Active Directory as the central identity and authentication system
 
 **Guidance**: Azure App Configuration is integrated with Azure Active Directory (Azure AD) that is Azure's default identity and access management service. You should standardize Azure AD to govern your organization’s identity and access management in:
-- Microsoft Cloud resources, such as the Azure portal, Azure Storage, Azure Virtual Machine (Linux and Windows), Azure Key Vault, PaaS, and SaaS applications.
+- Azure Cloud resources, such as the Azure portal, Azure Storage, Azure Virtual Machine (Linux and Windows), Azure Key Vault, PaaS, and SaaS applications.
 - Your organization's resources, such as applications on Azure or your corporate network resources.
 
 Securing Azure AD should be a high priority in your organization’s cloud security practice. Azure AD provides an identity secure score to help you assess identity security posture relative to Microsoft’s best practice recommendations. Use the score to gauge how closely your configuration matches best practice recommendations, and to make improvements in your security posture.
@@ -161,7 +164,7 @@ When managed identities cannot be leveraged, create a service principal with res
 
 - [Use managed identities to access App Configuration](howto-integrate-azure-managed-service-identity.md)
 
-- [Azure service principal](/powershell/azure/create-azure-service-principal-azureps) 
+- [Azure service principal](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps) 
 
 - [Create a service principal with certificates](../active-directory/develop/howto-authenticate-service-principal-powershell.md) 
 
@@ -185,7 +188,7 @@ When managed identities cannot be leveraged, create a service principal with res
 
 **Guidance**: Azure App Configuration uses Azure Active Directory which supports strong authentication controls through multi-factor authentication (MFA), and strong passwordless methods.
 - Multi-factor authentication - Enable Azure AD MFA and follow Azure Security Center Identity and Access Management recommendations for some best practices in your MFA setup. MFA can be enforced on all, select users or at the per-user level based on sign-in conditions and risk factors.
-- Passwordless authentication – Three passwordless authentication options are available: Windows Hello for Business, Microsoft Authenticator app, and on-premises authentication methods such as smart cards.
+- Passwordless authentication – Three passwordless authentication options are available: Windows Hello for Business, Azure Authenticator app, and on-premises authentication methods such as smart cards.
 
 For administrator and privileged users, ensure the highest level of strong authentication method is used, followed by rolling out the appropriate strong authentication policy to other users.
 
@@ -203,13 +206,13 @@ Note: MFA can be enforced on the user accounts that are accessing and managing A
 
 **Guidance**: Azure App Configuration is integrated with Azure Active Directory in which provides the following data sources:
 
--	Sign-ins – The sign-ins report provides information about the usage of managed applications and user sign-in activities.
+- Sign-ins – The sign-ins report provides information about the usage of managed applications and user sign-in activities.
 
--	Audit logs - Provides traceability through logs for all changes made through various features in Azure AD. Examples of logged changes audit logs include adding or removing users, apps, groups, roles, and policies.
+- Audit logs - Provides traceability through logs for all changes made through various features in Azure AD. Examples of logged changes audit logs include adding or removing users, apps, groups, roles, and policies.
 
--	Risky sign-ins - A risky sign-in is an indicator for a sign-in attempt that might have been performed by someone who is not the legitimate owner of a user account.
+- Risky sign-ins - A risky sign-in is an indicator for a sign-in attempt that might have been performed by someone who is not the legitimate owner of a user account.
 
--	Users flagged for risk - A risky user is an indicator for a user account that might have been compromised.
+- Users flagged for risk - A risky user is an indicator for a user account that might have been compromised.
 
 These data sources can be integrated with Azure Monitor, Azure Sentinel or third-party SIEM systems.
 
@@ -231,7 +234,7 @@ Azure Advanced Threat Protection (ATP) is a security solution that can use on-pr
 
 - [Connect data from Azure AD Identity Protection](../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
+- [Azure Advanced Threat Protection](https://docs.azure.cn/azure-advanced-threat-protection/what-is-atp)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -326,7 +329,7 @@ Note: Managed identities are suggested where possible for authenticating to App 
 
 - [Create an access review of Azure resource roles in Privileged Identity Management(PIM)](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
-- [How to use Azure AD identity and access reviews](/azure/active-directory/governance/access-reviews-overview)
+- [How to use Azure AD identity and access reviews](https://docs.azure.cn/azure/active-directory/governance/access-reviews-overview)
 
 - [Authorize access to Azure App Configuration using Azure AD](concept-enable-rbac.md)
 
@@ -360,7 +363,7 @@ You should ensure that the credentials (such as password, certificate, or smart 
 
 ### PA-6: Use privileged access workstations
 
-**Guidance**: Secured, isolated workstations are critically important for the security of sensitive roles like administrators, developers, and critical service operators. Use highly secured user workstations and/or Azure Bastion for administrative tasks related the App Configuration. Use Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP), and/or Microsoft Intune to deploy a secure and managed user workstation for administrative tasks. The secured workstations can be centrally managed to enforce secured configuration including strong authentication, software and hardware baselines, restricted logical and network access.
+**Guidance**: Secured, isolated workstations are critically important for the security of sensitive roles like administrators, developers, and critical service operators. Use highly secured user workstations and/or Azure Bastion for administrative tasks related the App Configuration. Use Azure Active Directory, Azure Defender Advanced Threat Protection (ATP), and/or Microsoft Intune to deploy a secure and managed user workstation for administrative tasks. The secured workstations can be centrally managed to enforce secured configuration including strong authentication, software and hardware baselines, restricted logical and network access.
 
 - [Understand privileged access workstations](../active-directory/devices/concept-azure-managed-workstation.md) 
 
@@ -394,9 +397,9 @@ App Configuration supports storing configuration of multiple applications in one
 
 **Responsibility**: Customer
 
-### PA-8: Choose approval process for Microsoft support  
+### PA-8: Choose approval process for Azure support  
 
-**Guidance**: Implement an organizational approval process for support scenarios where Microsoft may need access to your App Configuration data. Customer Lockbox is not currently available for App Configuration support scenarios.
+**Guidance**: Implement an organizational approval process for support scenarios where Azure may need access to your App Configuration data. Customer Lockbox is not currently available for App Configuration support scenarios.
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -410,9 +413,9 @@ App Configuration supports storing configuration of multiple applications in one
 
 **Guidance**: Discover, classify, and label your sensitive data so that you can design the appropriate controls to ensure sensitive information is stored, processed, and transmitted securely by the organization's technology systems. Labeling for sensitive information, in the form of tagging, is supported for App Configuration resources, but not for configuration values contained within them. Once an application has read or read/write access to a configuration store, it has full access to any of the configurations in that store.
 
-- [Tag sensitive information using Azure Information Protection](/azure/information-protection/what-is-information-protection)
+- [Tag sensitive information using Azure Information Protection](https://docs.azure.cn/azure/information-protection/what-is-information-protection)
 
-- [Tagging data classifications in Azure](/azure/cloud-adoption-framework/govern/policy-compliance/data-classification#tagging-data-classification-in-azure)
+- [Tagging data classifications in Azure](https://docs.azure.cn/azure/cloud-adoption-framework/govern/policy-compliance/data-classification#tagging-data-classification-in-azure)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -420,7 +423,7 @@ App Configuration supports storing configuration of multiple applications in one
 
 ### DP-2: Protect sensitive data
 
-**Guidance**: For the underlying platform, which is managed by Microsoft, Microsoft treats all customer content as sensitive and guards against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented some default data protection controls and capabilities. Ensure you are regularly rotating the access keys to your App Configuration resources. Credential information from connection strings can be stored in Azure Key Vault, and your code must authenticate to Key Vault to retrieve them. Access Keys can give read-write or just read access to an application. Ensure that the correct type of access key is issued to prevent unauthorized access. To be more secure, use the managed identities feature in Azure AD. This only requires applications to have the configuration endpoint URL to access configuration values.
+**Guidance**: For the underlying platform, which is managed by Microsoft, Azure treats all customer content as sensitive and guards against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented some default data protection controls and capabilities. Ensure you are regularly rotating the access keys to your App Configuration resources. Credential information from connection strings can be stored in Azure Key Vault, and your code must authenticate to Key Vault to retrieve them. Access Keys can give read-write or just read access to an application. Ensure that the correct type of access key is issued to prevent unauthorized access. To be more secure, use the managed identities feature in Azure AD. This only requires applications to have the configuration endpoint URL to access configuration values.
 
 Restrict access using Azure role-based access control (Azure RBAC):
 
@@ -476,7 +479,7 @@ Azure provides data at rest encryption by default. For highly sensitive data, yo
 
 ## Asset Management
 
-*For more information, see the [Azure Security Benchmark: Asset Management](/azure/security/benchmarks/security-controls-v2-asset-management).*
+*For more information, see the [Azure Security Benchmark: Asset Management](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-asset-management).*
 
 ### AM-1: Ensure security team has visibility into risks for assets
 
@@ -508,7 +511,7 @@ Apply tags to your Azure resources, resource groups, and subscriptions to logica
 
 - [Azure Security Center asset inventory management](../security-center/asset-inventory.md)
 
-- [For more information about tagging assets, see the resource naming and tagging decision guide](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
+- [For more information about tagging assets, see the resource naming and tagging decision guide](https://docs.azure.cn/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -542,7 +545,7 @@ Remove Azure resources when they are no longer needed. Ensure administrators reg
 
 ### AM-5: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resources Manager by configuring "Block access" for the "Microsoft Azure Management" App.
+**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resources Manager by configuring "Block access" for the "21Vianet Azure Management" App.
 
 - [How to configure Conditional Access to block access to Azure Resources Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -552,7 +555,7 @@ Remove Azure resources when they are no longer needed. Ensure administrators reg
 
 ## Logging and Threat Detection
 
-*For more information, see the [Azure Security Benchmark: Logging and Threat Detection](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
+*For more information, see the [Azure Security Benchmark: Logging and Threat Detection](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### LT-2: Enable threat detection for Azure identity and access management
 
@@ -647,9 +650,9 @@ In Azure Monitor, you can set your Log Analytics workspace retention period acco
 
 **Guidance**: Ensure your organization has processes to respond to security incidents, has updated these processes for Azure, and is regularly exercising them to ensure readiness.
 
-- [Implement security across the enterprise environment](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [Implement security across the enterprise environment](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-- [Incident response reference guide](/microsoft-365/downloads/IR-Reference-Guide.pdf)
+- [Incident response reference guide](https://docs.azure.cn/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -657,7 +660,7 @@ In Azure Monitor, you can set your Log Analytics workspace retention period acco
 
 ### IR-2: Preparation – setup incident notification
 
-**Guidance**: Set up security incident contact information in Azure Security Center. This contact information is used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. You also have options to customize incident alert and notification in different Azure services based on your incident response needs. 
+**Guidance**: Set up security incident contact information in Azure Security Center. This contact information is used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. You also have options to customize incident alert and notification in different Azure services based on your incident response needs. 
 
 - [How to set the Azure Security Center security contact](../security-center/security-center-provide-security-contact-details.md)
 
@@ -705,7 +708,7 @@ Azure Sentinel provides extensive data analytics across virtually any log source
 
 - [Snapshot a Linux machine's disk](../virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-- [Microsoft Azure Support diagnostic information and memory dump collection](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
+- [21Vianet Azure Support diagnostic information and memory dump collection](https://www.azure.cn/support/legal/support-diagnostic-information-collection/) 
 
 - [Investigate incidents with Azure Sentinel](../sentinel/tutorial-investigate-cases.md)
 
@@ -746,7 +749,7 @@ Use workflow automation features in Azure Security Center and Azure Sentinel to 
 
 ## Posture and Vulnerability Management
 
-*For more information, see the [Azure Security Benchmark: Posture and Vulnerability Management](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
+*For more information, see the [Azure Security Benchmark: Posture and Vulnerability Management](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### PV-1: Establish secure configurations for Azure services 
 
@@ -760,7 +763,7 @@ You can use Azure Blueprints to automate deployment and configuration of service
 
 - [Working with security policies in Azure Security Center](../security-center/tutorial-security-policy.md)
 
-- [Illustration of Guardrails implementation in Enterprise Scale Landing Zone](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
+- [Illustration of Guardrails implementation in Enterprise Scale Landing Zone](https://docs.azure.cn/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 
 - [Tutorial: Create and manage policies to enforce compliance](../governance/policy/tutorials/create-and-manage.md)
 
@@ -787,7 +790,7 @@ You can use Azure Blueprints to automate deployment and configuration of service
 ### PV-8: Conduct regular attack simulation
 
 **Guidance**: As required, conduct penetration testing or red team activities on your Azure resources and ensure remediation of all critical security findings.
-Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Microsoft policies. Use Microsoft's strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications.
+Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Azure policies. Use Azure's strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications.
 
 - [Penetration testing in Azure](../security/fundamentals/pen-testing.md)
 
@@ -823,32 +826,32 @@ Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure you
 
 This strategy should include documented guidance, policy, and standards for the following elements: 
 
--	Data classification standard in accordance with the business risks
+- Data classification standard in accordance with the business risks
 
--	Security organization visibility into risks and asset inventory 
+- Security organization visibility into risks and asset inventory 
 
--	Security organization approval of Azure services for use 
+- Security organization approval of Azure services for use 
 
--	Security of assets through their lifecycle
+- Security of assets through their lifecycle
 
--	Required access control strategy in accordance with organizational data classification
+- Required access control strategy in accordance with organizational data classification
 
--	Use of Azure native and third-party data protection capabilities
+- Use of Azure native and third-party data protection capabilities
 
--	Data encryption requirements for in-transit and at-rest use cases
+- Data encryption requirements for in-transit and at-rest use cases
 
--	Appropriate cryptographic standards
+- Appropriate cryptographic standards
 
 For more information, see the following references:
-- [Azure Security Architecture Recommendation - Storage, data, and encryption](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Azure Security Architecture Recommendation - Storage, data, and encryption](https://docs.azure.cn/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure Security Fundamentals - Azure Data security, encryption, and storage](../security/fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework - Azure data security and encryption best practices](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
+- [Cloud Adoption Framework - Azure data security and encryption best practices](../security/fundamentals/data-encryption-best-practices.md?bc=%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure Security Benchmark - Asset management](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure Security Benchmark - Asset management](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure Security Benchmark - Data Protection](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Security Benchmark - Data Protection](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -862,11 +865,11 @@ Carefully balance the need for security separation with the need to enable daily
 
 Ensure that the segmentation strategy is implemented consistently across control types including network security, identity and access models, and application permission/access models, and human process controls.
 
-- [Guidance on segmentation strategy in Azure (video)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+- [Guidance on segmentation strategy in Azure (video)](https://docs.azure.cn/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
-- [Guidance on segmentation strategy in Azure (document)](/security/compass/governance#enterprise-segmentation-strategy)
+- [Guidance on segmentation strategy in Azure (document)](https://docs.azure.cn/security/compass/governance#enterprise-segmentation-strategy)
 
-- [Align network segmentation with enterprise segmentation strategy](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
+- [Align network segmentation with enterprise segmentation strategy](https://docs.azure.cn/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -876,7 +879,7 @@ Ensure that the segmentation strategy is implemented consistently across control
 
 **Guidance**: Continuously measure and mitigate risks to your individual assets and the environment they are hosted in. Prioritize high value assets and highly-exposed attack surfaces, such as published applications, network ingress and egress points, user and administrator endpoints, etc.
 
-- [Azure Security Benchmark - Posture and vulnerability management](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Security Benchmark - Posture and vulnerability management](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -886,11 +889,11 @@ Ensure that the segmentation strategy is implemented consistently across control
 
 **Guidance**: Ensure you document and communicate a clear strategy for roles and responsibilities in your security organization. Prioritize providing clear accountability for security decisions, educating everyone on the shared responsibility model, and educate technical teams on technology to secure the cloud.
 
-- [Azure Security Best Practice 1 – People: Educate Teams on Cloud Security Journey](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
+- [Azure Security Best Practice 1 – People: Educate Teams on Cloud Security Journey](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
-- [Azure Security Best Practice 2 - People: Educate Teams on Cloud Security Technology](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
+- [Azure Security Best Practice 2 - People: Educate Teams on Cloud Security Technology](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
-- [Azure Security Best Practice 3 - Process: Assign Accountability for Cloud Security Decisions](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [Azure Security Best Practice 3 - Process: Assign Accountability for Cloud Security Decisions](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -902,26 +905,26 @@ Ensure that the segmentation strategy is implemented consistently across control
 
 This strategy should include documented guidance, policy, and standards for the following elements: 
 
--	Centralized network management and security responsibility
+- Centralized network management and security responsibility
 
--	Virtual network segmentation model aligned with the enterprise segmentation strategy
+- Virtual network segmentation model aligned with the enterprise segmentation strategy
 
--	Remediation strategy in different threat and attack scenarios
+- Remediation strategy in different threat and attack scenarios
 
--	Internet edge and ingress and egress strategy
+- Internet edge and ingress and egress strategy
 
--	Hybrid cloud and on-premises interconnectivity strategy
+- Hybrid cloud and on-premises interconnectivity strategy
 
--	Up-to-date network security artifacts (e.g. network diagrams, reference network architecture)
+- Up-to-date network security artifacts (e.g. network diagrams, reference network architecture)
 
 For more information, see the following references:
-- [Azure Security Best Practice 11 - Architecture. Single unified security strategy](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Azure Security Best Practice 11 - Architecture. Single unified security strategy](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark - Network Security](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure Security Benchmark - Network Security](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Azure network security overview](../security/fundamentals/network-overview.md)
 
-- [Enterprise network architecture strategy](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
+- [Enterprise network architecture strategy](https://docs.azure.cn/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -933,23 +936,23 @@ For more information, see the following references:
 
 This strategy should include documented guidance, policy, and standards for the following elements: 
 
--	A centralized identity and authentication system and its interconnectivity with other internal and external identity systems
+- A centralized identity and authentication system and its interconnectivity with other internal and external identity systems
 
--	Strong authentication methods in different use cases and conditions
+- Strong authentication methods in different use cases and conditions
 
--	Protection of highly privileged users
+- Protection of highly privileged users
 
--	Anomaly user activities monitoring and handling  
+- Anomaly user activities monitoring and handling  
 
--	User identity and access review and reconciliation process
+- User identity and access review and reconciliation process
 
 For more information, see the following references:
 
-- [Azure Security Benchmark - Identity management](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure Security Benchmark - Identity management](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure Security Benchmark - Privileged access](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Security Benchmark - Privileged access](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-privileged-access)
 
-- [Azure Security Best Practice 11 - Architecture. Single unified security strategy](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Azure Security Best Practice 11 - Architecture. Single unified security strategy](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure identity management security overview](../security/fundamentals/identity-management-overview.md)
 
@@ -963,31 +966,31 @@ For more information, see the following references:
 
 This strategy should include documented guidance, policy, and standards for the following elements: 
 
--	The security operations (SecOps) organization’s role and responsibilities 
+- The security operations (SecOps) organization’s role and responsibilities 
 
--	A well-defined incident response process aligning with NIST or another industry framework 
+- A well-defined incident response process aligning with NIST or another industry framework 
 
--	Log capture and retention to support threat detection, incident response, and compliance needs
+- Log capture and retention to support threat detection, incident response, and compliance needs
 
--	Centralized visibility of and correlation information about threats, using SIEM, native Azure capabilities, and other sources 
+- Centralized visibility of and correlation information about threats, using SIEM, native Azure capabilities, and other sources 
 
--	Communication and notification plan with your customers, suppliers, and public parties of interest
+- Communication and notification plan with your customers, suppliers, and public parties of interest
 
--	Use of Azure native and third-party platforms for incident handling, such as logging and threat detection, forensics, and attack remediation and eradication
+- Use of Azure native and third-party platforms for incident handling, such as logging and threat detection, forensics, and attack remediation and eradication
 
--	Processes for handling incidents and post-incident activities, such as lessons learned and evidence retention
+- Processes for handling incidents and post-incident activities, such as lessons learned and evidence retention
 
 For more information, see the following references:
 
-- [Azure Security Benchmark - Logging and threat detection](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure Security Benchmark - Logging and threat detection](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Security Benchmark - Incident response](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure Security Benchmark - Incident response](https://docs.azure.cn/azure/security/benchmarks/security-controls-v2-incident-response)
 
-- [Azure Security Best Practice 4 - Process. Update Incident Response Processes for Cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [Azure Security Best Practice 4 - Process. Update Incident Response Processes for Cloud](https://docs.azure.cn/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-- [Azure Adoption Framework, logging, and reporting decision guide](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
+- [Azure Adoption Framework, logging, and reporting decision guide](https://docs.azure.cn/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
-- [Azure enterprise scale, management, and monitoring](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
+- [Azure enterprise scale, management, and monitoring](https://docs.azure.cn/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -997,3 +1000,7 @@ For more information, see the following references:
 
 - See the [Azure Security Benchmark V2 overview](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
+
+
+<!-- Update_Description: new article about security baseline -->
+<!--NEW.date: 12/21/2020-->

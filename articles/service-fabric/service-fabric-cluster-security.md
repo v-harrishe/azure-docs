@@ -2,7 +2,11 @@
 title: Secure an Azure Service Fabric cluster 
 description: Learn about security scenarios for an Azure Service Fabric cluster, and the various technologies you can use to implement them.
 ms.topic: conceptual
-ms.date: 08/14/2018
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Service Fabric cluster security scenarios
 
@@ -20,7 +24,7 @@ Node-to-node security helps secure communication between the VMs or computers in
 
 ![Diagram of node-to-node communication][Node-to-Node]
 
-Clusters running on Azure and standalone clusters running on Windows both can use either [certificate security](/previous-versions/msp-n-p/ff649801(v=pandp.10)) or [Windows security](/previous-versions/msp-n-p/ff649396(v=pandp.10)) for Windows Server computers.
+Clusters running on Azure and standalone clusters running on Windows both can use either [certificate security](https://docs.microsoft.com/previous-versions/msp-n-p/ff649801(v=pandp.10)) or [Windows security](https://docs.microsoft.com/previous-versions/msp-n-p/ff649396(v=pandp.10)) for Windows Server computers.
 
 ### Node-to-node certificate security
 
@@ -47,7 +51,7 @@ Client-to-node security authenticates clients and helps secure communication bet
 
 ![Diagram of client-to-node communication][Client-to-Node]
 
-Clusters running on Azure and standalone clusters running on Windows both can use either [certificate security](/previous-versions/msp-n-p/ff649801(v=pandp.10)) or [Windows security](/previous-versions/msp-n-p/ff649396(v=pandp.10)), though the recommendation is to use X.509 certificate authentication whenever possible.
+Clusters running on Azure and standalone clusters running on Windows both can use either [certificate security](https://docs.microsoft.com/previous-versions/msp-n-p/ff649801(v=pandp.10)) or [Windows security](https://docs.microsoft.com/previous-versions/msp-n-p/ff649396(v=pandp.10)), though the recommendation is to use X.509 certificate authentication whenever possible.
 
 ### Client-to-node certificate security
 
@@ -88,11 +92,11 @@ Set the Administrator and User client roles when you create the cluster. Assign 
 
 ## X.509 certificates and Service Fabric
 
-X.509 digital certificates commonly are used to authenticate clients and servers. They also are used to encrypt and digitally sign messages. Service Fabric uses X.509 certificates to secure a cluster and provide application security features. For more information about X.509 digital certificates, see [Working with certificates](/dotnet/framework/wcf/feature-details/working-with-certificates). You use [Key Vault](../key-vault/general/overview.md) to manage certificates for Service Fabric clusters in Azure.
+X.509 digital certificates commonly are used to authenticate clients and servers. They also are used to encrypt and digitally sign messages. Service Fabric uses X.509 certificates to secure a cluster and provide application security features. For more information about X.509 digital certificates, see [Working with certificates](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates). You use [Key Vault](../key-vault/general/overview.md) to manage certificates for Service Fabric clusters in Azure.
 
 Some important things to consider:
 
-* To create certificates for clusters that are running production workloads, use a correctly configured Windows Server certificate service, or one from an approved [certificate authority (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
+* To create certificates for clusters that are running production workloads, use a correctly configured Windows Server certificate service, or one from an approved [certificate authority (CA)](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Certificate_authority).
 * Never use any temporary or test certificates that you create by using tools like MakeCert.exe in a production environment.
 * You can use a self-signed certificate, but only in a test cluster. Do not use a self-signed certificate in production.
 * When generating the certificate thumbprint, be sure to generate a SHA1 thumbprint. SHA1 is what's used when configuring the Client and Cluster certificate thumbprints.
@@ -107,7 +111,7 @@ The certificate must meet the following requirements:
 
 * The certificate must contain a private key. These certificates typically have extensions .pfx or .pem  
 * The certificate must be created for key exchange, which is exportable to a Personal Information Exchange (.pfx) file.
-* The **certificate's subject name must match the domain that you use to access the Service Fabric cluster**. This matching is required to provide a TLS for the cluster's HTTPS management endpoint and Service Fabric Explorer. You cannot obtain a TLS/SSL certificate from a certificate authority (CA) for the *.cloudapp.azure.com domain. You must obtain a custom domain name for your cluster. When you request a certificate from a CA, the certificate's subject name must match the custom domain name that you use for your cluster.
+* The **certificate's subject name must match the domain that you use to access the Service Fabric cluster**. This matching is required to provide a TLS for the cluster's HTTPS management endpoint and Service Fabric Explorer. You cannot obtain a TLS/SSL certificate from a certificate authority (CA) for the *.cloudapp.chinacloudapi.cn domain. You must obtain a custom domain name for your cluster. When you request a certificate from a CA, the certificate's subject name must match the custom domain name that you use for your cluster.
 
 Some other things to consider:
 
@@ -140,9 +144,15 @@ By default the cluster certificate has admin client privileges. These additional
 * [Create a cluster by using the Azure portal](service-fabric-cluster-creation-via-portal.md)
 
 <!--Image references-->
+
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
+
+
+
+<!-- Update_Description: new article about service fabric cluster security -->
+<!--NEW.date: 12/21/2020-->

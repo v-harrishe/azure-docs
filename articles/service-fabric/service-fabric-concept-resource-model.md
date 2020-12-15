@@ -2,7 +2,11 @@
 title: Azure Service Fabric application resource model  
 description: This article provides an overview of managing an Azure Service Fabric application by using Azure Resource Manager.
 ms.topic: conceptual 
-ms.date: 10/21/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Service Fabric application resource model
@@ -50,7 +54,7 @@ Resources in your cluster can be secured by setting the public access level to *
 
 * Authorize access to blobs and queues by using [Azure Active Directory](../storage/common/storage-auth-aad-app.md).
 * Grant access to Azure blob and queue data by using [Azure RBAC in the Azure portal](../storage/common/storage-auth-aad-rbac-portal.md).
-* Delegate access by using a [shared access signature](/rest/api/storageservices/delegate-access-with-shared-access-signature).
+* Delegate access by using a [shared access signature](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 The example in the following screenshot uses anonymous read access for blobs.
 
@@ -94,7 +98,7 @@ The sample application contains [Azure Resource Manager templates](https://githu
 | applicationTypeVersion | The version of the application type         | 1.0.0                                                        | Must match ApplicationManifest.xml                 |
 | serviceName            | The name of the service         | Voting~VotingWeb                                             | Must be in the format ApplicationName~ServiceType            |
 | serviceTypeName        | The type name of the service                | VotingWeb                                                    | Must match ServiceManifest.xml                 |
-| appPackageUrl          | The blob storage URL of the application     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | The URL of the application package in blob storage (the procedure to set the URL is described later in the article) |
+| appPackageUrl          | The blob storage URL of the application     | https:\//servicefabricapps.blob.core.chinacloudapi.cn/apps/Voting.sfpkg | The URL of the application package in blob storage (the procedure to set the URL is described later in the article) |
 
 ```json
 {
@@ -166,13 +170,13 @@ You might upgrade an application that's already deployed to a Service Fabric clu
 
 To delete an application that was deployed by using the application resource model in Resource Manager:
 
-1. Use the [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet to get the resource ID for the application:
+1. Use the [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet to get the resource ID for the application:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Use the [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet to delete the application resources:
+1. Use the [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet to delete the application resources:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -187,10 +191,15 @@ Get information about the application resource model:
 * [Best practices: Infrastructure as code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
 * [Manage applications and services as Azure resources](service-fabric-best-practices-infrastructure-as-code.md)
 
-
 <!--Image references-->
+
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png
 [CreateBlob]: ./media/service-fabric-application-model/create-blob.png
 [PackageApplication]: ./media/service-fabric-application-model/package-application.png
 [ZipApplication]: ./media/service-fabric-application-model/zip-application.png
 [UploadAppPkg]: ./media/service-fabric-application-model/upload-app-pkg.png
+
+
+
+<!-- Update_Description: new article about service fabric concept resource model -->
+<!--NEW.date: 12/21/2020-->

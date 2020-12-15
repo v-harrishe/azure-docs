@@ -2,14 +2,18 @@
 title: Configure your own key for encrypting Azure Service Bus data at rest
 description: This article provides information on how to configure your own key for encrypting Azure Service Bus data rest. 
 ms.topic: conceptual
-ms.date: 06/23/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Configure customer-managed keys for encrypting Azure Service Bus data at rest by using the Azure portal
-Azure Service Bus Premium provides encryption of data at rest with Azure Storage Service Encryption (Azure SSE). Service Bus Premium relies on Azure Storage to store the data and by default, all the data that is stored with Azure Storage is encrypted using Microsoft-managed keys. 
+Azure Service Bus Premium provides encryption of data at rest with Azure Storage Service Encryption (Azure SSE). Service Bus Premium relies on Azure Storage to store the data and by default, all the data that is stored with Azure Storage is encrypted using Azure-managed keys. 
 
 ## Overview
-Azure Service Bus now supports the option of encrypting data at rest with either Microsoft-managed keys or customer-managed keys (Bring Your Own Key - BYOK). this feature enables you to create, rotate, disable, and revoke access to the customer-managed keys that are used for encrypting Azure Service Bus at rest.
+Azure Service Bus now supports the option of encrypting data at rest with either Azure-managed keys or customer-managed keys (Bring Your Own Key - BYOK). this feature enables you to create, rotate, disable, and revoke access to the customer-managed keys that are used for encrypting Azure Service Bus at rest.
 
 Enabling the BYOK feature is a one time setup process on your namespace.
 
@@ -32,7 +36,7 @@ To enable customer-managed keys in the Azure portal, follow these steps:
 2. On the **Settings** page of your Service Bus namespace, select **Encryption**.
 3. Select the **Customer-managed key encryption at rest** as shown in the following image.
 
-    ![Enable customer managed key](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    :::image type="content" source="./media/configure-customer-managed-key/enable-customer-managed-key.png" alt-text="Enable customer managed key":::
 
 
 ## Set up a key vault with keys
@@ -40,28 +44,28 @@ To enable customer-managed keys in the Azure portal, follow these steps:
 After you enable customer-managed keys, you need to associate the customer managed key with your Azure Service Bus namespace. Service Bus supports only Azure Key Vault. If you enable the **Encryption with customer-managed key** option in the previous section, you need to have the key imported into Azure Key Vault. Also, the keys must have **Soft Delete** and **Do Not Purge** configured for the key. These settings can be configured using [PowerShell](../key-vault/general/key-vault-recovery.md) or [CLI](../key-vault/general/key-vault-recovery.md).
 
 1. To create a new key vault, follow the Azure Key Vault [Quickstart](../key-vault/general/overview.md). For more information about importing existing keys, see [About keys, secrets, and certificates](../key-vault/general/about-keys-secrets-certificates.md).
-1. To turn on both soft delete and purge protection when creating a vault, use the [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) command.
+1. To turn on both soft delete and purge protection when creating a vault, use the [az keyvault create](https://docs.azure.cn/cli/keyvault#az_keyvault_create) command.
 
-    ```azurecli-interactive
-    az keyvault create --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+    ```azurecli
+    az keyvault create --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --location chinanorth --enable-soft-delete true --enable-purge-protection true
     ```    
-1. To add purge protection to an existing vault (that already has soft delete enabled), use the [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) command.
+1. To add purge protection to an existing vault (that already has soft delete enabled), use the [az keyvault update](https://docs.azure.cn/cli/keyvault#az_keyvault_update) command.
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault update --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. Create keys by following these steps:
     1. To create a new key, select **Generate/Import** from the **Keys** menu under **Settings**.
         
-        ![Select Generate/Import button](./media/configure-customer-managed-key/select-generate-import.png)
+        :::image type="content" source="./media/configure-customer-managed-key/select-generate-import.png" alt-text="Select Generate/Import button":::
 
     1. Set **Options** to **Generate** and give the key a name.
 
-        ![Create a key](./media/configure-customer-managed-key/create-key.png) 
+        :::image type="content" source="./media/configure-customer-managed-key/create-key.png" alt-text="Create a key"::: 
 
     1. You can now select this key to associate with the Service Bus namespace for encrypting from the drop-down list. 
 
-        ![Select key from key vault](./media/configure-customer-managed-key/select-key-from-key-vault.png)
+        :::image type="content" source="./media/configure-customer-managed-key/select-key-from-key-vault.png" alt-text="Select key from key vault":::
         > [!NOTE]
         > For redundancy, you can add up to 3 keys. In the event that one of the keys has expired, or is not accessible, the other keys will be used for encryption.
         
@@ -302,7 +306,7 @@ In this step, you will update the Service Bus namespace with key vault informati
              "value":"<KeyName>"
           },
           "keyVaultUri":{
-             "value":"https://<KeyVaultName>.vault.azure.net"
+             "value":"https://<KeyVaultName>.vault.azure.cn"
           }
        }
     }
@@ -318,3 +322,7 @@ In this step, you will update the Service Bus namespace with key vault informati
 See the following articles:
 - [Service Bus overview](service-bus-messaging-overview.md)
 - [Key Vault overview](../key-vault/general/overview.md)
+
+
+<!-- Update_Description: new article about configure customer managed key -->
+<!--NEW.date: 12/21/2020-->

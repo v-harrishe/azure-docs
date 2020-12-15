@@ -1,10 +1,13 @@
 ---
 title: Create a pool with disk encryption enabled
 description: Learn how to use disk encryption configuration to encrypt nodes with a platform-managed key.
-author: pkshultz
+
 ms.topic: how-to
-ms.date: 10/08/2020
-ms.author: peshultz
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: references_regions
 ---
 
@@ -25,9 +28,9 @@ Batch will apply one of these disk encryption technologies on compute nodes, bas
 - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
-> Support for encryption at host using a platform-managed key in Azure Batch is currently in public preview for the East US, West US 2, South Central US, US Gov Virginia, and US Gov Arizona regions.
+> Support for encryption at host using a platform-managed key in Azure Batch is currently in public preview for the China East, China North 2, South China North, US Gov Virginia, and US Gov Arizona regions.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> For more information, see [Supplemental Terms of Use for Azure Azure Previews](https://www.azure.cn/support/legal/subscription-agreement/).
 
 You won't be able to specify which encryption method will be applied to the nodes in your pool. Instead, you provide the target disks you want to encrypt on their nodes, and Batch can choose the appropriate encryption method, ensuring the specified disks are encrypted on the compute node.
 
@@ -90,7 +93,7 @@ Request body:
 
 ### Azure CLI
 
-```azurecli-interactive
+```azurecli
 az batch pool create \
     --id diskencryptionPool \
     --vm-size Standard_DS1_V2 \
@@ -104,3 +107,7 @@ az batch pool create \
 
 - Learn more about [server-side encryption of Azure Disk Storage](../virtual-machines/disk-encryption.md).
 - For an in-depth overview of Batch, see [Batch service workflow and resources](batch-service-workflow-features.md).
+
+
+<!-- Update_Description: new article about disk encryption -->
+<!--NEW.date: 12/21/2020-->

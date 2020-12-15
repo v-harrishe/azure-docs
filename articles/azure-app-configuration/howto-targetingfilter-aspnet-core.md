@@ -3,10 +3,14 @@ title: Enable staged rollout of features for targeted audiences
 titleSuffix: Azure App Configuration
 description: Learn how to enable staged rollout of features for targeted audiences
 ms.service: azure-app-configuration
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.topic: conceptual
-ms.date: 11/20/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Enable staged rollout of features for targeted audiences
@@ -131,7 +135,7 @@ The entire *ConfigureServices* method will look like this:
 1. Select the context menu for the *Beta* feature flag that you created in the quickstart. Select **Edit**.
 
     > [!div class="mx-imgBorder"]
-    > ![Edit Beta feature flag](./media/edit-beta-feature-flag.png)
+    > :::image type="content" source="./media/edit-beta-feature-flag.png" alt-text="Edit Beta feature flag":::
 
 1. In the **Edit** screen, select the **Enable feature flag** checkbox if it isn't already selected. Then select the **Use feature filter** checkbox.
 
@@ -146,7 +150,7 @@ The entire *ConfigureServices* method will look like this:
     The feature filter screen will look like this:
 
     > [!div class="mx-imgBorder"]
-    > ![Conditional feature flag](./media/feature-flag-filter-enabled.png)
+    > :::image type="content" source="./media/feature-flag-filter-enabled.png" alt-text="Conditional feature flag":::
 
     These settings result in the following behavior:
 
@@ -175,3 +179,7 @@ You can create additional users with `@contoso.com` email addresses to see the b
 
 > [!div class="nextstepaction"]
 > [Feature management overview](./concept-feature-management.md)
+
+
+<!-- Update_Description: new article about howto targetingfilter aspnet core -->
+<!--NEW.date: 12/21/2020-->

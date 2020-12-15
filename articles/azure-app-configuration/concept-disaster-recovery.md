@@ -1,11 +1,15 @@
 ---
 title: Azure App Configuration resiliency and disaster recovery
 description: Lean how to implement resiliency and disaster recovery with Azure App Configuration.
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 07/09/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Resiliency and disaster recovery
@@ -16,7 +20,7 @@ Currently, Azure App Configuration is a regional service. Each configuration sto
 
 To realize cross-region redundancy, you need to create multiple App Configuration stores in different regions. With this setup, your application has at least one additional configuration store to fall back on if the primary store becomes inaccessible. The following diagram illustrates the topology between your application and its primary and secondary configuration stores:
 
-![Geo-redundant stores](./media/geo-redundant-app-configuration-stores.png)
+:::image type="content" source="./media/geo-redundant-app-configuration-stores.png" alt-text="Geo-redundant stores":::
 
 Your application loads its configuration from both the primary and secondary stores in parallel. Doing this increases the chance of successfully getting the configuration data. You're responsible for keeping the data in both stores in sync. The following sections explain how you can build geo-resiliency into your application.
 
@@ -88,3 +92,8 @@ The backup process can be automated by using Azure Functions. It leverages the i
 ## Next steps
 
 In this article, you learned how to augment your application to achieve geo-resiliency during runtime for App Configuration. You also can embed configuration data from App Configuration at build or deployment time. For more information, see [Integrate with a CI/CD pipeline](./integrate-ci-cd-pipeline.md).
+
+
+
+<!-- Update_Description: new article about concept disaster recovery -->
+<!--NEW.date: 12/21/2020-->

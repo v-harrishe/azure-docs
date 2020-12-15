@@ -2,10 +2,13 @@
 title: Handle Service Bus events via Event Grid using Azure Logic Apps
 description: This article provides steps for handling Service Bus events via Event Grid using Azure Logic Apps.
 documentationcenter: .net
-author: spelluru
+
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.author: spelluru
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 
@@ -30,7 +33,7 @@ In this step, you create an Azure logic app that receives Service Bus events via
     1. Search for **Event Grid**. 
     2. Select **When a resource event occurs - Azure Event Grid**. 
 
-        ![Logic Apps Designer - select Event Grid trigger](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png" alt-text="Logic Apps Designer - select Event Grid trigger":::
 4. Select **Sign in**, enter your Azure credentials, and select **Allow Access**. 
 5. On the **When a resource event occurs** page, do the following steps:
     1. Select your Azure subscription. 
@@ -38,23 +41,23 @@ In this step, you create an Azure logic app that receives Service Bus events via
     3. For **Resource Name**, select your Service Bus namespace. 
     4. Select **Add new parameter**, and select **Suffix Filter**. 
     5. For **Suffix Filter**, enter the name of your second Service Bus topic subscription. 
-        ![Logic Apps Designer - configure event](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png" alt-text="Logic Apps Designer - configure event":::
 6. Select **+ New Step** in the designer, and do the following steps:
     1. Search for **Service Bus**.
     2. Select **Service Bus** in the list. 
     3. Select for **Get messages** in the **Actions** list. 
     4. Select **Get messages from a topic subscription (peek-lock)**. 
 
-        ![Logic Apps Designer - get messages action](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png" alt-text="Logic Apps Designer - get messages action":::
     5. Enter a **name for the connection**. For example: **Get messages from the topic subscription**, and select the Service Bus namespace. 
 
-        ![Logic Apps Designer - select the Service Bus namespace](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png" alt-text="Logic Apps Designer - select the Service Bus namespace"::: 
     6. Select **RootManageSharedAccessKey**, and then select **Create**.
 
-        ![Logic Apps Designer - select the shared access key](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png" alt-text="Logic Apps Designer - select the shared access key"::: 
     8. Select your **topic** and **subscription**. 
     
-        ![Screenshot that shows where you select your topic and subscription.](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png" alt-text="Screenshot that shows where you select your topic and subscription.":::
 7. Select **+ New step**, and do the following steps: 
     1. Select **Service Bus**.
     2. Select **Complete the message in a topic subscription** from the list of actions. 
@@ -62,14 +65,14 @@ In this step, you create an Azure logic app that receives Service Bus events via
     4. Select the second **subscription** to the topic.
     5. For **Lock token of the message**, select **Lock Token** from the **Dynamic content**. 
 
-        ![Logic Apps Designer - complete the message](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png" alt-text="Logic Apps Designer - complete the message":::
 8. Select **Save** on the toolbar on the Logic Apps Designer to save the logic app. 
 
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/save-logic-app.png" alt-text="Save logic app":::
 1. If you haven't already sent test messages to the topic, follow instructions in the [Send messages to the Service Bus topic](#send-messages-to-the-service-bus-topic) section to send messages to the topic. 
 1. Switch to the **Overview** page of your logic app. You see the logic app runs in the **Runs history** for the messages sent. It could take a few minutes before you see the logic app runs. Select **Refresh** on the toolbar to refresh the page. 
 
-    ![Logic Apps Designer - logic app runs](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-runs.png" alt-text="Logic Apps Designer - logic app runs":::
 1. Select a logic app run to see the details. Notice that it processed 5 messages in the for loop. 
     
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-run-details.png" alt-text="Logic app run details":::    
@@ -95,7 +98,7 @@ If you don't see any invocations after waiting and refreshing for sometime, foll
 * Learn more about [Azure Event Grid](../event-grid/index.yml).
 * Learn more about [Azure Functions](../azure-functions/index.yml).
 * Learn more about the [Logic Apps feature of Azure App Service](../logic-apps/index.yml).
-* Learn more about [Azure Service Bus](/azure/service-bus/).
+* Learn more about [Azure Service Bus](https://docs.azure.cn/azure/service-bus/).
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png
@@ -116,3 +119,7 @@ If you don't see any invocations after waiting and refreshing for sometime, foll
 [18]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid18.png
 [20]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal.png
 [21]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal2.png
+
+
+<!-- Update_Description: new article about service bus to event grid integration example -->
+<!--NEW.date: 12/21/2020-->

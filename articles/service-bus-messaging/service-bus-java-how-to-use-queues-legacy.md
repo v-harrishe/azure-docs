@@ -3,7 +3,11 @@ title: Use Azure Service Bus queues with Java
 description: In this tutorial, you learn how to create Java applications to send messages to and receive messages from an Azure Service Bus queue. 
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 06/23/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ---
 
@@ -17,7 +21,7 @@ In this tutorial, you learn how to create Java applications to send messages to 
 
 
 ## Prerequisites
-1. An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) or sign up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
 2. If you don't have a queue to work with, follow steps in the [Use Azure portal to create a Service Bus queue](service-bus-quickstart-portal.md) article to create a queue.
     1. Read the quick **overview** of Service Bus **queues**. 
     2. Create a Service Bus **namespace**. 
@@ -29,9 +33,9 @@ In this tutorial, you learn how to create Java applications to send messages to 
 ## Configure your application to use Service Bus
 Make sure you have installed the [Azure SDK for Java][Azure SDK for Java] before building this sample. 
 
-If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **Microsoft Azure Libraries for Java** to your project. If you are using IntelliJ, see [Install the Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
+If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **21Vianet Azure Libraries for Java** to your project. If you are using IntelliJ, see [Install the Azure Toolkit for IntelliJ](https://docs.azure.cn/azure/developer/java/toolkit-for-intellij/installation). 
 
-![Add Microsoft Azure Libraries for Java to your Eclipse project](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png" alt-text="Add Azure Azure Libraries for Java to your Eclipse project":::
 
 
 Add the following `import` statements to the top of the Java file:
@@ -102,7 +106,7 @@ public void run() throws Exception {
 
 ```
 
-Messages sent to, and received from Service Bus queues are instances of the [Message](/java/api/com.microsoft.azure.servicebus.message) class. Message objects have a set of standard properties (such as Label and TimeToLive), a dictionary that is used to hold custom application-specific properties, and a body of arbitrary application data. An application can set the body of the message by passing any serializable object into the constructor of the Message, and the appropriate serializer will then be used to serialize the object. Alternatively, you can provide a **java.IO.InputStream** object.
+Messages sent to, and received from Service Bus queues are instances of the [Message](https://docs.azure.cn/java/api/com.microsoft.azure.servicebus.message) class. Message objects have a set of standard properties (such as Label and TimeToLive), a dictionary that is used to hold custom application-specific properties, and a body of arbitrary application data. An application can set the body of the message by passing any serializable object into the constructor of the Message, and the appropriate serializer will then be used to serialize the object. Alternatively, you can provide a **java.IO.InputStream** object.
 
 
 Service Bus queues support a maximum message size of 256 KB in the [Standard tier](service-bus-premium-messaging.md) and 1 MB in the [Premium tier](service-bus-premium-messaging.md). The header, which includes the standard and custom application properties, can have
@@ -229,7 +233,11 @@ constant across delivery attempts.
 You can find Java samples on GitHub in the [azure-service-bus repository](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
 
-[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
-[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
+[Azure SDK for Java]: /developer/java/sdk/java-sdk-azure-get-started
+[Azure Toolkit for Eclipse]: /developer/java/toolkit-for-eclipse/installation
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[BrokeredMessage]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+
+
+<!-- Update_Description: new article about service bus java how to use queues legacy -->
+<!--NEW.date: 12/21/2020-->

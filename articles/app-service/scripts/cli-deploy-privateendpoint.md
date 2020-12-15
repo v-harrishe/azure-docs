@@ -1,12 +1,15 @@
 ---
-title: 'CLI: Deploy Private Endpoint for Web App with Azure CLI'
+title: CLI - Deploy Private Endpoint for Web App with Azure CLI
 description: Learn how to use the Azure CLI to deploy Private Endpoint for your Web App
-author: ericgre
+
 ms.assetid: a56faf72-7237-41e7-85ce-da8346f2bcaa
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/06/2020
-ms.author: ericg
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.service: app-service
 ms.workload: web
 ---
@@ -20,23 +23,23 @@ This sample script creates an app in App Service with its related resources, and
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - This tutorial requires version 2.0.28 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
+ - This tutorial requires version 2.0.28 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
 
 ## Create a resource group
 
-Before you can create any resource, you have to create a resource group to host the Web App, the Virtual Network, and other network components. Create a resource group with [az group create](/cli/azure/group). This example creates a resource group named *myResourceGroup* in the *francecentral* location:
+Before you can create any resource, you have to create a resource group to host the Web App, the Virtual Network, and other network components. Create a resource group with [az group create](https://docs.azure.cn/cli/group#az-group-create). This example creates a resource group named *myResourceGroup* in the *francecentral* location:
 
-```azurecli-interactive
+```azurecli
 az group create --name myResourceGroup --location francecentral 
 ```
 
 ## Create an App Service Plan
 
 You need to create an App Service Plan to host your Web App.
-Create an App Service Plan with [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create).
+Create an App Service Plan with [az appservice plan create](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create).
 This example creates App Service Plan named *myAppServicePlan* in the *francecentral* location with *P1V2* sku and only one worker: 
 
-```azurecli-interactive
+```azurecli
 az appservice plan create \
 --name myAppServicePlan \
 --resource-group myResourceGroup \
@@ -48,10 +51,10 @@ az appservice plan create \
 ## Create a Web App
 
 Now that you have an App Service Plan you can deploy a Web App.
-Create a Web App with [az appservice plan create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create.
+Create a Web App with [az appservice plan create](/cli/azure/webapp#az-webapp-create.
 This example creates a Web App named *mySiteName* in the Plan named *myAppServicePlan*
 
-```azurecli-interactive
+```azurecli
 az webapp create \
 --name mySiteName \
 --resource-group myResourceGroup \
@@ -60,9 +63,9 @@ az webapp create \
 
 ## Create a VNet
 
-Create a Virtual Network with [az network vnet create](/cli/azure/network/vnet). This example creates a default Virtual Network named *myVNet* with one subnet named *mySubnet*:
+Create a Virtual Network with [az network vnet create](https://docs.azure.cn/cli/network/vnet#az-network-vnet-create). This example creates a default Virtual Network named *myVNet* with one subnet named *mySubnet*:
 
-```azurecli-interactive
+```azurecli
 az network vnet create \
 --name myVNet \
 --resource-group myResourceGroup \
@@ -74,9 +77,9 @@ az network vnet create \
 
 ## Configure the Subnet 
 
-You need to update the subnet to disable private endpoint network policies. Update a subnet configuration named *mySubnet* with [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+You need to update the subnet to disable private endpoint network policies. Update a subnet configuration named *mySubnet* with [az network vnet subnet update](https://docs.azure.cn/cli/network/vnet/subnet#az_network_vnet_subnet_update):
 
-```azurecli-interactive
+```azurecli
 az network vnet subnet update \
 --name mySubnet \
 --resource-group myResourceGroup \
@@ -86,10 +89,10 @@ az network vnet subnet update \
 
 ## Create the Private Endpoint
 
-Create the Private Endpoint for your Web App with [az network private-endpoint create](/cli/azure/network/private-endpoint). 
+Create the Private Endpoint for your Web App with [az network private-endpoint create](https://docs.azure.cn/cli/network/private-endpoint#az-network-private-endpoint-create). 
 This example creates a Private Endpoint named *myPrivateEndpoint* in the VNet *myVNet* in the Subnet *mySubnet* with a connection named *myConnectionName* to the resource ID of my Web App /subscriptions/SubscriptionID/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp, the group parameter is *sites* for Web App type. 
 
-```azurecli-interactive
+```azurecli
 az network private-endpoint create \
 --name myPrivateEndpoint \
 --resource-group myResourceGroup \
@@ -105,7 +108,7 @@ az network private-endpoint create \
 At the end, you need to create a private DNS zone named *privatelink.azurewebsites.net* linked to the VNet to resolve DNS name of the Web App.
 
 
-```azurecli-interactive
+```azurecli
 az network private-dns zone create \
 --name privatelink.azurewebsites.net \
 --resource-group myResourceGroup
@@ -135,5 +138,10 @@ az network private-endpoint dns-zone-group create \
 
 ## Next steps
 
-- For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
+- For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
 - Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
+
+
+
+<!-- Update_Description: new article about cli deploy privateendpoint -->
+<!--NEW.date: 12/21/2020-->

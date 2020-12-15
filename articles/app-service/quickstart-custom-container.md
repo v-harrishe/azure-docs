@@ -1,9 +1,13 @@
 ---
-title: 'Quickstart: Run a custom container on App Service'
+title: Quickstart - Run a custom container on App Service
 description: Get started with containers on Azure App Service by deploying your first custom container.
-author: msangapu-msft
-ms.author: msangapu
-ms.date: 10/21/2019
+
+
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
@@ -42,13 +46,13 @@ Create an ASP.NET web app by following these steps:
 
 1. In **Configure your new project**, name the application _myfirstazurewebapp_, and then select **Create**.
 
-   ![Configure your web app project](./media/quickstart-custom-container/configure-web-app-project-container.png)
+   :::image type="content" source="./media/quickstart-custom-container/configure-web-app-project-container.png" alt-text="Configure your web app project":::
 
 1. You can deploy any type of ASP.NET web app to Azure. For this quickstart, choose the **MVC** template.
 
 1. Select **Docker support**, and make sure authentication is set to **No Authentication**. Select **Create**.
 
-   ![Create ASP.NET Web Application](./media/quickstart-custom-container/select-mvc-template-for-container.png)
+   :::image type="content" source="./media/quickstart-custom-container/select-mvc-template-for-container.png" alt-text="Create ASP.NET Web Application":::
 
 1. If the _Dockerfile_ file isn't opened automatically, open it from the **Solution Explorer**.
 
@@ -60,7 +64,7 @@ Create an ASP.NET web app by following these steps:
 
 1. From the Visual Studio menu, select **Debug** > **Start Without Debugging** to run the web app locally.
 
-   ![Run app locally](./media/quickstart-custom-container/local-web-app.png)
+   :::image type="content" source="./media/quickstart-custom-container/local-web-app.png" alt-text="Run app locally":::
 
 ## Publish to Docker Hub
 
@@ -70,19 +74,19 @@ Create an ASP.NET web app by following these steps:
 
 1. In Pick a **publish target**, select **Container Registry** and **Docker Hub**, and then click **Publish**.
 
-   ![Publish from project overview page](./media/quickstart-custom-container/publish-to-docker-vs2019.png)
+   :::image type="content" source="./media/quickstart-custom-container/publish-to-docker-vs2019.png" alt-text="Publish from project overview page":::
 
 1. Supply your Docker Hub account credentials and select **Save**.
 
    Wait for the deployment to complete. The **Publish** page now shows the repository name to use later.
 
-   ![Screenshot that highlights the repository name.](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   :::image type="content" source="./media/quickstart-custom-container/published-docker-repository-vs2019.png" alt-text="Screenshot that highlights the repository name.":::
 
 1. Copy this repository name for later.
 
 ## Create a Windows container app
 
-1. Sign in to the [Azure portal]( https://portal.azure.com).
+1. Sign in to the [Azure portal]( https://portal.azure.cn).
 
 1. Choose **Create a resource** in the upper left-hand corner of the Azure portal.
 
@@ -92,11 +96,11 @@ Create an ASP.NET web app by following these steps:
 
 1. Provide an app name, such as *win-container-demo* and choose **Windows** for **Operating System**. Select **Next: Docker** to continue.
 
-   ![Create a Web App for Containers](media/quickstart-custom-container/create-web-app-continer.png)
+   :::image type="content" source="media/quickstart-custom-container/create-web-app-continer.png" alt-text="Create a Web App for Containers":::
 
 1. For **Image Source**, choose **Docker Hub** and for **Image and tag**, enter the repository name you copied in [Publish to Docker Hub](#publish-to-docker-hub).
 
-   ![Configure your a Web App for Containers](media/quickstart-custom-container/configure-web-app-continer.png)
+   :::image type="content" source="media/quickstart-custom-container/configure-web-app-continer.png" alt-text="Configure your a Web App for Containers":::
 
     If you have a custom image elsewhere for your web application, such as in [Azure Container Registry](../container-registry/index.yml) or in any other private repository, you can configure it here.
 
@@ -106,7 +110,7 @@ Create an ASP.NET web app by following these steps:
 
 When the Azure operation is complete, a notification box is displayed.
 
-![Deployment succeeded](media/quickstart-custom-container/portal-create-finished.png)
+:::image type="content" source="media/quickstart-custom-container/portal-create-finished.png" alt-text="Deployment succeeded":::
 
 1. Click **Go to resource**.
 
@@ -114,11 +118,11 @@ When the Azure operation is complete, a notification box is displayed.
 
 A new browser page opens to the following page:
 
-![Windows Container App Starting](media/quickstart-custom-container/app-starting.png)
+:::image type="content" source="media/quickstart-custom-container/app-starting.png" alt-text="Windows Container App Starting":::
 
 Wait a few minutes and try again, until you get the default ASP.NET home page:
 
-![Windows Container App running](media/quickstart-custom-container/app-running-vs.png)
+:::image type="content" source="media/quickstart-custom-container/app-running-vs.png" alt-text="Windows Container App running":::
 
 **Congratulations!** You're running your first custom Windows container in Azure App Service.
 
@@ -158,11 +162,11 @@ The streamed logs looks like this:
 
 1. To tell App Service to pull in the new image from Docker Hub, restart the app. Back in the app page in the portal, click **Restart** > **Yes**.
 
-   ![Restart web app in Azure](./media/quickstart-custom-container/portal-restart-app.png)
+   :::image type="content" source="./media/quickstart-custom-container/portal-restart-app.png" alt-text="Restart web app in Azure":::
 
 [Browse to the container app](#browse-to-the-container-app) again. As you refresh the webpage, the app should revert to the "Starting up" page at first, then display the updated webpage again after a few minutes.
 
-![Updated web app in Azure](./media/quickstart-custom-container/azure-web-app-updated.png)
+:::image type="content" source="./media/quickstart-custom-container/azure-web-app-updated.png" alt-text="Updated web app in Azure":::
 
 ## Next steps
 
@@ -181,7 +185,7 @@ App Service on Linux provides pre-defined application stacks on Linux with suppo
 
 ## Prerequisites
 
-* An [Azure account](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
+* An [Azure account](https://www.azure.cn/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * The [Azure App Service extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). You can use this extension to create, manage, and deploy Linux Web Apps on the Azure Platform as a Service (PaaS).
@@ -198,7 +202,7 @@ To complete this quickstart, you will need a suitable web app image stored in an
 
 Next, launch VS Code and log into your Azure account using the App Service extension. To do this, select the Azure logo in the Activity Bar, navigate to the **APP SERVICE** explorer, then select **Sign in to Azure** and follow the instructions.
 
-![sign in to Azure](./media/quickstart-docker/sign-in.png)
+:::image type="content" source="./media/quickstart-docker/sign-in.png" alt-text="sign in to Azure":::
 
 ## Check prerequisites
 
@@ -214,11 +218,11 @@ docker --version
 
 Finally, ensure that your Azure Container Registry is connected. To do this, select the Docker logo in the Activity Bar, then navigate to **REGISTRIES**.
 
-![Screenshot shows the Registries value with Azure expanded and a file with the dot i o filename extension.](./media/quickstart-docker/registries.png)
+:::image type="content" source="./media/quickstart-docker/registries.png" alt-text="Screenshot shows the Registries value with Azure expanded and a file with the dot i o filename extension.":::
 
 ## Deploy the image to Azure App Service
 
-Now that everything is configured, you can deploy your image to [Azure App Service](https://azure.microsoft.com/services/app-service/) directly from the Docker extension explorer.
+Now that everything is configured, you can deploy your image to [Azure App Service](https://www.azure.cn/home/features/app-service/) directly from the Docker extension explorer.
 
 Find the image under the **Registries** node in the **DOCKER** explorer, and expand it to show its tags. Right-click a tag and then select **Deploy Image to Azure App Service**.
 
@@ -257,3 +261,8 @@ Check out other resources:
 > [Configure custom container](configure-custom-container.md)
 
 ::: zone-end
+
+
+
+<!-- Update_Description: new article about quickstart custom container -->
+<!--NEW.date: 12/21/2020-->

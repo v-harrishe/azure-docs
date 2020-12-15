@@ -1,11 +1,14 @@
 ---
 title: Azure security baseline for Service Fabric
 description: The Service Fabric security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-author: msmbaldwin
+
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.author: mbaldwin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -64,7 +67,7 @@ Consider deploying Azure Web Application Firewall (WAF) in front of critical web
 
 * [Integrate API Management in an internal VNET with Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [How to deploy Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
+* [How to deploy Azure WAF](../application-gateway/create-waf-policy-ag.md)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -102,7 +105,7 @@ Consider deploying Azure Web Application Firewall (WAF) in front of critical web
 
 Deploy the firewall solution of your choice at each of your organization's network boundaries to detect and/or deny malicious traffic.
 
-* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
+* [Azure Marketplace](https://market.azure.cn/marketplace/apps/filter?search=Firewall)
 
 * [How to deploy Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -128,7 +131,7 @@ Deploy the firewall solution of your choice at each of your organization's netwo
 
 ### 1.8: Minimize complexity and administrative overhead of network security rules
 
-**Guidance**: Use Virtual network service tags to define network access controls on network security groups (NSG) that are attached to the subnet your Azure Service Fabric cluster is deployed in. You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ApiManagement) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
+**Guidance**: Use Virtual network service tags to define network access controls on network security groups (NSG) that are attached to the subnet your Azure Service Fabric cluster is deployed in. You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ApiManagement) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Azure manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
 
 * [Virtual network service tags](../virtual-network/service-tags-overview.md)
 
@@ -144,7 +147,7 @@ Deploy the firewall solution of your choice at each of your organization's netwo
 
 You may also use Azure Blueprints to simplify large-scale Azure deployments by packaging key environment artifacts, such as Azure Resource Manager templates, Azure RBAC controls, and policies, in a single blueprint definition. Easily apply the blueprint to new subscriptions and environments, and fine-tune control and management through versioning.
 
-* [How to view available Azure Policy aliases](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [How to view available Azure Policy aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 * [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -190,13 +193,13 @@ You may use Azure PowerShell or Azure command-line interface (CLI) to look up or
 
 ### 2.1: Use approved time synchronization sources
 
-**Guidance**: Microsoft maintains time sources for Azure Service Fabric cluster components, you may update time synchronization for your compute deployments.
+**Guidance**: Azure maintains time sources for Azure Service Fabric cluster components, you may update time synchronization for your compute deployments.
 
 * [How to configure time synchronization for Azure compute resources](../virtual-machines/windows/time-sync.md)
 
 **Azure Security Center monitoring**: Currently not available
 
-**Responsibility**: Microsoft
+**Responsibility**: Azure
 
 ### 2.2: Configure central security log management
 
@@ -286,7 +289,7 @@ You may use Azure PowerShell or Azure command-line interface (CLI) to look up or
 
 **Guidance**: By default, Windows Defender is installed on Windows Server 2016. Refer to your Antimaleware documentation for configuration rules if you are not using Windows Defender. Windows Defender is not supported on Linux.
 
-* [For details, see Windows Defender antivirus on Windows Server 2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [For details, see Windows Defender antivirus on Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -318,9 +321,9 @@ You may use Azure PowerShell or Azure command-line interface (CLI) to look up or
 
 In addition, you may use Azure Security Center Identity and Access Management recommendations.
 
-* [How to get a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [How to get a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [How to get members of a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [How to get members of a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 * [How to monitor identity and access with Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -378,7 +381,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Guidance**: Use PAWs (privileged access workstations) with multi-factor authentication (MFA) configured to log into and configure your Azure Service Fabric clusters and related resources.
 
-* [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Learn about Privileged Access Workstations](https://docs.azure.cn/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 * [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -456,7 +459,7 @@ You can streamline this process by creating Diagnostic Settings for AAD user acc
 
 **Responsibility**: Customer
 
-### 3.13: Provide Microsoft with access to relevant customer data during support scenarios
+### 3.13: Provide Azure with access to relevant customer data during support scenarios
 
 **Guidance**: Not available; Customer Lockbox not yet supported for Azure Service Fabric.
 
@@ -506,7 +509,7 @@ You can streamline this process by creating Diagnostic Settings for AAD user acc
 
 **Guidance**: Deploy an automated tool on network perimeters that monitors for unauthorized transfer of sensitive information and blocks such transfers while alerting information security professionals.
 
-For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and
+For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and
 
 capabilities.
 
@@ -536,7 +539,7 @@ Follow Azure Security Center recommendations for encryption at rest and encrypti
 
 **Guidance**: Data identification, classification, and loss prevention features are not yet available for Azure Storage or compute resources. Implement third-party solution if required for compliance purposes.
 
-For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
+For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
 
 * [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -556,7 +559,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 **Guidance**: For Azure Service Fabric clusters storing or processing sensitive information, mark the cluster and related resources as sensitive using tags. Data identification, classification, and loss prevention features are not yet available for Azure Storage or compute resources. Implement third-party solution if required for compliance purposes.
 
-For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
+For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
 
 * [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -566,7 +569,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 ### 4.8: Encrypt sensitive information at rest
 
-**Guidance**: Use encryption at rest on all Azure resources. Microsoft recommends allowing Azure to manage your encryption keys, however there is the option for you to manage your own keys in some instances.
+**Guidance**: Use encryption at rest on all Azure resources. Azure recommends allowing Azure to manage your encryption keys, however there is the option for you to manage your own keys in some instances.
 
 * [Understand encryption at rest in Azure](../security/fundamentals/encryption-atrest.md)
 
@@ -672,7 +675,7 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 * [How to create queries with Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [How to view your Azure Subscriptions](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 * [Understand Azure RBAC](../role-based-access-control/overview.md)
 
@@ -778,7 +781,7 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resources Manager by configuring "Block access" for the "Microsoft Azure Management" App.
+**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resources Manager by configuring "Block access" for the "21Vianet Azure Management" App.
 
 * [How to configure Conditional Access to block access to Azure Resources Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -790,7 +793,7 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 **Guidance**: Use operating system specific configurations or third-party resources to limit users' ability to execute scripts within Azure compute resources.
 
-* [For example, how to control PowerShell script execution in Windows Environments](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [For example, how to control PowerShell script execution in Windows Environments](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -816,7 +819,7 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 **Guidance**: Use Azure Policy aliases in the "Microsoft.ServiceFabric" namespace to create custom policies to audit or enforce the network configuration of your Service Fabric cluster.
 
-* [How to view available Azure Policy aliases](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [How to view available Azure Policy aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 * [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -856,9 +859,9 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 **Guidance**: If using custom Azure Policy definitions, use Azure DevOps or Azure Repos to securely store and manage your code.
 
-* [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [How to store code in Azure DevOps](https://docs.azure.cn/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos Documentation](/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos Documentation](https://docs.azure.cn/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -900,7 +903,7 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 **Guidance**: Use Azure Policy aliases in the "Microsoft.ServiceFabric" namespace to create custom policies to audit or enforce the configuration of your Service Fabric cluster.
 
-* [How to view available Azure Policy aliases](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [How to view available Azure Policy aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 * [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -968,7 +971,7 @@ Use Azure Key Vault to rotate Service Fabric cluster certificates automatically.
 
 Refer to your Antimalware documentation for configuration rules if you are not using Windows Defender. Windows Defender isn't supported on Linux.
 
-* [Understand Windows Defender Antivirus on Windows Server 2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Understand Windows Defender Antivirus on Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -976,7 +979,7 @@ Refer to your Antimalware documentation for configuration rules if you are not u
 
 ### 8.2: Pre-scan files to be uploaded to non-compute Azure resources
 
-**Guidance**: Not applicable; this recommendation is intended for non-compute resources designed to store data. Microsoft anti-malware is enabled on the underlying host that supports Azure services (for example, Service Fabric), however it does not run on customer content.
+**Guidance**: Not applicable; this recommendation is intended for non-compute resources designed to store data. Azure anti-malware is enabled on the underlying host that supports Azure services (for example, Service Fabric), however it does not run on customer content.
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -984,7 +987,7 @@ Refer to your Antimalware documentation for configuration rules if you are not u
 
 ### 8.3: Ensure anti-malware software and signatures are updated
 
-**Guidance**: Not applicable; this recommendation is intended for non-compute resources designed to store data. Microsoft anti-malware is enabled on the underlying host that supports Azure services (for example, Service Fabric), however it does not run on customer content.
+**Guidance**: Not applicable; this recommendation is intended for non-compute resources designed to store data. Azure anti-malware is enabled on the underlying host that supports Azure services (for example, Service Fabric), however it does not run on customer content.
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -1012,7 +1015,7 @@ Refer to your Antimalware documentation for configuration rules if you are not u
 
 * [Understanding periodic backup configuration in Azure Service Fabric](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [How to backup key vault keys in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [How to backup key vault keys in Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -1026,7 +1029,7 @@ Refer to your Antimalware documentation for configuration rules if you are not u
 
 * [Restoring backup in Azure Service Fabric](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [How to restore key vault keys in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [How to restore key vault keys in Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -1034,7 +1037,7 @@ Refer to your Antimalware documentation for configuration rules if you are not u
 
 ### 9.4: Ensure protection of backups and customer-managed keys
 
-**Guidance**: Backups from Service Fabric backup restore service use an Azure Storage account in your subscription. Azure Storage encrypts all data in a storage account at rest. By default, data is encrypted with Microsoft-managed keys. For additional control over encryption keys, you can supply customer-managed keys for encryption of storage data.
+**Guidance**: Backups from Service Fabric backup restore service use an Azure Storage account in your subscription. Azure Storage encrypts all data in a storage account at rest. By default, data is encrypted with Azure-managed keys. For additional control over encryption keys, you can supply customer-managed keys for encryption of storage data.
 
 If you are using customer-managed-keys, ensure Soft-Delete in Key Vault is enabled to protect keys against accidental or malicious deletion.
 
@@ -1090,7 +1093,7 @@ Additionally, mark subscriptions using tags and create a naming system to identi
 
 ### 10.4: Provide security incident contact details and configure alert notifications for security incidents
 
-**Guidance**: Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved.
+**Guidance**: Security incident contact information will be used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved.
 
 * [How to set the Azure Security Center security contact](../security-center/security-center-provide-security-contact-details.md)
 
@@ -1126,7 +1129,7 @@ Additionally, mark subscriptions using tags and create a naming system to identi
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Microsoft policies. Use Microsoft's strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications.
+**Guidance**: Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Azure policies. Use Azure's strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications.
 
 * [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -1140,3 +1143,7 @@ Additionally, mark subscriptions using tags and create a naming system to identi
 
 - See the [Azure security benchmark](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
+
+
+<!-- Update_Description: new article about security baseline -->
+<!--NEW.date: 12/21/2020-->

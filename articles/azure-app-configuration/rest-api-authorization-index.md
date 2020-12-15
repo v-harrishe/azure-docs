@@ -1,11 +1,15 @@
-﻿---
+---
 title: Azure App Configuration REST API - Authorization
 description: Reference pages for authorization using the Azure App Configuration REST API
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: reference
-ms.date: 08/17/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Authorization
@@ -19,3 +23,8 @@ The [authorization model](./rest-api-authorization-hmac.md) model associated wit
 ## Azure Active Directory
 
 The [authorization model](./rest-api-authorization-azure-ad.md) associated with Azure Active Directory (Azure AD) authentication uses Azure RBAC to control permissions. See the [Azure AD authorization](./rest-api-authorization-azure-ad.md) page for details.
+
+
+
+<!-- Update_Description: new article about rest api authorization index -->
+<!--NEW.date: 12/21/2020-->

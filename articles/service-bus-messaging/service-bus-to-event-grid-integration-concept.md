@@ -1,11 +1,14 @@
 ---
-title: Azure Service Bus to Event Grid integration overview | Microsoft Docs
+title: Azure Service Bus to Event Grid integration overview | Azure Docs
 description: This article provides a description of how Azure Service Bus messaging integrates with Azure Event Grid. 
 documentationcenter: .net
-author: spelluru
+
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.author: spelluru 
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 
@@ -57,7 +60,7 @@ The schema for this event is as follows:
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
-    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/messages/head",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.chinacloudapi.cn/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",
@@ -83,7 +86,7 @@ The schema for this event is as follows:
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
-    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.chinacloudapi.cn/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",
@@ -109,7 +112,7 @@ The schema for the event is as follows.
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
-    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.chinacloudapi.cn/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",
@@ -135,7 +138,7 @@ The schema for the event is as follows.
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
-    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.chinacloudapi.cn/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",
@@ -173,7 +176,7 @@ To create a new Event Grid subscription, do the following:
 
    The following image displays a namespace that has an Event Grid subscription:
 
-   ![Event grid subscriptions](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
+   :::image type="content" source="./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png" alt-text="Event grid subscriptions":::
 
    The following image shows how to subscribe to a function or a webhook without any specific filtering:
 
@@ -181,11 +184,11 @@ To create a new Event Grid subscription, do the following:
 
 ## Azure CLI instructions
 
-First, make sure that you have Azure CLI version 2.0 or later installed. [Download the installer](/cli/azure/install-azure-cli?view=azure-cli-latest). Select **Windows + X**, and then open a new PowerShell console with administrator permissions. Alternatively, you can use a command shell within the Azure portal.
+First, make sure that you have Azure CLI version 2.0 or later installed. [Download the installer](https://docs.azure.cn/cli/install-azure-cli). Select **Windows + X**, and then open a new PowerShell console with administrator permissions. Alternatively, you can use a command shell within the Azure portal.
 
 Execute the following code:
 
- ```azurecli-interactive
+ ```azurecli
 az login
 
 az account set -s "<Azure subscription name>"
@@ -199,10 +202,10 @@ If you are using BASH
 
 ## PowerShell instructions
 
-Make sure you have Azure PowerShell installed. [Download the installer](/powershell/azure/install-Az-ps). Select **Windows + X**, and then open a new PowerShell console with Administrator permissions. Alternatively, you can use a command shell within the Azure portal.
+Make sure you have Azure PowerShell installed. [Download the installer](https://docs.microsoft.com/powershell/azure/install-Az-ps). Select **Windows + X**, and then open a new PowerShell console with Administrator permissions. Alternatively, you can use a command shell within the Azure portal.
 
-```powershell-interactive
-Connect-AzAccount
+```powershell
+Connect-AzAccount -Environment AzureChinaCloud
 
 Select-AzSubscription -SubscriptionName "<YOUR SUBSCRIPTION NAME>"
 
@@ -223,7 +226,7 @@ From here, you can explore the other setup options or test that events are flowi
 * Learn more about [Event Grid](../event-grid/index.yml).
 * Learn more about [Azure Functions](../azure-functions/index.yml).
 * Learn more about [Logic Apps](../logic-apps/index.yml).
-* Learn more about [Service Bus](/azure/service-bus/).
+* Learn more about [Service Bus](https://docs.azure.cn/azure/service-bus/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
@@ -231,3 +234,8 @@ From here, you can explore the other setup options or test that events are flowi
 [9]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid9.png
 [20]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal.png
 [21]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal2.png
+
+
+
+<!-- Update_Description: new article about service bus to event grid integration concept -->
+<!--NEW.date: 12/21/2020-->

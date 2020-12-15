@@ -3,12 +3,16 @@ title: Use dynamic configuration in a Spring Boot app
 titleSuffix: Azure App Configuration
 description: Learn how to dynamically update configuration data for Spring Boot apps
 services: azure-app-configuration
-author: AlexandraKemperMS
+
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 08/06/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+
 ms.custom: devx-track-java
-ms.author: alkemper
+ms.author: v-yeche
 
 #Customer intent: As a Java Spring developer, I want to dynamically update my app to use the latest configuration data in App Configuration.
 ---
@@ -76,3 +80,8 @@ In this tutorial, you enabled your Spring Boot app to dynamically refresh config
 
 > [!div class="nextstepaction"]
 > [Managed identity integration](./howto-integrate-azure-managed-service-identity.md)
+
+
+
+<!-- Update_Description: new article about enable dynamic configuration java spring app -->
+<!--NEW.date: 12/21/2020-->

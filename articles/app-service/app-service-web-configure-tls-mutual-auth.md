@@ -4,7 +4,11 @@ description: Learn how to authenticated client certificates on TLS. Azure App Se
 
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 12/11/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "devx-track-csharp, seodec18"
 
 ---
@@ -26,9 +30,9 @@ To set up your app to require client certificates:
 
 1. Set **Client certificate mode** to **Require**. Click **Save** at the top of the page.
 
-To do the same with Azure CLI, run the following command in the [Cloud Shell](https://shell.azure.com):
+To do the same with Azure CLI, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
 
-```azurecli-interactive
+```azurecli
 az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
@@ -126,7 +130,7 @@ For other application stacks (Node.js, PHP, etc.), the client cert is available 
                 // In this example we will only accept the certificate as a valid certificate if all the conditions below are met:
                 // 1. The certificate is not expired and is active for the current time on server.
                 // 2. The subject name of the certificate has the common name nildevecc
-                // 3. The issuer name of the certificate has the common name nildevecc and organization name Microsoft Corp
+                // 3. The issuer name of the certificate has the common name nildevecc and organization name Azure Corp
                 // 4. The thumbprint of the certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
                 //
                 // This example does NOT test that this certificate is chained to a Trusted Root Authority (or revoked) on the server 
@@ -322,3 +326,8 @@ public class ClientCertValidator {
 ```
 
 [exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png
+
+
+
+<!-- Update_Description: new article about app service web configure tls mutual auth -->
+<!--NEW.date: 12/21/2020-->

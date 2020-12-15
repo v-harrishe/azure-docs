@@ -1,16 +1,19 @@
 ---
-title: Azure App Configuration best practices | Microsoft Docs
+title: Azure App Configuration best practices | Azure Docs
 description: Learn best practices while using Azure App Configuration. Topics covered include key groupings, key-value compositions, App Configuration bootstrap, and more.
 services: azure-app-configuration
 documentationcenter: ''
-author: AlexandraKemperMS
+
 editor: ''
 
 ms.assetid: 
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: alkemper
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "devx-track-csharp, mvc"
 ---
 
@@ -72,7 +75,7 @@ You can provide access to App Configuration for web apps or functions by using a
 
 Excessive requests to App Configuration can result in throttling or overage charges. To reduce the number of requests made:
 
-* Increase the refresh timeout, especially if your configuration values do not change frequently. Specify a new refresh timeout using the [`SetCacheExpiration` method](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
+* Increase the refresh timeout, especially if your configuration values do not change frequently. Specify a new refresh timeout using the [`SetCacheExpiration` method](https://docs.azure.cn/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
 
 * Watch a single *sentinel key*, rather than watching individual keys. Refresh all configuration only if the sentinel key changes. See [Use dynamic configuration in an ASP.NET Core app](enable-dynamic-configuration-aspnet-core.md) for an example.
 
@@ -89,3 +92,7 @@ App Configuration is regional service. For applications with different configura
 ## Next steps
 
 * [Keys and values](./concept-key-value.md)
+
+
+<!-- Update_Description: new article about howto best practices -->
+<!--NEW.date: 12/21/2020-->

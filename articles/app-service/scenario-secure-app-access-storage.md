@@ -2,14 +2,17 @@
 title: Tutorial - Web app accesses storage by using managed identities | Azure
 description: In this tutorial, you learn how to access Azure Storage for an app by using managed identities.
 services: storage, app-service-web
-author: rwike77
+
 manager: CelesteDG
 
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
-ms.author: ryanwi
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: stsoneff
 ms.custom: azureday1
 #Customer intent: As an application developer, I want to learn how to access Azure Storage for an app by using managed identities.
@@ -110,7 +113,7 @@ Specify the location for your storage account. To see a list of locations valid 
 Remember to replace placeholder values in angle brackets with your own values.
 
 ```powershell
-Connect-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 
 $resourceGroup = "securewebappresourcegroup"
 $location = "<location>"
@@ -138,14 +141,17 @@ The following example uses your Azure AD account to authorize the operation to c
 
 Remember to replace placeholder values in angle brackets with your own values.
 
-```azurecli-interactive
+```azurecli
 az login
 
 az storage account create \
     --name securewebappstorage \
     --resource-group securewebappresourcegroup \
     --location <location> \
-    --sku Standard_ZRS \
+    --sku Standard_ZRS(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) \
+
+<!--Not Available on FEATURE Standard_ZRS-->
+
     --encryption-services blob
 
 storageId=$(az storage account show -n securewebappstorage -g securewebappresourcegroup --query id --out tsv)
@@ -169,7 +175,7 @@ You need to grant your web app access to the storage account before you can crea
 
 # [Portal](#tab/azure-portal)
 
-In the [Azure portal](https://portal.azure.com), go into your storage account to grant your web app access. Select **Access control (IAM)** in the left pane, and then select **Role assignments**. You'll see a list of who has access to the storage account. Now you want to add a role assignment to a robot, the app service that needs access to the storage account. Select **Add** > **Add role assignment**.
+In the [Azure portal](https://portal.azure.cn), go into your storage account to grant your web app access. Select **Access control (IAM)** in the left pane, and then select **Role assignments**. You'll see a list of who has access to the storage account. Now you want to add a role assignment to a robot, the app service that needs access to the storage account. Select **Add** > **Add role assignment**.
 
 In **Role**, select **Storage Blob Data Contributor** to give your web app access to read storage blobs. In **Assign access to**, select **App Service**. In **Subscription**, select your subscription. Then select the app service you want to provide access to. Select **Save**.
 
@@ -195,7 +201,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Storage Blob Data Cont
 
 Run the following script to assign your web app (represented by a system-assigned managed identity) the Storage Blob Data Contributor role on your storage account.
 
-```azurecli-interactive
+```azurecli
 spID=$(az resource list -n SecureWebApp20201102125811 --query [*].identity.principalId --out tsv)
 
 storageId=$(az storage account show -n securewebappstorage -g securewebappresourcegroup --query id --out tsv)
@@ -207,7 +213,7 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ## Access Blob Storage (.NET)
 
-The [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) class is used to get a token credential for your code to authorize requests to Azure Storage. Create an instance of the [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) class, which uses the managed identity to fetch tokens and attach them to the service client. The following code example gets the authenticated token credential and uses it to create a service client object, which uploads a new blob.
+The [DefaultAzureCredential](https://docs.azure.cn/dotnet/api/azure.identity.defaultazurecredential) class is used to get a token credential for your code to authorize requests to Azure Storage. Create an instance of the [DefaultAzureCredential](https://docs.azure.cn/dotnet/api/azure.identity.defaultazurecredential) class, which uses the managed identity to fetch tokens and attach them to the service client. The following code example gets the authenticated token credential and uses it to create a service client object, which uploads a new blob.
 
 To see this code as part of a sample application, see the [sample on GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity).
 
@@ -257,7 +263,7 @@ using Azure.Identity;
 static public async Task UploadBlob(string accountName, string containerName, string blobName, string blobContents)
 {
     // Construct the blob container endpoint from the arguments.
-    string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+    string containerEndpoint = string.Format("https://{0}.blob.core.chinacloudapi.cn/{1}",
                                                 accountName,
                                                 containerName);
 
@@ -300,4 +306,8 @@ In this tutorial, you learned how to:
 > * Access storage from a web app by using managed identities.
 
 > [!div class="nextstepaction"]
-> [App Service accesses Microsoft Graph on behalf of the user](scenario-secure-app-access-microsoft-graph-as-user.md)
+> [App Service accesses Azure Graph on behalf of the user](scenario-secure-app-access-microsoft-graph-as-user.md)
+
+
+<!-- Update_Description: new article about scenario secure app access storage -->
+<!--NEW.date: 12/21/2020-->

@@ -2,7 +2,11 @@
 title: Advanced usage of AuthN/AuthZ
 description: Learn to customize the authentication and authorization feature in App Service for different scenarios, and get user claims and different tokens.
 ms.topic: article
-ms.date: 07/08/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18, devx-track-azurecli
 ---
 
@@ -68,7 +72,7 @@ The token format varies slightly according to the provider. See the following ta
 | `aad` | `{"access_token":"<access_token>"}` | |
 | `microsoftaccount` | `{"access_token":"<token>"}` | The `expires_in` property is optional. <br/>When requesting the token from Live services, always request the `wl.basic` scope. |
 | `google` | `{"id_token":"<id_token>"}` | The `authorization_code` property is optional. When specified, it can also optionally be accompanied by the `redirect_uri` property. |
-| `facebook`| `{"access_token":"<user_access_token>"}` | Use a valid [user access token](https://developers.facebook.com/docs/facebook-login/access-tokens) from Facebook. |
+| `facebook`| `{"access_token":"<user_access_token>"}` | Use a valid [user access token](https://developers.facebook.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /docs/facebook-login/access-tokens) from Facebook. |
 | `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
 | | | |
 
@@ -110,7 +114,7 @@ By default, a successful sign-out redirects the client to the URL `/.auth/logout
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-It's recommended that you [encode](https://wikipedia.org/wiki/Percent-encoding) the value of `post_logout_redirect_uri`.
+It's recommended that you [encode](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Percent-encoding) the value of `post_logout_redirect_uri`.
 
 When using fully qualified URLs, the URL must be either hosted in the same domain or configured as an allowed external redirect URL for your app. In the following example, to redirect to `https://myexternalurl.com` that's not hosted in the same domain:
 
@@ -118,19 +122,19 @@ When using fully qualified URLs, the URL must be either hosted in the same domai
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-Run the following command in the [Azure Cloud Shell](../cloud-shell/quickstart.md):
+Run the following command in the [Azure local Shell](../cloud-shell/quickstart.md):
 
-```azurecli-interactive
+```azurecli
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
 ```
 
 ## Preserve URL fragments
 
-After users sign in to your app, they usually want to be redirected to the same section of the same page, such as `/wiki/Main_Page#SectionZ`. However, because [URL fragments](https://wikipedia.org/wiki/Fragment_identifier) (for example, `#SectionZ`) are never sent to the server, they are not preserved by default after the OAuth sign-in completes and redirects back to your app. Users then get a suboptimal experience when they need to navigate to the desired anchor again. This limitation applies to all server-side authentication solutions.
+After users sign in to your app, they usually want to be redirected to the same section of the same page, such as `/wiki/Main_Page#SectionZ`. However, because [URL fragments](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Fragment_identifier) (for example, `#SectionZ`) are never sent to the server, they are not preserved by default after the OAuth sign-in completes and redirects back to your app. Users then get a suboptimal experience when they need to navigate to the desired anchor again. This limitation applies to all server-side authentication solutions.
 
-In App Service authentication, you can preserve URL fragments across the OAuth sign-in. To do this, set an app setting called `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` to `true`. You can do it in the [Azure portal](https://portal.azure.com), or simply run the following command in the [Azure Cloud Shell](../cloud-shell/quickstart.md):
+In App Service authentication, you can preserve URL fragments across the OAuth sign-in. To do this, set an app setting called `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` to `true`. You can do it in the [Azure portal](https://portal.azure.cn), or simply run the following command in the [Azure local Shell](../cloud-shell/quickstart.md):
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
 ```
 
@@ -143,7 +147,7 @@ App Service passes user claims to your application by using special headers. Ext
 
 Code that is written in any language or framework can get the information that it needs from these headers. For ASP.NET 4.6 apps, the **ClaimsPrincipal** is automatically set with the appropriate values. ASP.NET Core, however, doesn't provide an authentication middleware that integrates with App Service user claims. For a workaround, see [MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-If the [token store](overview-authentication-authorization.md#token-store) is enabled for your app, you can also obtain additional details on the authenticated user by calling `/.auth/me`. The Mobile Apps server SDKs provide helper methods to work with this data. For more information, see [How to use the Azure Mobile Apps Node.js SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity), and [Work with the .NET backend server SDK for Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
+If the [token store](overview-authentication-authorization.md#token-store) is enabled for your app, you can also obtain additional details on the authenticated user by calling `/.auth/me`. The Mobile Apps server SDKs provide helper methods to work with this data. For more information, see [How to use the Azure Mobile Apps Node.js SDK](https://docs.microsoft.com/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity), and [Work with the .NET backend server SDK for Azure Mobile Apps](https://docs.microsoft.com/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
 
 ## Retrieve tokens in app code
 
@@ -168,8 +172,8 @@ From your client code (such as a mobile app or in-browser JavaScript), send an H
 When your provider's access token (not the [session token](#extend-session-token-expiration-grace-period)) expires, you need to reauthenticate the user before you use that token again. You can avoid token expiration by making a `GET` call to the `/.auth/refresh` endpoint of your application. When called, App Service automatically refreshes the access tokens in the [token store](overview-authentication-authorization.md#token-store) for the authenticated user. Subsequent requests for tokens by your app code get the refreshed tokens. However, for token refresh to work, the token store must contain [refresh tokens](https://auth0.com/learn/refresh-tokens/) for your provider. The way to get refresh tokens are documented by each provider, but the following list is a brief summary:
 
 - **Google**: Append an `access_type=offline` query string parameter to your `/.auth/login/google` API call. If using the Mobile Apps SDK, you can add the parameter to one of the `LogicAsync` overloads (see [Google Refresh Tokens](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook**: Doesn't provide refresh tokens. Long-lived tokens expire in 60 days (see [Facebook Expiration and Extension of Access Tokens](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: Access tokens don't expire (see [Twitter OAuth FAQ](https://developer.twitter.com/en/docs/authentication/faq)).
+- **Facebook**: Doesn't provide refresh tokens. Long-lived tokens expire in 60 days (see [Facebook Expiration and Extension of Access Tokens](https://developers.facebook.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /docs/facebook-login/access-tokens/expiration-and-extension)).
+- **Twitter**: Access tokens don't expire (see [Twitter OAuth FAQ](https://developer.twitter.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /en/docs/authentication/faq)).
 - **Microsoft Account**: When [configuring Microsoft Account Authentication Settings](configure-authentication-provider-microsoft.md), select the `wl.offline_access` scope.
 - **Azure Active Directory**: In [https://resources.azure.com](https://resources.azure.com), do the following steps:
     1. At the top of the page, select **Read/Write**.
@@ -208,7 +212,7 @@ If 72 hours isn't enough time for you, you can extend this expiration window. Ex
 
 To extend the default expiration window, run the following command in the [Cloud Shell](../cloud-shell/overview.md).
 
-```azurecli-interactive
+```azurecli
 az webapp auth update --resource-group <group_name> --name <app_name> --token-refresh-extension-hours <hours>
 ```
 
@@ -291,9 +295,9 @@ Your auth settings can optionally be configured via a file that is provided by y
 
 2. Modify the existing configuration, which is captured in the [Azure Resource Manager](../azure-resource-manager/management/overview.md) APIs under `Microsoft.Web/sites/<siteName>/config/authsettings`. To modify this, you can use an [Azure Resource Manager template](../azure-resource-manager/templates/overview.md) or a tool like [Azure Resource Explorer](https://resources.azure.com/). Within the authsettings collection, you will need to set three properties (and may remove others):
 
-    1.	Set `enabled` to "true"
-    2.	Set `isAuthFromFile` to "true"
-    3.	Set `authFilePath` to the name of the file (for example, "auth.json")
+    1. Set `enabled` to "true"
+    2. Set `isAuthFromFile` to "true"
+    3. Set `authFilePath` to the name of the file (for example, "auth.json")
 
 > [!NOTE]
 > The format for `authFilePath` varies between platforms. On Windows, both relative and absolute paths are supported. Relative is recommended. For Linux, only absolute paths are supported currently, so the value of the setting should be "/home/site/wwwroot/auth.json" or similar.
@@ -499,9 +503,9 @@ You can view the current version of the platform authentication middleware eithe
 
 ##### From the Azure CLI
 
-Using the Azure CLI, view the current middleware version with the [az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) command.
+Using the Azure CLI, view the current middleware version with the [az webapp auth show](https://docs.azure.cn/cli/webapp/auth?view=azure-cli-latest&preserve-view=true#az_webapp_auth_show) command.
 
-```azurecli-interactive
+```azurecli
 az webapp auth show --name <my_app_name> \
 --resource-group <my_resource_group>
 ```
@@ -530,9 +534,9 @@ You can also hit /.auth/version endpoint on an app also to view the current midd
 
 #### Update the current runtime version
 
-Using the Azure CLI, you can update the `runtimeVersion` setting in the app with the [az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) command.
+Using the Azure CLI, you can update the `runtimeVersion` setting in the app with the [az webapp auth update](https://docs.azure.cn/cli/webapp/auth?view=azure-cli-latest&preserve-view=true#az_webapp_auth_update) command.
 
-```azurecli-interactive
+```azurecli
 az webapp auth update --name <my_app_name> \
 --resource-group <my_resource_group> \
 --runtime-version <version>
@@ -540,9 +544,14 @@ az webapp auth update --name <my_app_name> \
 
 Replace `<my_app_name>` with the name of your app. Also replace `<my_resource_group>` with the name of the resource group for your app. Also, replace `<version>` with a valid version of the 1.x runtime or `~1` for the latest version. You can find the release notes on the different runtime versions [here] (https://github.com/Azure/app-service-announcements) to help determine the version to pin to.
 
-You can run this command from the [Azure Cloud Shell](../cloud-shell/overview.md) by choosing **Try it** in the preceding code sample. You can also use the [Azure CLI locally](/cli/azure/install-azure-cli) to execute this command after executing [az login](/cli/azure/reference-index#az-login) to sign in.
+You can run this command from the [Azure local Shell](../cloud-shell/overview.md) by choosing **Try it** in the preceding code sample. You can also use the [Azure CLI locally](https://docs.azure.cn/cli/install-azure-cli) to execute this command after executing [az login](https://docs.azure.cn/cli/reference-index#az_login) to sign in.
 
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Tutorial: Authenticate and authorize users end-to-end](tutorial-auth-aad.md)
+
+
+
+<!-- Update_Description: new article about app service authentication how to -->
+<!--NEW.date: 12/21/2020-->
