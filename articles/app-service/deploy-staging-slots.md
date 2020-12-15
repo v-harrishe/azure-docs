@@ -4,7 +4,11 @@ description: Learn how to deploy apps to a non-production slot and autoswap into
 
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 04/30/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: fasttrack-edit
 
 ---
@@ -29,14 +33,14 @@ To scale your app to a different tier, make sure that the target tier supports t
 The app must be running in the **Standard**, **Premium**, or **Isolated** tier in order for you to enable multiple deployment slots.
 
 
-1. in the [Azure portal](https://portal.azure.com/), search for and select **App Services** and select your app. 
+1. in the [Azure portal](https://portal.azure.cn/), search for and select **App Services** and select your app. 
    
-    ![Search for App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/search-for-app-services.png" alt-text="Search for App Services":::
    
 
 2. In the left pane, select **Deployment slots** > **Add Slot**.
    
-    ![Add a new deployment slot](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png" alt-text="Add a new deployment slot":::
    
    > [!NOTE]
    > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
@@ -44,7 +48,7 @@ The app must be running in the **Standard**, **Premium**, or **Isolated** tier i
 
 3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
    
-    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/ConfigurationSource1.png" alt-text="Configuration source":::
    
     You can clone a configuration from any existing slot. Settings that can be cloned include app settings, connection strings, language framework versions, web sockets, HTTP version, and platform bitness.
 
@@ -52,7 +56,7 @@ The app must be running in the **Standard**, **Premium**, or **Isolated** tier i
 
 5. Select the new deployment slot to open that slot's resource page.
    
-    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/StagingTitle.png" alt-text="Deployment slot title":::
 
     The staging slot has a management page just like any other App Service app. You can change the slot's configuration. To remind you that you're viewing the deployment slot, the app name is shown as **\<app-name>/\<slot-name>**, and the app type is **App Service (Slot)**. You can also see the slot as a separate app in your resource group, with the same designations.
 
@@ -79,7 +83,7 @@ When you swap two slots (usually from a staging slot into the production slot), 
 
 1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
 
-1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
+1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.azure.cn/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
 
     If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
     
@@ -97,7 +101,7 @@ At any point of the swap operation, all work of initializing the swapped apps ha
 
 To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
 
-![Slot setting](./media/web-sites-staged-publishing/SlotSetting.png)
+:::image type="content" source="./media/web-sites-staged-publishing/SlotSetting.png" alt-text="Slot setting":::
 
 <a name="Swap"></a>
 
@@ -113,13 +117,13 @@ To swap deployment slots:
 
 1. Go to your app's **Deployment slots** page and select **Swap**.
    
-    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/SwapButtonBar.png" alt-text="Swap button":::
 
     The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
 
 2. Select the desired **Source** and **Target** slots. Usually, the target is the production slot. Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
 
-    ![Complete swap](./media/web-sites-staged-publishing/SwapImmediately.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/SwapImmediately.png" alt-text="Complete swap":::
 
     To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
 
@@ -141,7 +145,7 @@ To swap with preview:
 
 1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
 
-    ![Swap with preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/SwapWithPreview.png" alt-text="Swap with preview":::
 
     The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
 
@@ -183,7 +187,7 @@ To configure auto swap:
    
 2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
    
-    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/AutoSwap02.png" alt-text="Selections for configuring auto swap":::
 
 3. Execute a code push to the source slot. Auto swap happens after a short time, and the update is reflected at your target slot's URL.
 
@@ -236,14 +240,14 @@ To route production traffic automatically:
 
 2. In the **Traffic %** column of the slot you want to route to, specify a percentage (between 0 and 100) to represent the amount of total traffic you want to route. Select **Save**.
 
-    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
+    :::image type="content" source="./media/web-sites-staged-publishing/RouteTraffic.png" alt-text="Setting a traffic percentage":::
 
 After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
 
 After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. On the client browser, you can see which slot your session is pinned to by looking at the `x-ms-routing-name` cookie in your HTTP headers. A request that's routed to the "staging" slot has the cookie `x-ms-routing-name=staging`. A request that's routed to the production slot has the cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Next to the Azure portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
+   > Next to the Azure portal, you can also use the [`az webapp traffic-routing set`](https://docs.azure.cn/cli/webapp/traffic-routing#az_webapp_traffic_routing_set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
    > 
 
 ### Route production traffic manually
@@ -272,7 +276,7 @@ By default, new slots are given a routing rule of `0%`, shown in grey. When you 
 
 Search for and select your app. Select **Deployment slots** > *\<slot to delete>* > **Overview**. The app type is shown as **App Service (Slot)** to remind you that you're viewing a deployment slot. Select **Delete** on the command bar.  
 
-![Delete a deployment slot](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+:::image type="content" source="./media/web-sites-staged-publishing/DeleteStagingSiteButton.png" alt-text="Delete a deployment slot":::
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -284,7 +288,7 @@ Search for and select your app. Select **Deployment slots** > *\<slot to delete>
 
 Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing deployment slots in Azure App Service.
 
-For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Microsoft Azure PowerShell](/powershell/azure/).  
+For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Azure Azure PowerShell](https://docs.microsoft.com/powershell/azure/).  
 
 ---
 ### Create a web app
@@ -359,7 +363,7 @@ The following Resource Manager template will update the `buildVersion` of the st
             "type": "Microsoft.Web/sites/slots",
             "apiVersion": "2018-02-01",
             "name": "[concat(parameters('my_site_name'), '/staging')]",
-            "location": "East US",
+            "location": "China East",
             "kind": "app",
             "properties": {
                 "buildVersion": "[parameters('sites_buildVersion')]"
@@ -369,7 +373,7 @@ The following Resource Manager template will update the `buildVersion` of the st
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-02-01",
             "name": "[parameters('my_site_name')]",
-            "location": "East US",
+            "location": "China East",
             "kind": "app",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
@@ -390,7 +394,7 @@ This Resource Manager template is idempotent, meaning that it can be executed re
 
 ## Automate with the CLI
 
-For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
+For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](https://docs.azure.cn/cli/webapp/deployment/slot#az-webapp-deployment-slot).
 
 ## Troubleshoot swaps
 
@@ -424,3 +428,7 @@ Here are some common swap errors:
 
 ## Next steps
 [Block access to non-production slots](app-service-ip-restrictions.md)
+
+
+<!-- Update_Description: new article about deploy staging slots -->
+<!--NEW.date: 12/21/2020-->

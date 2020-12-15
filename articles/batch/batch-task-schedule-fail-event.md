@@ -2,7 +2,11 @@
 title: Azure Batch task schedule fail event
 description: Reference for Batch task schedule fail event. This event is emitted when a task failed to be scheduled and will retry later.
 ms.topic: reference
-ms.date: 09/20/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Task schedule fail event
@@ -44,34 +48,43 @@ ms.date: 09/20/2020
 |`systemTaskVersion`|Int32|This is the internal retry counter on a task. Internally the Batch service can retry a task to account for transient issues. These issues can include internal scheduling errors or attempts to recover from compute nodes in a bad state.|
 |`requiredSlots`|Int32|The required slots to run the task.|
 |[`nodeInfo`](#nodeInfo)|Complex Type|Contains information about the compute node on which the task ran.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Complex Type|Specifies that the task is a Multi-Instance Task requiring multiple compute nodes.  See [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task) for details.|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Complex Type|Specifies that the task is a Multi-Instance Task requiring multiple compute nodes.  See [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) for details.|
 |[`constraints`](#constraints)|Complex Type|The execution constraints that apply to this task.|
 |[`schedulingError`](#schedulingError)|Complex Type|Contains information about the scheduling error of the task.|
 
-###  <a name="nodeInfo"></a> nodeInfo
+<a name="nodeInfo"></a>
+### nodeInfo
 
 |Element name|Type|Notes|
 |------------------|----------|-----------|
 |`poolId`|String|The ID of the pool on which the task ran.|
 |`nodeId`|String|The ID of the node on which the task ran.|
 
-###  <a name="multiInstanceSettings"></a> multiInstanceSettings
+<a name="multiInstanceSettings"></a>
+### multiInstanceSettings
 
 |Element name|Type|Notes|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|The number of compute nodes required by the task.|
 
-###  <a name="constraints"></a> constraints
+<a name="constraints"></a>
+### constraints
 
 |Element name|Type|Notes|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|The maximum number of times the task may be retried. The Batch service retries a task if its exit code is nonzero.<br /><br /> Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries a task up to 4 times (one initial try and 3 retries).<br /><br /> If the maximum retry count is 0, the Batch service does not retry tasks.<br /><br /> If the maximum retry count is -1, the Batch service retries tasks without limit.<br /><br /> The default value is 0 (no retries).|
 
 
-###  <a name="schedulingError"></a> schedulingError
+<a name="schedulingError"></a>
+### schedulingError
 
 |Element name|Type|Notes|
 |------------------|----------|-----------|
 |`category`|String|The category of the error.|
 |`code`|String|An identifier for the task scheduling error. Codes are invariant and are intended to be consumed programmatically.|
 |`message`|String|A message describing the task scheduling error, intended to be suitable for display in a user interface.|
+
+
+
+<!-- Update_Description: new article about batch task schedule fail event -->
+<!--NEW.date: 12/21/2020-->

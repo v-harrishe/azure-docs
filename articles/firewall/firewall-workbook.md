@@ -2,11 +2,14 @@
 title: Monitor logs using Azure Firewall Workbook
 description: Azure Firewall Workbooks provide a flexible canvas for Azure Firewall data analysis and the creation of rich visual reports within the Azure portal.
 services: firewall
-author: gopimsft
+
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Monitor logs using Azure Firewall Workbook
@@ -54,3 +57,7 @@ You can look at the logs and understand more about the resource based on the sou
 ## Next steps
 
 - Learn more about [Azure Firewall Diagnostics](firewall-diagnostics.md)
+
+
+<!-- Update_Description: new article about firewall workbook -->
+<!--NEW.date: 12/21/2020-->

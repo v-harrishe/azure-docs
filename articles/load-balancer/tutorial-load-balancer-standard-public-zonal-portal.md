@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Load Balancer VMs within a zone--Azure portal"
+title: Tutorial - Load Balancer VMs within a zone--Azure portal
 titleSuffix: Azure Load Balancer
 description: This tutorial demonstrates how to create a Standard Load Balancer with zonal frontend to load balance VMs within an availability zone by using Azure portal
 services: load-balancer
 documentationcenter: na
-author: asudbring
+
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region. 
 ms.service: load-balancer
@@ -12,8 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2019
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 ---
 
@@ -40,7 +43,7 @@ If you prefer, use [Azure CLI](./quickstart-load-balancer-standard-public-cli.md
 
 ## Sign in to Azure
 
-Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
 
 ## Create a public Standard Load Balancer instance
 
@@ -50,10 +53,10 @@ Standard Load Balancer only supports a standard public IP address. When you crea
 2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
 
     | Setting                 | Value                                              |
-    | ---                     | ---                                                |
+    | --- | --- |
     | Subscription               | Select your subscription.    |    
     | Resource group         | Select **Create new** and type *MyResourceGroupZLB* in the text box.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer* |
     | Region         | Select **West Europe**.                                        |
     | Type          | Select **Public**.                                        |
     | SKU           | Select **Standard**.                          |
@@ -72,11 +75,11 @@ In this section you'll need to replace the following parameters in the steps wit
 
 | Parameter                   | Value                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupZLB (Select existing resource group) |
+| **\<resource-group-name>** | myResourceGroupZLB (Select existing resource group) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
-| **\<IPv4-address-space>**   | 10.0.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
+| **\<region-name>** | West Europe      |
+| **\<IPv4-address-space>** | 10.0.0.0\16          |
+| **\<subnet-name>** | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.0.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -88,11 +91,11 @@ In this section you'll need to replace the following parameters in the steps wit
    - **myNetworkSecurityGroup**, for the name of the network security group.
    - **myResourceGroupLBAZ**, for the name of the existing resource group.
    
-     ![Create a network security group](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     :::image type="content" source="./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png" alt-text="Create a network security group":::
 
 ### Create NSG rules
 
-In this section, you create NSG rules to allow inbound connections that use HTTP and Microsoft Remote Desktop Protocol (RDP) by using the Azure portal.
+In this section, you create NSG rules to allow inbound connections that use HTTP and Azure Remote Desktop Protocol (RDP) by using the Azure portal.
 
 1. In the Azure portal, select **All resources** in the leftmost menu. Then search for and select **myNetworkSecurityGroup**. It's located in the **myResourceGroupZLB** resource group.
 2. Under **Settings**, select **Inbound security rules**. Then select **Add**.
@@ -107,7 +110,7 @@ In this section, you create NSG rules to allow inbound connections that use HTTP
     - **Allow HTTP**, for **Description**.
 4. Select **OK**.
  
-   ![Create NSG rules](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   :::image type="content" source="./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png" alt-text="Create NSG rules":::
 
 5. Repeat steps 2 to 4 to create another rule named **myRDPRule**. This rule allows for an inbound RDP connection that uses port 3389, with the following values:
     - **Service Tag**, for **Source**.
@@ -119,7 +122,7 @@ In this section, you create NSG rules to allow inbound connections that use HTTP
     - **myRDPRule**, for **Name**.
     - **Allow RDP**, for **Description**.
 
-      ![Create a RDP rule](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      :::image type="content" source="./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png" alt-text="Create a RDP rule":::
 
 ### Create virtual machines
 
@@ -131,7 +134,7 @@ In this section, you create NSG rules to allow inbound connections that use HTTP
 3. Select **DS1_V2** for the size of the virtual machine. Choose **Select**.
 4. Enter these values for the VM settings:
     - **zone 1**, for the Availability zone where you place the VM.
-    -  **myVNet**. Ensure it's selected as the virtual network.
+    - **myVNet**. Ensure it's selected as the virtual network.
     - **myVM1PIP**, for the standard public IP address that you create. Select **Create new**. Then for name type, select **myVM1PIP**. For **Zone**, select **1**. The IP address SKU is standard by default.
     - **myBackendSubnet**. Make sure it's selected as the subnet.
     - **myNetworkSecurityGroup**, for the name of the network security group firewall that already exists.
@@ -139,7 +142,7 @@ In this section, you create NSG rules to allow inbound connections that use HTTP
 6. Select **OK**. Review the settings on the summary page. Then select **Create**.
 7. Repeat steps 1 to 6 to create a second VM, named **myVM2**, in Zone 1. Make **myVnet** the virtual network. Make **myVM2PIP** the standard public IP address. Make **myBackendSubnet** the subnet. And make **myNetworkSecurityGroup** the network security group.
 
-    ![Create virtual machines](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-machine.png) 
+    :::image type="content" source="./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-machine.png" alt-text="Create virtual machines"::: 
 
 ### Install IIS on VMs
 
@@ -149,7 +152,7 @@ In this section, you create NSG rules to allow inbound connections that use HTTP
 4. On the server desktop, navigate to **Windows Administrative Tools** > **Windows PowerShell**.
 6. In the **PowerShell** window, run the following commands to install the IIS server. These commands also remove the default iisstart.htm file and then add a new iisstart.htm file that displays the name of the VM:
 
-   ```azurepowershell-interactive
+   ```powershell
     # install IIS server role
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     # remove default htm file
@@ -178,7 +181,7 @@ To distribute traffic to the VMs, a backend address pool contains the IP address
 4. Select **Add**.
 5. Check to make sure your load balancer backend pool setting displays both the VMs: **myVM1** and **myVM2**.
  
-    ![Create a backend pool](./media/tutorial-load-balancer-standard-zonal-portal/create-backend-pool.png) 
+    :::image type="content" source="./media/tutorial-load-balancer-standard-zonal-portal/create-backend-pool.png" alt-text="Create a backend pool"::: 
 
 ### Create a health probe
 
@@ -194,7 +197,7 @@ Use a health probe so the load balancer can monitor the status of your app. The 
     - **2**, for number of **Unhealthy threshold** or consecutive probe failures that must occur before a VM is considered unhealthy.
 4. Select **OK**.
 
-   ![Add a health probe](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
+   :::image type="content" source="./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png" alt-text="Add a health probe":::
 
 ### Create a load balancer rule
 
@@ -211,14 +214,14 @@ A load balancer rule defines how traffic is distributed to the VMs. You define t
     - **myHealthProbe**, for the name of the health probe.
 4. Select **OK**.
     
-    ![Add a load-balancing rule](./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png)
+    :::image type="content" source="./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png" alt-text="Add a load-balancing rule":::
 
 ## Test the load balancer
 1. Find the public IP address for the load balancer on the **Overview** screen. Select **All resources**. Then select **myPublicIP**. 
 
 2. Copy the public IP address. Then paste it into the address bar of your browser. The default page that includes the name of the web server page is displayed on the browser.
 
-      ![IIS web server](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
+      :::image type="content" source="./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png" alt-text="IIS web server":::
 3. To see the load balancer in action, force stop the VM that is displayed. Refresh the browser to see the other server name displayed on the browser.
 
 ## Clean up resources
@@ -230,3 +233,7 @@ When they're no longer needed, delete the resource group, load balancer, and all
 Advance to the next article to learn how to load balance VMs across availability zones..
 > [!div class="nextstepaction"]
 > [Load balance VMs across availability zones](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+
+
+<!-- Update_Description: new article about tutorial load balancer standard public zonal portal -->
+<!--NEW.date: 12/21/2020-->

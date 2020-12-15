@@ -3,28 +3,32 @@ title: Azure Load Balancer SKUs
 description: Overview of Azure Load Balancer SKUs
 services: load-balancer
 documentationcenter: na
-author: asudbring
+
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/2020
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 ---
 # Azure Load Balancer SKUs
 
 Azure Load Balancer has two SKUs.
 
-## <a name="skus"></a> SKU comparison
+<a name="skus"></a>
+## SKU comparison
 
 Load balancer supports both Standard and Basic SKUs. These SKUs differ in scenario scale, features, and pricing. Any scenario that's possible with Basic load balancer can be created with Standard load balancer.
 
 To compare and understand the differences, see the following table. For more information, see [Azure Standard Load Balancer overview](./load-balancer-overview.md).
 
 >[!NOTE]
-> Microsoft recommends Standard load balancer.
+> Azure recommends Standard load balancer.
 Standalone VMs, availability sets, and virtual machine scale sets can be connected to only one SKU, never both. Load balancer and the public IP address SKU must match when you use them with public IP addresses. Load balancer and public IP SKUs aren't mutable.
 
 | | Standard Load Balancer | Basic Load Balancer |
@@ -41,7 +45,7 @@ Standalone VMs, availability sets, and virtual machine scale sets can be connect
 | **TCP Reset on Idle** | [Available on any rule](./load-balancer-tcp-reset.md) | Not available |
 | **[Multiple front ends](./load-balancer-multivip-overview.md)** | Inbound and [outbound](./load-balancer-outbound-connections.md) | Inbound only |
 | **Management Operations** | Most operations < 30 seconds | 60-90+ seconds typical |
-| **SLA** | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Not available | 
+| **SLA** | [99.99%](https://www.azure.cn/support/legal/sla/load-balancer/v1_0/) | Not available | 
 
 For more information, see [Load balancer limits](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). For Standard Load Balancer details, see [overview](./load-balancer-overview.md), [pricing](https://aka.ms/lbpricing), and [SLA](https://aka.ms/lbsla).
 
@@ -61,3 +65,7 @@ For more information, see [Load balancer limits](../azure-resource-manager/manag
 - Learn about using [Load Balancer for outbound connections](load-balancer-outbound-connections.md).
 - Learn about [Standard Load Balancer with HA Ports load balancing rules](load-balancer-ha-ports-overview.md).
 - Learn more about [Network Security Groups](../virtual-network/network-security-groups-overview.md).
+
+
+<!-- Update_Description: new article about skus -->
+<!--NEW.date: 12/21/2020-->

@@ -1,9 +1,13 @@
 ---
 title: Rendering capabilities
 description: Standard Azure Batch capabilities are used to run rendering workloads and apps. Batch includes specific features to support rendering workloads.
-author: mscurrell
-ms.author: markscu
-ms.date: 08/02/2018
+
+
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.topic: how-to
 ---
 
@@ -19,9 +23,9 @@ For an overview of Batch concepts, including pools, jobs, and tasks, see [this a
 
 An Azure Marketplace rendering VM image can be specified in the pool configuration if only the pre-installed applications need to be used.
 
-There is a Windows 2016 image and a CentOS image.  In the [Azure Marketplace](https://azuremarketplace.microsoft.com), the VM images can be found by searching for 'batch rendering'.
+There is a Windows 2016 image and a CentOS image.  In the [Azure Marketplace](https://market.azure.cn/marketplace/), the VM images can be found by searching for 'batch rendering'.
 
-For an example pool configuration, see the [Azure CLI rendering tutorial](./tutorial-rendering-cli.md).  The Azure portal and Batch Explorer provide GUI tools to select a rendering VM image when you create a pool.  If using a Batch API, then specify the following property values for [ImageReference](/rest/api/batchservice/pool/add#imagereference) when creating a pool:
+For an example pool configuration, see the [Azure CLI rendering tutorial](./tutorial-rendering-cli.md).  The Azure portal and Batch Explorer provide GUI tools to select a rendering VM image when you create a pool.  If using a Batch API, then specify the following property values for [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) when creating a pool:
 
 | Publisher | Offer | Sku | Version |
 |---------|---------|---------|--------|
@@ -35,14 +39,14 @@ Other options are available if additional applications are required on the pool 
 * [Application packages](./batch-application-packages.md):
   * Package the application files using one or more ZIP files, upload via the Azure portal, and specify the package in pool configuration. When pool VMs are created, the ZIP files are downloaded and the files extracted.
 * Resource files:
-  * Application files are uploaded to Azure blob storage, and you specify file references in the [pool start task](/rest/api/batchservice/pool/add#starttask). When pool VMs are created, the resource files are downloaded onto each VM.
+  * Application files are uploaded to Azure blob storage, and you specify file references in the [pool start task](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask). When pool VMs are created, the resource files are downloaded onto each VM.
 
 ### Pay-for-use licensing for pre-installed applications
 
 The applications that will be used and have a licensing fee need to be specified in the pool configuration.
 
-* Specify the `applicationLicenses` property when [creating a pool](/rest/api/batchservice/pool/add#request-body).  The following values can be specified in the array of strings - "vray", "arnold", "3dsmax", "maya".
-* When you specify one or more applications, then the cost of those applications is added to the cost of the VMs.  Application prices are listed on the [Azure Batch pricing page](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
+* Specify the `applicationLicenses` property when [creating a pool](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  The following values can be specified in the array of strings - "vray", "arnold", "3dsmax", "maya".
+* When you specify one or more applications, then the cost of those applications is added to the cost of the VMs.  Application prices are listed on the [Azure Batch pricing page](https://www.azure.cn/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
 > If instead you connect to a license server to use the rendering applications, do not specify the `applicationLicenses` property.
@@ -72,11 +76,20 @@ As with other workloads, rendering application system requirements vary, and per
 Some rendering applications, such as Arnold, are CPU-based; others such as V-Ray and Blender Cycles can use CPUs and/or GPUs.
 For a description of available VM families and VM sizes, [see VM types and sizes](../virtual-machines/sizes.md).
 
-### Low-priority VMs
+### Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs
 
-As with other workloads, low-priority VMs can be utilized in Batch pools for rendering.  Low-priority VMs perform the same as regular dedicated VMs but utilize surplus Azure capacity and are available for a large discount.  The tradeoff for using low-priority VMs is that those VMs may not be available to be allocated or may be preempted at any time, depending on available capacity. For this reason, low-priority VMs aren't going to be suitable for all rendering jobs. For example, if images take many hours to render then it's likely that having the rendering of those images interrupted and restarted due to VMs being preempted wouldn't be acceptable.
+<!--Not Available on FEATURE Low-priority-->
 
-For more information about the characteristics of low-priority VMs and the various ways to configure them using Batch, see [Use low-priority VMs with Batch](./batch-low-pri-vms.md).
+
+As with other workloads, low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs can be utilized in Batch pools for rendering.  Low-priority VMs perform the same as regular dedicated VMs but utilize surplus Azure capacity and are available for a large discount.  The tradeoff for using low-priority VMs is that those VMs may not be available to be allocated or may be preempted at any time, depending on available capacity. For this reason, low-priority VMs aren't going to be suitable for all rendering jobs. For example, if images take many hours to render then it's likely that having the rendering of those images interrupted and restarted due to VMs being preempted wouldn't be acceptable.
+
+<!--Not Available on FEATURE low-priority-->
+
+
+For more information about the characteristics of low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs and the various ways to configure them using Batch, see [Use low-priority VMs with Batch](./batch-low-pri-vms.md).
+
+<!--Not Available on FEATURE low-priority-->
+
 
 ## Jobs and tasks
 
@@ -89,3 +102,7 @@ For examples of Batch rendering try out the two tutorials:
 
 * [Rendering using the Azure CLI](./tutorial-rendering-cli.md)
 * [Rendering using Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)
+
+
+<!-- Update_Description: new article about batch rendering functionality -->
+<!--NEW.date: 12/21/2020-->

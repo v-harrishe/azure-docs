@@ -1,12 +1,15 @@
 ---
-title: 'Tutorial: Deploy & configure Azure Firewall using the Azure portal'
+title: Tutorial - Deploy & configure Azure Firewall using the Azure portal
 description: In this tutorial, you learn how to deploy and configure Azure Firewall using the Azure portal. 
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc
 #Customer intent: As an administrator new to this service, I want to control outbound network access from resources located in an Azure subnet.
 ---
@@ -24,12 +27,12 @@ Network traffic is subjected to the configured firewall rules when you route you
 
 For this tutorial, you create a simplified single VNet with two subnets for easy deployment.
 
-For production deployments, a [hub and spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is recommended, where the firewall is in its own VNet. The workload servers are in peered VNets in the same region with one or more subnets.
+For production deployments, a [hub and spoke model](https://docs.azure.cn/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is recommended, where the firewall is in its own VNet. The workload servers are in peered VNets in the same region with one or more subnets.
 
 * **AzureFirewallSubnet** - the firewall is in this subnet.
 * **Workload-SN** - the workload server is in this subnet. This subnet's network traffic goes through the firewall.
 
-![Tutorial network infrastructure](media/tutorial-firewall-deploy-portal/tutorial-network.png)
+:::image type="content" source="media/tutorial-firewall-deploy-portal/tutorial-network.png" alt-text="Tutorial network infrastructure":::
 
 In this tutorial, you learn how to:
 
@@ -37,7 +40,7 @@ In this tutorial, you learn how to:
 > * Set up a test network environment
 > * Deploy a firewall
 > * Create a default route
-> * Configure an application rule to allow access to www.google.com
+> * Configure an application rule to allow access to www.qq.com
 > * Configure a network rule to allow access to external DNS servers
 > * Configure a NAT rule to allow a remote desktop to the test server
 > * Test the firewall
@@ -46,7 +49,7 @@ If you prefer, you can complete this tutorial using [Azure PowerShell](deploy-ps
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
 
 ## Set up the network
 
@@ -56,7 +59,7 @@ First, create a resource group to contain the resources needed to deploy the fir
 
 The resource group contains all the resources for the tutorial.
 
-1. Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+1. Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
 2. On the Azure portal menu, select **Resource groups** or search for and select *Resource groups* from any page. Then select **Add**.
 3. For **Resource group name**, enter *Test-FW-RG*.
 4. For **Subscription**, select your subscription.
@@ -135,7 +138,7 @@ Deploy the firewall into the VNet.
    |Name     |**Test-FW01**|
    |Location     |Select the same location that you used previously|
    |Choose a virtual network     |**Use existing**: **Test-FW-VN**|
-   |Public IP address     |**Add new**<br>**Name**:  **fw-pip**|
+   |Public IP address     |**Add new**<br />**Name**:  **fw-pip**|
 
 5. Select **Review + create**.
 6. Review the summary, and then select **Create** to create the firewall.
@@ -173,7 +176,7 @@ For the **Workload-SN** subnet, configure the outbound default route to go throu
 
 ## Configure an application rule
 
-This is the application rule that allows outbound access to `www.google.com`.
+This is the application rule that allows outbound access to `www.qq.com`.
 
 1. Open the **Test-FW-RG**, and select the **Test-FW01** firewall.
 2. On the **Test-FW01** page, under **Settings**, select **Rules**.
@@ -182,11 +185,11 @@ This is the application rule that allows outbound access to `www.google.com`.
 5. For **Name**, type **App-Coll01**.
 6. For **Priority**, type **200**.
 7. For **Action**, select **Allow**.
-8. Under **Rules**, **Target FQDNs**, for **Name**, type **Allow-Google**.
+8. Under **Rules**, **Target FQDNs**, for **Name**, type **Allow-QQ**.
 9. For **Source type**, select **IP address**.
 10. For **Source**, type **10.0.2.0/24**.
 11. For **Protocol:port**, type **http, https**.
-12. For **Target FQDNS**, type **`www.google.com`**
+12. For **Target FQDNS**, type **`www.qq.com`**
 13. Select **Add**.
 
 Azure Firewall includes a built-in rule collection for infrastructure FQDNs that are allowed by default. These FQDNs are specific for the platform and can't be used for other purposes. For more information, see [Infrastructure FQDNs](infrastructure-fqdns.md).
@@ -247,10 +250,10 @@ For testing purposes in this tutorial, configure the server's primary and second
 Now, test the firewall to confirm that it works as expected.
 
 1. Connect a remote desktop to firewall public IP address and sign in to the **Srv-Work** virtual machine. 
-3. Open Internet Explorer and browse to `https://www.google.com`.
+3. Open Internet Explorer and browse to `https://www.qq.com`.
 4. Select **OK** > **Close** on the Internet Explorer security alerts.
 
-   You should see the Google home page.
+   You should see the QQ home page.
 
 5. Browse to `https://www.microsoft.com`.
 
@@ -269,3 +272,7 @@ You can keep your firewall resources for the next tutorial, or if no longer need
 
 > [!div class="nextstepaction"]
 > [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
+
+
+<!-- Update_Description: new article about tutorial firewall deploy portal -->
+<!--NEW.date: 12/21/2020-->

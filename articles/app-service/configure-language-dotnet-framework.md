@@ -5,7 +5,11 @@ description: Learn how to configure an ASP.NET app in Azure App Service. This ar
 ms.devlang: dotnet
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
-ms.date: 06/02/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 ---
 
@@ -38,9 +42,9 @@ ls "D:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\"
 
 ## Show current .NET Framework runtime version
 
-Run the following command in the [Cloud Shell](https://shell.azure.com):
+Run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
 
-```azurecli-interactive
+```azurecli
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query netFrameworkVersion
 ```
 
@@ -48,9 +52,9 @@ A value of `v4.0` means the latest CLR 4 version (.NET Framework 4.x) is used. A
 
 ## Set .NET Framework runtime version
 
-By default, App Service uses the latest supported .NET Framework version to run your ASP.NET app. To run your app using .NET Framework 3.5 instead, run the following command in the [Cloud Shell](https://shell.azure.com) (v2.0 signifies CLR 2):
+By default, App Service uses the latest supported .NET Framework version to run your ASP.NET app. To run your app using .NET Framework 3.5 instead, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) (v2.0 signifies CLR 2):
 
-```azurecli-interactive
+```azurecli
 az webapp config set --resource-group <resource-group-name> --name <app-name> --net-framework-version v2.0
 ```
 
@@ -72,9 +76,9 @@ If you configure an app setting with the same name in App Service and in *web.co
 
 ## Deploy multi-project solutions
 
-When a Visual Studio solution includes multiple projects, the Visual Studio publish process already includes selecting the project to deploy. When you deploy to the App Service deployment engine, such as with Git or with ZIP deploy, with build automation turned on, the App Service deployment engine picks the first Web Site or Web Application Project it finds as the App Service app. You can specify which project App Service should use by specifying the `PROJECT` app setting. For example, run the following in the [Cloud Shell](https://shell.azure.com):
+When a Visual Studio solution includes multiple projects, the Visual Studio publish process already includes selecting the project to deploy. When you deploy to the App Service deployment engine, such as with Git or with ZIP deploy, with build automation turned on, the App Service deployment engine picks the first Web Site or Web Application Project it finds as the App Service app. You can specify which project App Service should use by specifying the `PROJECT` app setting. For example, run the following in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
 ```
 
@@ -92,7 +96,7 @@ Redeploy your app with the updated *Web.config*. You should now see the same det
 
 ## Access diagnostic logs
 
-You can add diagnostic messages in your application code using [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace). For example: 
+You can add diagnostic messages in your application code using [System.Diagnostics.Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace). For example: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace
@@ -106,3 +110,8 @@ Trace.TraceInformation("GET /Home/Index"); // Information trace
 
 > [!div class="nextstepaction"]
 > [Tutorial: Build an ASP.NET app in Azure with SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+
+
+<!-- Update_Description: new article about configure language dotnet framework -->
+<!--NEW.date: 12/21/2020-->

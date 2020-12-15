@@ -1,18 +1,21 @@
 ---
 title: Monitor apps
 description: Learn how to monitor apps in Azure App Service by using the Azure portal. Understand the quotas and metrics that are reported.
-author: btardif
+
 
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 04/23/2020
-ms.author: byvinyal
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
 # Monitor apps in Azure App Service
 [Azure App Service](./overview.md) provides
-built-in monitoring functionality for web apps, mobile, and API apps in the [Azure portal](https://portal.azure.com).
+built-in monitoring functionality for web apps, mobile, and API apps in the [Azure portal](https://portal.azure.cn).
 
 In the Azure portal, you can review *quotas* and *metrics* for an app and App Service plan, and set up *alerts* and *autoscaling* rules based metrics.
 
@@ -126,6 +129,7 @@ For an App Service plan, the available metrics are:
 | **Http Queue Length** | The average number of HTTP requests that had to sit on the queue before being fulfilled. A high or increasing HTTP Queue length is a symptom of a plan under heavy load. |
 
 ### CPU time vs CPU percentage
+
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
 There are two metrics that reflect CPU usage:
@@ -138,7 +142,7 @@ There are two metrics that reflect CPU usage:
 Metrics for an app and app service plan are logged and aggregated by the service and [retained according to these rules](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
 
 ## Monitoring quotas and metrics in the Azure portal
-To review the status of the various quotas and metrics that affect an app, go to the [Azure portal](https://portal.azure.com).
+To review the status of the various quotas and metrics that affect an app, go to the [Azure portal](https://portal.azure.cn).
 
 ![Quotas chart in the Azure portal][quotas]
 
@@ -162,10 +166,16 @@ App Service apps hosted in Basic or higher App Service plans support autoscale. 
 
 For more information about autoscale, see [How to scale](../azure-monitor/platform/autoscale-get-started.md) and [Best practices for Azure Monitor autoscaling](../azure-monitor/platform/autoscale-best-practices.md).
 
-[fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
-[vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
+[fzilla]: https://go.microsoft.com/fwlink/?LinkId=247914
+[vmsizes]: https://go.microsoft.com/fwlink/?LinkID=309169
 
 <!-- Images. -->
+
 [http403]: ./media/web-sites-monitor/http403.png
 [quotas]: ./media/web-sites-monitor/quotas.png
 [metrics]: ./media/web-sites-monitor/metrics.png
+
+
+
+<!-- Update_Description: new article about web sites monitor -->
+<!--NEW.date: 12/21/2020-->

@@ -1,10 +1,13 @@
 ---
 title: Check for job and task errors
 description: Learn about errors to check for and how to troubleshoot jobs and tasks.
-author: mscurrell
+
 ms.topic: how-to
-ms.date: 11/23/2020
-ms.author: markscu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Job and task error checking
@@ -19,20 +22,20 @@ A job is a grouping of one or more tasks, with the tasks actually specifying the
 
 When adding a job, the following parameters can be specified which can influence how the job can fail:
 
-- [Job Constraints](/rest/api/batchservice/job/add#jobconstraints)
-  - The `maxWallClockTime` property can optionally be specified to set the maximum amount of time a job can be active or running. If exceeded, the job will be terminated with the `terminateReason` property set in the [executionInfo](/rest/api/batchservice/job/get#cloudjob) for the job.
-- [Job Preparation Task](/rest/api/batchservice/job/add#jobpreparationtask)
+- [Job Constraints](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints)
+  - The `maxWallClockTime` property can optionally be specified to set the maximum amount of time a job can be active or running. If exceeded, the job will be terminated with the `terminateReason` property set in the [executionInfo](https://docs.microsoft.com/rest/api/batchservice/job/get#cloudjob) for the job.
+- [Job Preparation Task](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask)
   - If specified, a job preparation task is run the first time a task is run for a job on a node. The job preparation task can fail, which will lead to the task not being run and the job not completing.
-- [Job Release Task](/rest/api/batchservice/job/add#jobreleasetask)
+- [Job Release Task](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask)
   - A job release task can only be specified if a job preparation task is configured. When a job is being terminated, the job release task is run on the each of pool nodes where a job preparation task was run. A job release task can fail, but the job will still move to a `completed` state.
 
 ### Job properties
 
 The following job properties should be checked for errors:
 
-- '[executionInfo](/rest/api/batchservice/job/get#jobexecutioninformation)':
+- '[executionInfo](https://docs.microsoft.com/rest/api/batchservice/job/get#jobexecutioninformation)':
   - The `terminateReason` property can have values to indicate that the `maxWallClockTime`, specified in the job constraints, was exceeded and therefore the job was terminated. It can also be set to indicate a task failed if the job `onTaskFailure` property was set appropriately.
-  - The [schedulingError](/rest/api/batchservice/job/get#jobschedulingerror) property is set if there has been a scheduling error.
+  - The [schedulingError](https://docs.microsoft.com/rest/api/batchservice/job/get#jobschedulingerror) property is set if there has been a scheduling error.
 
 ### Job preparation tasks
 
@@ -40,15 +43,15 @@ If a job preparation task is specified for a job, then an instance of that task 
 
 The job preparation task instances should be checked to determine if there were errors:
 
-- When a job preparation task is run, then the task that triggered the job preparation task will move to a [state](/rest/api/batchservice/task/get#taskstate) of `preparing`; if the job preparation task then fails, the triggering task will revert to the `active` state and will not be run.
-- All the instances of the job preparation task that have been run can be obtained from the job using the [List Preparation and Release Task Status](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) API. As with any task, there is [execution information](/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) available with properties such as `failureInfo`, `exitCode`, and `result`.
+- When a job preparation task is run, then the task that triggered the job preparation task will move to a [state](https://docs.microsoft.com/rest/api/batchservice/task/get#taskstate) of `preparing`; if the job preparation task then fails, the triggering task will revert to the `active` state and will not be run.
+- All the instances of the job preparation task that have been run can be obtained from the job using the [List Preparation and Release Task Status](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) API. As with any task, there is [execution information](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) available with properties such as `failureInfo`, `exitCode`, and `result`.
 - If job preparation tasks fail, then the triggering job tasks will not be run, the job will not complete and will be stuck. The pool may go unutilized if there are no other jobs with tasks that can be scheduled.
 
 ### Job release tasks
 
 If a job release task is specified for a job, then when a job is being terminated, an instance of the job release task is run on each pool node where a job preparation task was run. The job release task instances should be checked to determine if there were errors:
 
-- All the instances of the job release task being run can be obtained from the job using the API [List Preparation and Release Task Status](/rest/api/batchservice/job/listpreparationandreleasetaskstatus). As with any task, there is [execution information](/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) available with properties such as `failureInfo`, `exitCode`, and `result`.
+- All the instances of the job release task being run can be obtained from the job using the API [List Preparation and Release Task Status](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus). As with any task, there is [execution information](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) available with properties such as `failureInfo`, `exitCode`, and `result`.
 - If one or more job release tasks fail, then the job will still be terminated and move to a `completed` state.
 
 ## Tasks
@@ -58,23 +61,23 @@ Job tasks can fail for multiple reasons:
 - The task command line fails, returning with a non-zero exit code.
 - There are `resourceFiles` specified for a task, but there was a failure that meant one or more files didn't download.
 - There are `outputFiles` specified for a task, but there was a failure that meant one or more files didn't upload.
-- The elapsed time for the task, specified by the `maxWallClockTime` property in the task [constraints](/rest/api/batchservice/task/add#taskconstraints), was exceeded.
+- The elapsed time for the task, specified by the `maxWallClockTime` property in the task [constraints](https://docs.microsoft.com/rest/api/batchservice/task/add#taskconstraints), was exceeded.
 
 In all cases the following properties must be checked for errors and information about the errors:
 
-- The tasks [executionInfo](/rest/api/batchservice/task/get#taskexecutioninformation) property contains multiple properties that provide information about an error. [result](/rest/api/batchservice/task/get#taskexecutionresult) indicates if the task failed for any reason, with `exitCode` and `failureInfo` providing more information about the failure.
-- The task will always move to the `completed` [state](/rest/api/batchservice/task/get#taskstate), independent of whether it succeeded or failed.
+- The tasks [executionInfo](https://docs.microsoft.com/rest/api/batchservice/task/get#taskexecutioninformation) property contains multiple properties that provide information about an error. [result](https://docs.microsoft.com/rest/api/batchservice/task/get#taskexecutionresult) indicates if the task failed for any reason, with `exitCode` and `failureInfo` providing more information about the failure.
+- The task will always move to the `completed` [state](https://docs.microsoft.com/rest/api/batchservice/task/get#taskstate), independent of whether it succeeded or failed.
 
-The impact of task failures on the job and any task dependencies must be considered. The [exitConditions](/rest/api/batchservice/task/add#exitconditions) property can be specified for a task to configure an action for dependencies and for the job.
+The impact of task failures on the job and any task dependencies must be considered. The [exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions) property can be specified for a task to configure an action for dependencies and for the job.
 
-- For dependencies, [DependencyAction](/rest/api/batchservice/task/add#dependencyaction) controls whether the tasks dependent on the failed task are blocked or are run.
-- For the job, [JobAction](/rest/api/batchservice/task/add#jobaction) controls whether the failed task leads to the job being disabled, terminated, or left unchanged.
+- For dependencies, [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction) controls whether the tasks dependent on the failed task are blocked or are run.
+- For the job, [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction) controls whether the failed task leads to the job being disabled, terminated, or left unchanged.
 
 ### Task command line failures
 
 When the task command line is run, output is written to `stderr.txt` and `stdout.txt`. In addition, the application may write to application-specific log files.
 
-If the pool node on which a task has run still exists, then the log files can be obtained and viewed. For example, the Azure portal lists and can view log files for a task or a pool node. Multiple APIs also allow task files to be listed and obtained, such as [Get From Task](/rest/api/batchservice/file/getfromtask).
+If the pool node on which a task has run still exists, then the log files can be obtained and viewed. For example, the Azure portal lists and can view log files for a task or a pool node. Multiple APIs also allow task files to be listed and obtained, such as [Get From Task](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask).
 
 Since pools and pool nodes are frequently ephemeral, with nodes being continuously added and deleted, we recommend saving log files. [Task output files](./batch-task-output-files.md) are a convenient way to save log files to Azure Storage.
 
@@ -88,3 +91,7 @@ On every file upload, Batch writes two log files to the compute node, `fileuploa
 
 - Check that your application implements comprehensive error checking; it can be critical to promptly detect and diagnose issues.
 - Learn more about [jobs and tasks](jobs-and-tasks.md).
+
+
+<!-- Update_Description: new article about batch job task error checking -->
+<!--NEW.date: 12/21/2020-->

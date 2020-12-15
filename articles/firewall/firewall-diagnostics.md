@@ -2,11 +2,14 @@
 title: Monitor Azure Firewall logs and metrics
 description: In this article, you learn how to enable and manage Azure Firewall logs and metrics.
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/04/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 #Customer intent: As an administrator, I want monitor Azure Firewall logs and metrics so that I can track firewall activity.
 ---
 # Monitor Azure Firewall logs and metrics
@@ -87,7 +90,7 @@ To enable diagnostic logging with Azure CLI, use the following steps:
 
 3. Enable diagnostic logging for all logs and metrics by using the following Azure CLI command:
 
-   ```azurecli-interactive
+   ```azurecli
    az monitor diagnostic-settings create -n 'toLogAnalytics'
       --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
       --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
@@ -126,3 +129,8 @@ Now that you've configured your firewall to collect logs, you can explore Azure 
 [Monitor logs using Azure Firewall Workbook](firewall-workbook.md)
 
 [Networking monitoring solutions in Azure Monitor logs](../azure-monitor/insights/azure-networking-analytics.md)
+
+
+
+<!-- Update_Description: new article about firewall diagnostics -->
+<!--NEW.date: 12/21/2020-->

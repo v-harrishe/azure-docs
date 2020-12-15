@@ -1,12 +1,15 @@
 ---
-title: 'Tutorial: Filter inbound Internet traffic with Azure Firewall DNAT using the portal'
+title: Tutorial - Filter inbound Internet traffic with Azure Firewall DNAT using the portal
 description: In this tutorial, you learn how to deploy and configure Azure Firewall DNAT using the Azure portal. 
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/28/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc
 #Customer intent: As an administrator, I want to deploy and configure Azure Firewall DNAT so that I can control inbound Internet access to resources located in a subnet.
 ---
@@ -26,13 +29,13 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
 
 
 
 ## Create a resource group
 
-1. Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+1. Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
 2. On the Azure portal home page, select **Resource groups**, then select **Add**.
 3. For **Resource group name**, type **RG-DNAT-Test**.
 4. For **Subscription**, select your subscription.
@@ -223,3 +226,7 @@ Next, you can monitor the Azure Firewall logs.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
+
+
+<!-- Update_Description: new article about tutorial firewall dnat -->
+<!--NEW.date: 12/21/2020-->

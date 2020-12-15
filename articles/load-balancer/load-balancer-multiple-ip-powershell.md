@@ -4,15 +4,18 @@ titleSuffix: Azure Load Balancer
 description: In this article, learn about load balancing across primary and secondary IP configurations using Azure CLI.
 services: load-balancer
 documentationcenter: na
-author: asudbring
+
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
 ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Load balancing on multiple IP configurations using PowerShell
@@ -25,7 +28,7 @@ ms.author: allensu
 
 This article describes how to use Azure Load Balancer with multiple IP addresses on a secondary network interface (NIC). For this scenario, we have two VMs running Windows, each with a primary and a secondary NIC. Each of the secondary NICs has two IP configurations. Each VM hosts both websites contoso.com and fabrikam.com. Each website is bound to one of the IP configurations on the secondary NIC. We use Azure Load Balancer to expose two frontend IP addresses, one for each website, to distribute traffic to the respective IP configuration for the website. This scenario uses the same port number across both frontends, as well as both backend pool IP addresses.
 
-![LB scenario image](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+:::image type="content" source="./media/load-balancer-multiple-ip/lb-multi-ip.PNG" alt-text="LB scenario image":::
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,37 +36,37 @@ This article describes how to use Azure Load Balancer with multiple IP addresses
 
 Follow the steps below to achieve the scenario outlined in this article:
 
-1. Install Azure PowerShell. See [How to install and configure Azure PowerShell](/powershell/azure/) for information about installing the latest version of Azure PowerShell, selecting your subscription, and signing in to your account.
+1. Install Azure PowerShell. See [How to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/) for information about installing the latest version of Azure PowerShell, selecting your subscription, and signing in to your account.
 2. Create a resource group using the following settings:
 
     ```powershell
-    $location = "westcentralus".
+    $location = "chinanorth".
     $myResourceGroup = "contosofabrikam"
     ```
 
-    For more information, see Step 2 of [Create a Resource Group](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+    For more information, see Step 2 of [Create a Resource Group](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fload-balancer%2ftoc.json).
 
-3. [Create an Availability Set](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) to contain your VMs. For this scenario, use the following command:
+3. [Create an Availability Set](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fload-balancer%2ftoc.json) to contain your VMs. For this scenario, use the following command:
 
     ```powershell
-    New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
+    New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "China North"
     ```
 
-4. Follow instructions steps 3 through 5 in [Create a Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) article to prepare the creation of a VM with a single NIC. Execute step 6.1, and use the following instead of step 6.2:
+4. Follow instructions steps 3 through 5 in [Create a Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fload-balancer%2ftoc.json) article to prepare the creation of a VM with a single NIC. Execute step 6.1, and use the following instead of step 6.2:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Then complete [Create a Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) steps 6.3 through 6.8.
+    Then complete [Create a Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fload-balancer%2ftoc.json) steps 6.3 through 6.8.
 
 5. Add a second IP configuration to each of the VMs. Follow the instructions in [Assign multiple IP addresses to virtual machines](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) article. Use the following configuration settings:
 
     ```powershell
     $NicName = "VM1-NIC2"
     $RgName = "contosofabrikam"
-    $NicLocation = "West Central US"
+    $NicLocation = "China North"
     $IPConfigName4 = "VM1-ipconfig2"
     $Subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $myVnet
     ```
@@ -75,8 +78,8 @@ Follow the steps below to achieve the scenario outlined in this article:
 7. Create two public IP addresses and store them in the appropriate variables as shown:
 
     ```powershell
-    $publicIP1 = New-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel contoso
-    $publicIP2 = New-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel fabrikam
+    $publicIP1 = New-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'China North' -AllocationMethod Dynamic -DomainNameLabel contoso
+    $publicIP2 = New-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam -Location 'China North' -AllocationMethod Dynamic -DomainNameLabel fabrikam
 
     $publicIP1 = Get-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam
     $publicIP2 = Get-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam
@@ -104,7 +107,7 @@ Follow the steps below to achieve the scenario outlined in this article:
 10. Once you have these resources created, create your load balancer:
 
     ```powershell
-    $mylb = New-AzLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'West Central US' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
+    $mylb = New-AzLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'China North' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
     ```
 
 11. Add the second backend address pool and frontend IP configuration to your newly created load balancer:
@@ -139,3 +142,8 @@ Follow the steps below to achieve the scenario outlined in this article:
 ## Next steps
 - Learn more about how to combine load balancing services in Azure in [Using load-balancing services in Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
 - Learn how you can use different types of logs in Azure to manage and troubleshoot load balancer in [Azure Monitor logs for Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+
+
+
+<!-- Update_Description: new article about load balancer multiple ip powershell -->
+<!--NEW.date: 12/21/2020-->

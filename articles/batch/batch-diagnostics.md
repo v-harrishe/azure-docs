@@ -2,7 +2,11 @@
 title: Metrics, alerts, and diagnostic logs
 description: Record and analyze diagnostic log events for Azure Batch account resources like pools and tasks.
 ms.topic: how-to
-ms.date: 10/08/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
@@ -12,7 +16,10 @@ This article explains how to monitor a Batch account using features of [Azure Mo
 
 ## Batch metrics
 
-Metrics are Azure telemetry data (also called performance counters) that are emitted by your Azure resources and consumed by the Azure Monitor service. Examples of metrics in a Batch account are Pool Create Events, Low-Priority Node Count, and Task Complete Events.
+Metrics are Azure telemetry data (also called performance counters) that are emitted by your Azure resources and consumed by the Azure Monitor service. Examples of metrics in a Batch account are Pool Create Events, Low-Priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) Node Count, and Task Complete Events.
+
+<!--Not Available on FEATURE Low-Priority-->
+
 
 See the [list of supported Batch metrics](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -31,7 +38,10 @@ To view all Batch account metrics in the Azure portal:
 1. In the Azure portal, select **All services** > **Batch accounts**, and then select the name of your Batch account.
 2. Under **Monitoring**, select **Metrics**.
 3. Select **Add metric** and then choose a metric from the dropdown list.
-4. Select an **Aggregation** option for the metric. For count-based metrics (like "Dedicated Core Count" or "Low-Priority Node Count"), use the **Average** aggregation. For event-based metrics (like "Pool Resize Complete Events"), use the **Count**" aggregation.
+4. Select an **Aggregation** option for the metric. For count-based metrics (like "Dedicated Core Count" or "Low-Priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) Node Count"), use the **Average** aggregation. For event-based metrics (like "Pool Resize Complete Events"), use the **Count**" aggregation.
+
+<!--Not Available on FEATURE Low-Priority-->
+
 
    > [!WARNING]
    > Do not use the "Sum" aggregation, which adds up the values of all data points received over the period of the chart.
@@ -52,7 +62,10 @@ You can configure near real-time *metric alerts* that trigger when the value of 
 
 Alerts that trigger on a single data point is not recommended, as metrics are subject to out-of-order delivery, data loss, and/or duplication. When creating your alerts, you can use thresholds to account for these inconsistencies.
 
-For example, you might want to configure a metric alert when your low priority core count falls to a certain level, so you can adjust the composition of your pools. For best results, set a period of 10 or more minutes, where alerts trigger if the average low priority core count falls below the threshold value for the entire period. This allows for more time for metrics to aggregate so that you get more accurate results.
+For example, you might want to configure a metric alert when your low priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) core count falls to a certain level, so you can adjust the composition of your pools. For best results, set a period of 10 or more minutes, where alerts trigger if the average low priority core count falls below the threshold value for the entire period. This allows for more time for metrics to aggregate so that you get more accurate results.
+
+<!--Not Available on FEATURE low priority-->
+
 
 To configure a metric alert in the Azure portal:
 
@@ -65,7 +78,7 @@ To configure a metric alert in the Azure portal:
 
 For more information about creating metric alerts, see [Understand how metric alerts work in Azure Monitor](../azure-monitor/platform/alerts-metric-overview.md) and [Create, view, and manage metric alerts using Azure Monitor](../azure-monitor/platform/alerts-metric.md).
 
-You can also configure a near real-time alert using the Azure Monitor [REST API](/rest/api/monitor/). For more information, see [Overview of Alerts in Microsoft Azure](../azure-monitor/platform/alerts-overview.md). To include job, task, or pool-specific information in your alerts, see the information on search queries in [Respond to events with Azure Monitor Alerts](../azure-monitor/learn/tutorial-response.md).
+You can also configure a near real-time alert using the Azure Monitor [REST API](https://docs.microsoft.com/rest/api/monitor/). For more information, see [Overview of Alerts in Azure Azure](../azure-monitor/platform/alerts-overview.md). To include job, task, or pool-specific information in your alerts, see the information on search queries in [Respond to events with Azure Monitor Alerts](../azure-monitor/learn/tutorial-response.md).
 
 ## Batch diagnostics
 
@@ -124,7 +137,10 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 
 Each `PT1H.json` blob file contains JSON-formatted events that occurred within the hour specified in the blob URL (for example, `h=12`). During the present hour, events are appended to the `PT1H.json` file as they occur. The minute value (`m=00`) is always `00`, since diagnostic log events are broken into individual blobs per hour. (All times are in UTC.)
 
-Below is an example of a `PoolResizeCompleteEvent` entry in a `PT1H.json` log file. It includes information about the current and target number of dedicated and low-priority nodes, as well as the start and end time of the operation:
+Below is an example of a `PoolResizeCompleteEvent` entry in a `PT1H.json` log file. It includes information about the current and target number of dedicated and low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes, as well as the start and end time of the operation:
+
+<!--Not Available on FEATURE low-priority-->
+
 
 ```json
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
@@ -175,3 +191,7 @@ Service log events emitted by the Batch service include the following:
 
 - Learn about the [Batch APIs and tools](batch-apis-tools.md) available for building Batch solutions.
 - Learn more about [monitoring Batch solutions](monitoring-overview.md).
+
+
+<!-- Update_Description: new article about batch diagnostics -->
+<!--NEW.date: 12/21/2020-->

@@ -1,11 +1,15 @@
 ---
-title: 'Tutorial: Linux Java app with MongoDB'
+title: Tutorial - Linux Java app with MongoDB
 description: Learn how to get a data-driven Linux Java app working in Azure App Service, with connection to a MongoDB running in Azure (Cosmos DB).
-author: rloutlaw
-ms.author: routlaw
+
+
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 12/10/2018
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ---
 
@@ -29,14 +33,14 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-* [Azure CLI](/cli/azure/overview), installed on your own computer. 
+* [Azure CLI](https://docs.azure.cn/cli/overview), installed on your own computer. 
 * [Git](https://git-scm.com/)
-* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java JDK](https://docs.azure.cn/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
 ## Clone the sample TODO app and prepare the repo
 
-This tutorial uses a sample TODO list app with a web UI that calls a Spring REST API backed by [Spring Data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb). The code for the app is available [on GitHub](https://github.com/Microsoft/spring-todo-app). To learn more about writing Java apps using Spring and Cosmos DB, see the [Spring Boot Starter with the Azure Cosmos DB SQL API tutorial](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) and the [Spring Data Azure Cosmos DB quick start](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
+This tutorial uses a sample TODO list app with a web UI that calls a Spring REST API backed by [Spring Data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb). The code for the app is available [on GitHub](https://github.com/Microsoft/spring-todo-app). To learn more about writing Java apps using Spring and Cosmos DB, see the [Spring Boot Starter with the Azure Cosmos DB SQL API tutorial](https://docs.azure.cn/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) and the [Spring Data Azure Cosmos DB quick start](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
 
 
 Run the following commands in your terminal to clone the sample repo and set up the sample app environment.
@@ -157,7 +161,7 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 [INFO] SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 [INFO] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
-2018-10-28 15:04:32.101  INFO 7673 --- [           main] c.m.azure.documentdb.DocumentClient      : Initializing DocumentClient with serviceEndpoint [https://sample-cosmos-db-westus.documents.azure.com:443/], ConnectionPolicy [ConnectionPolicy [requestTimeout=60, mediaRequestTimeout=300, connectionMode=Gateway, mediaReadMode=Buffered, maxPoolSize=800, idleConnectionTimeout=60, userAgentSuffix=;spring-data/2.0.6;098063be661ab767976bd5a2ec350e978faba99348207e8627375e8033277cb2, retryOptions=com.microsoft.azure.documentdb.RetryOptions@6b9fb84d, enableEndpointDiscovery=true, preferredLocations=null]], ConsistencyLevel [null]
+2018-10-28 15:04:32.101  INFO 7673 --- [           main] c.m.azure.documentdb.DocumentClient      : Initializing DocumentClient with serviceEndpoint [https://sample-cosmos-db-chinanorth.documents.azure.cn:443/], ConnectionPolicy [ConnectionPolicy [requestTimeout=60, mediaRequestTimeout=300, connectionMode=Gateway, mediaReadMode=Buffered, maxPoolSize=800, idleConnectionTimeout=60, userAgentSuffix=;spring-data/2.0.6;098063be661ab767976bd5a2ec350e978faba99348207e8627375e8033277cb2, retryOptions=com.microsoft.azure.documentdb.RetryOptions@6b9fb84d, enableEndpointDiscovery=true, preferredLocations=null]], ConsistencyLevel [null]
 [INFO] AnnotationMBeanExporter - Registering beans for JMX exposure on startup
 [INFO] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
@@ -177,8 +181,11 @@ Open the `pom.xml` file in the `initial/spring-boot-todo` directory and add the 
 <plugins> 
 
     <!--*************************************************-->
+
     <!-- Deploy to Java SE in App Service Linux           -->
+
     <!--*************************************************-->
+
        
     <plugin>
         <groupId>com.microsoft.azure</groupId>
@@ -188,11 +195,13 @@ Open the `pom.xml` file in the `initial/spring-boot-todo` directory and add the 
             <schemaVersion>v2</schemaVersion>
 
             <!-- Web App information -->
+
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
 
             <!-- Java Runtime Stack for Web App on Linux-->
+
             <runtime>
                  <os>linux</os>
                  <javaVersion>jre8</javaVersion>
@@ -297,7 +306,7 @@ az appservice plan update --number-of-workers 2 \
 
 ## Clean up resources
 
-If you don't need these resources for another tutorial (see [Next steps](#next)), you can delete them by running the following command in the Cloud Shell: 
+If you don't need these resources for another tutorial (see [Next steps](#next)), you can delete them by running the following command in the local Shell: 
   
 ```bash
 az group delete --name <your-azure-group-name>
@@ -307,9 +316,9 @@ az group delete --name <your-azure-group-name>
 
 ## Next steps
 
-[Azure for Java Developers](/java/azure/)
+[Azure for Java Developers](https://docs.azure.cn/java/)
 [Spring Boot](https://spring.io/projects/spring-boot), 
-[Spring Data for Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), 
+[Spring Data for Cosmos DB](https://docs.azure.cn/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db), 
 [Azure Cosmos DB](../cosmos-db/introduction.md)
 and
 [App Service Linux](overview.md).
@@ -318,3 +327,8 @@ Learn more about running Java apps on App Service on Linux in the developer guid
 
 > [!div class="nextstepaction"] 
 > [Java in App Service Linux dev guide](configure-language-java.md?pivots=platform-linux)
+
+
+
+<!-- Update_Description: new article about tutorial java spring cosmosdb -->
+<!--NEW.date: 12/21/2020-->

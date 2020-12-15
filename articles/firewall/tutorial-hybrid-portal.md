@@ -1,12 +1,15 @@
 ---
-title: 'Tutorial: Deploy and configure Azure Firewall in a hybrid network using the Azure portal'
+title: Tutorial - Deploy and configure Azure Firewall in a hybrid network using the Azure portal
 description: In this tutorial, you learn how to deploy and configure Azure Firewall using Azure portal. 
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ---
 
@@ -22,7 +25,7 @@ For this tutorial, you create three virtual networks:
 - **VNet-Spoke** - the spoke virtual network represents the workload located on Azure.
 - **VNet-Onprem** - The on-premises virtual network represents an on-premises network. In an actual deployment, it can be connected by either a VPN or ExpressRoute connection. For simplicity, this tutorial uses a VPN gateway connection, and an Azure-located virtual network is used to represent an on-premises network.
 
-![Firewall in a hybrid network](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
+:::image type="content" source="media/tutorial-hybrid-ps/hybrid-network-firewall.png" alt-text="Firewall in a hybrid network":::
 
 In this tutorial, you learn how to:
 
@@ -62,17 +65,17 @@ See the [Create Routes](#create-the-routes) section in this tutorial to see how 
 >[!NOTE]
 >Traffic between directly peered VNets is routed directly even if a UDR points to Azure Firewall as the default gateway. To send subnet to subnet traffic to the firewall in this scenario, a UDR must contain the target subnet network prefix explicitly on both subnets.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
 
 ## Create the firewall hub virtual network
 
 First, create the resource group to contain the resources for this tutorial:
 
-1. Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+1. Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
 2. On the Azure portal home page, select **Resource groups** > **Add**.
 3. For **Subscription**, select your subscription.
 1. For **Resource group name**, type **FW-Hybrid-Test**.
-2. For **Region**, select **(US) East US**. All resources that you create later must be in the same location.
+2. For **Region**, select **(US) China East**. All resources that you create later must be in the same location.
 3. Select **Review + Create**.
 4. Select **Create**.
 
@@ -101,7 +104,7 @@ Now, create the VNet:
 2. In **Networking**, select **Virtual network**.
 7. For **Resource group**, select **FW-Hybrid-Test**.
 1. For **Name**, type **VNet-Spoke**.
-2. For **Region**, select **(US) East US**.
+2. For **Region**, select **(US) China East**.
 3. Select **Next: IP Addresses**.
 4. For **IPv4 address space**, delete the default address and type **10.6.0.0/16**.
 6. Under **Subnet name**, select **Add subnet**.
@@ -117,7 +120,7 @@ Now, create the VNet:
 2. In **Networking**, select **Virtual network**.
 7. For **Resource group**, select **FW-Hybrid-Test**.
 1. For **Name**, type **VNet-OnPrem**.
-2. For **Region**, select **(US) East US**.
+2. For **Region**, select **(US) China East**.
 3. Select **Next : IP Addresses**
 4. For **IPv4 address space**, delete the default address and type **192.168.0.0/16**.
 5. Under **Subnet name**, select **Add subnet**.
@@ -148,9 +151,9 @@ Now deploy the firewall into the firewall hub virtual network.
    |Subscription     |\<your subscription\>|
    |Resource group     |**FW-Hybrid-Test** |
    |Name     |**AzFW01**|
-   |Region     |**East US**|
-   |Choose a virtual network     |**Use existing**:<br> **VNet-hub**|
-   |Public IP address     |Add new: <br>**fw-pip**. |
+   |Region     |**China East**|
+   |Choose a virtual network     |**Use existing**:<br /> **VNet-hub**|
+   |Public IP address     |Add new: <br />**fw-pip**. |
 
 5. Select **Review + create**.
 6. Review the summary, and then select **Create** to create the firewall.
@@ -259,7 +262,7 @@ Create the on-premises to hub virtual network connection. This step is similar t
 
 After about five minutes or so, the status of both connections should be **Connected**.
 
-![Gateway connections](media/tutorial-hybrid-portal/gateway-connections.png)
+:::image type="content" source="media/tutorial-hybrid-portal/gateway-connections.png" alt-text="Gateway connections":::
 
 ## Peer the hub and spoke virtual networks
 
@@ -383,10 +386,10 @@ Create a virtual machine in the spoke virtual network, running IIS, with no publ
 
 ### Install IIS
 
-1. From the Azure portal, open the Cloud Shell and make sure that it's set to **PowerShell**.
+1. From the Azure portal, open the local Shell and make sure that it's set to **PowerShell**.
 2. Run the following command to install IIS on the virtual machine and change the location if necessary:
 
-   ```azurepowershell-interactive
+   ```powershell
    Set-AzVMExtension `
            -ResourceGroupName FW-Hybrid-Test `
            -ExtensionName IIS `
@@ -395,7 +398,7 @@ Create a virtual machine in the spoke virtual network, running IIS, with no publ
            -ExtensionType CustomScriptExtension `
            -TypeHandlerVersion 1.4 `
            -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell      Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-           -Location EastUS
+           -Location China East
    ```
 
 ### Create the on-premises virtual machine
@@ -423,13 +426,15 @@ This is a virtual machine that you use to connect using Remote Desktop to the pu
 1. First, note the private IP address for **VM-spoke-01** virtual machine.
 
 2. From the Azure portal, connect to the **VM-Onprem** virtual machine.
+
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
+
 3. Open a web browser on **VM-Onprem**, and browse to http://\<VM-spoke-01 private IP\>.
 
    You should see the **VM-spoke-01** web page:
-   ![VM-Spoke-01 web page](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   :::image type="content" source="media/tutorial-hybrid-portal/VM-Spoke-01-web.png" alt-text="VM-Spoke-01 web page":::
 
 4. From the **VM-Onprem** virtual machine, open a remote desktop to **VM-spoke-01** at the private IP address.
 
@@ -438,6 +443,7 @@ This is a virtual machine that you use to connect using Remote Desktop to the pu
 So now you've verified that the firewall rules are working:
 
 <!---- You can ping the server on the spoke VNet.--->
+
 - You can browse web server on the spoke virtual network.
 - You can connect to the server on the spoke virtual network using RDP.
 
@@ -461,3 +467,7 @@ Next, you can monitor the Azure Firewall logs.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
+
+
+<!-- Update_Description: new article about tutorial hybrid portal -->
+<!--NEW.date: 12/21/2020-->

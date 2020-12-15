@@ -1,12 +1,15 @@
 ---
 title: Create an external ASE
 description: Learn how to create an App Service environment with an app in it, or create a standalone (empty) ASE.
-author: ccompy
+
 
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
 ms.topic: article
-ms.date: 06/13/2017
-ms.author: ccompy
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 ---
 
@@ -55,7 +58,7 @@ The App Service plan is a container of apps. When you create an app in App Servi
 
 To create an ASE while you create an App Service plan:
 
-1. In the [Azure portal](https://portal.azure.com/), select **Create a resource** > **Web + Mobile** > **Web App**.
+1. In the [Azure portal](https://portal.azure.cn/), select **Create a resource** > **Web + Mobile** > **Web App**.
 
     ![Screenshot of the Azure portal showing Web + Mobile selected in the Azure Marketplace and the screen for creating a new Web App open on the right.][1]
 
@@ -93,7 +96,7 @@ To create an ASE while you create an App Service plan:
 
 ## Create an ASE and a Linux web app using a custom Docker image together
 
-1. In the [Azure portal](https://portal.azure.com/), **Create a Resource** > **Web + Mobile** > **Web App for Containers.** 
+1. In the [Azure portal](https://portal.azure.cn/), **Create a Resource** > **Web + Mobile** > **Web App for Containers.** 
 
     ![Screenshot of the Azure portal showing Web + Mobile selected in the Azure Marketplace and the Web App for Containers pane open on the right.][7]
 
@@ -125,7 +128,7 @@ To create an ASE while you create an App Service plan:
 
     d. Select the subnet IP range.
 
-1.	Select “Configure Container.”
+1. Select “Configure Container.”
     * Enter your custom image name (you can use Azure Container Registry, Docker Hub, and your own private registry). If you don’t want to use your own custom container, you can just bring your code and use a built-in image with App Service on Linux, using the instructions above. 
 
     ![Configure Container][9]
@@ -168,6 +171,7 @@ You can still create instances of the first version of App Service Environment (
 To learn more about ASEv1, see [Introduction to the App Service Environment v1][ASEv1Intro]. For more information on scaling, managing, and monitoring ASEv1, see [How to configure an App Service Environment][ConfigureASEv1].
 
 <!--Image references-->
+
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png
 [2]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreate.png
 [3]: ./media/how_to_create_an_external_app_service_environment/createexternalase-pricing.png
@@ -178,9 +182,8 @@ To learn more about ASEv1, see [Introduction to the App Service Environment v1][
 [8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreatewafc.png
 [9]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
 
-
-
 <!--Links-->
+
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
 [MakeASEfromTemplate]: ./create-from-template.md
@@ -192,7 +195,12 @@ To learn more about ASEv1, see [Introduction to the App Service Environment v1][
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
+[mobileapps]: https://docs.microsoft.com/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://www.azure.cn/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
+
+
+
+<!-- Update_Description: new article about create external ase -->
+<!--NEW.date: 12/21/2020-->

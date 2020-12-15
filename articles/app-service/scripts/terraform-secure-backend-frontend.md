@@ -1,11 +1,14 @@
 ---
-title: 'Terraform: Deploy frontend Web App and backend Web App securely connected with VNet Integration and Private Endpoint'
+title: Terraform - Deploy frontend Web App and backend Web App securely connected with VNet Integration and Private Endpoint
 description: Learn how to use terraform provider for App Service to deploy two web apps connected securely with Private Endpoint and VNet Integration
-author: ericgre
+
 ms.assetid: 3e5d1bbd-5581-40cc-8f65-bc74f1802156
 ms.topic: sample
-ms.date: 08/10/2020
-ms.author: ericg
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.service: app-service
 ms.workload: web
 ---
@@ -26,7 +29,7 @@ This article illustrates an example use of [Private Endpoint](../networking/priv
 
 ## How to use terraform in Azure
 
-Browse to the [Azure documentation](/azure/developer/terraform/) to learn how to use terraform with Azure.
+Browse to the [Azure documentation](https://docs.azure.cn/azure/developer/terraform/) to learn how to use terraform with Azure.
 
 ## The complete terraform file
 
@@ -144,4 +147,8 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 ## Next steps
 
 
-> [Learn more about using Terraform in Azure](/azure/developer/terraform/)
+> [Learn more about using Terraform in Azure](https://docs.azure.cn/azure/developer/terraform/)
+
+
+<!-- Update_Description: new article about terraform secure backend frontend -->
+<!--NEW.date: 12/21/2020-->

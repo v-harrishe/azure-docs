@@ -2,18 +2,21 @@
 title: Azure Firewall features
 description: Learn about Azure Firewall features
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Azure Firewall features
 
 [Azure Firewall](overview.md) is a managed, cloud-based network security service that protects your Azure Virtual Network resources..
 
-![Firewall overview](media/overview/firewall-threat.png)
+:::image type="content" source="media/overview/firewall-threat.png" alt-text="Firewall overview":::
 
 Azure Firewall includes the following features:
 
@@ -38,11 +41,11 @@ High availability is built in, so no additional load balancers are required and 
 
 ## Availability Zones
 
-Azure Firewall can be configured during deployment to span multiple Availability Zones for increased availability. With Availability Zones, your availability increases to 99.99% uptime. For more information, see the Azure Firewall [Service Level Agreement (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). The 99.99% uptime SLA is offered when two or more Availability Zones are selected.
+Azure Firewall can be configured during deployment to span multiple Availability Zones for increased availability. With Availability Zones, your availability increases to 99.99% uptime. For more information, see the Azure Firewall [Service Level Agreement (SLA)](https://www.azure.cn/support/legal/sla/azure-firewall/v1_0/). The 99.99% uptime SLA is offered when two or more Availability Zones are selected.
 
 You can also associate Azure Firewall to a specific zone just for proximity reasons, using the service standard 99.95% SLA.
 
-There's no additional cost for a firewall deployed in an Availability Zone. However, there are additional costs for inbound and outbound data transfers associated with Availability Zones. For more information, see [Bandwidth pricing details](https://azure.microsoft.com/pricing/details/bandwidth/).
+There's no additional cost for a firewall deployed in an Availability Zone. However, there are additional costs for inbound and outbound data transfers associated with Availability Zones. For more information, see [Bandwidth pricing details](https://www.azure.cn/pricing/details/data-transfer/).
 
 Azure Firewall Availability Zones are available in regions that support Availability Zones. For more information, see [Regions that support Availability Zones in Azure](../availability-zones/az-region.md)
 
@@ -69,7 +72,7 @@ You can centrally create *allow* or *deny* network filtering rules by source and
 
 ## Service tags
 
-A [service tag](service-tags.md) represents a group of IP address prefixes to help minimize complexity for security rule creation. You can't create your own service tag, nor specify which IP addresses are included within a tag. Microsoft manages the address prefixes encompassed by the service tag, and automatically updates the service tag as addresses change.
+A [service tag](service-tags.md) represents a group of IP address prefixes to help minimize complexity for security rule creation. You can't create your own service tag, nor specify which IP addresses are included within a tag. Azure manages the address prefixes encompassed by the service tag, and automatically updates the service tag as addresses change.
 
 ## Threat intelligence
 
@@ -92,7 +95,7 @@ You can associate [multiple public IP addresses](deploy-multi-public-ip-powershe
 This enables the following scenarios:
 
 - **DNAT** - You can translate multiple standard port instances to your backend servers. For example, if you have two public IP addresses, you can translate TCP port 3389 (RDP) for both IP addresses.
-- **SNAT** - Additional ports are available for outbound SNAT connections, reducing the potential for SNAT port exhaustion. At this time, Azure Firewall randomly selects the source public IP address to use for a connection. If you have any downstream filtering on your network, you need to allow all public IP addresses associated with your firewall. Consider using a [public IP address prefix](../virtual-network/public-ip-address-prefix.md) to simplify this configuration.
+- **SNAT** - Additional ports are available for outbound SNAT connections, reducing the potential for SNAT port exhaustion. At this time, Azure Firewall randomly selects the source public IP address to use for a connection. If you have any downstream filtering on your network, you need to allow all public IP addresses associated with your firewall. Consider using a [public IP prefix](../virtual-network/public-ip-address-prefix.md) to simplify this configuration.
 
 ## Azure Monitor logging
 
@@ -113,3 +116,7 @@ Azure Firewall is Payment Card Industry (PCI), Service Organization Controls (SO
 ## Next steps
 
 - [Azure Firewall rule processing logic](rule-processing.md)
+
+
+<!-- Update_Description: new article about features -->
+<!--NEW.date: 12/21/2020-->

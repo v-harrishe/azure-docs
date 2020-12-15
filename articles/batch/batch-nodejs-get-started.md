@@ -2,12 +2,16 @@
 title: Use the Azure Batch client library for Node.js
 description: Learn the basic concepts of Azure Batch and build a simple solution using Node.js.
 ms.topic: how-to
-ms.date: 10/08/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Get started with Batch SDK for Node.js
 
-Learn the basics of building a Batch client in Node.js using [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch). We take a step by step approach of understanding a scenario for a batch application and then setting it up using a Node.js client.
+Learn the basics of building a Batch client in Node.js using [Azure Batch Node.js SDK](https://docs.microsoft.com/azure/javascript/api/overview/azure/batch). We take a step by step approach of understanding a scenario for a batch application and then setting it up using a Node.js client.
 
 ## Prerequisites
 
@@ -23,7 +27,7 @@ Here, we have a simple script written in Python that downloads all csv files fro
 
 The following diagram depicts how we can scale the Python script using Azure Batch and a Node.js client.
 
-![Diagram showing scenario architecture.](./media/batch-nodejs-get-started/BatchScenario.png)
+:::image type="content" source="./media/batch-nodejs-get-started/BatchScenario.png" alt-text="Diagram showing scenario architecture.":::
 
 The node.js client deploys a batch job with a preparation task (explained in detail later) and a set of tasks depending on the number of containers in the storage account. You can download the scripts from the GitHub repository.
 
@@ -53,7 +57,7 @@ This command installs the latest version of azure-batch node SDK.
 
 ### Step 2: Create an Azure Batch account
 
-You can create it from the [Azure portal](batch-account-create-portal.md) or from command line ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)).
+You can create it from the [Azure portal](batch-account-create-portal.md) or from command line ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](https://docs.azure.cn/cli)).
 
 Following are the commands to create one through Azure CLI.
 
@@ -98,11 +102,11 @@ var batch_client = new batch.ServiceClient(credentials,accountUrl);
 
 The Azure Batch URI can be found in the Overview tab of the Azure portal. It is of the format:
 
-`https://accountname.location.batch.azure.com`
+`https://accountname.location.batch.chinacloudapi.cn`
 
 Refer to the screenshot:
 
-![Azure batch uri](./media/batch-nodejs-get-started/azurebatchuri.png)
+:::image type="content" source="./media/batch-nodejs-get-started/azurebatchuri.png" alt-text="Azure batch uri":::
 
 ### Step 4: Create an Azure Batch pool
 
@@ -180,7 +184,7 @@ Following is a sample result object returned by the pool.get function.
 ```
 { id: 'processcsv_201721152',
   displayName: 'processcsv_201721152',
-  url: 'https://<batch-account-name>.centralus.batch.azure.com/pools/processcsv_201721152',
+  url: 'https://<batch-account-name>.chinanorth.batch.chinacloudapi.cn/pools/processcsv_201721152',
   eTag: '<eTag>',
   lastModified: 2017-03-27T10:28:02.398Z,
   creationTime: 2017-03-27T10:28:02.398Z,
@@ -332,4 +336,9 @@ The portal has detailed views on the tasks and job statuses. You can also use th
 ## Next steps
 
 - Learn about the [Batch service workflow and primary resources](batch-service-workflow-features.md) such as pools, nodes, jobs, and tasks.
-- See the [Batch Node.js reference](/javascript/api/overview/azure/batch) to explore the Batch API.
+- See the [Batch Node.js reference](https://docs.microsoft.com/azure/javascript/api/overview/azure/batch) to explore the Batch API.
+
+
+
+<!-- Update_Description: new article about batch nodejs get started -->
+<!--NEW.date: 12/21/2020-->

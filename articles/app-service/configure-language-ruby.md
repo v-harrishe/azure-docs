@@ -2,7 +2,11 @@
 title: Configure Ruby apps - Azure App Service
 description: Learn how to configure a pre-built Ruby container for your app. This article shows the most common configuration tasks. 
 ms.topic: quickstart
-ms.date: 06/18/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
@@ -15,15 +19,15 @@ This guide provides key concepts and instructions for Ruby developers who use a 
 
 ## Show Ruby version
 
-To show the current Ruby version, run the following command in the [Cloud Shell](https://shell.azure.com):
+To show the current Ruby version, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
 
-```azurecli-interactive
+```azurecli
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-To show all supported Ruby versions, run the following command in the [Cloud Shell](https://shell.azure.com):
+To show all supported Ruby versions, run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
 
-```azurecli-interactive
+```azurecli
 az webapp list-runtimes --linux | grep RUBY
 ```
 
@@ -31,9 +35,9 @@ You can run an unsupported version of Ruby by building your own container image 
 
 ## Set Ruby version
 
-Run the following command in the [Cloud Shell](https://shell.azure.com) to set the Ruby version to 2.3:
+Run the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) to set the Ruby version to 2.3:
 
-```azurecli-interactive
+```azurecli
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "RUBY|2.3"
 ```
 
@@ -69,7 +73,7 @@ When you deploy a [Git repository](deploy-local-git.md), or a [Zip package](depl
 
 To run `bundle install` with the [--without](https://bundler.io/man/bundle-install.1.html) flag, set the `BUNDLE_WITHOUT` [app setting](configure-common.md#configure-app-settings) to a comma-separated list of groups. For example, the following command sets it to `development,test`.
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
 ```
 
@@ -79,7 +83,7 @@ If this setting is defined, then the deployment engine runs `bundle install` wit
 
 The post-deployment steps don't precompile assets by default. To turn on asset precompilation, set the `ASSETS_PRECOMPILE` [app setting](configure-common.md#configure-app-settings) to `true`. Then the command `bundle exec rake --trace assets:precompile` is run at the end of the post-deployment steps. For example:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
 ```
 
@@ -108,7 +112,7 @@ The Rails server in the Ruby container runs in production mode by default, and [
 - **Precompile the assets** - [Precompile the static assets locally](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) and deploy them manually. Or, let the deployment engine handle it instead (see [Precompile assets](#precompile-assets).
 - **Enable serving static files** - To serve static assets from the Ruby container, [set the `RAILS_SERVE_STATIC_FILES` app setting](configure-common.md#configure-app-settings) to `true`. For example:
 
-    ```azurecli-interactive
+    ```azurecli
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
     ```
 
@@ -116,21 +120,22 @@ The Rails server in the Ruby container runs in production mode by default, and [
 
 The Rails server runs in production mode by default. To run in development mode, for example, set the `RAILS_ENV` [app setting](configure-common.md#configure-app-settings) to `development`.
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
 However, this setting alone causes the Rails server to start in development mode, which accepts localhost requests only and isn't accessible outside of the container. To accept remote client requests, set the `APP_COMMAND_LINE` [app setting](configure-common.md#configure-app-settings) to `rails server -b 0.0.0.0`. This app setting lets you run a custom command in the Ruby container. For example:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secret_key_base-manually"></a> Set secret_key_base manually
+<a name="set-secret_key_base-manually"></a>
+### Set secret_key_base manually
 
 To use your own `secret_key_base` value instead of letting App Service generate one for you, set the `SECRET_KEY_BASE` [app setting](configure-common.md#configure-app-settings) with the value you want. For example:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"
 ```
 
@@ -151,3 +156,8 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 > [!div class="nextstepaction"]
 > [App Service Linux FAQ](faq-app-service-linux.md)
+
+
+
+<!-- Update_Description: new article about configure language ruby -->
+<!--NEW.date: 12/21/2020-->

@@ -1,11 +1,14 @@
 ---
 title: App Service Environment overview
 description: Overview on the App Service Environment
-author: ccompy
+
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
-ms.author: ccompy
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 ---
 
@@ -86,3 +89,8 @@ The App Service Environment v3 is in public preview.  Some features are being ad
 In ASEv3 preview, the ASE will use private endpoints to support inbound traffic. The private endpoint will be replaced with load balancers by GA. While in preview, the ASE won't have built in support for an internet accessible endpoint. You could add an Application Gateway for such a purpose. The ASE needs resources in two subnets.  Inbound traffic will flow through a private endpoint. The private endpoint can be placed in any subnet so long as it has an available address that can be used by private endpoints.  The outbound subnet must be empty and delegated to Microsoft.Web/hostingEnvironments. While used by the ASE, the outbound subnet can't be used for anything else.
 
 With ASEv3, there are no inbound or outbound networking requirements on the ASE subnet. You can control the traffic with Network Security Groups and Route Tables and it only will affect your application traffic. Don't delete the private endpoint associated with your ASE as that action can't be undone. The private endpoint used for the ASE is used for all of the apps in the ASE. 
+
+
+
+<!-- Update_Description: new article about overview -->
+<!--NEW.date: 12/21/2020-->

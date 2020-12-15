@@ -1,12 +1,15 @@
 ---
 title: Hybrid connections 
 description: Learn how to create and use hybrid connections in Azure App Service to access resources in disparate networks. 
-author: ccompy
+
 
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 06/08/2020
-ms.author: ccompy
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
 ---
 
@@ -111,7 +114,7 @@ In addition to there being an App Service plan SKU requirement, there is an addi
 
 The Hybrid Connections feature requires a relay agent in the network that hosts your Hybrid Connection endpoint. That relay agent is called the Hybrid Connection Manager (HCM). To download HCM, from your app in the [Azure portal][portal], select **Networking** > **Configure your Hybrid Connection endpoints**.  
 
-This tool runs on Windows Server 2012 and later. The HCM runs as a service and connects outbound to Azure Relay on port 443.  
+This tool runs on Windows Server 2012 and later. The HCM runs as a service and connects outbound to Azure Relay on port 443. 
 
 After installing HCM, you can run HybridConnectionManagerUi.exe to use the UI for the tool. This file is in the Hybrid Connection Manager installation directory. In Windows 10, you can also just search for *Hybrid Connection Manager UI* in your search box.  
 
@@ -205,8 +208,8 @@ In App Service, the **tcpping** command line tool can be invoked from the Advanc
 
 If you have a command line client for your endpoint, you can test connectivity from the app console. For example, you can test access to web server endpoints by using curl.
 
-
 <!--Image references-->
+
 [1]: ./media/app-service-hybrid-connections/hybridconn-connectiondiagram.png
 [2]: ./media/app-service-hybrid-connections/hybridconn-portal.png
 [3]: ./media/app-service-hybrid-connections/hybridconn-addhc.png
@@ -221,8 +224,14 @@ If you have a command line client for your endpoint, you can test connectivity f
 [12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
-[HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/
-[portal]: https://portal.azure.com/
-[oldhc]: /azure/biztalk-services/integration-hybrid-connection-overview/
-[sbpricing]: https://azure.microsoft.com/pricing/details/service-bus/
+
+[HCService]: /service-bus-relay/relay-hybrid-connections-protocol/
+[portal]: https://portal.azure.cn/
+[oldhc]: /biztalk-services/integration-hybrid-connection-overview/
+[sbpricing]: https://www.azure.cn/pricing/details/service-bus/
 [armclient]: https://github.com/projectkudu/ARMClient/
+
+
+
+<!-- Update_Description: new article about app service hybrid connections -->
+<!--NEW.date: 12/21/2020-->

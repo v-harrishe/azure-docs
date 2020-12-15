@@ -9,9 +9,13 @@ metadata:
   services: firewall
   ms.service: firewall
   ms.topic: landing-page
-  author: vhorne
-  ms.author: victorh
-  ms.date: 08/30/2019
+  
+  
+  author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+  ms.author: v-yeche
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
 
@@ -34,7 +38,7 @@ landingContent:
       - linkListType: whats-new
         links:
           - text: What's new
-            url: https://azure.microsoft.com/updates/?category=networking&query=Firewall
+            url: https://www.azure.cn/updates/?category=networking&query=Firewall
 
        
   # Card
@@ -68,3 +72,7 @@ landingContent:
         links:
           - text: Monitor Azure Firewall logs and metrics
             url: tutorial-diagnostics.md
+
+
+<!-- Update_Description: new article about index. -->
+<!--NEW.date: 12/21/2020-->

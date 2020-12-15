@@ -1,12 +1,15 @@
 ---
 title: Azure App Service access restrictions 
 description: Learn how to secure your app in Azure App Service by setting up access restrictions. 
-author: ccompy
+
 
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
-ms.date: 06/06/2019
-ms.author: ccompy
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
@@ -16,7 +19,7 @@ By setting up access restrictions, you can define a priority-ordered allow/deny 
 
 The access-restriction capability works with all Azure App Service-hosted workloads. The workloads can include web apps, API apps, Linux apps, Linux container apps, and functions.
 
-When a request is made to your app, the FROM address is evaluated against the IP address rules in your access-restriction list. If the FROM address is in a subnet that's configured with service endpoints to Microsoft.Web, the source subnet is compared against the virtual network rules in your access-restriction list. If the address isn't allowed access based on the rules in the list, the service replies with an [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) status code.
+When a request is made to your app, the FROM address is evaluated against the IP address rules in your access-restriction list. If the FROM address is in a subnet that's configured with service endpoints to Microsoft.Web, the source subnet is compared against the virtual network rules in your access-restriction list. If the address isn't allowed access based on the rules in the list, the service replies with an [HTTP 403](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/HTTP_403) status code.
 
 The access-restriction capability is implemented in the App Service front-end roles, which are upstream of the worker hosts where your code runs. Therefore, access restrictions are effectively network access-control lists (ACLs).
 
@@ -26,7 +29,7 @@ The ability to restrict access to your web app from an Azure virtual network is 
 > The service endpoints must be enabled both on the networking side and for the Azure service that they're being enabled with. For a list of Azure services that support service endpoints, see [Virtual Network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
 >
 
-![Diagram of the flow of access restrictions.](media/app-service-ip-restrictions/access-restrictions-flow.png)
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-flow.png" alt-text="Diagram of the flow of access restrictions.":::
 
 ## Add or edit access-restriction rules in the portal
 
@@ -38,11 +41,11 @@ To add an access-restriction rule to your app, do the following:
 
 1. On the **Networking** pane, under **Access Restrictions**, select **Configure Access Restrictions**.
 
-   ![Screenshot of the App Service networking options pane in the Azure portal.](media/app-service-ip-restrictions/access-restrictions.png)  
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions.png" alt-text="Screenshot of the App Service networking options pane in the Azure portal.":::  
 
 1. On the **Access Restrictions** page, review the list of access-restriction rules that are defined for your app.
 
-   ![Screenshot of the Access Restrictions page in the Azure portal, showing the list of access-restriction rules defined for the selected app.](media/app-service-ip-restrictions/access-restrictions-browse.png)
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-browse.png" alt-text="Screenshot of the Access Restrictions page in the Azure portal, showing the list of access-restriction rules defined for the selected app.":::
 
    The list displays all the current restrictions that are applied to the app. If you have a virtual-network restriction on your app, the table shows whether the service endpoints are enabled for Microsoft.Web. If no restrictions are defined on your app, the app is accessible from anywhere.  
 
@@ -68,7 +71,7 @@ On the **Add IP Restriction** pane, when you create a rule, do the following:
 Follow the procedure as outlined in the preceding section, but with the following variation:
 * For step 3, in the **Type** drop-down list, select **IPv4** or **IPv6**. 
 
-Specify the IP address in Classless Inter-Domain Routing (CIDR) notation for both the IPv4 and IPv6 addresses. To specify an address, you can use something like *1.2.3.4/32*, where the first four octets represent your IP address and */32* is the mask. The IPv4 CIDR notation for all addresses is 0.0.0.0/0. To learn more about CIDR notation, see [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Specify the IP address in Classless Inter-Domain Routing (CIDR) notation for both the IPv4 and IPv6 addresses. To specify an address, you can use something like *1.2.3.4/32*, where the first four octets represent your IP address and */32* is the mask. The IPv4 CIDR notation for all addresses is 0.0.0.0/0. To learn more about CIDR notation, see [Classless Inter-Domain Routing](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Classless_Inter-Domain_Routing). 
 
 ## Use service endpoints
 
@@ -130,26 +133,26 @@ In addition to being able to control access to your app, you can restrict access
 
 You can add access restrictions programatically by doing either of the following: 
 
-* Use [the Azure CLI](/cli/azure/webapp/config/access-restriction?view=azure-cli-latest&preserve-view=true). For example:
+* Use [the Azure CLI](https://docs.azure.cn/cli/webapp/config/access-restriction?view=azure-cli-latest&preserve-view=true). For example:
    
-  ```azurecli-interactive
+  ```azurecli
   az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
   --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
   ```
 
-* Use [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0&preserve-view=true). For example:
+* Use [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0&preserve-view=true). For example:
 
 
-  ```azurepowershell-interactive
+  ```powershell
   Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
 
 You can also set values manually by doing either of the following:
 
-* Use an [Azure REST API](/rest/api/azure/) PUT operation on the app configuration in Azure Resource Manager. The location for this information in Azure Resource Manager is:
+* Use an [Azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT operation on the app configuration in Azure Resource Manager. The location for this information in Azure Resource Manager is:
 
-  management.azure.com/subscriptions/**subscription ID**/resourceGroups/**resource groups**/providers/Microsoft.Web/sites/**web app name**/config/web?api-version=2018-02-01
+  management.chinacloudapi.cn/subscriptions/**subscription ID**/resourceGroups/**resource groups**/providers/Microsoft.Web/sites/**web app name**/config/web?api-version=2018-02-01
 
 * Use an ARM template. As an example, you can use resources.azure.com and edit the ipSecurityRestrictions block to add the required JSON.
 
@@ -179,4 +182,10 @@ Access restrictions are also available for function apps with the same functiona
 [Application Gateway integration with service endpoints](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
+
 [serviceendpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
+
+
+
+<!-- Update_Description: new article about app service ip restrictions -->
+<!--NEW.date: 12/21/2020-->

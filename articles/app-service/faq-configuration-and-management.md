@@ -1,19 +1,22 @@
 ---
 title: Configuration FAQs
 description: Get answers to frequently asked questions about configuration and management issues for Azure App Service.
-author: genlin
+
 manager: dcscontentpm
 tags: top-support-issue
 
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
-ms.date: 10/30/2018
-ms.author: genli
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 ---
 # Configuration and management FAQs for Web Apps in Azure
 
-This article has answers to frequently asked questions (FAQs) about configuration and management issues for the [Web Apps feature of Azure App Service](https://azure.microsoft.com/services/app-service/web/).
+This article has answers to frequently asked questions (FAQs) about configuration and management issues for the [Web Apps feature of Azure App Service](https://www.azure.cn/home/features/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -23,7 +26,7 @@ If you plan to move App Service resources to a new resource group or subscriptio
 
 ## How do I use a custom domain name for my web app?
 
-For answers to common questions about using a custom domain name with your Azure web app, see our seven-minute video [Add a custom domain name](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). The video offers a walkthrough of how to add a custom domain name. It describes how to use your own URL instead of the *.azurewebsites.net URL with your App Service web app. You also can see a detailed walkthrough of [how to map a custom domain name](app-service-web-tutorial-custom-domain.md).
+For answers to common questions about using a custom domain name with your Azure web app, see our seven-minute video [Add a custom domain name](https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name). The video offers a walkthrough of how to add a custom domain name. It describes how to use your own URL instead of the *.azurewebsites.net URL with your App Service web app. You also can see a detailed walkthrough of [how to map a custom domain name](app-service-web-tutorial-custom-domain.md).
 
 
 ## How do I purchase a new custom domain for my web app?
@@ -61,9 +64,9 @@ To set the server time zone for your web app:
     * Value = *The time zone you want*
 3. Select **Save**.
 
-For the App services that run on Windows, see the output from the Windows `tzutil /L` command. Use the value from the second line of each entry. For example: "Tonga Standard Time". Some of these values are also listed in the **Timezone** column in [Default Time Zones](/windows-hardware/manufacture/desktop/default-time-zones).
+For the App services that run on Windows, see the output from the Windows `tzutil /L` command. Use the value from the second line of each entry. For example: "Tonga Standard Time". Some of these values are also listed in the **Timezone** column in [Default Time Zones](https://docs.azure.cn/windows-hardware/manufacture/desktop/default-time-zones).
 
-For the App services that run on Linux, set a value from the [IANA TZ database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For example: "America/Adak".
+For the App services that run on Linux, set a value from the [IANA TZ database](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/List_of_tz_database_time_zones). For example: "America/Adak".
 
 ## Why do my continuous WebJobs sometimes fail?
 
@@ -111,7 +114,7 @@ Currently, the Web Apps feature of Azure App Service is in compliance with PCI D
 
 PCI DSS version 3.1 certification requires disabling Transport Layer Security (TLS) 1.0. Currently, disabling TLS 1.0 is not an option for most App Service plans. However, If you use App Service Environment or are willing to migrate your workload to App Service Environment, you can get greater control of your environment. This involves disabling TLS 1.0 by contacting Azure Support. In the near future, we plan to make these settings accessible to users.
 
-For more information, see [Microsoft Azure App Service web app compliance with PCI Standard 3.0 and 3.1](https://support.microsoft.com/help/3124528).
+For more information, see [21Vianet Azure App Service web app compliance with PCI Standard 3.0 and 3.1](https://support.microsoft.com/help/3124528).
 
 ## How do I use the staging environment and deployment slots?
 
@@ -133,7 +136,7 @@ To review WebJob logs:
 
 ## I'm trying to use Hybrid Connections with SQL Server. Why do I see the message "System.OverflowException: Arithmetic operation resulted in an overflow"?
 
-If you use Hybrid Connections to access SQL Server, a Microsoft .NET update on May 10, 2016, might cause connections to fail. You might see this message:
+If you use Hybrid Connections to access SQL Server, a Azure .NET update on May 10, 2016, might cause connections to fail. You might see this message:
 
 ```
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
@@ -145,7 +148,7 @@ The exception was caused by an issue with the Hybrid Connection Manager that has
 
 ## How do I add a URL rewrite rule?
 
-To add a URL rewrite rule, create a web.config file with the relevant config entries in the **wwwroot** folder. For more information, see [Azure App Services: Understanding URL rewrite](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write).
+To add a URL rewrite rule, create a web.config file with the relevant config entries in the **wwwroot** folder. For more information, see [Azure App Services: Understanding URL rewrite](https://docs.microsoft.com/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write).
 
 ## How do I control inbound traffic to App Service?
 
@@ -220,7 +223,7 @@ To resolve this, make sure that none of the following conditions are true:
 * A bad Network Security Group prevents the network connectivity requirements of an App Service Environment.
 * Forced tunneling is turned on.
 
-For more information, see [Frequent issues when deploying (creating) a new Azure App Service Environment](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
+For more information, see [Frequent issues when deploying (creating) a new Azure App Service Environment](https://docs.microsoft.com/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
 
 ## Why can't I delete my App Service plan?
 
@@ -261,7 +264,7 @@ As the message indicates, this fraud verification process might take up to 24 ho
 If your App Service certificate continues to show this message after 24 hours, please run the following PowerShell script. The script contacts the [certificate provider](https://www.godaddy.com/) directly to resolve the issue.
 
 ```powershell
-Connect-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 Set-AzContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"
@@ -284,7 +287,7 @@ When you create a new website by using Web Apps in Azure, a default *sitename*.a
 
 ## How do I determine which version of .NET version is installed in App Service?
 
-The quickest way to find the version of Microsoft .NET that's installed in App Service is by using the Kudu console. You can access the Kudu console from the portal or by using the URL of your App Service app. For detailed instructions, see [Determine the installed .NET version in App Service](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services).
+The quickest way to find the version of Azure .NET that's installed in App Service is by using the Kudu console. You can access the Kudu console from the portal or by using the URL of your App Service app. For detailed instructions, see [Determine the installed .NET version in App Service](https://docs.microsoft.com/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services).
 
 ## Why isn't Autoscale working as expected?
 
@@ -313,3 +316,8 @@ You also can specify the specific dynamic and static MIME types that you want to
 ## How do I migrate from an on-premises environment to App Service?
 
 To migrate sites from Windows and Linux web servers to App Service, you can use Azure App Service Migration Assistant. The migration tool creates web apps and databases in Azure as needed, and then publishes the content. For more information, see [Azure App Service Migration Assistant](https://appmigration.microsoft.com/).
+
+
+
+<!-- Update_Description: new article about faq configuration and management -->
+<!--NEW.date: 12/21/2020-->

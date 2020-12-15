@@ -7,9 +7,13 @@ metadata:
   description: Azure Batch runs large-scale applications efficiently in the cloud. Schedule compute-intensive tasks and dynamically adjust resources for your solution without managing infrastructure.
   ms.service: batch 
   ms.topic: landing-page 
-  author: JnHs 
-  ms.author: jenhayes 
-  ms.date: 10/09/2020
+  
+  
+  author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+  ms.author: v-yeche
 
 landingContent:
   - title: About Azure Batch
@@ -91,18 +95,23 @@ landingContent:
       - linkListType: reference
         links:
           - text: Azure CLI
-            url: /cli/azure/batch
+            url: https://docs.azure.cn/cli/batch
           - text: Azure PowerShell
-            url: /powershell/module/az.batch/
+            url: https://docs.microsoft.com/powershell/module/az.batch/
           - text: .NET
-            url: /dotnet/api/overview/azure/batch
+            url: https://docs.azure.cn/dotnet/api/overview/batch
           - text: Java
-            url: /java/api/overview/azure/batch
+            url: https://docs.azure.cn/java/api/overview/batch
           - text: Node.js
-            url: /javascript/api/overview/azure/batch
+            url: https://docs.azure.cn/javascript/api/overview/azure/batch
           - text: Python
-            url: /python/api/overview/azure/batch
+            url: https://docs.azure.cn/python/api/overview/azure/batch
           - text: REST
-            url: /rest/api/batchservice/
+            url: https://docs.microsoft.com/rest/api/batchservice/
           - text: Batch API lifecycle
-            url: /rest/api/batchservice/batch-api-status
+            url: https://docs.microsoft.com/rest/api/batchservice/batch-api-status
+
+
+
+<!-- Update_Description: new article about index. -->
+<!--NEW.date: 12/21/2020-->

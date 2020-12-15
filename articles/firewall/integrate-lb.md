@@ -2,11 +2,14 @@
 title: Integrate Azure Firewall with Azure Standard Load Balancer
 description: You can integrate an Azure Firewall into a virtual network with an Azure Standard Load Balancer (either public or internal).
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/25/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Integrate Azure Firewall with Azure Standard Load Balancer
@@ -32,21 +35,21 @@ When you deploy an Azure Firewall into a subnet, one step is to create a default
 When you introduce the firewall into your load balancer scenario, you want your Internet traffic to come in through your firewall's public IP address. From there, the firewall applies its firewall rules and NATs the packets to your load balancer's public IP address. This is where the problem occurs. Packets arrive on the firewall's public IP address, but return to the firewall via the private IP address (using the default route).
 To avoid this problem, create an additional host route for the firewall's public IP address. Packets going to the firewall's public IP address are routed via the Internet. This avoids taking the default route to the firewall's private IP address.
 
-![Asymmetric routing](media/integrate-lb/Firewall-LB-asymmetric.png)
+:::image type="content" source="media/integrate-lb/Firewall-LB-asymmetric.png" alt-text="Asymmetric routing":::
 
 ### Route table example
 
 For example, the following routes are for a firewall at public IP address 20.185.97.136, and private IP address 10.0.1.4.
 
 > [!div class="mx-imgBorder"]
-> ![Route table](media/integrate-lb/route-table.png)
+> :::image type="content" source="media/integrate-lb/route-table.png" alt-text="Route table":::
 
 ### NAT rule example
 
 In the following example, a NAT rule translates RDP traffic to the firewall at 20.185.97.136 over to the load balancer at 20.42.98.220:
 
 > [!div class="mx-imgBorder"]
-> ![NAT rule](media/integrate-lb/nat-rule-02.png)
+> :::image type="content" source="media/integrate-lb/nat-rule-02.png" alt-text="NAT rule":::
 
 ### Health probes
 
@@ -61,7 +64,7 @@ There's no asymmetric routing issue with this scenario. The incoming packets arr
 So, you can deploy this scenario similar to the public load balancer scenario, but without the need for the firewall public IP address host route.
 
 >[!NOTE]
->The virtual machines in the backend pool will not have outbound internet connectivity with this configuration. </br> For more information on providing outbound connectivity see: </br> **[Outbound connections in Azure](../load-balancer/load-balancer-outbound-connections.md)**</br> Options for providing connectivity: </br> **[Outbound-only load balancer configuration](../load-balancer/egress-only.md)** </br> [**What is Virtual Network NAT?**](../virtual-network/nat-overview.md)
+>The virtual machines in the backend pool will not have outbound internet connectivity with this configuration. <br /> For more information on providing outbound connectivity see: <br /> **[Outbound connections in Azure](../load-balancer/load-balancer-outbound-connections.md)**<br /> Options for providing connectivity: <br /> **[Outbound-only load balancer configuration](../load-balancer/egress-only.md)** <br /> [**What is Virtual Network NAT?**](../virtual-network/nat-overview.md)
 
 
 ## Additional security
@@ -70,10 +73,14 @@ To further enhance the security of your load-balanced scenario, you can use netw
 
 For example, you can create an NSG on the backend subnet where the load-balanced virtual machines are located. Allow incoming traffic originating from the firewall IP address/port.
 
-![Network security group](media/integrate-lb/nsg-01.png)
+:::image type="content" source="media/integrate-lb/nsg-01.png" alt-text="Network security group":::
 
 For more information about NSGs, see [Security groups](../virtual-network/network-security-groups-overview.md).
 
 ## Next steps
 
 - Learn how to [deploy and configure an Azure Firewall](tutorial-firewall-deploy-portal.md).
+
+
+<!-- Update_Description: new article about integrate lb -->
+<!--NEW.date: 12/21/2020-->

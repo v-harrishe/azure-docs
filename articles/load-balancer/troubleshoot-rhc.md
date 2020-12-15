@@ -3,14 +3,17 @@ title: Troubleshoot Azure Load Balancer resource health, frontend, and backend a
 description: Use the available metrics to diagnose your degraded or unavailable Azure Standard Load Balancer.
 services: load-balancer
 documentationcenter: na
-author: erichrt
+
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2020
-ms.author: errobin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Troubleshoot resource health, frontend, and backend availability issues 
@@ -56,3 +59,7 @@ If you've gone through this checklist and are still finding health probe failure
 
 * [Learn more about the Azure Load Balancer health probe](load-balancer-custom-probe-overview.md)
 * [Learn more about Azure Load Balancer metrics](load-balancer-standard-diagnostics.md)
+
+
+<!-- Update_Description: new article about troubleshoot rhc -->
+<!--NEW.date: 12/21/2020-->

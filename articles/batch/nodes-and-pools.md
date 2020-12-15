@@ -2,7 +2,11 @@
 title: Nodes and pools in Azure Batch
 description: Learn about compute nodes and pools and how they are used in an Azure Batch workflow from a development standpoint.
 ms.topic: conceptual
-ms.date: 11/20/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 ---
 # Nodes and pools in Azure Batch
@@ -13,7 +17,7 @@ In an Azure Batch workflow, a *compute node* (or *node*) is a virtual machine th
 
 A node is an Azure virtual machine (VM) or cloud service VM that is dedicated to processing a portion of your application's workload. The size of a node determines the number of CPU cores, memory capacity, and local file system size that is allocated to the node.
 
-You can create pools of Windows or Linux nodes by using Azure Cloud Services, images from the [Azure Virtual Machines Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?filters=virtual-machine-images&page=1), or custom images that you prepare.
+You can create pools of Windows or Linux nodes by using Azure Cloud Services, images from the [Azure Virtual Machines Marketplace](https://market.azure.cn/marketplace/apps/filter?search=compute&filters=virtual-machine-images&page=1), or custom images that you prepare.
 
 Nodes can run any executable or script that is supported by the operating system environment of the node. Executables or scripts include \*.exe, \*.cmd, \*.bat, and PowerShell scripts (for Windows) and binaries, shell, and Python scripts (for Linux).
 
@@ -75,7 +79,7 @@ As with worker roles within Cloud Services, you can specify an *OS Version* (for
 
 ### Node Agent SKUs
 
-When you create a pool, you need to select the appropriate **nodeAgentSkuId**, depending on the OS of the base image of your VHD. You can get a mapping of available node agent SKU IDs to their OS Image references by calling the [List Supported Node Agent SKUs](/rest/api/batchservice/list-supported-node-agent-skus) operation.
+When you create a pool, you need to select the appropriate **nodeAgentSkuId**, depending on the OS of the base image of your VHD. You can get a mapping of available node agent SKU IDs to their OS Image references by calling the [List Supported Node Agent SKUs](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) operation.
 
 ### Custom images for Virtual Machine pools
 
@@ -85,7 +89,7 @@ Alternatively, you can create a custom pool of virtual machines using a [managed
 
 ### Container support in Virtual Machine pools
 
-When creating a Virtual Machine Configuration pool using the Batch APIs, you can set up the pool to run tasks in Docker containers. Currently, you must create the pool using an image that supports Docker containers. Use the Windows Server 2016 Datacenter with Containers image from the Azure Marketplace, or supply a custom VM image that includes Docker Community Edition or Enterprise Edition and any required drivers. The pool settings must include a [container configuration](/rest/api/batchservice/pool/add) that copies container images to the VMs when the pool is created. Tasks that run on the pool can then reference the container images and container run options.
+When creating a Virtual Machine Configuration pool using the Batch APIs, you can set up the pool to run tasks in Docker containers. Currently, you must create the pool using an image that supports Docker containers. Use the Windows Server 2016 Datacenter with Containers image from the Azure Marketplace, or supply a custom VM image that includes Docker Community Edition or Enterprise Edition and any required drivers. The pool settings must include a [container configuration](https://docs.microsoft.com/rest/api/batchservice/pool/add) that copies container images to the VMs when the pool is created. Tasks that run on the pool can then reference the container images and container run options.
 
 For more information, see [Run Docker container applications on Azure Batch](batch-docker-container-workloads.md).
 
@@ -93,20 +97,38 @@ For more information, see [Run Docker container applications on Azure Batch](bat
 
 When you create a pool, you can specify which types of nodes you want and the target number for each. The two types of nodes are:
 
-- **Dedicated nodes.** Dedicated compute nodes are reserved for your workloads. They are more expensive than low-priority nodes, but they are guaranteed to never be preempted.
-- **Low-priority nodes.** Low-priority nodes take advantage of surplus capacity in Azure to run your Batch workloads. Low-priority nodes are less expensive per hour than dedicated nodes, and enable workloads requiring significant compute power. For more information, see [Use low-priority VMs with Batch](batch-low-pri-vms.md).
+- **Dedicated nodes.** Dedicated compute nodes are reserved for your workloads. They are more expensive than low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes, but they are guaranteed to never be preempted.
 
-Low-priority nodes may be preempted when Azure has insufficient surplus capacity. If a node is preempted while running tasks, the tasks are requeued and run again once a compute node becomes available again. Low-priority nodes are a good option for workloads where the job completion time is flexible and the work is distributed across many nodes. Before you decide to use low-priority nodes for your scenario, make sure that any work lost due to pre-emption will be minimal and easy to recreate.
+<!--Not Available on FEATURE low-priority-->
 
-You can have both low-priority and dedicated compute nodes in the same pool. Each type of node has its own target setting, for which you can specify the desired number of nodes.
+- **Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes.** Low-priority nodes take advantage of surplus capacity in Azure to run your Batch workloads. Low-priority nodes are less expensive per hour than dedicated nodes, and enable workloads requiring significant compute power. For more information, see [Use low-priority VMs with Batch](batch-low-pri-vms.md).
+
+<!--Not Available on FEATURE Low-priority-->
+
+
+Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes may be preempted when Azure has insufficient surplus capacity. If a node is preempted while running tasks, the tasks are requeued and run again once a compute node becomes available again. Low-priority nodes are a good option for workloads where the job completion time is flexible and the work is distributed across many nodes. Before you decide to use low-priority nodes for your scenario, make sure that any work lost due to pre-emption will be minimal and easy to recreate.
+
+<!--Not Available on FEATURE Low-priority-->
+
+
+You can have both low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) and dedicated compute nodes in the same pool. Each type of node has its own target setting, for which you can specify the desired number of nodes.
+
+<!--Not Available on FEATURE low-priority-->
+
 
 The number of compute nodes is referred to as a *target* because, in some situations, your pool might not reach the desired number of nodes. For example, a pool might not achieve the target if it reaches the [core quota](batch-quota-limit.md) for your Batch account first. Or, the pool might not achieve the target if you have applied an automatic scaling formula to the pool that limits the maximum number of nodes.
 
-For pricing information for both low-priority and dedicated nodes, see [Batch Pricing](https://azure.microsoft.com/pricing/details/batch/).
+For pricing information for both low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) and dedicated nodes, see [Batch Pricing](https://www.azure.cn/pricing/details/batch/).
+
+<!--Not Available on FEATURE low-priority-->
+
 
 ## Node size
 
-When you create an Azure Batch pool, you can choose from among almost all the VM families and sizes available in Azure. Azure offers a range of VM sizes for different workloads, including specialized [HPC](../virtual-machines/sizes-hpc.md) or [GPU-enabled](../virtual-machines/sizes-gpu.md) VM sizes. 
+When you create an Azure Batch pool, you can choose from among almost all the VM families and sizes available in Azure. Azure offers a range of VM sizes for different workloads, including specialized [HPC(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)](../virtual-machines/sizes-hpc.md) or [GPU-enabled](../virtual-machines/sizes-gpu.md) VM sizes. 
+
+<!--Not Available on FEATURE HPC-->
+
 
 For more information, see [Choose a VM size for compute nodes in an Azure Batch pool](batch-pool-vm-sizes.md).
 
@@ -124,7 +146,7 @@ A scaling formula can be based on the following metrics:
 - **Resource metrics** are based on CPU usage, bandwidth usage, memory usage, and number of nodes.
 - **Task metrics** are based on task state, such as *Active* (queued), *Running*, or *Completed*.
 
-When automatic scaling decreases the number of compute nodes in a pool, you must consider how to handle tasks that are running at the time of the decrease operation. To accommodate this, Batch provides a [*node deallocation option*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) that you can include in your formulas. For example, you can specify that running tasks are stopped immediately and then requeued for execution on another node, or allowed to finish before the node is removed from the pool. Note that setting the node deallocation option as `taskcompletion` or `retaineddata` will prevent pool resize operations until all tasks have completed, or all task retention periods have expired, respectively.
+When automatic scaling decreases the number of compute nodes in a pool, you must consider how to handle tasks that are running at the time of the decrease operation. To accommodate this, Batch provides a [*node deallocation option*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) that you can include in your formulas. For example, you can specify that running tasks are stopped immediately and then requeued for execution on another node, or allowed to finish before the node is removed from the pool. Note that setting the node deallocation option as `taskcompletion` or `retaineddata` will prevent pool resize operations until all tasks have completed, or all task retention periods have expired, respectively.
 
 For more information about automatically scaling an application, see [Automatically scale compute nodes in an Azure Batch pool](batch-automatic-scaling.md).
 
@@ -182,13 +204,13 @@ A combined approach is typically used for handling a variable but ongoing load. 
 
 ## Autopools
 
-An [autopool](/rest/api/batchservice/job/add#autopoolspecification) is a pool that is created by the Batch service when a job is submitted, rather than being created prior to the jobs that will run in the pool. The Batch service will manage the lifetime of an autopool according to the characteristics that you specify. Most often, these pools are also set to delete automatically after their jobs have completed.
+An [autopool](https://docs.microsoft.com/rest/api/batchservice/job/add#autopoolspecification) is a pool that is created by the Batch service when a job is submitted, rather than being created prior to the jobs that will run in the pool. The Batch service will manage the lifetime of an autopool according to the characteristics that you specify. Most often, these pools are also set to delete automatically after their jobs have completed.
 
 ## Security with certificates
 
 You typically need to use certificates when you encrypt or decrypt sensitive information for tasks, like the key for an [Azure Storage account](accounts.md#azure-storage-accounts). To support this, you can install certificates on nodes. Encrypted secrets are passed to tasks via command-line parameters or embedded in one of the task resources, and the installed certificates can be used to decrypt them.
 
-You use the [Add certificate](/rest/api/batchservice/certificate/add) operation (Batch REST) or [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) method (Batch .NET) to add a certificate to a Batch account. You can then associate the certificate with a new or existing pool.
+You use the [Add certificate](https://docs.microsoft.com/rest/api/batchservice/certificate/add) operation (Batch REST) or [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) method (Batch .NET) to add a certificate to a Batch account. You can then associate the certificate with a new or existing pool.
 
 When a certificate is associated with a pool, the Batch service installs the certificate on each node in the pool. The Batch service installs the appropriate certificates when the node starts up, before launching any tasks (including the [start task](jobs-and-tasks.md#start-task) and [job manager task](jobs-and-tasks.md#job-manager-task)).
 
@@ -197,3 +219,8 @@ If you add a certificate to an existing pool, you must reboot its compute nodes 
 ## Next steps
 
 - Learn about [jobs and tasks](jobs-and-tasks.md).
+
+
+
+<!-- Update_Description: new article about nodes and pools -->
+<!--NEW.date: 12/21/2020-->

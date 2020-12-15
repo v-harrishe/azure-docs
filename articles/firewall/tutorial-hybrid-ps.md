@@ -2,11 +2,14 @@
 title: Deploy & configure Azure Firewall in hybrid network using PowerShell
 description: In this article, you learn how to deploy and configure Azure Firewall using Azure PowerShell. 
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ---
 # Deploy and configure Azure Firewall in a hybrid network using Azure PowerShell
@@ -21,7 +24,7 @@ For this article, you create three virtual networks:
 - **VNet-Spoke** - the spoke virtual network represents the workload located on Azure.
 - **VNet-Onprem** - The on-premises virtual network represents an on-premises network. In an actual deployment, it can be connected by either a VPN or ExpressRoute connection. For simplicity, this article uses a VPN gateway connection, and an Azure-located virtual network is used to represent an on-premises network.
 
-![Firewall in a hybrid network](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
+:::image type="content" source="media/tutorial-hybrid-ps/hybrid-network-firewall.png" alt-text="Firewall in a hybrid network":::
 
 In this article, you learn how to:
 
@@ -42,7 +45,7 @@ If you want to use Azure portal instead to complete this tutorial, see [Tutorial
 
 ## Prerequisites
 
-This article requires that you run PowerShell locally. You must have the Azure PowerShell module installed. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](/powershell/azure/install-Az-ps). After you verify the PowerShell version, run `Login-AzAccount` to create a connection with Azure.
+This article requires that you run PowerShell locally. You must have the Azure PowerShell module installed. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps). After you verify the PowerShell version, run `Connect-AzAccount -Environment AzureChinaCloud` to create a connection with Azure.
 
 There are three key requirements for this scenario to work correctly:
 
@@ -62,9 +65,9 @@ See the [Create Routes](#create-the-routes) section in this article to see how t
 >[!NOTE]
 >Traffic between directly peered VNets is routed directly even if a UDR points to Azure Firewall as the default gateway. To send subnet to subnet traffic to the firewall in this scenario, a UDR must contain the target subnet network prefix explicitly on both subnets.
 
-To review the related Azure PowerShell reference documentation, see [Azure PowerShell Reference](/powershell/module/az.network/new-azfirewall).
+To review the related Azure PowerShell reference documentation, see [Azure PowerShell Reference](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
 
 ## Declare the variables
 
@@ -72,7 +75,7 @@ The following example declares the variables using the values for this article. 
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
-$Location1 = "East US"
+$Location1 = "China East"
 
 # Variables for the firewall hub VNet
 
@@ -455,9 +458,11 @@ $NIC.IpConfigurations.privateipaddress
 ```
 
 From the Azure portal, connect to the **VM-Onprem** virtual machine.
+
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
+
 Open a web browser on **VM-Onprem**, and browse to http://\<VM-spoke-01 private IP\>.
 
 You should see the Internet Information Services default page.
@@ -469,6 +474,7 @@ Your connection should succeed, and you should be able to sign in using your cho
 So now you've verified that the firewall rules are working:
 
 <!---- You can ping the server on the spoke VNet.--->
+
 - You can browse web server on the spoke virtual network.
 - You can connect to the server on the spoke virtual network using RDP.
 
@@ -492,3 +498,7 @@ You can keep your firewall resources for the next tutorial, or if no longer need
 Next, you can monitor the Azure Firewall logs.
 
 [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
+
+
+<!-- Update_Description: new article about tutorial hybrid ps -->
+<!--NEW.date: 12/21/2020-->

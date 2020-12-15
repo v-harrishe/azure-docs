@@ -1,11 +1,14 @@
 ---
 title: Move Azure internal Load Balancer to another Azure region using Azure PowerShell
 description: Use Azure Resource Manager template to move Azure internal Load Balancer from one Azure region to another using Azure PowerShell
-author: asudbring
+
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 09/17/2019
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Move Azure internal Load Balancer to another region using PowerShell
@@ -38,20 +41,20 @@ The following steps show how to prepare the internal load balancer for the move 
 
 ### Export the virtual network template and deploy from Azure PowerShell
 
-1. Sign in to your Azure subscription with the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) command and follow the on-screen directions:
+1. Sign in to your Azure subscription with the [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) command and follow the on-screen directions:
     
-    ```azurepowershell-interactive
-    Connect-AzAccount
+    ```powershell
+    Connect-AzAccount -Environment AzureChinaCloud
     ```
-2.  Obtain the resource ID of the virtual network you want to move to the target region and place it in a variable using [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+2. Obtain the resource ID of the virtual network you want to move to the target region and place it in a variable using [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
 
-    ```azurepowershell-interactive
+    ```powershell
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Export the source virtual network to a .json file into the directory where you execute the command [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Export the source virtual network to a .json file into the directory where you execute the command [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
    
-   ```azurepowershell-interactive
+   ```powershell
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
@@ -73,7 +76,7 @@ The following steps show how to prepare the internal load balancer for the move 
         }
     ```
 
-6.  To edit the target region where the VNET will be moved, change the **location** property under resources:
+6. To edit the target region where the VNET will be moved, change the **location** property under resources:
 
     ```json
     "resources": [
@@ -93,14 +96,14 @@ The following steps show how to prepare the internal load balancer for the move 
 
     ```
   
-7. To obtain region location codes, you can use the Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) by running the following command:
+7. To obtain region location codes, you can use the Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) by running the following command:
 
-    ```azurepowershell-interactive
+    ```powershell
 
     Get-AzLocation | format-table
     
     ```
-8.  You can also change other parameters in the **\<resource-group-name>.json** file if you choose, and are optional depending on your requirements:
+8. You can also change other parameters in the **\<resource-group-name>.json** file if you choose, and are optional depending on your requirements:
 
     * **Address Space** - The address space of the VNET can be altered before saving by modifying the **resources** > **addressSpace** section and changing the **addressPrefixes** property in the **\<resource-group-name>.json** file:
 
@@ -189,51 +192,51 @@ The following steps show how to prepare the internal load balancer for the move 
          ]
         ```
 
-9.  Save the **\<resource-group-name>.json** file.
+9. Save the **\<resource-group-name>.json** file.
 
-10. Create a resource group in the target region for the target VNET to be deployed using [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
+10. Create a resource group in the target region for the target VNET to be deployed using [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
     
-    ```azurepowershell-interactive
+    ```powershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Deploy the edited **\<resource-group-name>.json** file to the resource group created in the previous step using [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Deploy the edited **\<resource-group-name>.json** file to the resource group created in the previous step using [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
-    ```azurepowershell-interactive
+    ```powershell
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. To verify the resources were created in the target region, use [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) and [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+12. To verify the resources were created in the target region, use [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) and [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
     
-    ```azurepowershell-interactive
+    ```powershell
 
     Get-AzResourceGroup -Name <target-resource-group-name>
 
     ```
 
-    ```azurepowershell-interactive
+    ```powershell
 
     Get-AzVirtualNetwork -Name <target-virtual-network-name> -ResourceGroupName <target-resource-group-name>
 
     ```
 ### Export the internal load balancer template and deploy from Azure PowerShell
 
-1. Sign in to your Azure subscription with the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) command and follow the on-screen directions:
+1. Sign in to your Azure subscription with the [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) command and follow the on-screen directions:
     
-    ```azurepowershell-interactive
-    Connect-AzAccount
+    ```powershell
+    Connect-AzAccount -Environment AzureChinaCloud
     ```
 
-2. Obtain the resource ID of the internal load balancer you want to move to the target region and place it in a variable using [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+2. Obtain the resource ID of the internal load balancer you want to move to the target region and place it in a variable using [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
 
-    ```azurepowershell-interactive
+    ```powershell
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Export the source internal load balancer configuration to a .json file into the directory where you execute the command [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Export the source internal load balancer configuration to a .json file into the directory where you execute the command [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
    
-   ```azurepowershell-interactive
+   ```powershell
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
 4. The file downloaded will be named after the resource group the resource was exported from.  Locate the file that was exported from the command named **\<resource-group-name>.json** and open it in an editor of your choice:
@@ -258,9 +261,9 @@ The following steps show how to prepare the internal load balancer for the move 
              }
     ```
  
-6. To edit value of the target virtual network that was moved above, you must first obtain the resource ID and then copy and paste it into the **\<resource-group-name>.json** file.  To obtain the ID, use [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. To edit value of the target virtual network that was moved above, you must first obtain the resource ID and then copy and paste it into the **\<resource-group-name>.json** file.  To obtain the ID, use [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
    
-   ```azurepowershell-interactive
+   ```powershell
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
     ```
     Type the variable and hit enter to display the resource ID.  Highlight the ID path and copy it to the clipboard:
@@ -270,7 +273,7 @@ The following steps show how to prepare the internal load balancer for the move 
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  In the **\<resource-group-name>.json** file, paste the **Resource ID** from the variable in place of the **defaultValue** in the second parameter for the target virtual network ID, ensure you enclose the path in quotes:
+7. In the **\<resource-group-name>.json** file, paste the **Resource ID** from the variable in place of the **defaultValue** in the second parameter for the target virtual network ID, ensure you enclose the path in quotes:
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -301,9 +304,9 @@ The following steps show how to prepare the internal load balancer for the move 
                 },
     ```
 
-11. To obtain region location codes, you can use the Azure PowerShell cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) by running the following command:
+11. To obtain region location codes, you can use the Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) by running the following command:
 
-    ```azurepowershell-interactive
+    ```powershell
 
     Get-AzLocation | format-table
     
@@ -428,28 +431,28 @@ The following steps show how to prepare the internal load balancer for the move 
     
 13. Save the **\<resource-group-name>.json** file.
     
-10. Create or a resource group in the target region for the target internal load balancer to be deployed using [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). The existing resource group from above can also be reused as part of this process:
+10. Create or a resource group in the target region for the target internal load balancer to be deployed using [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). The existing resource group from above can also be reused as part of this process:
     
-    ```azurepowershell-interactive
+    ```powershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Deploy the edited **\<resource-group-name>.json** file to the resource group created in the previous step using [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Deploy the edited **\<resource-group-name>.json** file to the resource group created in the previous step using [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
-    ```azurepowershell-interactive
+    ```powershell
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
 
-12. To verify the resources were created in the target region, use [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) and [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+12. To verify the resources were created in the target region, use [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) and [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
     
-    ```azurepowershell-interactive
+    ```powershell
 
     Get-AzResourceGroup -Name <target-resource-group-name>
 
     ```
 
-    ```azurepowershell-interactive
+    ```powershell
 
     Get-AzLoadBalancer -Name <target-publicip-name> -ResourceGroupName <target-resource-group-name>
 
@@ -457,9 +460,9 @@ The following steps show how to prepare the internal load balancer for the move 
 
 ## Discard 
 
-After the deployment, if you wish to start over or discard the virtual network and load balancer in the target, delete the resource group that was created in the target and the moved virtual network and load balancer will be deleted.  To remove the resource group, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+After the deployment, if you wish to start over or discard the virtual network and load balancer in the target, delete the resource group that was created in the target and the moved virtual network and load balancer will be deleted.  To remove the resource group, use [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
 
-```azurepowershell-interactive
+```powershell
 
 Remove-AzResourceGroup -Name <resource-group-name>
 
@@ -467,9 +470,9 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## Clean up
 
-To commit the changes and complete the move of the NSG, delete the source NSG or resource group, use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) or [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) and [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
+To commit the changes and complete the move of the NSG, delete the source NSG or resource group, use [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) or [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) and [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
 
-```azurepowershell-interactive
+```powershell
 
 Remove-AzResourceGroup -Name <resource-group-name>
 
@@ -491,3 +494,7 @@ In this tutorial, you moved an Azure internal load balancer from one region to a
 
 - [Move resources to a new resource group or subscription](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 - [Move Azure VMs to another region](../site-recovery/azure-to-azure-tutorial-migrate.md)
+
+
+<!-- Update_Description: new article about move across regions internal load balancer powershell -->
+<!--NEW.date: 12/21/2020-->

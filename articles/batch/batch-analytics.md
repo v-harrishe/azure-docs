@@ -2,7 +2,11 @@
 title: Azure Batch Analytics
 description: The topics in Batch Analytics contain reference information for the events and alerts available for Batch service resources.
 ms.topic: reference
-ms.date: 10/08/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Batch Analytics
@@ -27,3 +31,8 @@ The Azure Batch service emits the following diagnostic log events during the lif
 - [Task complete](batch-task-complete-event.md)
 - [Task fail](batch-task-fail-event.md)
 - [Task schedule fail](batch-task-schedule-fail-event.md)
+
+
+
+<!-- Update_Description: new article about batch analytics -->
+<!--NEW.date: 12/21/2020-->

@@ -5,11 +5,14 @@ description: Describes how to resolve common errors when you deploy Azure Load B
 services: load-balancer
 documentationcenter: na
 tags: top-support-issue
-author: anavinahar
+
 ms.service: load-balancer
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.author: anavin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Troubleshoot common Azure deployment errors with Azure Load Balancer
@@ -38,3 +41,7 @@ This article describes some common Azure Load Balancer deployment errors and pro
 
 * Look through the Azure Load Balancer [SKU comparison table](./skus.md)
 * Learn about [Azure Load Balancer limits](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)
+
+
+<!-- Update_Description: new article about load balancer common deployment errors -->
+<!--NEW.date: 12/21/2020-->

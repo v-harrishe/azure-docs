@@ -3,7 +3,11 @@ title: Configure deployment credentials
 description: Learn what types of deployment credentials are in Azure App Service and how to configure and use them.
 
 ms.topic: article
-ms.date: 08/14/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: byvinyal
 ms.custom: seodec18
 
@@ -15,18 +19,19 @@ and [FTP/S deployment](deploy-ftp.md). These credentials are not the same as you
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
-## <a name="userscope"></a>Configure user-level credentials
+<a name="userscope"></a>
+## Configure user-level credentials
 
 You can configure your user-level credentials in any app's [resource page](../azure-resource-manager/management/manage-resources-portal.md#manage-resources). Regardless in which app you configure these credentials, it applies to all apps and for all subscriptions in your Azure account. 
 
-### In the Cloud Shell
+### In the local Shell
 
-To configure the deployment user in the [Cloud Shell](https://shell.azure.com), run the [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) command. Replace \<username> and \<password> with a deployment user username and password. 
+To configure the deployment user in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ), run the [az webapp deployment user set](https://docs.azure.cn/cli/webapp/deployment/user#az_webapp_deployment_user_set) command. Replace \<username> and \<password> with a deployment user username and password. 
 
 - The username must be unique within Azure, and for local Git pushes, must not contain the ‘@’ symbol. 
 - The password must be at least eight characters long, with two of the following three elements: letters, numbers, and symbols. 
 
-```azurecli-interactive
+```azurecli
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
@@ -36,13 +41,13 @@ The JSON output shows the password as `null`. If you get a `'Conflict'. Details:
 
 In the Azure portal, you must have at least one app before you can access the deployment credentials page. To configure your user-level credentials:
 
-1. In the [Azure portal](https://portal.azure.com), from the left menu, select **App Services** > **\<any_app>** > **Deployment center** > **FTP** > **Dashboard**.
+1. In the [Azure portal](https://portal.azure.cn), from the left menu, select **App Services** > **\<any_app>** > **Deployment center** > **FTP** > **Dashboard**.
 
-    ![Shows how you can select the FTP dashboard from the Deployment center in Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
+    :::image type="content" source="./media/app-service-deployment-credentials/access-no-git.png" alt-text="Shows how you can select the FTP dashboard from the Deployment center in Azure App Services.":::
 
     Or, if you've already configured Git deployment, select **App Services** > **&lt;any_app>** > **Deployment center** > **FTP/Credentials**.
 
-    ![Shows how you can select the FTP dashboard from the Deployment center in Azure App Services for your configured Git deployment.](./media/app-service-deployment-credentials/access-with-git.png)
+    :::image type="content" source="./media/app-service-deployment-credentials/access-with-git.png" alt-text="Shows how you can select the FTP dashboard from the Deployment center in Azure App Services for your configured Git deployment.":::
 
 2. Select **User Credentials**, configure the user name and password, and then select **Save Credentials**.
 
@@ -64,10 +69,11 @@ Authenticating to an FTP/FTPS endpoint using user-level credentials requirers a 
 
 Since user-level credentials are linked to the user and not a specific resource, the username must be in this format to direct the sign-in action to the right app endpoint.
 
-## <a name="appscope"></a>Get and reset app-level credentials
+<a name="appscope"></a>
+## Get and reset app-level credentials
 To get the app-level credentials:
 
-1. In the [Azure portal](https://portal.azure.com), from the left menu, select **App Services** > **&lt;any_app>** > **Deployment center** > **FTP/Credentials**.
+1. In the [Azure portal](https://portal.azure.cn), from the left menu, select **App Services** > **&lt;any_app>** > **Deployment center** > **FTP/Credentials**.
 
 2. Select **App Credentials**, and select the **Copy** link to copy the username or password.
 
@@ -95,7 +101,7 @@ To disable basic auth access to the WebDeploy port and SCM site, run the followi
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-To confirm that the publish profile credentials are blocked on WebDeploy, try [publishing a web app using Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure).
+To confirm that the publish profile credentials are blocked on WebDeploy, try [publishing a web app using Visual Studio 2019](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure).
 
 ### Disable access to the API
 
@@ -106,3 +112,8 @@ You can also use [Azure Monitor](https://azure.github.io/AppService/2020/08/10/s
 ## Next steps
 
 Find out how to use these credentials to deploy your app from [local Git](deploy-local-git.md) or using [FTP/S](deploy-ftp.md).
+
+
+
+<!-- Update_Description: new article about deploy configure credentials -->
+<!--NEW.date: 12/21/2020-->

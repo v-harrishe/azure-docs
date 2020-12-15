@@ -2,7 +2,11 @@
 title: Deploy code with a ZIP or WAR file
 description: Learn how to deploy your app to Azure App Service with a ZIP file (or a WAR file for Java developers).
 ms.topic: article
-ms.date: 08/12/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurecli
 
@@ -22,7 +26,7 @@ This ZIP file deployment uses the same Kudu service that powers continuous integ
 
 For more information, see [Kudu documentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 
-The WAR file deployment deploys your [WAR](https://wikipedia.org/wiki/WAR_(file_format)) file to App Service to run your Java web app. See [Deploy WAR file](#deploy-war-file).
+The WAR file deployment deploys your [WAR](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/WAR_(file_format)) file to App Service to run your Java web app. See [Deploy WAR file](#deploy-war-file).
 
 > [!NOTE]
 > When using `ZipDeploy`, files will only be copied if their timestamps don't match what is already deployed. Generating a zip using a build process that caches outputs can result in faster deployments. See [Deploying from a zip file or url](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url), for more information.
@@ -40,19 +44,19 @@ The above endpoint does not work for Linux App Services at this time. Consider u
 
 ## Deploy ZIP file with Azure CLI
 
-Deploy the uploaded ZIP file to your web app by using the [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) command.  
+Deploy the uploaded ZIP file to your web app by using the [az webapp deployment source config-zip](https://docs.azure.cn/cli/webapp/deployment/source#az_webapp_deployment_source_config_zip) command.  
 
 The following example deploys the ZIP file you uploaded. When using a local installation of Azure CLI, specify the path to your local ZIP file for `--src`.
 
-```azurecli-interactive
+```azurecli
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src clouddrive/<filename>.zip
 ```
 
 This command deploys the files and directories from the ZIP file to your default App Service application folder (`\home\site\wwwroot`) and restarts the app.
 
-By default, the deployment engine assumes that a ZIP file is ready to run as-is and doesn't run any build automation. To enable the same build automation as in a [Git deployment](deploy-local-git.md), set the `SCM_DO_BUILD_DURING_DEPLOYMENT` app setting by running the following command in the [Cloud Shell](https://shell.azure.com):
+By default, the deployment engine assumes that a ZIP file is ready to run as-is and doesn't run any build automation. To enable the same build automation as in a [Git deployment](deploy-local-git.md), set the `SCM_DO_BUILD_DURING_DEPLOYMENT` app setting by running the following command in the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ):
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
 ```
 
@@ -78,7 +82,7 @@ curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.s
 
 ### With PowerShell
 
-The following example uses [Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) upload the .war file. Replace the placeholders `<group-name>`, `<app-name>`, and `<war-file-path>`.
+The following example uses [Publish-AzWebapp](https://docs.microsoft.com/powershell/module/az.websites/publish-azwebapp) upload the .war file. Replace the placeholders `<group-name>`, `<app-name>`, and `<war-file-path>`.
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>
@@ -95,3 +99,8 @@ enables version control, package restore, MSBuild, and more.
 
 * [Kudu: Deploying from a zip file](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Azure App Service Deployment Credentials](deploy-ftp.md)
+
+
+
+<!-- Update_Description: new article about deploy zip -->
+<!--NEW.date: 12/21/2020-->

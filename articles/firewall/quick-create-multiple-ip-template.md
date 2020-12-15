@@ -1,18 +1,21 @@
 ---
-title: 'Quickstart: Create an Azure Firewall with multiple public IP addresses - Resource Manager template'
+title: Quickstart - Create an Azure Firewall with multiple public IP addresses - Resource Manager template
 description: In this quickstart, you learn how to use a Azure Resource Manager template (ARM template) to create an Azure Firewall with multiple public IP addresses.
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/28/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Quickstart: Create an Azure Firewall with multiple public IP addresses - ARM template
 
-In this quickstart, you use an Azure Resource Manager template (ARM template) to deploy an Azure Firewall with multiple public IP addresses from a public IP address prefix. The deployed firewall has NAT rule collection rules that allow RDP connections to two Windows Server 2019 virtual machines.
+In this quickstart, you use an Azure Resource Manager template (ARM template) to deploy an Azure Firewall with multiple public IP addresses from a public IP prefix. The deployed firewall has NAT rule collection rules that allow RDP connections to two Windows Server 2019 virtual machines.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -20,11 +23,11 @@ For more information about Azure Firewall with multiple public IP addresses, see
 
 If your environment meets the prerequisites and you're familiar with using ARM templates, select the **Deploy to Azure** button. The template will open in the Azure portal.
 
-[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Deploy to Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- An Azure account with an active subscription. [Create an account for free](https://www.azure.cn/pricing/1rmb-trial-full/).
 
 ## Review the template
 
@@ -36,15 +39,15 @@ The template used in this quickstart is from [Azure Quickstart Templates](https:
 
 Multiple Azure resources are defined in the template:
 
-- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft.Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
+- [**Microsoft.Network/networkSecurityGroups**](https://docs.azure.cn/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPPrefix**](https://docs.azure.cn/azure/templates/microsoft.network/publicipprefixes)
+- [**Microsoft.Network/publicIPAddresses**](https://docs.azure.cn/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/virtualNetworks**](https://docs.azure.cn/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines**](https://docs.azure.cn/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.Storage/storageAccounts**](https://docs.azure.cn/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/networkInterfaces**](https://docs.azure.cn/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft.Network/azureFirewalls**](https://docs.azure.cn/azure/templates/microsoft.network/azureFirewalls)
+- [**Microsoft.Network/routeTables**](https://docs.azure.cn/azure/templates/microsoft.network/routeTables)
 
 ## Deploy the template
 
@@ -52,7 +55,7 @@ Deploy the ARM template to Azure:
 
 1. Select **Deploy to Azure** to sign in to Azure and open the template. The template creates an Azure Firewall, the network infrastructure, and two virtual machines.
 
-   [![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Deploy to Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
 2. In the portal, on the **Create an Azure Firewall with multiple IP public addresses** page, type or select the following values:
    - Subscription: Select from existing subscriptions 
@@ -75,7 +78,7 @@ When you no longer need the resources that you created with the firewall, delete
 
 To delete the resource group, call the `Remove-AzResourceGroup` cmdlet:
 
-```azurepowershell-interactive
+```powershell
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
@@ -83,3 +86,8 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 
 > [!div class="nextstepaction"]
 > [Tutorial: Deploy and configure Azure Firewall in a hybrid network using the Azure portal](tutorial-hybrid-portal.md)
+
+
+
+<!-- Update_Description: new article about quick create multiple ip template -->
+<!--NEW.date: 12/21/2020-->

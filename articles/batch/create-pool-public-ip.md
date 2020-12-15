@@ -2,7 +2,11 @@
 title: Create a pool with specified public IP addresses
 description: Learn how to create a Batch pool that uses your own public IP addresses.
 ms.topic: how-to
-ms.date: 10/08/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Create an Azure Batch pool with specified public IP addresses
@@ -19,7 +23,7 @@ For information about creating pools without public IP addresses, read [Create a
 
 - **An Azure VNet**. You must use a [virtual network](batch-virtual-network.md) from the same Azure subscription in which you are creating your pool and your IP addresses. Only Azure Resource Manager-based VNets may be used. Be sure that the VNet meets all of the [general requirements](batch-virtual-network.md#vnet-requirements).
 
-- **At least one Azure public IP address**. To create one or more public IP addresses, you can use the [Azure portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), the [Azure Command-Line Interface (CLI)](/cli/azure/network/public-ip#az-network-public-ip-create), or [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress). Be sure to follow the requirements listed below.
+- **At least one Azure public IP address**. To create one or more public IP addresses, you can use the [Azure portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), the [Azure Command-Line Interface (CLI)](https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_create), or [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress). Be sure to follow the requirements listed below.
 
 > [!NOTE]
 > Batch automatically allocates additional networking resources in the resource group containing the public IP addresses. For each 100 dedicated nodes, Batch generally allocates one network security group (NSG) and one load balancer. These resources are limited by the subscription's resource quotas. When using larger pools, you may need to [request a quota increase](batch-quota-limit.md#increase-a-quota) for one or more of these resources.
@@ -40,7 +44,7 @@ Keep in mind the following requirements when creating your public IP addresses:
 
 ## Create a Batch pool with public IP addresses
 
-The example below shows how to use the [Azure Batch Service REST API](/rest/api/batchservice/pool/add) to create a pool that uses public IP addresses.
+The example below shows how to use the [Azure Batch Service REST API](https://docs.microsoft.com/rest/api/batchservice/pool/add) to create a pool that uses public IP addresses.
 
 ### Batch Service REST API
 
@@ -96,3 +100,8 @@ Request Body
 - Learn about [creating a pool in a subnet of an Azure virtual network](batch-virtual-network.md).
 - Learn about [creating an Azure Batch pool without public IP addresses](./batch-pool-no-public-ip-address.md).
 
+
+
+
+<!-- Update_Description: new article about create pool public ip -->
+<!--NEW.date: 12/21/2020-->

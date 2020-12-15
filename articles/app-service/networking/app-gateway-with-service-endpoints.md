@@ -1,9 +1,9 @@
 ---
-title: Application Gateway integration with service endpoints - Azure App Service | Microsoft Docs
+title: Application Gateway integration with service endpoints - Azure App Service | Azure Docs
 description: Describes how Application Gateway integrates with Azure App Service secured with service endpoints.
 services: app-service
 documentationcenter: ''
-author: madsd
+
 manager: ccompy
 editor: ''
 
@@ -12,8 +12,11 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/09/2019
-ms.author: madsd
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18, devx-track-azurecli
 
 ---
@@ -24,7 +27,7 @@ There are three variations of App Service that require slightly different config
 ## Integration with App Service (multi-tenant)
 App Service (multi-tenant) has a public internet facing endpoint. Using [service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md) you can allow traffic only from a specific subnet within an Azure Virtual Network and block everything else. In the following scenario, we'll use this functionality to ensure that an App Service instance can only receive traffic from a specific Application Gateway instance.
 
-![Diagram shows the Internet flowing to an Application Gateway in an Azure Virtual Network and flowing from there through a firewall icon to instances of apps in App Service.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="Diagram shows the Internet flowing to an Application Gateway in an Azure Virtual Network and flowing from there through a firewall icon to instances of apps in App Service.":::
 
 There are two parts to this configuration besides creating the App Service and the Application Gateway. The first part is enabling service endpoints in the subnet of the Virtual Network where the Application Gateway is deployed. Service endpoints will ensure all network traffic leaving the subnet towards the App Service will be tagged with the specific subnet ID. The second part is to set an access restriction of the specific web app to ensure that only traffic tagged with this specific subnet ID is allowed. You can configure it using different tools depending on preference.
 
@@ -37,7 +40,7 @@ With Azure portal, you follow four steps to provision and configure the setup. I
 
 You can now access the App Service through Application Gateway, but if you try to access the App Service directly, you should receive a 403 HTTP error indicating that the web site is stopped.
 
-![Screenshot shows the text of an Error 403 - This web app is stopped.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/web-site-stopped.png" alt-text="Screenshot shows the text of an Error 403 - This web app is stopped.":::
 
 ## Using Azure Resource Manager template
 The [Resource Manager deployment template][template-app-gateway-app-service-complete] will provision a complete scenario. The scenario consists of an App Service instance locked down with service endpoints and access restriction to only receive traffic from Application Gateway. The template includes many Smart Defaults and unique postfixes added to the resource names for it to be simple. To override them, you'll have to clone the repo or download the template and edit it. 
@@ -47,7 +50,7 @@ To apply the template you can use the Deploy to Azure button found in the descri
 ## Using Azure Command Line Interface
 The [Azure CLI sample](../../app-service/scripts/cli-integrate-app-service-with-application-gateway.md) will provision an App Service locked down with service endpoints and access restriction to only receive traffic from Application Gateway. If you only need to isolate traffic to an existing App Service from an existing Application Gateway, the following command is sufficient.
 
-```azurecli-interactive
+```azurecli
 az webapp config access-restriction add --resource-group myRG --name myWebApp --rule-name AppGwSubnet --priority 200 --subnet mySubNetName --vnet-name myVnetName
 ```
 
@@ -70,17 +73,22 @@ The scm site, also known as kudu, is an admin site, which exists for every web a
 
 If you want to use the same access restrictions as the main site, you can inherit the settings using the following command.
 
-```azurecli-interactive
+```azurecli
 az webapp config access-restriction set --resource-group myRG --name myWebApp --use-same-restrictions-for-scm-site
 ```
 
 If you want to set individual access restrictions for the scm site, you can add access restrictions using the --scm-site flag like shown below.
 
-```azurecli-interactive
+```azurecli
 az webapp config access-restriction add --resource-group myRG --name myWebApp --scm-site --rule-name KudoAccess --priority 200 --ip-address 208.130.0.0/16
 ```
 
 ## Next steps
-For more information on the App Service Environment, see [App Service Environment documentation](/azure/app-service/environment).
+For more information on the App Service Environment, see [App Service Environment documentation](https://docs.azure.cn/azure/app-service/environment).
 
-To further secure your web app, information about Web Application Firewall on Application Gateway can be found in the [Azure Web Application Firewall documentation](../../web-application-firewall/ag/ag-overview.md).
+To further secure your web app, information about Web Application Firewall on Application Gateway can be found in the [Azure Web Application Firewall documentation](../../application-gateway/ag-overview.md).
+
+
+
+<!-- Update_Description: new article about networking/app gateway with service endpoints -->
+<!--NEW.date: 12/21/2020-->

@@ -1,11 +1,14 @@
 ---
 title: Integrate app with Azure Virtual Network
 description: Integrate app in Azure App Service with Azure virtual networks.
-author: ccompy
+
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 08/05/2020
-ms.author: ccompy
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
@@ -30,7 +33,7 @@ Azure App Service has two variations on the VNet Integration feature:
    ![Select the VNet][2]
 
    * If the VNet is in the same region, either create a new subnet or select an empty preexisting subnet.
-   * To select a VNet in another region, you must have a VNet gateway provisioned with point to site enabled.
+   * To select a VNet in another region, you must have a VPN Gateway provisioned with point to site enabled.
    * To integrate with a classic VNet, instead of selecting the **Virtual Network** drop-down list, select **Click here to connect to a Classic VNet**. Select the classic virtual network you want. The target VNet must already have a Virtual Network gateway provisioned with point-to-site enabled.
 
     ![Select Classic VNet][3]
@@ -207,21 +210,21 @@ New-AzResource @vNetParams
 
 For gateway-required VNet Integration, you can integrate App Service with an Azure virtual network by using PowerShell. For a ready-to-run script, see [Connect an app in Azure App Service to an Azure virtual network](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
-
 <!--Image references-->
+
 [1]: ./media/web-sites-integrate-with-vnet/vnetint-app.png
 [2]: ./media/web-sites-integrate-with-vnet/vnetint-addvnet.png
 [3]: ./media/web-sites-integrate-with-vnet/vnetint-classic.png
 [5]: ./media/web-sites-integrate-with-vnet/vnetint-regionalworks.png
 [6]: ./media/web-sites-integrate-with-vnet/vnetint-gwworks.png
 
-
 <!--Links-->
+
 [VNETOverview]: ../virtual-network/virtual-networks-overview.md
-[AzurePortal]: https://portal.azure.com/
-[ASPricing]: https://azure.microsoft.com/pricing/details/app-service/
-[VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
-[DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
+[AzurePortal]: https://portal.azure.cn/
+[ASPricing]: https://www.azure.cn/pricing/details/app-service/
+[VNETPricing]: https://www.azure.cn/pricing/details/vpn-gateway/
+[DataPricing]: https://www.azure.cn/pricing/details/data-transfers/
 [V2VNETP2S]: ../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
@@ -231,5 +234,9 @@ For gateway-required VNet Integration, you can integrate App Service with an Azu
 [creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
 [VNETRouteTables]: ../virtual-network/manage-route-table.md
-[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
+[installCLI]: https://docs.azure.cn/cli/install-azure-cli%2f
 [privateendpoints]: networking/private-endpoint.md
+
+
+<!-- Update_Description: new article about web sites integrate with vnet -->
+<!--NEW.date: 12/21/2020-->

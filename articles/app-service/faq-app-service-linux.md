@@ -2,11 +2,14 @@
 title: Run built-in containers FAQ
 description: Find answers to the frequently asked questions about the built-in Linux containers in Azure App Service.
 keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
-author: msangapu-msft
+
 
 ms.topic: article
-ms.date: 10/30/2018
-ms.author: msangapu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 ---
 # Azure App Service on Linux FAQ
@@ -21,7 +24,7 @@ If you have a question, comment on this article.
 
 You can find all Docker files on [GitHub](https://github.com/azure-app-service). You can find all Docker containers on [Docker Hub](https://hub.docker.com/u/appsvc/).
 
-<a id="#startup-file"></a>
+<a name="#startup-file"></a>
 
 **What are the expected values for the Startup File section when I configure the runtime stack?**
 
@@ -117,7 +120,7 @@ Provide the full registry URL, including `http://` or `https://`.
 
 **What is the format for the image name in the private registry option?**
 
-Add the full image name, including the private registry URL (for example, myacr.azurecr.io/dotnet:latest). Image names that use a custom port [cannot be entered through the portal](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). To set `docker-custom-image-name`, use the [`az` command-line tool](/cli/azure/webapp/config/container#az-webapp-config-container-set).
+Add the full image name, including the private registry URL (for example, myacr.azurecr.cn/dotnet:latest). Image names that use a custom port [cannot be entered through the portal](https://support.azure.cn/support/contact/). To set `docker-custom-image-name`, use the [`az` command-line tool](https://docs.azure.cn/cli/webapp/config/container#az_webapp_config_container_set).
 
 **Can I expose more than one port on my custom container image?**
 
@@ -148,13 +151,13 @@ In order to use ACR with multi-container, **all container images** need to be ho
 Create the following application settings:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (full URL, ex: `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_URL (full URL, ex: `https://<server-name>.azurecr.cn`)
 - DOCKER_REGISTRY_SERVER_PASSWORD (enable admin access in ACR settings)
 
 Within the configuration file, reference your ACR image like the following example:
 
 ```yaml
-image: <server-name>.azurecr.io/<image-name>:<tag>
+image: <server-name>.azurecr.cn/<image-name>:<tag>
 ```
 
 **How do I know which container is internet accessible?**
@@ -180,7 +183,7 @@ Web Sockets are supported on Linux apps.
 
 **What is the pricing, now that the service is generally available?**
 
-Pricing varies by SKU and region but you can see more details at our pricing page: [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/linux/).
+Pricing varies by SKU and region but you can see more details at our pricing page: [App Service Pricing](https://www.azure.cn/pricing/details/app-service/linux/).
 
 ## Other questions
 
@@ -201,3 +204,8 @@ You can submit your idea at the [Web Apps feedback forum](https://aka.ms/webapps
 - [What is Azure App Service on Linux?](overview.md#app-service-on-linux)
 - [Set up staging environments in Azure App Service](deploy-staging-slots.md)
 - [Continuous Deployment with Web App for Containers](./deploy-ci-cd-custom-container.md)
+
+
+
+<!-- Update_Description: new article about faq app service linux -->
+<!--NEW.date: 12/21/2020-->

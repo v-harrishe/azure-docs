@@ -2,12 +2,16 @@
 title: Run Linux on virtual machine compute nodes
 description: Learn how to process parallel compute workloads on pools of Linux virtual machines in Azure Batch.
 ms.topic: how-to
-ms.date: 11/10/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "H1Hack27Feb2017, devx-track-python, devx-track-csharp"
 ---
 # Provision Linux compute nodes in Batch pools
 
-You can use Azure Batch to run parallel compute workloads on both Linux and Windows virtual machines. This article details how to create pools of Linux compute nodes in the Batch service by using both the [Batch Python](https://pypi.python.org/pypi/azure-batch) and [Batch .NET](/dotnet/api/microsoft.azure.batch) client libraries. 
+You can use Azure Batch to run parallel compute workloads on both Linux and Windows virtual machines. This article details how to create pools of Linux compute nodes in the Batch service by using both the [Batch Python](https://pypi.python.org/pypi/azure-batch) and [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) client libraries. 
 
 ## Virtual Machine Configuration
 
@@ -17,7 +21,7 @@ In contrast, [Virtual Machine Configuration](nodes-and-pools.md#virtual-machine-
 
 ### Virtual machine image reference
 
-The Batch service uses [virtual machine scale sets](../virtual-machine-scale-sets/overview.md) to provide compute nodes in the Virtual Machine Configuration. You can specify an image from the [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1), or [use the Shared Image Gallery to prepare a custom image](batch-sig-images.md).
+The Batch service uses [virtual machine scale sets](../virtual-machine-scale-sets/overview.md) to provide compute nodes in the Virtual Machine Configuration. You can specify an image from the [Azure Marketplace](https://market.azure.cn/marketplace/apps/filter?search=compute&filters=virtual-machine-images&page=1), or [use the Shared Image Gallery to prepare a custom image](batch-sig-images.md).
 
 When you create a virtual machine image reference, you must specify the following properties:
 
@@ -41,13 +45,13 @@ The [Batch node agent](https://github.com/Azure/Batch/blob/master/changelogs/nod
 
 ### List of virtual machine images
 
-Not all Marketplace images are compatible with the currently available Batch node agents. To list all supported Marketplace virtual machine images for the Batch service and their corresponding node agent SKUs, use [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET), or the corresponding API in another language SDK.
+Not all Marketplace images are compatible with the currently available Batch node agents. To list all supported Marketplace virtual machine images for the Batch service and their corresponding node agent SKUs, use [list_supported_images](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [ListSupportedImages](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET), or the corresponding API in another language SDK.
 
 ## Create a Linux pool: Batch Python
 
-The following code snippet shows an example of how to use the [Microsoft Azure Batch Client Library for Python](https://pypi.python.org/pypi/azure-batch) to create a pool of Ubuntu Server compute nodes. For more details about the Batch Python module, view the [reference documentation](/python/api/overview/azure/batch).
+The following code snippet shows an example of how to use the [21Vianet Azure Batch Client Library for Python](https://pypi.python.org/pypi/azure-batch) to create a pool of Ubuntu Server compute nodes. For more details about the Batch Python module, view the [reference documentation](https://docs.azure.cn/python/api/overview/azure/batch).
 
-This snippet creates an [ImageReference](/python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference) explicitly and specifies each of its properties (publisher, offer, SKU, version). In production code, however, we recommend that you use the [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) method to select from the available image and node agent SKU combinations at runtime.
+This snippet creates an [ImageReference](https://docs.azure.cn/python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference) explicitly and specifies each of its properties (publisher, offer, SKU, version). In production code, however, we recommend that you use the [list_supported_images](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) method to select from the available image and node agent SKU combinations at runtime.
 
 ```python
 # Import the required modules from the
@@ -103,7 +107,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-As mentioned earlier, we recommend using the [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) method to dynamically select from the currently supported node agent/Marketplace image combinations (rather than creating an [ImageReference](/python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference) explicitly). The following Python snippet shows how to use this method.
+As mentioned earlier, we recommend using the [list_supported_images](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) method to dynamically select from the currently supported node agent/Marketplace image combinations (rather than creating an [ImageReference](https://docs.azure.cn/python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference) explicitly). The following Python snippet shows how to use this method.
 
 ```python
 # Get the list of supported images from the Batch service
@@ -130,9 +134,9 @@ vmc = batchmodels.VirtualMachineConfiguration(
 
 ## Create a Linux pool: Batch .NET
 
-The following code snippet shows an example of how to use the [Batch .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) client library to create a pool of Ubuntu Server compute nodes. For more details about Batch .NET, view the [reference documentation](/dotnet/api/microsoft.azure.batch).
+The following code snippet shows an example of how to use the [Batch .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) client library to create a pool of Ubuntu Server compute nodes. For more details about Batch .NET, view the [reference documentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch).
 
-The following code snippet uses the [PoolOperations.ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) method to select from the list of currently supported Marketplace image and node agent SKU combinations. This technique is recommended, because the list of supported combinations may change from time to time. Most commonly, supported combinations are added.
+The following code snippet uses the [PoolOperations.ListSupportedImages](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) method to select from the list of currently supported Marketplace image and node agent SKU combinations. This technique is recommended, because the list of supported combinations may change from time to time. Most commonly, supported combinations are added.
 
 ```csharp
 // Pool settings
@@ -176,7 +180,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Although the previous snippet uses the [PoolOperations.istSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) method to dynamically list and select from supported image and node agent SKU combinations (recommended), you can also configure an [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) explicitly:
+Although the previous snippet uses the [PoolOperations.istSupportedImages](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) method to dynamically list and select from supported image and node agent SKU combinations (recommended), you can also configure an [ImageReference](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.imagereference) explicitly:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -259,15 +263,23 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-Instead of a password, you can specify an SSH public key when you create a user on a node. In the Python SDK, use the **ssh_public_key** parameter on [ComputeNodeUser](/python/api/azure-batch/azure.batch.models.computenodeuser). In .NET, use the [ComputeNodeUser.SshPublicKey](/dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey) property.
+Instead of a password, you can specify an SSH public key when you create a user on a node. In the Python SDK, use the **ssh_public_key** parameter on [ComputeNodeUser](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.computenodeuser). In .NET, use the [ComputeNodeUser.SshPublicKey](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey) property.
 
 ## Pricing
 
-Azure Batch is built on Azure Cloud Services and Azure Virtual Machines technology. The Batch service itself is offered at no cost, which means you are charged only for the compute resources (and associated costs that entails) that your Batch solutions consume. When you choose **Virtual Machine Configuration**, you are charged based on the [Virtual Machines pricing](https://azure.microsoft.com/pricing/details/virtual-machines/) structure.
+Azure Batch is built on Azure Cloud Services and Azure Virtual Machines technology. The Batch service itself is offered at no cost, which means you are charged only for the compute resources (and associated costs that entails) that your Batch solutions consume. When you choose **Virtual Machine Configuration**, you are charged based on the [Virtual Machines pricing](https://www.azure.cn/pricing/details/virtual-machines/) structure.
 
 If you deploy applications to your Batch nodes using [application packages](batch-application-packages.md), you are also charged for the Azure Storage resources that your application packages consume.
 
 ## Next steps
 
 - Explore the [Python code samples](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch) in the [azure-batch-samples GitHub repository](https://github.com/Azure/azure-batch-samples) to see how to perform common Batch operations, such as pool, job, and task creation. The [README](https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md) that accompanies the Python samples has details about how to install the required packages.
-- Learn about using [low-priority VMs](batch-low-pri-vms.md) with Batch.
+- Learn about using [low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs](batch-low-pri-vms.md) with Batch.
+
+<!--Not Available on FEATURE low-priority-->
+
+
+
+
+<!-- Update_Description: new article about batch linux nodes -->
+<!--NEW.date: 12/21/2020-->

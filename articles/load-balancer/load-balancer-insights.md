@@ -3,14 +3,17 @@ title: Insights for Azure Load Balancer
 description: Use the load balancer insights to achieve rapid fault localization and informed design decisions
 services: load-balancer
 documentationcenter: na
-author: erichrt
+
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2020
-ms.author: errobin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Using Insights to monitor and configure your Azure Load Balancer
@@ -76,3 +79,7 @@ The Metric Definitions tab contains all the information shown in the [Multi-dime
 * [Review the metrics documentation to ensure you understand how each metric is calculated](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [Create Connection Monitors for your Load Balancer](../network-watcher/connection-monitor.md)
 * [Create your own workbooks](../azure-monitor/platform/workbooks-overview.md), you can take inspiration by clicking on the edit button in your detailed metrics dashboard
+
+
+<!-- Update_Description: new article about load balancer insights -->
+<!--NEW.date: 12/21/2020-->

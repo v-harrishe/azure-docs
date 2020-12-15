@@ -3,15 +3,18 @@ title: Diagnostics with metrics, alerts, and resource health - Azure Standard Lo
 description: Use the available metrics, alerts, and resource health information to diagnose your Azure Standard Load Balancer.
 services: load-balancer
 documentationcenter: na
-author: asudbring
+
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Standard Load Balancer diagnostics with metrics, alerts and resource health
@@ -59,7 +62,7 @@ To view the metrics for your Standard Load Balancer resources:
   >[!NOTE] 
   >Time aggregation is important when interpreting certain metrics as data is sampled once per minute. If time aggregation is set to five minutes and metric aggregation type Sum is used for metrics such as SNAT Allocation, your graph will display five times the total  allocated SNAT ports. 
 
-![Metrics for Standard Load Balancer](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/lbmetrics1anew.png" alt-text="Metrics for Standard Load Balancer":::
 
 *Figure: Data Path Availability metric for Standard Load Balancer*
 
@@ -74,9 +77,9 @@ Azure Standard Load Balancer supports easily configurable alerts for multi-dimen
 To configure alerts:
 1. Go to the alert sub-blade for the load balancer
 1. Create new alert rule
-    1.  Configure alert condition
-    1.  (Optional) Add action group for automated repair
-    1.  Assign alert severity, name and description that enables intuitive reaction
+    1. Configure alert condition
+    1. (Optional) Add action group for automated repair
+    1. Assign alert severity, name and description that enables intuitive reaction
 
   >[!NOTE]
   >Alert condition configuration window will show time series for signal history. There is an option to filter this time series by dimensions such as Backend IP. This will filter the time series graph but **not** the alert itself. You cannot configure alerts for specific Backend IP addresses.
@@ -97,7 +100,7 @@ To get the Data Path Availability for your Standard Load Balancer resources:
 3. In the **Aggregation** drop-down list, select **Avg**. 
 4. Additionally, add a filter on the Frontend IP address or Frontend port as the dimension with the required front-end IP address or front-end port, and then group them by the selected dimension.
 
-![VIP probing](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png" alt-text="VIP probing":::
 
 *Figure: Load Balancer Frontend probing details*
 
@@ -141,7 +144,7 @@ To get SNAT connection statistics:
 1. Select **SNAT Connections** metric type and **Sum** as aggregation. 
 2. Group by **Connection State** for successful and failed SNAT connection counts that are represented by different lines. 
 
-![SNAT connection](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png" alt-text="SNAT connection":::
 
 *Figure: Load Balancer SNAT connection count*
 </details>
@@ -164,11 +167,11 @@ To view SNAT port usage and allocation:
     * Note splitting only allows for a single metric to be displayed at a time. 
 1. For example, to monitor SNAT usage for TCP flows per machine, aggregate by **Average**, split by **Backend IPs** and filter by **Protocol Type**. 
 
-![SNAT allocation and usage](./media/load-balancer-standard-diagnostics/snat-usage-and-allocation.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/snat-usage-and-allocation.png" alt-text="SNAT allocation and usage":::
 
 *Figure: Average TCP SNAT port allocation and usage for a set of backend VMs*
 
-![SNAT usage by backend instance](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/snat-usage-split.png" alt-text="SNAT usage by backend instance":::
 
 *Figure: TCP SNAT port usage per backend instance*
 </details>
@@ -180,7 +183,7 @@ A SYN packets metric describes the volume of TCP SYN packets, which have arrived
 
 Use **Total** as the aggregation for most scenarios.
 
-![SYN connection](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png" alt-text="SYN connection":::
 
 *Figure: Load Balancer SYN count*
 </details>
@@ -199,7 +202,7 @@ To get byte or packet count statistics:
    * Apply a filter on a specific front-end IP, front-end port, back-end IP, or back-end port.
    * Get overall statistics for your load balancer resource without any filtering.
 
-![Byte count](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png" alt-text="Byte count":::
 
 *Figure: Load Balancer byte count*
 </details>
@@ -213,7 +216,7 @@ You can use health probe metrics to understand how Azure views the health of you
 
 You can take it a step further and use Data Path availability metric to gain insight into how Azure views the health of the underlying data plane that's responsible for your specific deployment. When you combine both metrics, you can isolate where the fault might be, as illustrated in this example:
 
-![Combining Data Path Availability and Health Probe Status metrics](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
+:::image type="content" source="./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png" alt-text="Combining Data Path Availability and Health Probe Status metrics":::
 
 *Figure: Combining Data Path Availability and Health Probe Status metrics*
 
@@ -231,19 +234,19 @@ Health status for the Standard Load Balancer resources is exposed via the existi
 To view the health of your public Standard Load Balancer resources:
 1. Select  **Monitor** > **Service Health**.
 
-   ![Monitor page](./media/load-balancer-standard-diagnostics/LBHealth1.png)
+   :::image type="content" source="./media/load-balancer-standard-diagnostics/LBHealth1.png" alt-text="Monitor page":::
 
    *Figure: The Service Health link on Azure Monitor*
 
 2. Select **Resource Health**, and then make sure that **Subscription ID** and **Resource Type = Load Balancer** are selected.
 
-   ![Resource health status](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   :::image type="content" source="./media/load-balancer-standard-diagnostics/LBHealth3.png" alt-text="Resource health status":::
 
    *Figure: Select resource for health view*
 
 3. In the list, select the Load Balancer resource to view its historical health status.
 
-    ![Load Balancer health status](./media/load-balancer-standard-diagnostics/LBHealth4.png)
+    :::image type="content" source="./media/load-balancer-standard-diagnostics/LBHealth4.png" alt-text="Load Balancer health status":::
 
    *Figure: Load Balancer resource health view*
  
@@ -261,4 +264,8 @@ Generic resource health status description are available in the [RHC documentati
 - Learn more about [Standard Load Balancer](./load-balancer-overview.md).
 - Learn more about your [Load balancer outbound connectivity](./load-balancer-outbound-connections.md).
 - Learn about [Azure Monitor](../azure-monitor/overview.md).
-- Learn about the [Azure Monitor REST API](/rest/api/monitor/) and [how to retrieve metrics via REST API](/rest/api/monitor/metrics/list).
+- Learn about the [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) and [how to retrieve metrics via REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list).
+
+
+<!-- Update_Description: new article about load balancer standard diagnostics -->
+<!--NEW.date: 12/21/2020-->

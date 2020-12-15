@@ -1,11 +1,14 @@
 ---
 title: Use an App Service Environment
 description: Learn how to use your App Service Environment to host isolated applications.
-author: ccompy
+
 ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
 ms.topic: article
-ms.date: 11/16/2020
-ms.author: ccompy
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 ---
 
@@ -36,7 +39,7 @@ To create an app in an ASE:
 
 1. Select your Publish type, Stack, and Operating System.
 
-1.  Select region. Here you need to select a pre-existing App Service Environment v3.  You can't make an ASEv3 during app creation 
+1. Select region. Here you need to select a pre-existing App Service Environment v3. You can't make an ASEv3 during app creation 
 
 1. Select an existing App Service plan in your ASE, or create a new one. If creating a new app, select the size that you want for your App Service plan. The only SKU you can select for your app is an Isolated v2 pricing SKU.
 
@@ -46,9 +49,9 @@ To create an app in an ASE:
     > Linux apps and Windows apps can't be in the same App Service plan, but they can be in the same App Service Environment.
     >
 
-1. Select ** Next: Monitoring**  If you want to enable App Insights with your app, you can do it here during the creation flow. 
+1. Select ** Next: Monitoring** If you want to enable App Insights with your app, you can do it here during the creation flow. 
 
-1.  Select **Next: Tags** Add any tags you want to the app  
+1. Select **Next: Tags** Add any tags you want to the app  
 
 1. Select **Review + create**, make sure the information is correct, and then select **Create**.
 
@@ -173,6 +176,7 @@ To delete an ASE:
 1. Select **OK**.
 
 <!--Image references-->
+
 [1]: ./media/using/using-appcreate.png
 [2]: ./media/using/using-appcreate-skus.png
 [3]: ./media/using/using-delete.png
@@ -181,17 +185,23 @@ To delete an ASE:
 [5]: ./media/using/using-configuration.png
 
 <!--Links-->
+
 [Intro]: ./overview.md
 [MakeASE]: ./creation.md
 [ASENetwork]: ./networking.md
 [UsingASE]: ./using.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
 [NSGs]: ../../virtual-network/network-security-groups-overview.md
-[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://www.azure.cn/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../web-application-firewall/ag/ag-overview.md
+[AppGW]: ../../application-gateway/ag-overview.md
 [logalerts]: ../../azure-monitor/platform/alerts-log.md
+
+
+
+<!-- Update_Description: new article about using -->
+<!--NEW.date: 12/21/2020-->

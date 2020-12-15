@@ -1,12 +1,15 @@
 ---
 title: Layered security v1
 description: Learn how to implement a layered security architecture in your App Service environment. This doc is provided only for customers who use the legacy v1 ASE.
-author: stefsch
+
 
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.topic: article
-ms.date: 08/30/2016
-ms.author: stefsch
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
@@ -28,22 +31,22 @@ In order to know what network security rules are needed, you need to determine w
 
 Since [network security groups (NSGs)][NetworkSecurityGroups] are applied to subnets, and App Service Environments are deployed into subnets, the rules contained in an NSG apply to **all** apps running on an App Service Environment.  Using the sample architecture for this article, once a network security group is applied to the subnet containing "apiase", all apps running on the "apiase" App Service Environment will be protected by the same set of security rules. 
 
-* **Determine the outbound IP address of upstream callers:**  What is the IP address or addresses of the upstream callers?  These addresses will need to be explicitly allowed access in the NSG.  Since calls between App Service Environments are considered "Internet" calls, the outbound IP address assigned to each of the three upstream App Service Environments needs to be allowed access in the NSG for the "apiase" subnet.   For more information on determining the outbound IP address for apps running in an App Service Environment, see the [Network Architecture][NetworkArchitecture] Overview article.
-* **Will the back-end API app need to call itself?**  A sometimes overlooked and subtle point is the scenario where the back-end application needs to call itself.  If a back-end API application on an App Service Environment needs to call itself, it is also treated as an "Internet" call.  In the sample architecture, this requires allowing access from the outbound IP address of the "apiase" App Service Environment as well.
+* **Determine the outbound IP address of upstream callers:** What is the IP address or addresses of the upstream callers?  These addresses will need to be explicitly allowed access in the NSG.  Since calls between App Service Environments are considered "Internet" calls, the outbound IP address assigned to each of the three upstream App Service Environments needs to be allowed access in the NSG for the "apiase" subnet.   For more information on determining the outbound IP address for apps running in an App Service Environment, see the [Network Architecture][NetworkArchitecture] Overview article.
+* **Will the back-end API app need to call itself?** A sometimes overlooked and subtle point is the scenario where the back-end application needs to call itself.  If a back-end API application on an App Service Environment needs to call itself, it is also treated as an "Internet" call.  In the sample architecture, this requires allowing access from the outbound IP address of the "apiase" App Service Environment as well.
 
 ## Setting up the Network Security Group
 Once the set of outbound IP addresses are known, the next step is to construct a network security group.  Network security groups can be created for both Resource Manager based virtual networks, as well as classic virtual networks.  The examples below show creating and configuring an NSG on a classic virtual network using PowerShell.
 
-For the sample architecture, the environments are located in South Central US, so an empty NSG is created in that region:
+For the sample architecture, the environments are located in South China North, so an empty NSG is created in that region:
 
-```azurepowershell-interactive
-New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" 
+```powershell
+New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South China North" 
 -Label "Only allow web frontend and loopback traffic"
 ```
 
 First an explicit allow rule is added for the Azure management infrastructure as noted in the article on [inbound traffic][InboundTraffic] for App Service Environments.
 
-```azurepowershell-interactive
+```powershell
 #Open ports for access by Azure management infrastructure
 Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" 
 -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' 
@@ -52,7 +55,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 
 Next, two rules are added to allow HTTP and HTTPS calls from the first upstream App Service Environment ("fe1ase").
 
-```azurepowershell-interactive
+```powershell
 #Grant access to requests from the first upstream web front-end
 Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" 
 -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' 
@@ -64,7 +67,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 
 Rinse and repeat for the second and third upstream App Service Environments ("fe2ase"and "fe3ase").
 
-```azurepowershell-interactive
+```powershell
 #Grant access to requests from the second upstream web front-end
 Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" 
 -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' 
@@ -84,7 +87,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 
 Lastly, grant access to the outbound IP address of the back-end API's App Service Environment so that it can call back into itself.
 
-```azurepowershell-interactive
+```powershell
 #Allow apps on the apiase environment to call back into itself
 Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" 
 -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' 
@@ -102,7 +105,7 @@ The full list of rules in the network security group are shown below.  Note how 
 
 The final step is to apply the NSG to the subnet that contains the "apiase" App Service Environment.
 
-```azurepowershell-interactive
+```powershell
 #Apply the NSG to the backend API subnet
 Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet 
 -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
@@ -120,10 +123,16 @@ Understanding [outbound IP addresses][NetworkArchitecture] and App Service Envir
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
+
 [NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [NetworkArchitecture]:  app-service-app-service-environment-network-architecture-overview.md
 [InboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 
 <!-- IMAGES -->
+
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]:  ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
+
+
+<!-- Update_Description: new article about app service app service environment layered security -->
+<!--NEW.date: 12/21/2020-->

@@ -2,10 +2,13 @@
 title: 'Deploy and configure Azure Firewall using Azure PowerShell'
 description: In this article, you learn how to deploy and configure Azure Firewall using the Azure PowerShell. 
 services: firewall
-author: vhorne
+
 ms.service: firewall
-ms.date: 12/03/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.topic: how-to
 #Customer intent: As an administrator new to this service, I want to control outbound network access from resources located in an Azure subnet.
 ---
@@ -21,13 +24,13 @@ One way you can control outbound network access from an Azure subnet is with Azu
 
 Network traffic is subjected to the configured firewall rules when you route your network traffic to the firewall as the subnet default gateway.
 
-For this article, you create a simplified single VNet with three subnets for easy deployment. For production deployments, a [hub and spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is recommended, where the firewall is in its own VNet. The workload servers are in peered VNets in the same region with one or more subnets.
+For this article, you create a simplified single VNet with three subnets for easy deployment. For production deployments, a [hub and spoke model](https://docs.azure.cn/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) is recommended, where the firewall is in its own VNet. The workload servers are in peered VNets in the same region with one or more subnets.
 
 * **AzureFirewallSubnet** - the firewall is in this subnet.
 * **Workload-SN** - the workload server is in this subnet. This subnet's network traffic goes through the firewall.
 * **AzureBastionSubnet** - the subnet used for Azure Bastion, which is used to connect to the workload server. For more information about Azure Bastion, see [What is Azure Bastion?](../bastion/bastion-overview.md)
 
-![Tutorial network infrastructure](media/deploy-ps/tutorial-network.png)
+:::image type="content" source="media/deploy-ps/tutorial-network.png" alt-text="Tutorial network infrastructure":::
 
 In this article, you learn how to:
 
@@ -35,17 +38,17 @@ In this article, you learn how to:
 * Set up a test network environment
 * Deploy a firewall
 * Create a default route
-* Configure an application rule to allow access to www.google.com
+* Configure an application rule to allow access to www.qq.com
 * Configure a network rule to allow access to external DNS servers
 * Test the firewall
 
 If you prefer, you can complete this procedure using the [Azure portal](tutorial-firewall-deploy-portal.md).
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
 
 ## Prerequisites
 
-This procedure requires that you run PowerShell locally. You must have the Azure PowerShell module installed. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](/powershell/azure/install-Az-ps). After you verify the PowerShell version, run `Connect-AzAccount` to create a connection with Azure.
+This procedure requires that you run PowerShell locally. You must have the Azure PowerShell module installed. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps). After you verify the PowerShell version, run `Connect-AzAccount -Environment AzureChinaCloud` to create a connection with Azure.
 
 ## Set up the network
 
@@ -56,7 +59,7 @@ First, create a resource group to contain the resources needed to deploy the fir
 The resource group contains all the resources for the deployment.
 
 ```azurepowershell
-New-AzResourceGroup -Name Test-FW-RG -Location "East US"
+New-AzResourceGroup -Name Test-FW-RG -Location "China East"
 ```
 
 ### Create a virtual network and Azure Bastion host
@@ -75,12 +78,12 @@ Now, create the virtual network:
 
 ```azurepowershell
 $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG `
--Location "East US" -AddressPrefix 10.0.0.0/16 -Subnet $Bastionsub, $FWsub, $Worksub
+-Location "China East" -AddressPrefix 10.0.0.0/16 -Subnet $Bastionsub, $FWsub, $Worksub
 ```
 ### Create public IP address for Azure Bastion host
 
 ```azurepowershell
-$publicip = New-AzPublicIpAddress -ResourceGroupName Test-FW-RG -Location "East US" `
+$publicip = New-AzPublicIpAddress -ResourceGroupName Test-FW-RG -Location "China East" `
    -Name Bastion-pip -AllocationMethod static -Sku standard
 ```
 
@@ -101,7 +104,7 @@ When prompted, type a user name and password for the virtual machine.
 ```azurepowershell
 #Create the NIC
 $wsn = Get-AzVirtualNetworkSubnetConfig -Name  Workload-SN -VirtualNetwork $testvnet
-$NIC01 = New-AzNetworkInterface -Name Srv-Work -ResourceGroupName Test-FW-RG -Location "East us" -Subnet $wsn
+$NIC01 = New-AzNetworkInterface -Name Srv-Work -ResourceGroupName Test-FW-RG -Location "China East" -Subnet $wsn
 
 #Define the virtual machine
 $VirtualMachine = New-AzVMConfig -VMName Srv-Work -VMSize "Standard_DS2"
@@ -110,7 +113,7 @@ $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC01.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
 
 #Create the virtual machine
-New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -Verbose
+New-AzVM -ResourceGroupName Test-FW-RG -Location "China East" -VM $VirtualMachine -Verbose
 ```
 
 ## Deploy the firewall
@@ -120,9 +123,9 @@ Now deploy the firewall into the virtual network.
 ```azurepowershell
 # Get a Public IP for the firewall
 $FWpip = New-AzPublicIpAddress -Name "fw-pip" -ResourceGroupName Test-FW-RG `
-  -Location "East US" -AllocationMethod Static -Sku Standard
+  -Location "China East" -AllocationMethod Static -Sku Standard
 # Create the firewall
-$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "East US" -VirtualNetwork $testVnet -PublicIpAddress $FWpip
+$Azfw = New-AzFirewall -Name Test-FW01 -ResourceGroupName Test-FW-RG -Location "China East" -VirtualNetwork $testVnet -PublicIpAddress $FWpip
 
 #Save the firewall private IP address for future use
 
@@ -140,7 +143,7 @@ Create a table, with BGP route propagation disabled
 $routeTableDG = New-AzRouteTable `
   -Name Firewall-rt-table `
   -ResourceGroupName Test-FW-RG `
-  -location "East US" `
+  -location "China East" `
   -DisableBgpRoutePropagation
 
 #Create a route
@@ -163,11 +166,11 @@ Set-AzVirtualNetworkSubnetConfig `
 
 ## Configure an application rule
 
-The application rule allows outbound access to www.google.com.
+The application rule allows outbound access to www.qq.com.
 
 ```azurepowershell
-$AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0.2.0/24 `
-  -Protocol http, https -TargetFqdn www.google.com
+$AppRule1 = New-AzFirewallApplicationRule -Name Allow-QQ -SourceAddress 10.0.2.0/24 `
+  -Protocol http, https -TargetFqdn www.qq.com
 
 $AppRuleCollection = New-AzFirewallApplicationRuleCollection -Name App-Coll01 `
   -Priority 200 -ActionType Allow -Rule $AppRule1
@@ -216,7 +219,7 @@ Now, test the firewall to confirm that it works as expected.
 3. On **Srv-Work**, open a PowerShell window and run the following commands:
 
    ```
-   nslookup www.google.com
+   nslookup www.qq.com
    nslookup www.microsoft.com
    ```
 
@@ -225,14 +228,14 @@ Now, test the firewall to confirm that it works as expected.
 1. Run the following commands:
 
    ```
-   Invoke-WebRequest -Uri https://www.google.com
-   Invoke-WebRequest -Uri https://www.google.com
+   Invoke-WebRequest -Uri https://www.qq.com
+   Invoke-WebRequest -Uri https://www.qq.com
 
    Invoke-WebRequest -Uri https://www.microsoft.com
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   The `www.google.com` requests should succeed, and the `www.microsoft.com` requests should fail. This demonstrates that your firewall rules are operating as expected.
+   The `www.qq.com` requests should succeed, and the `www.microsoft.com` requests should fail. This demonstrates that your firewall rules are operating as expected.
 
 So now you've verified that the firewall rules are working:
 
@@ -250,3 +253,8 @@ Remove-AzResourceGroup -Name Test-FW-RG
 ## Next steps
 
 * [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
+
+
+
+<!-- Update_Description: new article about deploy ps -->
+<!--NEW.date: 12/21/2020-->

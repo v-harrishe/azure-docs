@@ -3,7 +3,11 @@ title: Back up an app
 description: Learn how to create backups of your apps in Azure App Service. Run manual or scheduled backups. Customize backups by including the attached database.
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
-ms.date: 10/16/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
@@ -24,9 +28,9 @@ App Service can back up the following information to an Azure storage account an
 
 The following database solutions are supported with backup feature: 
 
-- [SQL Database](https://azure.microsoft.com/services/sql-database/)
-- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
-- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
+- [SQL Database](https://www.azure.cn/home/features/sql-database/)
+- [Azure Database for MySQL](https://www.azure.cn/home/features/mysql)
+- [Azure Database for PostgreSQL](https://www.azure.cn/home/features/postgresql)
 - [MySQL in-app](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
@@ -49,9 +53,9 @@ The following database solutions are supported with backup feature:
 <a name="manualbackup"></a>
 
 ## Create a manual backup
-1. In the [Azure portal](https://portal.azure.com), navigate to your app's page, select **Backups**. The **Backups** page is displayed.
+1. In the [Azure portal](https://portal.azure.cn), navigate to your app's page, select **Backups**. The **Backups** page is displayed.
 
-    ![Backups page](./media/manage-backup/access-backup-page.png)
+    :::image type="content" source="./media/manage-backup/access-backup-page.png" alt-text="Backups page":::
 
     > [!NOTE]
     > If you see the following message, click it to upgrade your App Service plan before you can proceed with backups.
@@ -62,7 +66,7 @@ The following database solutions are supported with backup feature:
 
 2. In the **Backup** page, select **Backup is not configured. Click here to configure backup for your app**.
 
-    ![Click Configure](./media/manage-backup/configure-start.png)
+    :::image type="content" source="./media/manage-backup/configure-start.png" alt-text="Click Configure":::
 
 3. In the **Backup Configuration** page, click **Storage not configured** to configure a storage account.
 
@@ -84,7 +88,7 @@ The following database solutions are supported with backup feature:
 6. In the **Backup Configuration** page, click **Save**.
 7. In the **Backups** page, click **Backup**.
 
-    ![BackUpNow button](./media/manage-backup/manual-backup.png)
+    :::image type="content" source="./media/manage-backup/manual-backup.png" alt-text="BackUpNow button":::
 
     You see a progress message during the backup process.
 
@@ -95,7 +99,7 @@ Once the storage account and container is configured, you can initiate a manual 
 ## Configure automated backups
 1. In the **Backup Configuration** page, set **Scheduled backup** to **On**. 
 
-    ![Enable automated backups](./media/manage-backup/scheduled-backup.png)
+    :::image type="content" source="./media/manage-backup/scheduled-backup.png" alt-text="Enable automated backups":::
 
 2. Configure the backup schedule as desired and select **OK**.
 
@@ -120,7 +124,7 @@ You can access your files by navigating to `https://<app-name>.scm.azurewebsites
 
 Identify the folders that you want to exclude from your backups. For example, you want to filter out the highlighted folder and files.
 
-![Images Folder](./media/manage-backup/kudu-images.png)
+:::image type="content" source="./media/manage-backup/kudu-images.png" alt-text="Images Folder":::
 
 Create a file called `_backup.filter` and put the preceding list in the file, but remove `D:\home`. List one directory or file per line. So the content of the file should be:
 
@@ -155,7 +159,7 @@ The database backup for the app is stored in the root of the .zip file. For SQL 
 
 ## Automate with scripts
 
-You can automate backup management with scripts, using the [Azure CLI](/cli/azure/install-azure-cli) or [Azure PowerShell](/powershell/azure/).
+You can automate backup management with scripts, using the [Azure CLI](https://docs.azure.cn/cli/install-azure-cli) or [Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
 
 For samples, see:
 
@@ -166,3 +170,7 @@ For samples, see:
 
 ## Next Steps
 For information on restoring an app from a backup, see [Restore an app in Azure](web-sites-restore.md).
+
+
+<!-- Update_Description: new article about manage backup -->
+<!--NEW.date: 12/21/2020-->

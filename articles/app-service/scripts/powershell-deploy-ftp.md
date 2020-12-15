@@ -1,19 +1,23 @@
 ---
-title: 'PowerShell: Upload files using FTP'
+title: PowerShell - Upload files using FTP
 description: Learn how to use Azure PowerShell to automate deployment and management of App Service. This sample shows how to upload files to an app using FTP.
 tags: azure-service-management
 
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
-ms.date: 03/20/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc, devx-track-azurepowershell
 ---
 
 # Upload files to a web app using FTP
 
-This sample script creates a web app in App Service with its related resources, and then deploys your web app code using FTP (via [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile)).
+This sample script creates a web app in App Service with its related resources, and then deploys your web app code using FTP (via [WebClient.UploadFile()](https://docs.microsoft.com/dotnet/api/system.net.webclient.uploadfile)).
 
-If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](/powershell/azure/), and then run `Connect-AzAccount` to create a connection with Azure.
+If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](https://docs.microsoft.com/powershell/azure/), and then run `Connect-AzAccount -Environment AzureChinaCloud` to create a connection with Azure.
 
 ## Sample script
 
@@ -35,13 +39,18 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Creates a resource group in which all resources are stored. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Creates an App Service plan. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Creates a web app. |
-| [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) | Get a web app's publishing profile. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Creates a resource group in which all resources are stored. |
+| [New-AzAppServicePlan](https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceplan) | Creates an App Service plan. |
+| [New-AzWebApp](https://docs.microsoft.com/powershell/module/az.websites/new-azwebapp) | Creates a web app. |
+| [Get-AzWebAppPublishingProfile](https://docs.microsoft.com/powershell/module/az.websites/get-azwebapppublishingprofile) | Get a web app's publishing profile. |
 
 ## Next steps
 
-For more information on the Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/).
+For more information on the Azure PowerShell module, see [Azure PowerShell documentation](https://docs.microsoft.com/powershell/azure/).
 
 Additional Azure Powershell samples for Azure App Service Web Apps can be found in the [Azure PowerShell samples](../samples-powershell.md).
+
+
+
+<!-- Update_Description: new article about powershell deploy ftp -->
+<!--NEW.date: 12/21/2020-->

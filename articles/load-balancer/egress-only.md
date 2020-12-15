@@ -4,15 +4,18 @@ titleSuffix: Azure Load Balancer
 description: With this article, learn about how to create an internal load balancer with outbound NAT
 services: load-balancer
 documentationcenter: na
-author: asudbring
+
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2020
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Outbound-only load balancer configuration
@@ -26,11 +29,9 @@ This configuration provides outbound NAT for an internal load balancer scenario,
   <img src="./media/egress-only/load-balancer-egress-only.png" alt="Figure depicts a egress only load balancer configuration." width="500" title="Virtual Network NAT">
 </p>
 
-
 <!-- 
 :::image type="content" source="./media/egress-only/load-balancer-egress-only.png" alt-text="Figure depicts a egress only load balancer configuration" border="true":::
 -->
-
 
 *Figure: Egress only load balancer configuration*
 
@@ -56,20 +57,20 @@ Create a virtual machine in the new virtual network.
 
 ### Create the virtual network
 
-1. [Sign in](https://portal.azure.com) to the Azure portal.
+1. [Sign in](https://portal.azure.cn) to the Azure portal.
 
 2. On the upper-left side of the screen, select **Create a resource > Networking > Virtual network** or search for **Virtual network** in the search box.
 
 2. In **Create virtual network**, enter or select this information in the **Basics** tab:
 
-    | **Setting**          | **Value**                                                           |
+    | **Setting** | **Value** |
     |------------------|-----------------------------------------------------------------|
-    | **Project Details**  |                                                                 |
+    | **Project Details** |                                                                 |
     | Subscription     | Select your Azure subscription                                  |
-    | Resource Group   | Select **Create new**. </br> Enter **myResourceGroupLB**. </br> Select **OK**. |
+    | Resource Group   | Select **Create new**. <br /> Enter **myResourceGroupLB**. <br /> Select **OK**. |
     | **Instance details** |                                                                 |
-    | Name             | Enter **myVNet**                                    |
-    | Region           | Select **East US 2** |
+    | Name             | Enter **myVNet** |
+    | Region           | Select **China East 2** |
 
 3. Select the **IP Addresses** tab or select the **Next: IP Addresses** button at the bottom of the page.
 
@@ -98,7 +99,7 @@ Create a virtual machine in the new virtual network.
     |--------------------|----------------------------|
     | Bastion name | Enter **myBastionHost** |
     | AzureBastionSubnet address space | Enter **10.1.1.0/24** |
-    | Public IP Address | Select **Create new**. </br> For **Name**, enter **myBastionIP**. </br> Select **OK**. |
+    | Public IP Address | Select **Create new**. <br /> For **Name**, enter **myBastionIP**. <br /> Select **OK**. |
 
 
 8. Select the **Review + create** tab or select the **Review + create** button.
@@ -118,7 +119,7 @@ Create a virtual machine in the new virtual network.
     | Resource Group | Select **myResourceGroupLB** |
     | **Instance details** |  |
     | Virtual machine name | Enter **myVM** |
-    | Region | Select **East US 2** |
+    | Region | Select **China East 2** |
     | Availability Options | Select **No infrastructure redundancy required** |
     | Image | Select **Windows Server 2019 Datacenter** |
     | Azure Spot instance | Select **No** |
@@ -173,11 +174,11 @@ Add your created VM to the backend pool of each.  You'll then set up a configura
 2. In the **Basics** tab of the **Create load balancer** page, enter, or select the following information: 
 
     | Setting                 | Value                                              |
-    | ---                     | ---                                                |
+    | --- | --- |
     | Subscription               | Select your subscription.    |    
     | Resource group         | Select **myResourceGroupLB** created in the previous step.|
-    | Name                   | Enter **myInternalLoadBalancer**                                   |
-    | Region         | Select **East US 2**.                                        |
+    | Name                   | Enter **myInternalLoadBalancer** |
+    | Region         | Select **China East 2**.                                        |
     | Type          | Select **Internal**.                                        |
     | SKU           | Select **Standard** |
     | Virtual network | Select **myVNet** created in the previous step. |
@@ -195,11 +196,11 @@ Add your created VM to the backend pool of each.  You'll then set up a configura
 2. In the **Basics** tab of the **Create load balancer** page, enter, or select the following information: 
 
     | Setting                 | Value                                              |
-    | ---                     | ---                                                |
+    | --- | --- |
     | Subscription               | Select your subscription.    |    
     | Resource group         | Select **Create new** and enter **myResourceGroupLB** in the text box.|
-    | Name                   | Enter **myPublicLoadBalancer**                                   |
-    | Region         | Select **East US 2**.                                        |
+    | Name                   | Enter **myPublicLoadBalancer** |
+    | Region         | Select **China East 2**.                                        |
     | Type          | Select **Public**.                                        |
     | SKU           | Select **Standard** |
     | Public IP address | Select **Create new**. |
@@ -312,3 +313,7 @@ This configuration allows you to load balance incoming internal traffic to your 
 - Learn about [outbound connections in Azure](load-balancer-outbound-connections.md).
 - Load balancer [FAQs](load-balancer-faqs.md).
 - Learn about [Azure Bastion](../bastion/bastion-overview.md)
+
+
+<!-- Update_Description: new article about egress only -->
+<!--NEW.date: 12/21/2020-->

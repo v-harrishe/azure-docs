@@ -3,7 +3,11 @@ title: Configure a custom container
 description: Learn how to configure a custom container in Azure App Service. This article shows the most common configuration tasks. 
 
 ms.topic: article
-ms.date: 09/22/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 zone_pivot_groups: app-service-containers-windows-linux
 ---
 
@@ -29,8 +33,8 @@ This guide provides key concepts and instructions for containerization of Linux 
 
 For your custom Windows image, you must choose the right [parent image (base image)](https://docs.docker.com/develop/develop-images/baseimages/) for the framework you want:
 
-- To deploy .NET Framework apps, use a parent image based on the Windows Server Core [Long-Term Servicing Channel (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) release. 
-- To deploy .NET Core apps, use a parent image based on the Windows Server Nano [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) release. 
+- To deploy .NET Framework apps, use a parent image based on the Windows Server Core [Long-Term Servicing Channel (LTSC)](https://docs.azure.cn/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) release. 
+- To deploy .NET Core apps, use a parent image based on the Windows Server Nano [Semi-Annual Servicing Channel (SAC)](https://docs.azure.cn/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) release. 
 
 It takes some time to download a parent image during app start-up. However, you can reduce start-up time by using one of the following parent images that are already cached in Azure App Service:
 
@@ -53,7 +57,7 @@ It takes some time to download a parent image during app start-up. However, you 
 
 To change an existing custom container app from the current Docker image to a new image, use the following command:
 
-```azurecli-interactive
+```azurecli
 az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <docker-hub-repo>/<image>
 ```
 
@@ -61,7 +65,7 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 
 To use an image from a private registry, such as Azure Container Registry, run the following command:
 
-```azurecli-interactive
+```azurecli
 az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <image-name> --docker-registry-server-url <private-repo-url> --docker-registry-server-user <username> --docker-registry-server-password <password>
 ```
 
@@ -79,15 +83,15 @@ If the app changes compute instances for any reason, such as scaling up and down
 
 ## Configure port number
 
-By default, App Service assumes your custom container is listening on port 80. If your container listens to a different port, set the `WEBSITES_PORT` app setting in your App Service app. You can set it via the [Cloud Shell](https://shell.azure.com). In Bash:
+By default, App Service assumes your custom container is listening on port 80. If your container listens to a different port, set the `WEBSITES_PORT` app setting in your App Service app. You can set it via the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ). In Bash:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_PORT=8000
 ```
 
 In PowerShell:
 
-```azurepowershell-interactive
+```powershell
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_PORT"="8000"}
 ```
 
@@ -95,16 +99,16 @@ App Service currently allows your container to expose only one port for HTTP req
 
 ## Configure environment variables
 
-Your custom container may use environment variables that need to be supplied externally. You can pass them in via the [Cloud Shell](https://shell.azure.com). In Bash:
+Your custom container may use environment variables that need to be supplied externally. You can pass them in via the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ). In Bash:
 
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings DB_HOST="myownserver.mysql.database.azure.com"
+```azurecli
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings DB_HOST="myownserver.mysql.database.chinacloudapi.cn"
 ```
 
 In PowerShell:
 
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
+```powershell
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.chinacloudapi.cn"}
 ```
 
 When your app runs, the App Service app settings are injected into the process as environment variables automatically. 
@@ -145,15 +149,15 @@ When persistent storage is disabled, then writes to the `/home` directory aren't
 
 ::: zone-end
 
-By default, persistent storage is disabled and the setting is not exposed in the app settings. To enable it, set the `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app setting via the [Cloud Shell](https://shell.azure.com). In Bash:
+By default, persistent storage is disabled and the setting is not exposed in the app settings. To enable it, set the `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app setting via the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ). In Bash:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
 ```
 
 In PowerShell:
 
-```azurepowershell-interactive
+```powershell
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
 
@@ -214,31 +218,31 @@ To download all the logs together in one ZIP file, access `https://<app-name>.sc
 
 ## Customize container memory
 
-By default all Windows Containers deployed in Azure App Service are limited to 1 GB RAM. You can change this value by providing the `WEBSITE_MEMORY_LIMIT_MB` app setting via the [Cloud Shell](https://shell.azure.com). In Bash:
+By default all Windows Containers deployed in Azure App Service are limited to 1 GB RAM. You can change this value by providing the `WEBSITE_MEMORY_LIMIT_MB` app setting via the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ). In Bash:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_MEMORY_LIMIT_MB=2000
 ```
 
 In PowerShell:
 
-```azurepowershell-interactive
+```powershell
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-The value is defined in MB and must be less and equal to the total physical memory of the host. For example, in an App Service plan with 8 GB RAM, the cumulative total of `WEBSITE_MEMORY_LIMIT_MB` for all the apps must not exceed 8 GB. Information on how much memory is available for each pricing tier can be found in [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/windows/), in the **Premium Container (Windows) Plan** section.
+The value is defined in MB and must be less and equal to the total physical memory of the host. For example, in an App Service plan with 8 GB RAM, the cumulative total of `WEBSITE_MEMORY_LIMIT_MB` for all the apps must not exceed 8 GB. Information on how much memory is available for each pricing tier can be found in [App Service pricing](https://www.azure.cn/pricing/details/app-service/windows/), in the **Premium Container (Windows) Plan** section.
 
 ## Customize the number of compute cores
 
-By default, a Windows container runs with all available cores for your chosen pricing tier. You may want to reduce the number of cores that your staging slot uses, for example. To reduce the number of cores used by a container, set the `WEBSITE_CPU_CORES_LIMIT` app setting to the preferred number of cores. You can set it via the [Cloud Shell](https://shell.azure.com). In Bash:
+By default, a Windows container runs with all available cores for your chosen pricing tier. You may want to reduce the number of cores that your staging slot uses, for example. To reduce the number of cores used by a container, set the `WEBSITE_CPU_CORES_LIMIT` app setting to the preferred number of cores. You can set it via the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ). In Bash:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --slot staging --settings WEBSITE_CPU_CORES_LIMIT=1
 ```
 
 In PowerShell:
 
-```azurepowershell-interactive
+```powershell
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_CPU_CORES_LIMIT"=1}
 ```
 
@@ -252,21 +256,21 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-The processors may be multicore or hyperthreading processors. Information on how many cores are available for each pricing tier can be found in [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/windows/), in the **Premium Container (Windows) Plan** section.
+The processors may be multicore or hyperthreading processors. Information on how many cores are available for each pricing tier can be found in [App Service pricing](https://www.azure.cn/pricing/details/app-service/windows/), in the **Premium Container (Windows) Plan** section.
 
 ## Customize health ping behavior
 
 App Service considers a container to be successfully started when the container starts and responds to an HTTP ping. The health ping request contains the header `User-Agent= "App Service Hyper-V Container Availability Check"`. If the container starts but does not respond to a ping after a certain amount of time, App Service logs an event in the Docker log, saying that the container didn't start. 
 
-If your application is resource-intensive, the container might not respond to the HTTP ping in time. To control the actions when HTTP pings fail, set the `CONTAINER_AVAILABILITY_CHECK_MODE` app setting. You can set it via the [Cloud Shell](https://shell.azure.com). In Bash:
+If your application is resource-intensive, the container might not respond to the HTTP ping in time. To control the actions when HTTP pings fail, set the `CONTAINER_AVAILABILITY_CHECK_MODE` app setting. You can set it via the [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ). In Bash:
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings CONTAINER_AVAILABILITY_CHECK_MODE="ReportOnly"
 ```
 
 In PowerShell:
 
-```azurepowershell-interactive
+```powershell
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CONTAINER_AVAILABILITY_CHECK_MODE"="ReportOnly"}
 ```
 
@@ -341,9 +345,9 @@ SSH enables secure communication between a container and a client. In order for 
 
 Multi-container apps like WordPress need persistent storage to function properly. To enable it, your Docker Compose configuration must point to a storage location *outside* your container. Storage locations inside your container don't persist changes beyond app restart.
 
-Enable persistent storage by setting the `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app setting, using the [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command in [Cloud Shell](https://shell.azure.com).
+Enable persistent storage by setting the `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app setting, using the [az webapp config appsettings set](https://docs.azure.cn/cli/webapp/config/appsettings#az_webapp_config_appsettings_set) command in [Cloud Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ).
 
-```azurecli-interactive
+```azurecli
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
@@ -413,3 +417,8 @@ The following lists show supported and unsupported Docker Compose configuration 
 Or, see additional resources:
 
 [Load certificate in Windows/Linux containers](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+
+
+
+<!-- Update_Description: new article about configure custom container -->
+<!--NEW.date: 12/21/2020-->

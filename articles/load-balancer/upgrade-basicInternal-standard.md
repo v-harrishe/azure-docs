@@ -2,11 +2,14 @@
 title: Upgrade from Basic Internal to Standard Internal - Azure Load Balancer
 description: This article shows you how to upgrade Azure Internal Load Balancer from Basic SKU to Standard SKU
 services: load-balancer
-author: irenehua
+
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 08/07/2020
-ms.author: irenehua
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Upgrade Azure Internal Load Balancer- No Outbound Connection Required
@@ -65,11 +68,11 @@ This command also installs the required Az modules.
 
 ### Install using the script directly
 
-If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 To run the script:
 
-1. Use `Connect-AzAccount` to connect to Azure.
+1. Use `Connect-AzAccount -Environment AzureChinaCloud` to connect to Azure.
 
 1. Use `Import-Module Az` to import the Az modules.
 
@@ -84,7 +87,7 @@ To run the script:
     **Example**
 
    ```azurepowershell
-   AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "chinanorth" -newLbName "LBForUpgrade"
    ```
 
 ## Common questions
@@ -104,3 +107,7 @@ You can send an email to slbupgradesupport@microsoft.com, open a support case wi
 ## Next steps
 
 [Learn about Standard Load Balancer](load-balancer-overview.md)
+
+
+<!-- Update_Description: new article about upgrade basicInternal standard -->
+<!--NEW.date: 12/21/2020-->

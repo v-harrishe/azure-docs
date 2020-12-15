@@ -2,11 +2,14 @@
 title: Upgrade from Basic Internal to Standard Public - Azure Load Balancer
 description: This article shows you how to upgrade Azure Basic Internal Load Balancer to Standard Public Load Balancer
 services: load-balancer
-author: irenehua
+
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 01/23/2020
-ms.author: irenehua
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Upgrade Azure Internal Load Balancer - Outbound Connection Required
@@ -59,11 +62,11 @@ This command also installs the required Az modules.
 
 ### Install using the script directly
 
-If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 To run the script:
 
-1. Use `Connect-AzAccount` to connect to Azure.
+1. Use `Connect-AzAccount -Environment AzureChinaCloud` to connect to Azure.
 
 1. Use `Import-Module Az` to import the Az modules.
 
@@ -79,7 +82,7 @@ To run the script:
     **Example**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "chinanorth" -newLbName "LBForUpgrade"
    ```
 
 ### Add VMs to backend pools of Standard Load Balancer
@@ -91,7 +94,7 @@ Be sure to send a small amount of traffic through the Standard Load Balancer as 
 Here are a few scenarios of how you add VMs to backend pools of the newly created Standard Public Load Balancer may be configured, and our recommendations for each one:
 
 * **Moving existing VMs from backend pools of old Basic Public Load Balancer to backend pools of newly created Standard Public Load Balancer**.
-    1. To do the tasks in this quickstart, sign in to the [Azure portal](https://portal.azure.com).
+    1. To do the tasks in this quickstart, sign in to the [Azure portal](https://portal.azure.cn).
  
     1. Select **All resources** on the left menu, and then select the **newly created Standard Load Balancer** from the resource list.
    
@@ -132,3 +135,7 @@ You can send an email to slbupgradesupport@microsoft.com, open a support case wi
 ## Next steps
 
 [Learn about Standard Load Balancer](load-balancer-overview.md)
+
+
+<!-- Update_Description: new article about upgrade InternalBasic To PublicStandard -->
+<!--NEW.date: 12/21/2020-->

@@ -2,22 +2,26 @@
 title: Configure node endpoints in Azure Batch pool
 description: How to configure or disable access to SSH or RDP ports on compute nodes in an Azure Batch pool.
 ms.topic: how-to
-ms.date: 02/13/2018
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Configure or disable remote access to compute nodes in an Azure Batch pool
 
-By default, Batch allows a [node user](/rest/api/batchservice/computenode/adduser) with network connectivity to connect externally to a compute node in a Batch pool. For example, a user can connect by Remote Desktop (RDP) on port 3389 to a compute node in a Windows pool. Similarly, by default, a user can connect by Secure Shell (SSH) on port 22 to a compute node in a Linux pool. 
+By default, Batch allows a [node user](https://docs.microsoft.com/rest/api/batchservice/computenode/adduser) with network connectivity to connect externally to a compute node in a Batch pool. For example, a user can connect by Remote Desktop (RDP) on port 3389 to a compute node in a Windows pool. Similarly, by default, a user can connect by Secure Shell (SSH) on port 22 to a compute node in a Linux pool. 
 
-In your environment, you might need to restrict or disable these default external access settings. You can modify these settings by using the Batch APIs to set the [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) property. 
+In your environment, you might need to restrict or disable these default external access settings. You can modify these settings by using the Batch APIs to set the [PoolEndpointConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#poolendpointconfiguration) property. 
 
 ## About the pool endpoint configuration
-The endpoint configuration consists of one or more [network address translation (NAT) pools](/rest/api/batchservice/pool/add#inboundnatpool) of frontend ports. (Do not confuse a NAT pool with the Batch pool of compute nodes.) You set up each NAT pool to override the default connection settings on the pool's compute nodes. 
+The endpoint configuration consists of one or more [network address translation (NAT) pools](https://docs.microsoft.com/rest/api/batchservice/pool/add#inboundnatpool) of frontend ports. (Do not confuse a NAT pool with the Batch pool of compute nodes.) You set up each NAT pool to override the default connection settings on the pool's compute nodes. 
 
-Each NAT pool configuration includes one or more [network security group (NSG) rules](/rest/api/batchservice/pool/add#networksecuritygrouprule). Each NSG rule allows or denies certain network traffic to the endpoint. You can choose to allow or deny all traffic, traffic identified by a [service tag](../virtual-network/network-security-groups-overview.md#service-tags) (such as "Internet"), or traffic from specific IP addresses or subnets.
+Each NAT pool configuration includes one or more [network security group (NSG) rules](https://docs.microsoft.com/rest/api/batchservice/pool/add#networksecuritygrouprule). Each NSG rule allows or denies certain network traffic to the endpoint. You can choose to allow or deny all traffic, traffic identified by a [service tag](../virtual-network/network-security-groups-overview.md#service-tags) (such as "Internet"), or traffic from specific IP addresses or subnets.
 
 ### Considerations
-* The pool endpoint configuration is part of the pool's [network configuration](/rest/api/batchservice/pool/add#networkconfiguration). The network configuration can optionally include settings to join the pool to an [Azure virtual network](batch-virtual-network.md). If you set up the pool in a virtual network, you can create NSG rules that use address settings in the virtual network.
+* The pool endpoint configuration is part of the pool's [network configuration](https://docs.microsoft.com/rest/api/batchservice/pool/add#networkconfiguration). The network configuration can optionally include settings to join the pool to an [Azure virtual network](batch-virtual-network.md). If you set up the pool in a virtual network, you can create NSG rules that use address settings in the virtual network.
 * You can configure multiple NSG rules when you configure a NAT pool. The rules are checked in the order of priority. Once a rule applies, no more rules are tested for matching.
 
 
@@ -117,3 +121,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 - Learn about the [Batch service workflow and primary resources](batch-service-workflow-features.md) such as pools, nodes, jobs, and tasks.
 - For more information about NSG rules in Azure, see [Filter network traffic with network security groups](../virtual-network/network-security-groups-overview.md).
+
+
+<!-- Update_Description: new article about pool endpoint configuration -->
+<!--NEW.date: 12/21/2020-->

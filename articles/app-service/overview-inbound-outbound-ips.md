@@ -2,20 +2,24 @@
 title: Inbound/Outbound IP addresses
 description: Learn how inbound and outbound IP addresses are used in Azure App Service, when they change, and how to find the addresses for your app.
 ms.topic: article
-ms.date: 08/25/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18, devx-track-azurecli
 
 ---
 
 # Inbound and outbound IP addresses in Azure App Service
 
-[Azure App Service](overview.md) is a multi-tenant service, except for [App Service Environments](environment/intro.md). Apps that are not in an App Service environment (not in the [Isolated tier](https://azure.microsoft.com/pricing/details/app-service/)) share network infrastructure with other apps. As a result, the inbound and outbound IP addresses of an app can be different, and can even change in certain situations.
+[Azure App Service](overview.md) is a multi-tenant service, except for [App Service Environments](environment/intro.md). Apps that are not in an App Service environment (not in the [Isolated tier](https://www.azure.cn/pricing/details/app-service/)) share network infrastructure with other apps. As a result, the inbound and outbound IP addresses of an app can be different, and can even change in certain situations.
 
 [App Service Environments](environment/intro.md) use dedicated network infrastructures, so apps running in an App Service environment get static, dedicated IP addresses both for inbound and outbound connections.
 
 ## How IP addresses work in App Service
 
-An App Service app runs in an App Service plan, and App Service plans are deployed into one of the deployment units in the Azure infrastructure (internally called a webspace). Each deployment unit is assigned up to five virtual IP addresses, which includes one public inbound IP address and four outbound IP addresses. All App Service plans in the same deployment unit, and app instances that run in them, share the same set of virtual IP addresses. For an App Service Environment (an App Service plan in [Isolated tier](https://azure.microsoft.com/pricing/details/app-service/)), the App Service plan is the deployment unit itself, so the virtual IP addresses are dedicated to it as a result.
+An App Service app runs in an App Service plan, and App Service plans are deployed into one of the deployment units in the Azure infrastructure (internally called a webspace). Each deployment unit is assigned up to five virtual IP addresses, which includes one public inbound IP address and four outbound IP addresses. All App Service plans in the same deployment unit, and app instances that run in them, share the same set of virtual IP addresses. For an App Service Environment (an App Service plan in [Isolated tier](https://www.azure.cn/pricing/details/app-service/)), the App Service plan is the deployment unit itself, so the virtual IP addresses are dedicated to it as a result.
 
 Because you're not allowed to move an App Service plan between deployment units, the virtual IP addresses assigned to your app usually remain the same, but there are exceptions.
 
@@ -57,7 +61,7 @@ To find the outbound IP addresses currently used by your app in the Azure portal
 
 You can find the same information by running the following command in the [Cloud Shell](../cloud-shell/quickstart.md).
 
-```azurecli-interactive
+```azurecli
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 ```
 
@@ -69,7 +73,7 @@ To find _all_ possible outbound IP addresses for your app, regardless of pricing
 
 You can find the same information by running the following command in the [Cloud Shell](../cloud-shell/quickstart.md).
 
-```azurecli-interactive
+```azurecli
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 
@@ -83,3 +87,8 @@ Learn how to restrict inbound traffic by source IP addresses.
 
 > [!div class="nextstepaction"]
 > [Static IP restrictions](app-service-ip-restrictions.md)
+
+
+
+<!-- Update_Description: new article about overview inbound outbound ips -->
+<!--NEW.date: 12/21/2020-->

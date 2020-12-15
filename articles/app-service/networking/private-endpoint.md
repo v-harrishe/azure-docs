@@ -1,11 +1,14 @@
 ---
 title: Connect privately to an Azure Web App using  Private Endpoint
 description: Connect privately to a Web App using Azure Private Endpoint
-author: ericgre
+
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/09/2020
-ms.author: ericg
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
@@ -17,7 +20,7 @@ ms.custom: fasttrack-edit, references_regions
 > [!IMPORTANT]
 > Private Endpoint is available for Windows and Linux Web App, containerized or not, hosted on these App Service Plans : **Isolated**, **PremiumV2**, **PremiumV3**, **Functions Premium** (sometimes referred to as the Elastic Premium plan). 
 
-You can use Private Endpoint for your Azure Web App to allow clients located in your private network to securely access the app over Private Link. The Private Endpoint uses an IP address from your Azure VNet address space. Network traffic between a client on your private network and the Web App traverses over the VNet and a Private Link on the Microsoft backbone network, eliminating exposure from the public Internet.
+You can use Private Endpoint for your Azure Web App to allow clients located in your private network to securely access the app over Private Link. The Private Endpoint uses an IP address from your Azure VNet address space. Network traffic between a client on your private network and the Web App traverses over the VNet and a Private Link on the Azure backbone network, eliminating exposure from the public Internet.
 
 Using Private Endpoint for your Web App enables you to:
 
@@ -56,7 +59,7 @@ In the Web HTTP logs of your Web App, you will find the client source IP. This f
 
 
   > [!div class="mx-imgBorder"]
-  > ![Web App Private Endpoint global overview](media/private-endpoint/global-schema-web-app.png)
+  > :::image type="content" source="media/private-endpoint/global-schema-web-app.png" alt-text="Web App Private Endpoint global overview":::
 
 ## DNS
 
@@ -67,9 +70,9 @@ For example, the name resolution will be:
 
 |Name |Type |Value |
 |-----|-----|------|
-|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
-|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
-|cloudservicename.cloudapp.net|A|40.122.110.154| 
+|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.chinacloudapi.cn|
+|clustername.azurewebsites.chinacloudapi.cn|CNAME|cloudservicename.chinacloudapp.cn|
+|cloudservicename.chinacloudapp.cn|A|40.122.110.154| 
 
 
 When you deploy a Private Endpoint, we update the DNS entry to point to the canonical name mywebapp.privatelink.azurewebsites.net.
@@ -78,9 +81,9 @@ For example, the name resolution will be:
 |Name |Type |Value |Remark |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
-|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
-|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
-|cloudservicename.cloudapp.net|A|40.122.110.154|<--This public IP is not your Private Endpoint, you will receive a 403 error|
+|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.chinacloudapi.cn|
+|clustername.azurewebsites.chinacloudapi.cn|CNAME|cloudservicename.chinacloudapp.cn|
+|cloudservicename.chinacloudapp.cn|A|40.122.110.154|<--This public IP is not your Private Endpoint, you will receive a 403 error|
 
 You must setup a private DNS server or an Azure DNS private zone, for tests you can modify the host entry of your test machine.
 The DNS zone that you need to create is: **privatelink.azurewebsites.net**. Register the record for your Web App with a A record and the Private Endpoint IP.
@@ -132,8 +135,8 @@ We are improving Private Link feature and Private Endpoint regularly, check [thi
 - End-to-end example, how to connect a frontend web app to a secured backend web app with VNet injection and private endpoint with ARM template, see this [quickstart][howtoguide5]
 - End-to-end example, how to connect a frontend web app to a secured backend web app with VNet injection and private endpoint with terraform, see this [sample][howtoguide6]
 
-
 <!--Links-->
+
 [serviceendpoint]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [privatelink]: ../../private-link/private-link-overview.md
 [vnetintegrationfeature]: ../web-sites-integrate-with-vnet.md
@@ -142,10 +145,14 @@ We are improving Private Link feature and Private Endpoint regularly, check [thi
 [tcpproxy]: ../../private-link/private-link-service-overview.md#getting-connection-information-using-tcp-proxy-v2
 [dnsvalidation]: ../app-service-web-tutorial-custom-domain.md
 [pllimitations]: ../../private-link/private-endpoint-overview.md#limitations
-[pricing]: https://azure.microsoft.com/pricing/details/private-link/
+[pricing]: https://www.azure.cn/pricing/details/private-link/
 [howtoguide1]: ../../private-link/tutorial-private-endpoint-webapp-portal.md
 [howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
 [howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
 [howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
+
+
+<!-- Update_Description: new article about networking/private endpoint -->
+<!--NEW.date: 12/21/2020-->

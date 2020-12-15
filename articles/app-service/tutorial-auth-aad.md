@@ -1,10 +1,14 @@
 ---
-title: 'Tutorial: Authenticate users E2E' 
+title: Tutorial - Authenticate users E2E 
 description: Learn how to use App Service authentication and authorization to secure your App Service apps end-to-end, including access to remote APIs.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/29/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "devx-track-csharp, seodec18, devx-track-azurecli"
 zone_pivot_groups: app-service-platform-windows-linux
 ---
@@ -23,11 +27,11 @@ zone_pivot_groups: app-service-platform-windows-linux
 
 ::: zone-end
 
-![Simple authentication and authorization](./media/tutorial-auth-aad/simple-auth.png)
+:::image type="content" source="./media/tutorial-auth-aad/simple-auth.png" alt-text="Simple authentication and authorization":::
 
 It also shows you how to secure a multi-tiered app, by accessing a secured back-end API on behalf of the authenticated user, both [from server code](#call-api-securely-from-server-code) and [from browser code](#call-api-securely-from-browser-code).
 
-![Advanced authentication and authorization](./media/tutorial-auth-aad/advanced-auth.png)
+:::image type="content" source="./media/tutorial-auth-aad/advanced-auth.png" alt-text="Advanced authentication and authorization":::
 
 These are only some of the possible authentication and authorization scenarios in App Service. 
 
@@ -70,7 +74,7 @@ dotnet run
 
 Navigate to `http://localhost:5000` and try adding, editing, and removing todo items. 
 
-![ASP.NET Core API running locally](./media/tutorial-auth-aad/local-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/local-run.png" alt-text="ASP.NET Core API running locally":::
 
 To stop ASP.NET Core at any time, press `Ctrl+C` in the terminal.
 
@@ -86,9 +90,9 @@ In this step, you deploy the project to two App Service apps. One is the front-e
 
 ::: zone pivot="platform-windows"  
 
-In the Cloud Shell, run the following commands to create two Windows web apps. Replace _\<front-end-app-name>_ and _\<back-end-app-name>_ with two globally unique app names (valid characters are `a-z`, `0-9`, and `-`). For more information on each command, see [RESTful API with CORS in Azure App Service](app-service-web-tutorial-rest-api.md).
+In the local Shell, run the following commands to create two Windows web apps. Replace _\<front-end-app-name>_ and _\<back-end-app-name>_ with two globally unique app names (valid characters are `a-z`, `0-9`, and `-`). For more information on each command, see [RESTful API with CORS in Azure App Service](app-service-web-tutorial-rest-api.md).
 
-```azurecli-interactive
+```azurecli
 az group create --name myAuthResourceGroup --location "West Europe"
 az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku FREE
 az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --deployment-local-git --query deploymentLocalGitUrl
@@ -99,9 +103,9 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ::: zone pivot="platform-linux"
 
-In the Cloud Shell, run the following commands to create two web apps. Replace _\<front-end-app-name>_ and _\<back-end-app-name>_ with two globally unique app names (valid characters are `a-z`, `0-9`, and `-`). For more information on each command, see [Create a .NET Core app in Azure App Service](quickstart-dotnetcore.md).
+In the local Shell, run the following commands to create two web apps. Replace _\<front-end-app-name>_ and _\<back-end-app-name>_ with two globally unique app names (valid characters are `a-z`, `0-9`, and `-`). For more information on each command, see [Create a .NET Core app in Azure App Service](quickstart-dotnetcore.md).
 
-```azurecli-interactive
+```azurecli
 az group create --name myAuthResourceGroup --location "West Europe"
 az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku FREE --is-linux
 az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git --query deploymentLocalGitUrl
@@ -229,7 +233,7 @@ You use Azure Active Directory as the identity provider. For more information, s
 
 ### Enable authentication and authorization for back-end app
 
-In the [Azure portal](https://portal.azure.com) menu, select **Resource groups** or search for and select *Resource groups* from any page.
+In the [Azure portal](https://portal.azure.cn) menu, select **Resource groups** or search for and select *Resource groups* from any page.
 
 In **Resource groups**, find and select your resource group. In **Overview**, select your back-end app's management page.
 
@@ -274,11 +278,11 @@ If you like, navigate to `http://<front-end-app-name>.azurewebsites.net`. It sho
 
 Now that you've enabled authentication and authorization to both of your apps, each of them is backed by an AD application. In this step, you give the front-end app permissions to access the back end on the user's behalf. (Technically, you give the front end's _AD application_ the permissions to access the back end's _AD application_ on the user's behalf.)
 
-In the [Azure portal](https://portal.azure.com) menu, select **Azure Active Directory** or search for and select *Azure Active Directory* from any page.
+In the [Azure portal](https://portal.azure.cn) menu, select **Azure Active Directory** or search for and select *Azure Active Directory* from any page.
 
 Select **App registrations** > **Owned applications** > **View all applications in this directory**. Select your front-end app name, then select **API permissions**.
 
-:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Screenshot of Microsoft - App registrations window with Owned applications, a front-end app name, and API permissions selected.":::
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Screenshot of Azure - App registrations window with Owned applications, a front-end app name, and API permissions selected.":::
 
 Select **Add a permission**, then select **APIs my organization uses** > **\<back-end-app-name>**.
 
@@ -362,9 +366,9 @@ While the server code has access to request headers, client code can access `GET
 
 ### Configure CORS
 
-In the Cloud Shell, enable CORS to your client's URL by using the [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) command. Replace the _\<back-end-app-name>_ and _\<front-end-app-name>_ placeholders.
+In the local Shell, enable CORS to your client's URL by using the [`az webapp cors add`](https://docs.azure.cn/cli/webapp/cors#az_webapp_cors_add) command. Replace the _\<back-end-app-name>_ and _\<front-end-app-name>_ placeholders.
 
-```azurecli-interactive
+```azurecli
 az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'
 ```
 
@@ -438,9 +442,9 @@ Your access token expires after some time. For information on how to refresh you
 
 ## Clean up resources
 
-In the preceding steps, you created Azure resources in a resource group. If you don't expect to need these resources in the future, delete the resource group by running the following command in the Cloud Shell:
+In the preceding steps, you created Azure resources in a resource group. If you don't expect to need these resources in the future, delete the resource group by running the following command in the local Shell:
 
-```azurecli-interactive
+```azurecli
 az group delete --name myAuthResourceGroup
 ```
 
@@ -464,3 +468,8 @@ Advance to the next tutorial to learn how to map a custom DNS name to your app.
 
 > [!div class="nextstepaction"]
 > [Map an existing custom DNS name to Azure App Service](app-service-web-tutorial-custom-domain.md)
+
+
+
+<!-- Update_Description: new article about tutorial auth aad -->
+<!--NEW.date: 12/21/2020-->

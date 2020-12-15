@@ -1,9 +1,13 @@
 ---
-title: 'Quickstart: Create a PHP web app'
+title: Quickstart - Create a PHP web app
 description: Deploy your first PHP Hello World to Azure App Service in minutes. You deploy using Git, which is one of many ways to deploy to App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
-ms.date: 08/01/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 zone_pivot_groups: app-service-platform-windows-linux
 ---
 
@@ -17,9 +21,9 @@ zone_pivot_groups: app-service-platform-windows-linux
 [Azure App Service](overview.md) provides a highly scalable, self-patching web hosting service.  This quickstart tutorial shows how to deploy a PHP app to Azure App Service on Linux.
 ::: zone-end  
 
-You create the web app using the [Azure CLI](/cli/azure/get-started-with-azure-cli) in Cloud Shell, and you use Git to deploy sample PHP code to the web app.
+You create the web app using the [Azure CLI](https://docs.azure.cn/cli/get-started-with-azure-cli) in local Shell, and you use Git to deploy sample PHP code to the web app.
 
-![Sample app running in Azure](media/quickstart-php/hello-world-in-browser.png)
+:::image type="content" source="media/quickstart-php/hello-world-in-browser.png" alt-text="Sample app running in Azure":::
 
 You can follow the steps here using a Mac, Windows, or Linux machine. Once the prerequisites are installed, it takes about five minutes to complete the steps.
 
@@ -53,11 +57,11 @@ Open a web browser, and navigate to the sample app at `http://localhost:8080`.
 
 You see the **Hello World!** message from the sample app displayed in the page.
 
-![Sample app running locally](media/quickstart-php/localhost-hello-world-in-browser.png)
+:::image type="content" source="media/quickstart-php/localhost-hello-world-in-browser.png" alt-text="Sample app running locally":::
 
 In your terminal window, press **Ctrl+C** to exit the web server.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
@@ -73,11 +77,11 @@ In your terminal window, press **Ctrl+C** to exit the web server.
 
 ## Create a web app
 
-In the Cloud Shell, create a web app in the `myAppServicePlan` App Service plan with the [`az webapp create`](/cli/azure/webapp#az-webapp-create) command. 
+In the local Shell, create a web app in the `myAppServicePlan` App Service plan with the [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) command. 
 
-In the following example, replace `<app-name>` with a globally unique app name (valid characters are `a-z`, `0-9`, and `-`). The runtime is set to `PHP|7.4`. To see all supported runtimes, run [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes). 
+In the following example, replace `<app-name>` with a globally unique app name (valid characters are `a-z`, `0-9`, and `-`). The runtime is set to `PHP|7.4`. To see all supported runtimes, run [`az webapp list-runtimes`](https://docs.azure.cn/cli/webapp#az_webapp_list_runtimes). 
 
-```azurecli-interactive
+```azurecli
 # Bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 # PowerShell
@@ -119,7 +123,7 @@ http://<app-name>.azurewebsites.net
 
 Here is what your new web app should look like:
 
-![Empty web app page](media/quickstart-php/app-service-web-service-created.png)
+:::image type="content" source="media/quickstart-php/app-service-web-service-created.png" alt-text="Empty web app page":::
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -158,7 +162,7 @@ http://<app-name>.azurewebsites.net
 
 The PHP sample code is running in an Azure App Service web app.
 
-![Sample app running in Azure](media/quickstart-php/hello-world-in-browser.png)
+:::image type="content" source="media/quickstart-php/hello-world-in-browser.png" alt-text="Sample app running in Azure":::
 
 **Congratulations!** You've deployed your first PHP app to App Service.
 
@@ -179,21 +183,21 @@ git push azure master
 
 Once deployment has completed, return to the browser window that opened during the **Browse to the app** step, and refresh the page.
 
-![Updated sample app running in Azure](media/quickstart-php/hello-azure-in-browser.png)
+:::image type="content" source="media/quickstart-php/hello-azure-in-browser.png" alt-text="Updated sample app running in Azure":::
 
 ## Manage your new Azure app
 
-1. Go to the <a href="https://portal.azure.com" target="_blank">Azure portal</a> to manage the web app you created. Search for and select **App Services**.
+1. Go to the <a href="https://portal.azure.cn" target="_blank">Azure portal</a> to manage the web app you created. Search for and select **App Services**.
 
-    ![Search for App Services, Azure portal, create PHP web app](media/quickstart-php/navigate-to-app-services-in-the-azure-portal.png)
+    :::image type="content" source="media/quickstart-php/navigate-to-app-services-in-the-azure-portal.png" alt-text="Search for App Services, Azure portal, create PHP web app":::
 
 2. Select the name of your Azure app.
 
-    ![Portal navigation to Azure app](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
+    :::image type="content" source="./media/quickstart-php/php-docs-hello-world-app-service-list.png" alt-text="Portal navigation to Azure app":::
 
     Your web app's **Overview** page will be displayed. Here, you can perform basic management tasks like **Browse**, **Stop**, **Restart**, and **Delete**.
 
-    ![App Service page in Azure portal](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
+    :::image type="content" source="media/quickstart-php/php-docs-hello-world-app-service-detail.png" alt-text="App Service page in Azure portal":::
 
     The web app menu provides different options for configuring your app. 
 
@@ -206,3 +210,8 @@ Once deployment has completed, return to the browser window that opened during t
 
 > [!div class="nextstepaction"]
 > [Configure PHP app](configure-language-php.md)
+
+
+
+<!-- Update_Description: new article about quickstart php -->
+<!--NEW.date: 12/21/2020-->

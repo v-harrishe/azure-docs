@@ -2,11 +2,14 @@
 title: Azure Firewall DNS settings
 description: You can configure Azure Firewall with DNS server and DNS proxy settings.
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Azure Firewall DNS settings
@@ -34,7 +37,7 @@ The firewall now directs DNS traffic to the specified DNS servers for name resol
 
 The following example updates Azure Firewall with custom DNS servers by using the Azure CLI.
 
-```azurecli-interactive
+```azurecli
 az network firewall update \
     --name fwName \ 
     --resource-group fwRG \
@@ -108,7 +111,7 @@ You can use the Azure CLI to configure DNS proxy settings in Azure Firewall. You
 
 The following example configures the virtual network to use Azure Firewall as the DNS server.
  
-```azurecli-interactive
+```azurecli
 az network vnet update \
     --name VNetName \ 
     --resource-group VNetRG \
@@ -119,7 +122,7 @@ az network vnet update \
 
 The following example enables the DNS proxy feature in Azure Firewall.
 
-```azurecli-interactive
+```azurecli
 az network firewall update \
     --name fwName \ 
     --resource-group fwRG \
@@ -156,3 +159,8 @@ $azFw | Set-AzFirewall
 ## Next steps
 
 [FQDN filtering in network rules](fqdn-filtering-network-rules.md)
+
+
+
+<!-- Update_Description: new article about dns settings -->
+<!--NEW.date: 12/21/2020-->
