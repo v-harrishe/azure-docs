@@ -1,13 +1,10 @@
 ---
 title: Use the Azure portal to create a Service Bus queue
 description: In this quickstart, you learn how to create a Service Bus namespace and a queue in the namespace by using the Azure portal. 
-
+author: spelluru
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/12/2020
+ms.author: spelluru
 ---
 
 # Use Azure portal to create a Service Bus namespace and a queue
@@ -17,7 +14,7 @@ This quickstart shows you how to create a Service Bus namespace and a queue usin
 
 ## Prerequisites
 
-To complete this quickstart, make sure you have an Azure subscription. If you don't have an Azure subscription, you can create a [trial account][] before you begin.
+To complete this quickstart, make sure you have an Azure subscription. If you don't have an Azure subscription, you can create a [free account][] before you begin.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -33,12 +30,7 @@ In this article, you created a Service Bus namespace and a queue in the namespac
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-[trial account]: https://www.azure.cn/free/
-[Azure portal]: https://portal.azure.cn/
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Azure portal]: https://portal.azure.com/
 
 [service-bus-flow]: ./media/service-bus-quickstart-portal/service-bus-flow.png
-
-
-
-<!-- Update_Description: new article about service bus quickstart portal -->
-<!--NEW.date: 12/21/2020-->

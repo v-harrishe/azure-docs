@@ -1,15 +1,11 @@
 ---
 title: Azure App Configuration REST API - Throttling
 description: Reference pages for understanding throttling when using the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Throttling
@@ -51,8 +47,3 @@ The service may identify situations other than throttling that need a client ret
 HTTP/1.1 503 Service Unavailable
 retry-after-ms: 787
 ```
-
-
-
-<!-- Update_Description: new article about rest api throttling -->
-<!--NEW.date: 12/21/2020-->

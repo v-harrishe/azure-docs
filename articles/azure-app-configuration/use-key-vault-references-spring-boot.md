@@ -1,9 +1,9 @@
 ---
-title: Tutorial for using Azure App Configuration Key Vault references in a Java Spring Boot app | Azure Docs
+title: Tutorial for using Azure App Configuration Key Vault references in a Java Spring Boot app | Microsoft Docs
 description: In this tutorial, you learn how to use Azure App Configuration's Key Vault references from a Java Spring Boot app
 services: azure-app-configuration
 documentationcenter: ''
-
+author: AlexandraKemperMS
 editor: ''
 
 ms.assetid: 
@@ -11,11 +11,8 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/11/2020
+ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
 
 #Customer intent: I want to update my Spring Boot application to reference values stored in Key Vault through App Configuration.
@@ -42,15 +39,15 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-* Azure subscription - [create one for free](https://www.azure.cn/free/)
-* A supported [Java Development Kit (JDK)](https://docs.azure.cn/java/jdk) with version 8.
+* Azure subscription - [create one for free](https://azure.microsoft.com/free/)
+* A supported [Java Development Kit (JDK)](/java/azure/jdk) with version 8.
 * [Apache Maven](https://maven.apache.org/download.cgi) version 3.0 or above.
 
 ## Create a vault
 
 1. Select the **Create a resource** option in the upper-left corner of the Azure portal:
 
-    :::image type="content" source="./media/quickstarts/search-services.png" alt-text="Screenshot shows the Create a resource option in the Azure portal.":::
+    ![Screenshot shows the Create a resource option in the Azure portal.](./media/quickstarts/search-services.png)
 1. In the search box, enter **Key Vault**.
 1. From the results list, select **Key vaults** on the left.
 1. In **Key vaults**, select **Add**.
@@ -64,7 +61,7 @@ In this tutorial, you learn how to:
 
 At this point, your Azure account is the only one authorized to access this new vault.
 
-:::image type="content" source="./media/quickstarts/vault-properties.png" alt-text="Screenshot shows your key vault.":::
+![Screenshot shows your key vault.](./media/quickstarts/vault-properties.png)
 
 ## Add a secret to Key Vault
 
@@ -81,7 +78,7 @@ To add a secret to the vault, you need to take just a few additional steps. In t
 
 ## Add a Key Vault reference to App Configuration
 
-1. Sign in to the [Azure portal](https://portal.azure.cn). Select **All resources**, and then select the App Configuration store instance that you created in the quickstart.
+1. Sign in to the [Azure portal](https://portal.azure.com). Select **All resources**, and then select the App Configuration store instance that you created in the quickstart.
 
 1. Select **Configuration Explorer**.
 
@@ -93,7 +90,7 @@ To add a secret to the vault, you need to take just a few additional steps. In t
 
 ## Connect to Key Vault
 
-1. In this tutorial, you use a service principal for authentication to Key Vault. To create this service principal, use the Azure CLI [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac) command:
+1. In this tutorial, you use a service principal for authentication to Key Vault. To create this service principal, use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
@@ -107,11 +104,11 @@ To add a secret to the vault, you need to take just a few additional steps. In t
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
     "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
     "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-    "activeDirectoryEndpointUrl": "https://login.partner.microsoftonline.cn",
-    "resourceManagerEndpointUrl": "https://management.chinacloudapi.cn/",
-    "sqlManagementEndpointUrl": "https://management.core.chinacloudapi.cn:8443/",
-    "galleryEndpointUrl": "https://gallery.chinacloudapi.cn/",
-    "managementEndpointUrl": "https://management.core.chinacloudapi.cn/"
+    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+    "resourceManagerEndpointUrl": "https://management.azure.com/",
+    "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+    "galleryEndpointUrl": "https://gallery.azure.com/",
+    "managementEndpointUrl": "https://management.core.windows.net/"
     }
     ```
 
@@ -269,8 +266,3 @@ In this tutorial, you created an App Configuration key that references a value s
 
 > [!div class="nextstepaction"]
 > [Managed identity integration](./quickstart-feature-flag-spring-boot.md)
-
-
-
-<!-- Update_Description: new article about use key vault references spring boot -->
-<!--NEW.date: 12/21/2020-->

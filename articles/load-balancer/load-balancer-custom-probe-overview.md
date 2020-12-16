@@ -4,7 +4,7 @@ titleSuffix: Azure Load Balancer
 description: In this article, learn how to use health probes to monitor instances behind Azure Load Balancer
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
@@ -12,11 +12,8 @@ ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/17/2019
+ms.author: allensu
 ---
 
 # Load Balancer health probes
@@ -40,8 +37,7 @@ Health probes support multiple protocols. The availability of a specific health 
 >[!IMPORTANT]
 >Regardless of configured time-out threshold, HTTP(S) Load Balancer health probes will automatically probe down an instance if the server returns any status code that is not HTTP 200 OK or if the connection is terminated via TCP reset.
 
-<a name="probes"></a>
-## Probe configuration
+## <a name="probes"></a>Probe configuration
 
 Health probe configuration consists of the following elements:
 
@@ -79,8 +75,7 @@ you can assume the reaction to a time-out probe response will take between a min
 >[!NOTE]
 >The health probe will probe all running instances in the backend pool. If an instance is stopped it will not be probed until it has been started again.
 
-<a name="types"></a>
-## Probe types
+## <a name="types"></a>Probe types
 
 The protocol used by the health probe can be configured to one of the following:
 
@@ -95,12 +90,11 @@ The available protocols depend on the Load Balancer SKU used:
 | **Standard SKU** | 	&#9989; | 	&#9989; | 	&#9989; |
 | **Basic SKU** | 	&#9989; | 	&#9989; | &#10060; |
 
-<a name="tcpprobe"></a>
-### TCP probe
+### <a name="tcpprobe"></a> TCP probe
 
 TCP probes initiate a connection by performing a three-way open TCP handshake with the defined port.  TCP probes terminate a connection with a four-way close TCP handshake.
 
-The minimum probe interval is 5 seconds and the minimum number of unhealthy responses is 2. The total duration of all intervals cannot exceed 120 seconds.
+The minimum probe interval is 5 seconds and the minimum number of unhealthy responses is 2.  The total duration of all intervals cannot exceed 120 seconds.
 
 A TCP probe fails when:
 * The TCP listener on the instance doesn't respond at all during the timeout period.  A probe is marked down based on the number of timed-out probe requests, which were configured to go unanswered before marking down the probe.
@@ -119,8 +113,7 @@ The following illustrates how you could express this kind of probe configuration
       },
 ```
 
-<a name="httpprobe"></a>
-### <a name="httpsprobe"></a> HTTP / HTTPS probe
+### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS probe
 
 >[!NOTE]
 >HTTPS probe is only available for [Standard Load Balancer](./load-balancer-overview.md).
@@ -165,14 +158,13 @@ The following illustrates how you could express this kind of probe configuration
       },
 ```
 
-<a name="guestagent"></a>
-### Guest agent probe (Classic only)
+### <a name="guestagent"></a>Guest agent probe (Classic only)
 
 Cloud service roles (worker roles and web roles) use a guest agent for probe monitoring by default.  A guest agent probe is a last resort configuration.  Always use a health probe explicitly with a TCP or HTTP probe. A guest agent probe is not as effective as explicitly defined probes for most application scenarios.
 
 A guest agent probe is a check of the guest agent inside the VM. It then listens and responds with an HTTP 200 OK response only when the instance is in the Ready state. (Other states are Busy, Recycling, or Stopping.)
 
-For more information, see [Configure the service definition file (csdef) for health probes](https://docs.microsoft.com/previous-versions/azure/reference/ee758710(v=azure.100)) or [Get started by creating a public load balancer for cloud services](https://docs.microsoft.com/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
+For more information, see [Configure the service definition file (csdef) for health probes](/previous-versions/azure/reference/ee758710(v=azure.100)) or [Get started by creating a public load balancer for cloud services](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
 
 If the guest agent fails to respond with HTTP 200 OK, the load balancer marks the instance as unresponsive. It then stops sending flows to that instance. The load balancer continues to check the instance. 
 
@@ -181,8 +173,7 @@ If the guest agent responds with an HTTP 200, the load balancer sends new flows 
 When you use a web role, the website code typically runs in w3wp.exe, which isn't monitored by the Azure fabric or guest agent. Failures in w3wp.exe (for example, HTTP 500 responses) aren't reported to the guest agent. Consequently, the load balancer doesn't take that instance out of rotation.
 
 <a name="health"></a>
-<a name="probehealth"></a>
-## Probe up behavior
+## <a name="probehealth"></a>Probe up behavior
 
 TCP, HTTP, and HTTPS health probes are considered healthy and mark the backend endpoint as healthy when:
 
@@ -194,8 +185,7 @@ Any backend endpoint which has achieved a healthy state is eligible for receivin
 > [!NOTE]
 > If the health probe fluctuates, the load balancer waits longer before it puts the backend endpoint back in the healthy state. This extra wait time protects the user and the infrastructure and is an intentional policy.
 
-<a name="probedown"></a>
-## Probe down behavior
+## <a name="probedown"></a>Probe down behavior
 
 ### TCP connections
 
@@ -216,10 +206,9 @@ UDP is connectionless and there is no flow state tracked for UDP. If any backend
 If all probes for all instances in a backend pool fail, existing UDP flows will terminate for Basic and Standard Load Balancers.
 
 <a name="source"></a>
-<a name="probesource"></a>
-## Probe source IP address
+## <a name="probesource"></a>Probe source IP address
 
-Load Balancer uses a distributed probing service for its internal health model. The probing service resides on each host where VMs and can be programmed on-demand to generate health probes per the customer's configuration. The health probe traffic is directly between the probing service that generates the health probe and the customer VM. All Load Balancer health probes originate from the IP address 168.63.129.16 as their source.  You can use  IP address space inside of a VNet that is not RFC1918 space.  Using a globally reserved, Azure owned IP address reduces the chance of an IP address conflict with the IP address space you use inside the VNet.  This IP address is the same in all regions and does not change and is not a security risk because only the internal Azure platform component can source a packet from this IP address. 
+Load Balancer uses a distributed probing service for its internal health model. The probing service resides on each host where VMs and can be programmed on-demand to generate health probes per the customer's configuration. The health probe traffic is directly between the probing service that generates the health probe and the customer VM. All Load Balancer health probes originate from the IP address 168.63.129.16 as their source.  You can use  IP address space inside of a VNet that is not RFC1918 space.  Using a globally reserved, Microsoft owned IP address reduces the chance of an IP address conflict with the IP address space you use inside the VNet.  This IP address is the same in all regions and does not change and is not a security risk because only the internal Azure platform component can source a packet from this IP address. 
 
 The AzureLoadBalancer service tag identifies this source IP address in your [network security groups](../virtual-network/network-security-groups-overview.md) and permits health probe traffic by default.
 
@@ -229,8 +218,7 @@ In addition to Load Balancer health probes, the [following operations use this I
 - Enables communication with the DNS virtual server to provide filtered name resolution to customers that do not define custom DNS servers.  This filtering ensures that customers can only resolve the hostnames of their deployment.
 - Enables the VM to obtain a dynamic IP address from the DHCP service in Azure.
 
-<a name="design"></a>
-## Design guidance
+## <a name="design"></a> Design guidance
 
 Health probes are used to make your service resilient and allow it to scale. A misconfiguration or bad design pattern can impact the availability and scalability of your service. Review this entire document and consider what the impact to your scenario is when this probe response is marked down or marked up, and how it impacts the availability of your application scenario.
 
@@ -250,7 +238,7 @@ For Load Balancer's health probe to mark up your instance, you **must** allow th
 
 If you wish to test a health probe failure or mark down an individual instance, you can use a [network security groups](../virtual-network/network-security-groups-overview.md) to explicitly block the health probe (destination port or [source IP](#probesource)) and simulate the failure of a probe.
 
-Do not configure your VNet with the Azure owned IP address range that contains 168.63.129.16. Such configurations will collide with the IP address of the health probe and can cause your scenario to fail.
+Do not configure your VNet with the Microsoft owned IP address range that contains 168.63.129.16.  Such configurations will collide with the IP address of the health probe and can cause your scenario to fail.
 
 If you have multiple interfaces on your VM, you need to insure you respond to the probe on the interface you received it on.  You may need to source network address translate this address in the VM on a per interface basis.
 
@@ -271,10 +259,5 @@ Basic public Load Balancer exposes health probe status summarized per backend po
 
 - Learn more about [Standard Load Balancer](./load-balancer-overview.md)
 - [Get started creating a public load balancer in Resource Manager by using PowerShell](quickstart-load-balancer-standard-public-powershell.md)
-- [REST API for health probes](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [REST API for health probes](/rest/api/load-balancer/loadbalancerprobes/)
 - Request new health probe abilities with [Load Balancer's Uservoice](https://aka.ms/lbuservoice)
-
-
-
-<!-- Update_Description: new article about load balancer custom probe overview -->
-<!--NEW.date: 12/21/2020-->

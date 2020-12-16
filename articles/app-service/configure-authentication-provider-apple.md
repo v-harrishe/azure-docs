@@ -2,11 +2,7 @@
 title: Configure Sign in with Apple (Preview)
 description: Learn how to configure Sign in with Apple as an identity provider for your App Service or Azure Functions app.
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/19/2020
 ms.reviewer: mikarmar
 ---
 
@@ -80,7 +76,7 @@ _Note: Apple doesn't accept client secret JWTs with an expiration date more than
 More information about generating and validating tokens can be found in [Apple's developer documentation](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens). 
 
 ### Sign the client secret JWT
-You'll use the `.p8` file you downloaded previously to sign the client secret JWT. This file is a [PCKS#8 file](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/PKCS_8) that contains the private signing key in PEM format. There are many libraries that can create and sign the JWT for you. 
+You'll use the `.p8` file you downloaded previously to sign the client secret JWT. This file is a [PCKS#8 file](https://en.wikipedia.org/wiki/PKCS_8) that contains the private signing key in PEM format. There are many libraries that can create and sign the JWT for you. 
 
 There are different kinds of open-source libraries available online for creating and signing JWT tokens. For more information about generating JWT tokens, see jwt.io. For example, one way of generating the client secret is by importing the [Microsoft.IdentityModel.Tokens NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/) and running a small amount of C# code shown below.
 
@@ -197,8 +193,3 @@ A complete configuration might look like the following example (where the APPLE_
 ## <a name="related-content"> </a>Next steps
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-
-
-<!-- Update_Description: new article about configure authentication provider apple -->
-<!--NEW.date: 12/21/2020-->

@@ -2,15 +2,12 @@
 title: Troubleshoot Hyper-V disaster recovery with Azure Site Recovery 
 description: Describes how to troubleshoot disaster recovery issues with Hyper-V to Azure replication using Azure Site Recovery
 services: site-recovery
-
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 04/14/2019
+ms.author: sharrai
 
 ---
 # Troubleshoot Hyper-V to Azure replication and failover
@@ -27,11 +24,11 @@ If you experience issues when you enable protection for Hyper-V VMs, check the f
 4. Check for issues that appear in the Hyper-V-VMMS\Admin sign in to the VM. This log is located in **Applications and Services Logs** > **Microsoft** > **Windows**.
 5. On the guest VM, verify that WMI is enabled and accessible.
    - [Learn about](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) basic WMI testing.
-   - [Troubleshoot](https://docs.microsoft.com/windows/win32/wmisdk/wmi-troubleshooting) WMI.
-   - [Troubleshoot](https://docs.microsoft.com/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) problems with WMI scripts and services.
+   - [Troubleshoot](/windows/win32/wmisdk/wmi-troubleshooting) WMI.
+   - [Troubleshoot](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) problems with WMI scripts and services.
 6. On the guest VM, ensure that the latest version of Integration Services is running.
-    - [Check](https://docs.azure.cn/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) that you have the latest version.
-    - [Keep](https://docs.azure.cn/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Integration Services up-to-date.
+    - [Check](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) that you have the latest version.
+    - [Keep](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Integration Services up-to-date.
 
 ### Cannot enable protection as the virtual machine is not highly available (error code 70094)
 
@@ -59,11 +56,11 @@ Troubleshoot issues with initial and ongoing replication as follows:
 3. Check that required services are running. If they aren't, restart them.
     - If you're replicating Hyper-V without VMM, check that these services are running on the Hyper-V host:
         - Virtual Machine Management service
-        - Azure Microsoft Azure Recovery Services Agent service
-        - Azure Microsoft Azure Site Recovery service
+        - Microsoft Azure Recovery Services Agent service
+        - Microsoft Azure Site Recovery service
         - WMI Provider Host service
     - If you're replicating with VMM in the environment, check that these services are running:
-        - On the Hyper-V host, check that the Virtual Machine Management service, the Azure Microsoft Azure Recovery Services Agent, and the WMI Provider Host service are running.
+        - On the Hyper-V host, check that the Virtual Machine Management service, the Microsoft Azure Recovery Services Agent, and the WMI Provider Host service are running.
         - On the VMM server, ensure that the System Center Virtual Machine Manager Service is running.
 4. Check connectivity between the Hyper-V server and Azure. To check connectivity, open Task Manager on the Hyper V host. On the **Performance** tab, click **Open Resource Monitor**. On the **Network** tab > **Process with Network Activity**, check whether cbengine.exe is actively sending large volumes (Mbs) of data.
 5. Check if the Hyper-V hosts can connect to the Azure storage blob URL. To check if the hosts can connect, select and check **cbengine.exe**. View **TCP Connections** to verify connectivity from the host to the Azure storage blob.
@@ -87,7 +84,7 @@ Network bandwidth limitations can impact replication. Troubleshoot issues as fol
 
 1. To check replication health, connect to the on-premises Hyper-V Manager console, select the VM, and verify health.
 
-    :::image type="content" source="media/hyper-v-azure-troubleshoot/replication-health1.png" alt-text="Replication health":::
+    ![Replication health](media/hyper-v-azure-troubleshoot/replication-health1.png)
     
 
 2. Click **View Replication Health** to see the details:
@@ -116,7 +113,7 @@ An app-consistent snapshot is a point-in-time snapshot of the application data i
    - As a last resort try rebooting the VM. This might resolve services that are in unresponsive state.
 3. Check you don't have dynamic disks in the VM. THis isn't supported for app-consistent snapshots. You can check in Disk Management (diskmgmt.msc).
 
-    :::image type="content" source="media/hyper-v-azure-troubleshoot/dynamic-disk.png" alt-text="Dynamic disk":::
+    ![Dynamic disk](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Check that you don't have an iSCSI disk attached to the VM. This isn't supported.
 5. Check that the Backup service is enabled. Verify that it is enabled in **Hyper-V settings** > **Integration Services**.
@@ -124,7 +121,7 @@ An app-consistent snapshot is a point-in-time snapshot of the application data i
 7. Check if the VM is experiencing a high churn rate:
     - You can measure the daily data change rate for the guest VMs, using performance counters on Hyper-V host. To measure the data change rate, enable the following counter. Aggregate a sample of this value across the VM disks for 5-15 minutes, to get the VM churn.
         - Category: “Hyper-V Virtual Storage Device”
-        - Counter: “Write Bytes / Sec”<br />
+        - Counter: “Write Bytes / Sec”</br>
         - This data churn rate will increase or remain at a high level, depending on how busy the VM or its apps are.
         - The average source disk data churn is 2 MB/s for standard storage for Site Recovery. [Learn more](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - In addition you can [verify storage scalability targets](../storage/common/scalability-targets-standard-account.md).
@@ -142,7 +139,7 @@ An app-consistent snapshot is a point-in-time snapshot of the application data i
 
 2. To generate VSS snapshots for the VM, check that Hyper-V Integration Services are installed on the VM, and that the Backup (VSS) Integration Service is enabled.
     - Ensure that the Integration Services VSS service/daemons are running on the guest, and are in an **OK** state.
-    - You can check this from an elevated PowerShell session on the Hyper-V host with command **Get-VMIntegrationService -VMName\<VMName>-Name VSS** You can also get this information by logging into the guest VM. [Learn more](https://docs.azure.cn/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - You can check this from an elevated PowerShell session on the Hyper-V host with command **Get-VMIntegrationService -VMName\<VMName>-Name VSS** You can also get this information by logging into the guest VM. [Learn more](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Ensure that the Backup/VSS integration Services on the VM are running and in healthy state. If not, restart these services, and the Hyper-V Volume Shadow Copy requestor service on the Hyper-V host server.
 
 ### Common errors
@@ -150,7 +147,7 @@ An app-consistent snapshot is a point-in-time snapshot of the application data i
 **Error code** | **Message** | **Details**
 --- | --- | ---
 **0x800700EA** | "Hyper-V failed to generate VSS snapshot set for virtual machine: More data is available. (0x800700EA). VSS snapshot set generation can fail if backup operation is in progress.<br/><br/> Replication operation for virtual machine failed: More data is available." | Check if your VM has dynamic disk enabled. This isn't supported.
-**0x80070032** | "Hyper-V Volume Shadow Copy Requestor failed to connect to virtual machine <./VMname> because the version does not match the version expected by Hyper-V | Check if the latest Windows updates are installed.<br/><br/> [Upgrade](https://docs.azure.cn/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) to the latest version of Integration Services.
+**0x80070032** | "Hyper-V Volume Shadow Copy Requestor failed to connect to virtual machine <./VMname> because the version does not match the version expected by Hyper-V | Check if the latest Windows updates are installed.<br/><br/> [Upgrade](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) to the latest version of Integration Services.
 
 
 
@@ -161,7 +158,7 @@ All Hyper-V replication event are logged in the Hyper-V-VMMS\Admin log, located 
 1. Make the Analytic and Debug logs viewable in the Event Viewer. To make the logs available, in the Event Viewer, click **View** > **Show Analytic and Debug Logs.**. The Analytic log appears under **Hyper-V-VMMS**.
 2. In the **Actions** pane, click **Enable Log**. 
 
-    :::image type="content" source="media/hyper-v-azure-troubleshoot/enable-log.png" alt-text="Enable log":::
+    ![Enable log](media/hyper-v-azure-troubleshoot/enable-log.png)
     
 3. After it's enabled, it appears in **Performance Monitor**, as an **Event Trace Session** under **Data Collector Sets**. 
 4. To view the collected information, stop the tracing session by disabling the log. Then save the log, and open it again in Event Viewer, or use other tools to convert it as required.
@@ -172,17 +169,13 @@ All Hyper-V replication event are logged in the Hyper-V-VMMS\Admin log, located 
 **Event log** | **Details** |
 --- | ---
 **Applications and Service Logs/Microsoft/VirtualMachineManager/Server/Admin** (VMM server) | Logs to troubleshoot VMM issues.
-**Applications and Service Logs/MicrosoftAzureRecoveryServices/Replication** (Hyper-V host) | Logs to troubleshoot Azure Microsoft Azure Recovery Services Agent issues. 
-**Applications and Service Logs/Microsoft/Azure Site Recovery/Provider/Operational** (Hyper-V host)| Logs to troubleshoot Azure Microsoft Azure Site Recovery Service issues.
+**Applications and Service Logs/MicrosoftAzureRecoveryServices/Replication** (Hyper-V host) | Logs to troubleshoot Microsoft Azure Recovery Services Agent issues. 
+**Applications and Service Logs/Microsoft/Azure Site Recovery/Provider/Operational** (Hyper-V host)| Logs to troubleshoot Microsoft Azure Site Recovery Service issues.
 **Applications and Service Logs/Microsoft/Windows/Hyper-V-VMMS/Admin** (Hyper-V host) | Logs to troubleshoot Hyper-V VM management issues.
 
 ### Log collection for advanced troubleshooting
 
 These tools can help with advanced troubleshooting:
 
-- For VMM, perform Site Recovery log collection using the [Support Diagnostics Platform (SDP) tool](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx).
-- For Hyper-V without VMM, [download this tool](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab), and run it on the Hyper-V host to collect the logs.
-
-
-<!-- Update_Description: new article about hyper v azure troubleshoot -->
-<!--NEW.date: 12/21/2020-->
+-	For VMM, perform Site Recovery log collection using the [Support Diagnostics Platform (SDP) tool](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx).
+-	For Hyper-V without VMM, [download this tool](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab), and run it on the Hyper-V host to collect the logs.

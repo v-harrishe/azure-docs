@@ -2,11 +2,7 @@
 title: Use a managed image to create a custom image pool
 description: Create a Batch custom image pool from a managed image to provision compute nodes with the software and data for your application.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/18/2020
 ---
 
 # Use a managed image to create a custom image pool
@@ -39,7 +35,7 @@ To scale Batch pools reliably with a managed image, we recommend creating the ma
 
 ### Prepare a VM
 
-If you are creating a new VM for the image, use a first party Azure Marketplace image supported by Batch as the base image for your managed image. Only first party images can be used as a base image. To get a full list of Azure Marketplace image references supported by Azure Batch, see the [List node agent SKUs](https://docs.azure.cn/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) operation.
+If you are creating a new VM for the image, use a first party Azure Marketplace image supported by Batch as the base image for your managed image. Only first party images can be used as a base image. To get a full list of Azure Marketplace image references supported by Azure Batch, see the [List node agent SKUs](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) operation.
 
 > [!NOTE]
 > You can't use a third-party image that has additional license and purchase terms as your base image. For information about these Marketplace images, see the guidance for [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) or [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VMs.
@@ -57,7 +53,7 @@ A snapshot is a full, read-only copy of a VHD. To create a snapshot of a VM's OS
 
 ### Create an image from one or more snapshots
 
-To create a managed image from a snapshot, use Azure command-line tools such as the [az image create](https://docs.azure.cn/cli/image#az-image-create) command. You can create an image by specifying an OS disk snapshot and optionally one or more data disk snapshots.
+To create a managed image from a snapshot, use Azure command-line tools such as the [az image create](/cli/azure/image) command. You can create an image by specifying an OS disk snapshot and optionally one or more data disk snapshots.
 
 ## Create a pool from a managed image
 
@@ -103,7 +99,7 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 REST API URI
 
 ```http
- PUT https://management.chinacloudapi.cn/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
+ PUT https://management.azure.com/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
 ```
 
 Request Body
@@ -130,16 +126,13 @@ If you plan to create a pool with hundreds of VMs or more using a custom image, 
 
 Also note the following considerations:
 
-- **Size limits** - Batch limits the pool size to 2500 dedicated compute nodes, or 1000 low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes, when you use a custom image.
-
-<!--Not Available on FEATURE low-priority-->
-
+- **Size limits** - Batch limits the pool size to 2500 dedicated compute nodes, or 1000 low-priority nodes, when you use a custom image.
 
   If you use the same image (or multiple images based on the same underlying snapshot) to create multiple pools, the total compute nodes in the pools can't exceed the preceding limits. We don't recommend using an image or its underlying snapshot for more than a single pool.
 
   Limits may be reduced if you configure the pool with [inbound NAT pools](pool-endpoint-configuration.md).
 
-- **Resize timeout** - If your pool contains a fixed number of nodes (doesn't autoscale), increase the resizeTimeout property of the pool to a value such as 20-30 minutes. If your pool doesn't reach its target size within the timeout period, perform another [resize operation](https://docs.microsoft.com/rest/api/batchservice/pool/resize).
+- **Resize timeout** - If your pool contains a fixed number of nodes (doesn't autoscale), increase the resizeTimeout property of the pool to a value such as 20-30 minutes. If your pool doesn't reach its target size within the timeout period, perform another [resize operation](/rest/api/batchservice/pool/resize).
 
   If you plan a pool with more than 300 compute nodes, you might need to resize the pool multiple times to reach the target size.
   
@@ -159,8 +152,3 @@ For more information on using Packer to create a VM, see [Build a Linux image wi
 
 - Learn how to use the [Shared Image Gallery](batch-sig-images.md) to create a custom pool.
 - For an in-depth overview of Batch, see [Batch service workflow and resources](batch-service-workflow-features.md).
-
-
-
-<!-- Update_Description: new article about batch custom images -->
-<!--NEW.date: 12/21/2020-->

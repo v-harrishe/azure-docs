@@ -1,10 +1,10 @@
 ---
-title: Tutorial - Use App Configuration dynamic configuration in ASP.NET Core
+title: "Tutorial: Use App Configuration dynamic configuration in ASP.NET Core"
 titleSuffix: Azure App Configuration
 description: In this tutorial, you learn how to dynamically update the configuration data for ASP.NET Core apps
 services: azure-app-configuration
 documentationcenter: ''
-
+author: AlexandraKemperMS
 editor: ''
 
 ms.assetid: 
@@ -12,11 +12,8 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: "devx-track-csharp, mvc"
 
 #Customer intent: I want to dynamically update my app to use the latest configuration data in App Configuration.
@@ -160,7 +157,7 @@ A *sentinel key* is a special key used to signal when configuration has changed.
     ```
     ---
     > [!Tip]
-    > To learn more about the options pattern when reading configuration values, see [Options Patterns in ASP.NET Core](https://docs.azure.cn/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > To learn more about the options pattern when reading configuration values, see [Options Patterns in ASP.NET Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Update the `Configure` method, adding the `UseAzureAppConfiguration` middleware to allow the configuration settings registered for refresh to be updated while the ASP.NET Core web app continues to receive requests.
 
@@ -327,9 +324,9 @@ A *sentinel key* is a special key used to signal when configuration has changed.
 
 1. Open a browser window, and go to the URL shown in the `dotnet run` output.
 
-    :::image type="content" source="./media/quickstarts/aspnet-core-app-launch-local-before.png" alt-text="Launching quickstart app locally":::
+    ![Launching quickstart app locally](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Sign in to the [Azure portal](https://portal.azure.cn). Select **All resources**, and select the App Configuration store instance that you created in the quickstart.
+1. Sign in to the [Azure portal](https://portal.azure.com). Select **All resources**, and select the App Configuration store instance that you created in the quickstart.
 
 1. Select **Configuration Explorer**, and update the values of the following keys:
 
@@ -342,7 +339,7 @@ A *sentinel key* is a special key used to signal when configuration has changed.
 
 1. Refresh the browser page to see the new configuration settings. You may need to refresh more than once for the changes to be reflected.
 
-    :::image type="content" source="./media/quickstarts/aspnet-core-app-launch-local-after.png" alt-text="Launching updated quickstart app locally":::
+    ![Launching updated quickstart app locally](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 
 ## Clean up resources
 
@@ -354,8 +351,3 @@ In this tutorial, you enabled your ASP.NET Core web app to dynamically refresh c
 
 > [!div class="nextstepaction"]
 > [Managed identity integration](./howto-integrate-azure-managed-service-identity.md)
-
-
-
-<!-- Update_Description: new article about enable dynamic configuration aspnet core -->
-<!--NEW.date: 12/21/2020-->

@@ -3,11 +3,7 @@ title: Deploy a .NET app in a container to Azure Service Fabric
 description: Learn how to containerize an existing .NET application using Visual Studio and debug containers in Service Fabric locally. The containerized application is pushed to an Azure container registry and deployed to a Service Fabric cluster. When deployed to Azure, the application uses Azure SQL DB to persist data.
 
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/08/2019
 ---
 
 # Tutorial: Deploy a .NET application in a Windows container to Azure Service Fabric
@@ -27,7 +23,7 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-1. If you don't have an Azure subscription, [create a trial account](https://www.azure.cn/pricing/1rmb-trial-full/)
+1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 2. Install [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) so that you can run containers on Windows 10.
 3. Install [Service Fabric runtime version 6.2 or later](service-fabric-get-started.md) and the [Service Fabric SDK version 3.1](service-fabric-get-started.md) or later.
 4. Install [Visual Studio 2019 Version 16.1](https://www.visualstudio.com/) or later with the **Azure development** and **ASP.NET and web development** workloads.
@@ -61,11 +57,11 @@ We recommend [Azure SQL Database](../azure-sql/database/powershell-script-conten
 $subscriptionID="<subscription ID>"
 
 # Sign in to your Azure account and select your subscription.
-Connect-AzAccount -Environment AzureChinaCloud -SubscriptionId $subscriptionID
+Login-AzAccount -SubscriptionId $subscriptionID
 
 # The data center and resource name for your resources.
 $dbresourcegroupname = "fabrikam-fiber-db-group"
-$location = "southchinanorth"
+$location = "southcentralus"
 
 # The server name: Use a random value or replace with your own value (do not capitalize).
 $servername = "fab-fiber-$(Get-Random)"
@@ -105,11 +101,11 @@ Write-Host "Server name is $servername"
 ```
 
 > [!TIP]
-> If you are behind a corporate firewall, the IP address of your development computer may not be IP address exposed to the internet. To verify that the database has the correct IP address for the firewall rule, go to the [Azure portal](https://portal.azure.cn) and find your database in the SQL Databases section. Click on its name, then in the Overview section click "Set server firewall". "Client IP address" is the IP address of your development machine. Ensure that it matches the IP address in the "AllowClient" rule.
+> If you are behind a corporate firewall, the IP address of your development computer may not be IP address exposed to the internet. To verify that the database has the correct IP address for the firewall rule, go to the [Azure portal](https://portal.azure.com) and find your database in the SQL Databases section. Click on its name, then in the Overview section click "Set server firewall". "Client IP address" is the IP address of your development machine. Ensure that it matches the IP address in the "AllowClient" rule.
 
 ## Update the web config
 
-Back in the **FabrikamFiber.Web** project, update the connection string in the **web.config** file, to point to the SQL Server in the container.  Update the *Server* part of the connection string to be the server name created by the previous script. It should be something like "fab-fiber-751718376.database.chinacloudapi.cn". In the following XML, you need to update only the `connectionString` attribute; the `providerName` and `name` attributes don't need to be changed.
+Back in the **FabrikamFiber.Web** project, update the connection string in the **web.config** file, to point to the SQL Server in the container.  Update the *Server* part of the connection string to be the server name created by the previous script. It should be something like "fab-fiber-751718376.database.windows.net". In the following XML, you need to update only the `connectionString` attribute; the `providerName` and `name` attributes don't need to be changed.
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
@@ -132,7 +128,7 @@ Before deploying the application to Azure, you push the container image to this 
 ```powershell
 # Variables
 $acrresourcegroupname = "fabrikam-acr-group"
-$location = "southchinanorth"
+$location = "southcentralus"
 $registryname="fabrikamregistry$(Get-Random)"
 
 New-AzResourceGroup -Name $acrresourcegroupname -Location $location
@@ -169,7 +165,7 @@ When creating the cluster:
     d. Select the **VM Detail** tab. Specify the password you would like to use for the Virtual Machines (VM) that make up the cluster. The user name and password can be used to remotely connect to the VMs. You must also select a VM machine size and can change the VM image if needed.
 
     > [!IMPORTANT]
-    > Choose a SKU that supports running containers. The Windows Server OS on your cluster nodes must be compatible with the Windows Server OS of your container. To learn more, see [Windows Server container OS and host OS compatibility](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). By default, this tutorial creates a Docker image based on Windows Server 2016 LTSC. Containers based on this image will run on clusters created with Windows Server 2016 Datacenter with Containers. However, if you create a cluster or use an existing cluster based on a different version of Windows Server, you must change the OS image that the container is based on. Open the **dockerfile** in the **FabrikamFiber.Web** project, comment out any existing `FROM` statement based on a previous version of Windows Server, and add a `FROM` statement based on the desired version's tag from the [Windows Server Core DockerHub page](https://hub.docker.com/_/microsoft-windows-servercore). For additional information about Windows Server Core releases, support timelines, and versioning, refer to [Windows Server Core release info](https://docs.azure.cn/windows-server/get-started/windows-server-release-info). 
+    > Choose a SKU that supports running containers. The Windows Server OS on your cluster nodes must be compatible with the Windows Server OS of your container. To learn more, see [Windows Server container OS and host OS compatibility](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). By default, this tutorial creates a Docker image based on Windows Server 2016 LTSC. Containers based on this image will run on clusters created with Windows Server 2016 Datacenter with Containers. However, if you create a cluster or use an existing cluster based on a different version of Windows Server, you must change the OS image that the container is based on. Open the **dockerfile** in the **FabrikamFiber.Web** project, comment out any existing `FROM` statement based on a previous version of Windows Server, and add a `FROM` statement based on the desired version's tag from the [Windows Server Core DockerHub page](https://hub.docker.com/_/microsoft-windows-servercore). For additional information about Windows Server Core releases, support timelines, and versioning, refer to [Windows Server Core release info](/windows-server/get-started/windows-server-release-info). 
 
     e. In the **Advanced** tab, list the application port to open in the load balancer when the cluster deploys. This is the port that you took note of before starting creating the cluster. You can also add an existing Application Insights key to be used to route application log files to.
 
@@ -233,7 +229,7 @@ Now that the application is ready, you can deploy it to the cluster in Azure dir
 
 ![Publish application][publish-app]
 
-Follow the deployment progress in the output window. When the application is deployed, open a browser and type in the cluster address and application port. For example, `https://fabrikamfibercallcenter.southchinanorth.cloudapp.chinacloudapi.cn:8659/`.
+Follow the deployment progress in the output window. When the application is deployed, open a browser and type in the cluster address and application port. For example, `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
 ![Screenshot of the Fabrikam Fiber CallCenter application home page running on azure.com. The page shows a dashboard with a list of support calls.][fabrikam-web-page-deployed]
 
@@ -275,21 +271,17 @@ In this tutorial, you learned how to:
 In the next part of the tutorial, learn how to [Deploy a container application with CI/CD to a Service Fabric cluster](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).
 
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
-[link-azure-powershell-install]: https://docs.microsoft.com/powershell/azure/install-Az-ps
+[link-azure-powershell-install]: /powershell/azure/install-Az-ps
 [link-servicefabric-create-secure-clusters]: service-fabric-cluster-creation-via-arm.md
 [link-visualstudio-cd-extension]: https://aka.ms/cd4vs
 [link-servicefabric-containers]: service-fabric-get-started-containers.md
-[link-azure-portal]: https://portal.azure.cn
+[link-azure-portal]: https://portal.azure.com
 [link-sf-clustertemplate]: https://aka.ms/securepreviewonelineclustertemplate
-[link-azure-pricing-calculator]: https://www.azure.cn/pricing/calculator/
-[link-azure-subscription]: https://www.azure.cn/free/
+[link-azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator/
+[link-azure-subscription]: https://azure.microsoft.com/free/
 [link-vsts-account]: https://www.visualstudio.com/team-services/pricing/
-[link-azure-sql]: /sql-database/
+[link-azure-sql]: /azure/sql-database/
 
 [fabrikam-web-page]: media/service-fabric-host-app-in-a-container/fabrikam-web-page.png
 [fabrikam-web-page-deployed]: media/service-fabric-host-app-in-a-container/fabrikam-web-page-deployed.png
 [publish-app]: media/service-fabric-host-app-in-a-container/publish-app.png
-
-
-<!-- Update_Description: new article about service fabric host app in a container -->
-<!--NEW.date: 12/21/2020-->

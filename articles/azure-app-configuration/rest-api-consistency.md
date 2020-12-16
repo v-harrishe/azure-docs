@@ -1,15 +1,11 @@
----
+﻿---
 title: Azure App Configuration REST API - consistency
 description: Reference pages for ensuring real-time consistency by using the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 
@@ -58,8 +54,3 @@ The server might respond with multiple synchronization tokens for a single reque
 ```http
 Sync-Token: <token1-id>=<value>,<token2-id>=<value>
 ```
-
-
-
-<!-- Update_Description: new article about rest api consistency -->
-<!--NEW.date: 12/21/2020-->

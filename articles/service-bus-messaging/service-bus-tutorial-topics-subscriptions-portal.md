@@ -1,13 +1,9 @@
 ---
 title: Update inventory using Azure portal and topics/subscriptions
 description: In this tutorial, you learn how to send and receive messages from a topic and subscription, and how to add and use filter rules using .NET
-
-
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+author: spelluru
+ms.author: spelluru
+ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 #Customer intent: In a retail scenario, how do I update inventory assortment and send a set of messages from the back office to the stores?
@@ -15,7 +11,7 @@ ms.custom: devx-track-csharp
 
 # Tutorial: Update inventory using Azure portal and topics/subscriptions
 
-Azure Azure Service Bus is a multi-tenant cloud messaging service that sends information between applications and services. Asynchronous operations give you flexible, brokered messaging, along with structured first-in, first-out (FIFO) messaging, and publish/subscribe capabilities. This tutorial shows how to use Service Bus topics and subscriptions in a retail inventory scenario, with publish/subscribe channels using the Azure portal and .NET.
+Microsoft Azure Service Bus is a multi-tenant cloud messaging service that sends information between applications and services. Asynchronous operations give you flexible, brokered messaging, along with structured first-in, first-out (FIFO) messaging, and publish/subscribe capabilities. This tutorial shows how to use Service Bus topics and subscriptions in a retail inventory scenario, with publish/subscribe channels using the Azure portal and .NET.
 
 In this tutorial, you learn how to:
 > [!div class="checklist"]
@@ -27,9 +23,9 @@ In this tutorial, you learn how to:
 
 An example of this scenario is an inventory assortment update for multiple retail stores. In this scenario, each store, or set of stores, gets messages intended for them to update their assortments. This tutorial shows how to implement this scenario using subscriptions and filters. First, you create a topic with 3 subscriptions, add some rules and filters, and then send and receive messages from the topic and subscriptions.
 
-:::image type="content" source="./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png" alt-text="topic":::
+![topic](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
-If you don't have an Azure subscription, you can create a [trial account][] before you begin.
+If you don't have an Azure subscription, you can create a [free account][] before you begin.
 
 ## Prerequisites
 
@@ -85,15 +81,15 @@ To run the code, do the following:
    - Execute 2: to add your own filters.
    - Execute 3: to optionally remove your own filters. Note that this will not recreate the default filters.
 
-     :::image type="content" source="./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png" alt-text="Showing output of 2":::
+     ![Showing output of 2](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. After filter creation, you can send messages. Press 4 and observe 10 messages being sent to the topic:
 
-    :::image type="content" source="./media/service-bus-tutorial-topics-subscriptions-portal/send-output.png" alt-text="Send output":::
+    ![Send output](./media/service-bus-tutorial-topics-subscriptions-portal/send-output.png)
 
 9. Press 5 and observe the messages being received. If you did not get 10 messages back, press "m" to display the menu, then press 5 again.
 
-    :::image type="content" source="./media/service-bus-tutorial-topics-subscriptions-portal/receive-output.png" alt-text="Receive output":::
+    ![Receive output](./media/service-bus-tutorial-topics-subscriptions-portal/receive-output.png)
 
 ## Clean up resources
 
@@ -416,14 +412,9 @@ Advance to the next tutorial to learn more about using the publish/subscribe cap
 > [!div class="nextstepaction"]
 > [Respond to events via Event Grid](service-bus-to-event-grid-integration-example.md)
 
-[trial account]: https://www.azure.cn/free/
-[fully qualified domain name]: https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Fully_qualified_domain_name
-[Azure portal]: https://portal.azure.cn/
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png
 [service-bus-flow]: ./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png
-
-
-
-<!-- Update_Description: new article about service bus tutorial topics subscriptions portal -->
-<!--NEW.date: 12/21/2020-->

@@ -1,9 +1,9 @@
 ---
-title: Azure CLI script sample - Integrate App Service with Application Gateway | Azure Docs
+title: Azure CLI script sample - Integrate App Service with Application Gateway | Microsoft Docs
 description: Azure CLI script sample - Integrate App Service with Application Gateway
 services: appservice
 documentationcenter: appservice
-
+author: madsd
 manager: ccompy
 editor: 
 tags: azure-service-management
@@ -14,11 +14,8 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/09/2019
+ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
 ---
 
@@ -30,7 +27,7 @@ This sample script creates an Azure App Service web app, an Azure Virtual Networ
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - This tutorial requires version 2.0.74 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
+ - This tutorial requires version 2.0.74 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
 
 ## Sample script
 
@@ -44,24 +41,19 @@ This script uses the following commands to create a resource group, App Service 
 
 | Command | Notes |
 |---|---|
-| [`az group create`](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [`az network vnet create`](https://docs.azure.cn/cli/network/vnet#az_network_vnet_create) | Creates a virtual network. |
-| [`az network public-ip create`](https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_create) | Creates a public IP address. |
-| [`az network public-ip show`](https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_show) | Show details of a public IP address. |
-| [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) | Creates an App Service plan. |
-| [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) | Creates an App Service web app. |
-| [`az webapp show`](https://docs.azure.cn/cli/webapp#az_webapp_show) | Show details of an App Service web app. |
-| [`az webapp config access-restriction add`](https://docs.azure.cn/cli/webapp/config/access-restriction#az_webapp_config_access_restriction_add) | Adds an access restriction to the App Service web app. |
-| [`az network application-gateway create`](https://docs.azure.cn/cli/network/application-gateway#az_network_application_gateway_create) | Creates an Application Gateway. |
-| [`az network application-gateway http-settings update`](https://docs.azure.cn/cli/network/application-gateway/http-settings#az_network_application_gateway_http_settings_update) | Updates Application Gateway HTTP settings. |
+| [`az group create`](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
+| [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | Creates a virtual network. |
+| [`az network public-ip create`](/cli/azure/network/public-ip#az-network-public-ip-create) | Creates a public IP address. |
+| [`az network public-ip show`](/cli/azure/network/public-ip#az-network-public-ip-show) | Show details of a public IP address. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Creates an App Service plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Creates an App Service web app. |
+| [`az webapp show`](/cli/azure/webapp#az-webapp-show) | Show details of an App Service web app. |
+| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az-webapp-config-access-restriction-add) | Adds an access restriction to the App Service web app. |
+| [`az network application-gateway create`](/cli/azure/network/application-gateway#az-network-application-gateway-create) | Creates an Application Gateway. |
+| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az-network-application-gateway-http-settings-update) | Updates Application Gateway HTTP settings. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
+For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
 
 Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
-
-
-
-<!-- Update_Description: new article about cli integrate app service with application gateway -->
-<!--NEW.date: 12/21/2020-->

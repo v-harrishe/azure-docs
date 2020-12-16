@@ -2,11 +2,7 @@
 title: Overview of Azure Service Fabric
 description: Service Fabric is a distributed systems platform for building scalable, reliable, and easily managed microservices.
 ms.topic: overview
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/22/2020
 ms.custom: contperf-fy21q1
 ---
 
@@ -18,11 +14,11 @@ A key differentiator of Service Fabric is its strong focus on building stateful 
 
 ![The Service Fabric platform provides lifecycle management, availability, orchestration, programming models, health and monitoring, dev and ops tooling, and autoscaling--in Azure, on premises, in other clouds, and on your dev machine][Image1]
 
-Service Fabric powers many Azure services today, including Azure SQL Database, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype for Business, and many core Azure services.
+Service Fabric powers many Microsoft services today, including Azure SQL Database, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype for Business, and many core Azure services.
 
 ## Container orchestration
 
-Service Fabric is Azure's [container orchestrator](service-fabric-cluster-resource-manager-introduction.md) for deploying and managing microservices across a cluster of machines, benefiting from the lessons learned running  Azure services at massive scale. Service Fabric can deploy applications in seconds, at high density with hundreds or thousands of applications or containers per machine. With Service Fabric, you can mix both services in processes and services in containers in the same application.
+Service Fabric is Microsoft's [container orchestrator](service-fabric-cluster-resource-manager-introduction.md) for deploying and managing microservices across a cluster of machines, benefiting from the lessons learned running  Microsoft services at massive scale. Service Fabric can deploy applications in seconds, at high density with hundreds or thousands of applications or containers per machine. With Service Fabric, you can mix both services in processes and services in containers in the same application.
 
 [Learn more about Service Fabric](service-fabric-content-roadmap.md) core concepts, programming models, application lifecycle, testing, clusters, and health monitoring.
 
@@ -47,7 +43,7 @@ For [Windows development](service-fabric-get-started.md), the Service Fabric .NE
 ## Compliance
 
 Azure Service Fabric Resource Provider is available in all Azure regions and is compliant with all Azure compliance certifications, including: SOC, ISO, PCI DSS, HIPAA, and GDPR. For a complete list, see
-[Microsoft Compliance Offerings](https://www.trustcenter.cn/cloudservices/azure.html/compliance/complianceofferings).
+[Microsoft Compliance Offerings](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## Next steps
 
@@ -58,8 +54,3 @@ Create and deploy your first application on Azure Service Fabric:
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 [sf-quickstart]: ./service-fabric-quickstart-dotnet.md
-
-
-
-<!-- Update_Description: new article about service fabric overview -->
-<!--NEW.date: 12/21/2020-->

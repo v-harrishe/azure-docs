@@ -1,20 +1,16 @@
 ---
 title: Azure App Configuration REST API
 description: Reference pages for the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Azure App Configuration REST API
 
-High-level documentation on the REST API for Azure App Configuration is available in the main [Azure REST documentation](https://docs.microsoft.com/rest/api/appconfiguration/). This section contains more details for developers working with the App Configuration REST API.
+High-level documentation on the REST API for Azure App Configuration is available in the main [Azure REST documentation](/rest/api/appconfiguration/). This section contains more details for developers working with the App Configuration REST API.
 
 The following reference pages are available to describe the Azure App Configuration API surface in detail.
 
@@ -39,7 +35,3 @@ The following reference pages are available to describe the Azure App Configurat
 
 - [Fiddler](./rest-api-fiddler.md)
 - [Postman](./rest-api-postman.md)
-
-
-<!-- Update_Description: new article about rest api -->
-<!--NEW.date: 12/21/2020-->

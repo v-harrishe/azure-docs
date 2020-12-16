@@ -1,13 +1,10 @@
 ---
 title: Learn Azure Service Fabric terminology 
 description: Learn key Service Fabric terminology and concepts used in the rest of the documentation.
-
+author: masnider
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/17/2018
+ms.author: masnider
 ---
 
 # Service Fabric terminology overview
@@ -148,9 +145,9 @@ Read the [Choose a programming model for your service](service-fabric-choose-fra
 
 ## Environments
 
-Service Fabric is an open-source platform technology that several different services and products are based on. Azure provides the following options:
+Service Fabric is an open-source platform technology that several different services and products are based on. Microsoft provides the following options:
 
- - **Azure Service Fabric Mesh**: A fully managed service for running Service Fabric applications in Azure Azure.
+ - **Azure Service Fabric Mesh**: A fully managed service for running Service Fabric applications in Microsoft Azure.
  - **Azure Service Fabric**: The Azure hosted Service Fabric cluster offering. It provides integration between Service Fabric and the Azure infrastructure, along with upgrade and configuration management of Service Fabric clusters.
  - **Service Fabric standalone**: A set of installation and configuration tools to [deploy Service Fabric clusters anywhere](./service-fabric-deploy-anywhere.md) (on-premises or on any cloud provider). Not managed by Azure.
  - **Service Fabric development cluster**: Provides a local development experience on Windows, Linux, or Mac for development of Service Fabric applications.
@@ -182,8 +179,3 @@ To learn more about Service Fabric:
 To learn more about Service Fabric Mesh:
 
 * [Overview of Service Fabric Mesh](../service-fabric-mesh/service-fabric-mesh-overview.md)
-
-
-
-<!-- Update_Description: new article about service fabric technical overview -->
-<!--NEW.date: 12/21/2020-->

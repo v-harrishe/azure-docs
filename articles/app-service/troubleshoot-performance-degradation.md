@@ -6,18 +6,14 @@ keywords: web app performance, slow app, app slow
 
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/03/2016
 ms.custom: seodec18
 
 ---
 # Troubleshoot slow app performance issues in Azure App Service
 This article helps you troubleshoot slow app performance issues in [Azure App Service](./overview.md).
 
-If you need more help at any point in this article, you can contact the Azure experts on [Azure support](https://support.azure.cn/support/contact/). Alternatively, you can also file an Azure support incident. Go to the [Azure Support site](https://www.azure.cn/support/options/) and click on **Get Support**.
+If you need more help at any point in this article, you can contact the Azure experts on [the MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can also file an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and click on **Get Support**.
 
 ## Symptom
 When you browse the app, the pages load slowly and sometimes timeout.
@@ -43,7 +39,7 @@ Troubleshooting can be divided into three distinct tasks, in sequential order:
 
 ### 1. Observe and monitor application behavior
 #### Track Service health
-Azure Azure publicizes each time there is a service interruption or performance degradation. You can track the health of the service on the [Azure portal](https://portal.azure.cn/). For more information, see [Track service health](../service-health/service-notifications.md).
+Microsoft Azure publicizes each time there is a service interruption or performance degradation. You can track the health of the service on the [Azure portal](https://portal.azure.com/). For more information, see [Track service health](../service-health/service-notifications.md).
 
 #### Monitor your app
 This option enables you to find out if your application is having any issues. In your app’s blade, click the **Requests and errors** tile. The **Metric** blade shows you all the metrics you can add.
@@ -56,7 +52,7 @@ Some of the metrics that you might want to monitor for your app are
 * Memory working set
 * Requests
 
-:::image type="content" source="./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png" alt-text="monitor app performance":::
+![monitor app performance](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 For more information, see:
 
@@ -72,7 +68,7 @@ Uptime is monitored using HTTP response codes, and response time is measured in 
 
 To set it up, see [Monitor apps in Azure App Service](web-sites-monitor.md).
 
-Also, see [Keeping Azure Web Sites up plus Endpoint Monitoring - with Stefan Schackow](https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) for a video on endpoint monitoring.
+Also, see [Keeping Azure Web Sites up plus Endpoint Monitoring - with Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) for a video on endpoint monitoring.
 
 #### Application performance monitoring using Extensions
 You can also monitor your application performance by using a *site extension*.
@@ -82,7 +78,7 @@ Each App Service app provides an extensible management end point that allows you
 - Source code editors like [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Management tools for connected resources such as a MySQL database connected to an app.
 
-[Azure Application Insights](https://www.azure.cn/home/features/application-insights/) is a performance monitoring site extension that's also available. To use Application Insights, you rebuild your code with an SDK. You can also install an extension that provides access to additional data. The SDK lets you write code to monitor the usage and performance of your app in more detail. For more information, see [Monitor performance in web applications](../azure-monitor/app/app-insights-overview.md).
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) is a performance monitoring site extension that's also available. To use Application Insights, you rebuild your code with an SDK. You can also install an extension that provides access to additional data. The SDK lets you write code to monitor the usage and performance of your app in more detail. For more information, see [Monitor performance in web applications](../azure-monitor/app/app-insights-overview.md).
 
 <a name="collect"></a>
 
@@ -121,7 +117,7 @@ For detailed instructions on how to configure your application for logging, see 
 #### Use the diagnostics tool
 App Service provides an intelligent and interactive experience to help you troubleshoot your app with no configuration required. When you do run into issues with your app, the diagnostics tool will point out what’s wrong to guide you to the right information to more easily and quickly troubleshoot and resolve the issue.
 
-To access App Service diagnostics, navigate to your App Service app or App Service Environment in the [Azure portal](https://portal.azure.cn). In the left navigation, click on **Diagnose and solve problems**.
+To access App Service diagnostics, navigate to your App Service app or App Service Environment in the [Azure portal](https://portal.azure.com). In the left navigation, click on **Diagnose and solve problems**.
 
 #### Use the Kudu Debug Console
 App Service comes with a debug console that you can use for debugging, exploring, uploading files, as well as JSON endpoints for getting information about your environment. This console is called the *Kudu Console* or the *SCM Dashboard* for your app.
@@ -158,13 +154,9 @@ AutoHeal recycles the worker process for your app based on settings you choose (
 For more information, see [Auto-Healing Azure Web Sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
 #### Restart the app
-Restarting is often the simplest way to recover from one-time issues. On the [Azure portal](https://portal.azure.cn/), on your app’s blade, you have the options to stop or restart your app.
+Restarting is often the simplest way to recover from one-time issues. On the [Azure portal](https://portal.azure.com/), on your app’s blade, you have the options to stop or restart your app.
 
- :::image type="content" source="./media/app-service-web-troubleshoot-performance-degradation/2-restart.png" alt-text="restart app to solve performance issues":::
+ ![restart app to solve performance issues](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 You can also manage your app using Azure PowerShell. For more information, see
 [Using Azure PowerShell with Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
-
-
-<!-- Update_Description: new article about troubleshoot performance degradation -->
-<!--NEW.date: 12/21/2020-->

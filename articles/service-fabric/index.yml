@@ -6,13 +6,9 @@ summary: Azure Service Fabric is a distributed systems platform that makes it ea
 metadata:
   ms.service: service-fabric
   ms.topic: landing-page
-  
-  
-  author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-  ms.author: v-yeche
+  author: erikadoyle
+  ms.author: edoyle
+  ms.date: 07/31/2020
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects
@@ -206,7 +202,3 @@ landingContent:
             url: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
           - text: Upgrade the Service Fabric runtime
             url: service-fabric-cluster-upgrade-windows-server.md
-
-
-<!-- Update_Description: new article about index. -->
-<!--NEW.date: 12/21/2020-->

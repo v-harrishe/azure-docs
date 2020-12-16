@@ -131,9 +131,9 @@
     - name: Configuration
       items:
         - name: Azure CLI
-          href: https://docs.azure.cn/cli/appconfig
+          href: /cli/azure/appconfig?view=azure-cli-latest
         - name: .NET Core provider
-          href: https://docs.azure.cn/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
+          href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework builder
           href: https://go.microsoft.com/fwlink/?linkid=2074663
         - name: Azure SDK for .NET
@@ -149,15 +149,15 @@
     - name: Feature management
       items:
         - name: .NET Core library
-          href: https://docs.azure.cn/dotnet/api/microsoft.featuremanagement
+          href: /dotnet/api/microsoft.featuremanagement
         - name: .NET Core filter library
-          href: https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.featurefilters
+          href: /dotnet/api/microsoft.featuremanagement.featurefilters
     - name: Config store management
       items:
         - name: REST API
-          href: https://docs.microsoft.com/rest/api/appconfiguration/
+          href: /rest/api/appconfiguration/
         - name: PowerShell
-          href: https://docs.microsoft.com/powershell/module/az.appconfiguration/
+          href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
     - name: REST API
@@ -212,22 +212,18 @@
 - name: Resources
   items:
     - name: Pricing
-      href: https://www.azure.cn/pricing/details/app-configuration/
+      href: https://azure.microsoft.com/pricing/details/app-configuration/
     - name: Videos
       items:
         - name: Getting started with App Configuration
-          href: https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration
+          href: https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration
         - name: Feature management
-          href: https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement
+          href: https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement
         - name: Making centralized configuration easy
-          href: https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Events/dotnetConf/NET-Conf-2019/B210
+          href: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210
         - name: Azure App Configuration on Cloud Native Show
-          href: https://www.youtube.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /watch?v=DJqmA5PcfzE
+          href: https://www.youtube.com/watch?v=DJqmA5PcfzE
         - name: Rolling out new features
-          href: https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553 
+          href: https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553 
     - name: Provide product feedback
       href: https://github.com/Azure/AppConfiguration/issues
-
-
-<!-- Update_Description: new article about TOC. -->
-<!--NEW.date: 12/21/2020-->

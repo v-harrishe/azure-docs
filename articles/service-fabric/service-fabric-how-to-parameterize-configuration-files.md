@@ -2,11 +2,7 @@
 title: Parameterize config files in Azure Service Fabric 
 description: Learn how to parameterize configuration files in Service Fabric, a useful technique when managing multiple environments.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/09/2018
 ---
 # How to parameterize configuration files in Service Fabric
 
@@ -55,8 +51,3 @@ In this example, you override a configuration value using parameters in your app
 
 ## Next steps
 For information about other app management capabilities that are available in Visual Studio, see [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
-
-
-
-<!-- Update_Description: new article about service fabric how to parameterize configuration files -->
-<!--NEW.date: 12/21/2020-->

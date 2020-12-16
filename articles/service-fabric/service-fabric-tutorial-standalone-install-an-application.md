@@ -2,11 +2,7 @@
 title: Install an app on a standalone cluster
 description: In this tutorial, you learn how to install an application into your standalone Service Fabric cluster.
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/22/2019
 ms.custom: mvc
 ---
 # Tutorial: Deploy an application on your Service Fabric standalone cluster
@@ -48,11 +44,11 @@ Once the application is downloaded, you can deploy it to a cluster directly from
 
 4. Right-click on the `Voting` application project in the Solution Explorer and choose **Publish**
 
-5. Select the dropdown for the **Connection Endpoint** and enter the public DNS Name of one of the nodes in your cluster.  For example, `ec2-34-215-183-77.china-north-2.compute.amazonaws.com:19000`. In Azure, a fully qualified domain name (FQDN) is not given automatically, but can easily [be set in VM Overview page.](../virtual-machines/create-fqdn.md)
+5. Select the dropdown for the **Connection Endpoint** and enter the public DNS Name of one of the nodes in your cluster.  For example, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. In Azure, a fully qualified domain name (FQDN) is not given automatically, but can easily [be set in VM Overview page.](../virtual-machines/create-fqdn.md)
 
-6. Open you preferred browser and type in the cluster address (the connection endpoint, this app deploys on port 8080 - for example, ec2-34-215-183-77.china-north-2.compute.amazonaws.com:8080).
+6. Open you preferred browser and type in the cluster address (the connection endpoint, this app deploys on port 8080 - for example, ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
-    :::image type="content" source="./media/service-fabric-tutorial-standalone-cluster/deployed-app.png" alt-text="API Response from Cluster":::
+    ![API Response from Cluster](./media/service-fabric-tutorial-standalone-cluster/deployed-app.png)
 
 ## Next steps
 
@@ -66,7 +62,3 @@ Advance to part four of the series to clean up your cluster.
 
 > [!div class="nextstepaction"]
 > [Clean up your resources](service-fabric-tutorial-standalone-clean-up.md)
-
-
-<!-- Update_Description: new article about service fabric tutorial standalone install an application -->
-<!--NEW.date: 12/21/2020-->

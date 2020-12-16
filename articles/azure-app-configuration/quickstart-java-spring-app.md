@@ -3,17 +3,13 @@ title: Quickstart to learn how to use Azure App Configuration
 description: In this quickstart, create a Java Spring app with Azure App Configuration to centralize storage and management of application settings separate from your code.
 services: azure-app-configuration
 documentationcenter: ''
-
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-
+ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: v-yeche
+ms.author: alkemper
 
 #Customer intent: As a Java Spring developer, I want to manage all my app settings in one place.
 ---
@@ -23,8 +19,8 @@ In this quickstart, you incorporate Azure App Configuration into a Java Spring a
 
 ## Prerequisites
 
-- Azure subscription - [create one for free](https://www.azure.cn/free/)
-- A supported [Java Development Kit (JDK)](https://docs.azure.cn/java/jdk) with version 8.
+- Azure subscription - [create one for free](https://azure.microsoft.com/free/)
+- A supported [Java Development Kit (JDK)](/java/azure/jdk) with version 8.
 - [Apache Maven](https://maven.apache.org/download.cgi) version 3.0 or above.
 
 ## Create an App Configuration store
@@ -187,11 +183,7 @@ Use the [Spring Initializr](https://start.spring.io/) to create a new Spring Boo
 
 ## Next steps
 
-In this quickstart, you created a new App Configuration store and used it with a Java Spring app. For more information, see [Spring on Azure](https://docs.azure.cn/java/spring-framework/). To learn how to enable your Java Spring app to dynamically refresh configuration settings, continue to the next tutorial.
+In this quickstart, you created a new App Configuration store and used it with a Java Spring app. For more information, see [Spring on Azure](/java/azure/spring-framework/). To learn how to enable your Java Spring app to dynamically refresh configuration settings, continue to the next tutorial.
 
 > [!div class="nextstepaction"]
 > [Enable dynamic configuration](./enable-dynamic-configuration-java-spring-app.md)
-
-
-<!-- Update_Description: new article about quickstart java spring app -->
-<!--NEW.date: 12/21/2020-->

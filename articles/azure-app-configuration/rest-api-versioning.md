@@ -1,15 +1,11 @@
 ---
 title: Azure App Configuration REST API - versioning
 description: Reference pages for versioning by using the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Versioning
@@ -85,8 +81,3 @@ Content-Type: application/problem+json; charset=utf-8
   "status": 400
 }
 ```
-
-
-
-<!-- Update_Description: new article about rest api versioning -->
-<!--NEW.date: 12/21/2020-->

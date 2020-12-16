@@ -2,16 +2,12 @@
 title: Use managed identities to access App Configuration
 titleSuffix: Azure App Configuration
 description: Authenticate to Azure App Configuration using managed identities
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 2/25/2020
 ---
 # Use managed identities to access App Configuration
 
@@ -40,7 +36,7 @@ In this article, you learn how to:
 To complete this tutorial, you must have:
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure local Shell configured](../cloud-shell/quickstart.md).
+* [Azure Cloud Shell configured](../cloud-shell/quickstart.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,7 +44,7 @@ To complete this tutorial, you must have:
 
 To set up a managed identity in the portal, you first create an application and then enable the feature.
 
-1. Create an App Services instance in the [Azure portal](https://portal.azure.cn) as you normally do. Go to it in the portal.
+1. Create an App Services instance in the [Azure portal](https://portal.azure.com) as you normally do. Go to it in the portal.
 
 1. Scroll down to the **Settings** group in the left pane, and select **Identity**.
 
@@ -56,11 +52,11 @@ To set up a managed identity in the portal, you first create an application and 
 
 1. Answer **Yes** when prompted to enable system assigned managed identity.
 
-    :::image type="content" source="./media/set-managed-identity-app-service.png" alt-text="Set managed identity in App Service":::
+    ![Set managed identity in App Service](./media/set-managed-identity-app-service.png)
 
 ## Grant access to App Configuration
 
-1. In the [Azure portal](https://portal.azure.cn), select **All resources** and select the App Configuration store that you created in the quickstart.
+1. In the [Azure portal](https://portal.azure.com), select **All resources** and select the App Configuration store that you created in the quickstart.
 
 1. Select **Access control (IAM)**.
 
@@ -72,7 +68,7 @@ To set up a managed identity in the portal, you first create an application and 
 
 1. Select **Save**.
 
-    :::image type="content" source="./media/add-managed-identity.png" alt-text="Add a managed identity":::
+    ![Add a managed identity](./media/add-managed-identity.png)
 
 1. Optional: If you wish to grant access to Key Vault as well, follow the directions in [Assign a Key Vault access policy](../key-vault/general/assign-access-policy-portal.md).
 
@@ -103,7 +99,7 @@ To set up a managed identity in the portal, you first create an application and 
 1. If you wish to access only values stored directly in App Configuration, update the `CreateWebHostBuilder` method by replacing the `config.AddAzureAppConfiguration()` method.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder` replaces `CreateWebHostBuilder` in .NET Core 3.0. Select the correct syntax based on your environment.
+    > `CreateHostBuilder` replaces `CreateWebHostBuilder` in .NET Core 3.0.  Select the correct syntax based on your environment.
 
     ### [.NET Core 2.x](#tab/core2x)
 
@@ -190,13 +186,13 @@ To set up a managed identity in the portal, you first create an application and 
     You can now access Key Vault references just like any other App Configuration key. The config provider will use the `ManagedIdentityCredential` to authenticate to Key Vault and retrieve the value.
 
     > [!NOTE]
-    > The `ManagedIdentityCredential` works only in Azure environments of services that support managed identity authentication. It doesn't work in the local environment. Use [`DefaultAzureCredential`](https://docs.azure.cn/dotnet/api/azure.identity.defaultazurecredential) for the code to work in both local and Azure environments as it will fall back to a few authentication options including managed identity.
+    > The `ManagedIdentityCredential` works only in Azure environments of services that support managed identity authentication. It doesn't work in the local environment. Use [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) for the code to work in both local and Azure environments as it will fall back to a few authentication options including managed identity.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## Deploy from local Git
 
-The easiest way to enable local Git deployment for your app with the Kudu build server is to use [Azure local Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ).
+The easiest way to enable local Git deployment for your app with the Kudu build server is to use [Azure Cloud Shell](https://shell.azure.com).
 
 ### Configure a deployment user
 
@@ -211,9 +207,9 @@ git add .
 git commit -m "Initial version"
 ```
 
-To enable local Git deployment for your app with the Kudu build server, run [`az webapp deployment source config-local-git`](https://docs.azure.cn/cli/webapp/deployment/source#az_webapp_deployment_source_config_local_git) in local Shell.
+To enable local Git deployment for your app with the Kudu build server, run [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) in Cloud Shell.
 
-```azurecli
+```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
@@ -282,8 +278,3 @@ In this tutorial, you added an Azure managed identity to streamline access to Ap
 
 > [!div class="nextstepaction"]
 > [CLI samples](./cli-samples.md)
-
-
-
-<!-- Update_Description: new article about howto integrate azure managed service identity -->
-<!--NEW.date: 12/21/2020-->

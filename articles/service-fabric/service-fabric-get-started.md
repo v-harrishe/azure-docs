@@ -1,13 +1,9 @@
 ---
 title: Set up a Windows development environment
 description: Install the runtime, SDK, and tools and create a local development cluster. After completing this setup, you will be ready to build applications on Windows.
-
+author: peterpogorski
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
 ---
 # Prepare your development environment on Windows
@@ -35,7 +31,7 @@ The following operating system versions are supported for development:
 
 > [!NOTE]
 > Windows 7 support:
-> - Windows 7 only includes Windows PowerShell 2.0 by default. Service Fabric PowerShell cmdlets requires PowerShell 3.0 or higher. You can [download Windows PowerShell 5.1][powershell5-download] from the Azure Download Center.
+> - Windows 7 only includes Windows PowerShell 2.0 by default. Service Fabric PowerShell cmdlets requires PowerShell 3.0 or higher. You can [download Windows PowerShell 5.1][powershell5-download] from the Microsoft Download Center.
 > - Service Fabric Reverse Proxy is not available on Windows 7.
 
 ## Install the SDK and tools
@@ -48,15 +44,15 @@ Web Platform Installer (WebPI) is the recommended way to install the SDK and too
 ### To use Visual Studio 2017 or 2019
 
 The Service Fabric Tools are part of the Azure Development workload in Visual Studio 2017 and 2019. Enable this workload as part of your Visual Studio installation.
-In addition, you need to install the Azure Azure Service Fabric SDK and runtime using Web Platform Installer.
+In addition, you need to install the Microsoft Azure Service Fabric SDK and runtime using Web Platform Installer.
 
-* [Install the Azure Azure Service Fabric SDK][core-sdk]
+* [Install the Microsoft Azure Service Fabric SDK][core-sdk]
 
 ### SDK installation only
 
 If you only need the SDK, you can install this package:
 
-* [Install the Azure Azure Service Fabric SDK][core-sdk]
+* [Install the Microsoft Azure Service Fabric SDK][core-sdk]
 
 The current versions are:
 
@@ -86,19 +82,14 @@ Now that you've finished setting up your development environment, start building
 
 * [Learn how to create, deploy, and manage applications](service-fabric-tutorial-create-dotnet-app.md)
 * [Learn about the programming models: Reliable Services and Reliable Actors](service-fabric-choose-framework.md)
-* [Check out the Service Fabric code samples on GitHub](https://docs.azure.cn/samples/browse/?products=azure)
+* [Check out the Service Fabric code samples on GitHub](/samples/browse/?products=azure)
 * [Visualize your cluster by using Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 * [Prepare a Linux development environment on Windows](service-fabric-local-linux-cluster-windows.md)
 * Learn about [Service Fabric support options](service-fabric-support.md)
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric campaign page"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
-[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
-[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI link"
-[powershell5-download]: https://www.microsoft.com/download/details.aspx?id=54616
-
-
-
-<!-- Update_Description: new article about service fabric get started -->
-<!--NEW.date: 12/21/2020-->
+[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
+[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
+[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI link"
+[powershell5-download]:https://www.microsoft.com/download/details.aspx?id=54616

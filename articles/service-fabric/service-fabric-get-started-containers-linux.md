@@ -3,11 +3,7 @@ title: Create an Azure Service Fabric container application on Linux
 description: Create your first Linux container application on Azure Service Fabric. Build a Docker image with your application, push the image to a container registry, build and deploy a Service Fabric container application.
 
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 1/4/2019
 ms.custom: devx-track-python
 ---
 
@@ -147,19 +143,19 @@ Run `docker login` to sign in to your container registry with your [registry cre
 The following example passes the ID and password of an Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md). For example, you might have assigned a service principal to your registry for an automation scenario. Or, you could sign in using your registry username and password.
 
 ```bash
-docker login myregistry.azurecr.cn -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
 The following command creates a tag, or alias, of the image, with a fully qualified path to your registry. This example places the image in the `samples` namespace to avoid clutter in the root of the registry.
 
 ```bash
-docker tag helloworldapp myregistry.azurecr.cn/samples/helloworldapp
+docker tag helloworldapp myregistry.azurecr.io/samples/helloworldapp
 ```
 
 Push the image to your container registry:
 
 ```bash
-docker push myregistry.azurecr.cn/samples/helloworldapp
+docker push myregistry.azurecr.io/samples/helloworldapp
 ```
 
 ## Package the Docker image with Yeoman
@@ -169,7 +165,7 @@ To create a Service Fabric container application, open a terminal window and run
 
 Name your application (for example, `mycontainer`) and name the application service (for example, `myservice`).
 
-For the image name, provide the URL for the container image in a container registry (for example, "myregistry.azurecr.cn/samples/helloworldapp"). 
+For the image name, provide the URL for the container image in a container registry (for example, "myregistry.azurecr.io/samples/helloworldapp"). 
 
 Since this image has a workload entry-point defined, you don't need to explicitly specify input commands (commands run inside the container, which will keep the container running after startup). 
 
@@ -228,7 +224,7 @@ The **HEALTHCHECK** instruction pointing to the actual check that is performed f
 
 ![HealthCheckUnhealthyDsp][3]
 
-You can configure **HEALTHCHECK** behavior for each container by specifying **HealthConfig** options as part of **ContainerHostPolicies** in ApplicationManifest.
+You can configure **HEALTHCHECK**  behavior for each container by specifying **HealthConfig** options as part of **ContainerHostPolicies** in ApplicationManifest.
 
 ```xml
 <ServiceManifestImport>
@@ -284,7 +280,7 @@ After you push the image to the container registry you can delete the local imag
 
 ```
 docker rmi helloworldapp
-docker rmi myregistry.azurecr.cn/samples/helloworldapp
+docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
 ## Complete example Service Fabric application and service manifests
@@ -301,34 +297,27 @@ Here are the complete service and application manifests used in this article.
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->
-
     <StatelessServiceType ServiceTypeName="myserviceType" UseImplicitHost="true" />
   </ServiceTypes>
 
   <!-- Code package is your service executable. -->
-
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
       <!-- Follow this link for more information about deploying containers 
       to Service Fabric: https://aka.ms/sfguestcontainers -->
-
       <ContainerHost>
-        <ImageName>myregistry.azurecr.cn/samples/helloworldapp</ImageName>
+        <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
         <!-- Pass comma delimited commands to your container: dotnet, myproc.dll, 5" -->
-
         <!--Commands> dotnet, myproc.dll, 5 </Commands-->
-
         <Commands></Commands>
       </ContainerHost>
     </EntryPoint>
     <!-- Pass environment variables to your container: -->
-
     
     <EnvironmentVariables>
       <!--
       <EnvironmentVariable Name="VariableName" Value="VariableValue"/>
       -->
-
     </EnvironmentVariables>
     
   </CodePackage>
@@ -338,7 +327,6 @@ Here are the complete service and application manifests used in this article.
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-
       <Endpoint Name="myServiceTypeEndpoint" UriScheme="http" Port="4000" Protocol="http"/>
     </Endpoints>
   </Resources>
@@ -355,7 +343,6 @@ Here are the complete service and application manifests used in this article.
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
-
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="myservicePkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
@@ -372,13 +359,11 @@ Here are the complete service and application manifests used in this article.
          ServiceFabric PowerShell module.
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
-
     <Service Name="myservice">
       <!-- On a local development cluster, set InstanceCount to 1. On a multi-node production 
       cluster, set InstanceCount to -1 for the container service to run on every node in 
       the cluster.
       -->
-
       <StatelessService ServiceTypeName="myserviceType" InstanceCount="1">
         <SingletonPartition />
       </StatelessService>
@@ -393,7 +378,7 @@ To add another container service to an application already created using yeoman,
 1. Change directory to the root of the existing application. For example, `cd ~/YeomanSamples/MyApplication`, if `MyApplication` is the application created by Yeoman.
 2. Run `yo azuresfcontainer:AddService`
 
-<a name="manually"></a>
+<a id="manually"></a>
 
 
 ## Configure time interval before container is force terminated
@@ -466,7 +451,7 @@ To assist with diagnosing container startup failures, Service Fabric (version 6.
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-The setting **ContainersRetentionCount** specifies the number of containers to retain when they fail. If a negative value is specified, all failing containers will be retained. When the **ContainersRetentionCount** attribute is not specified, no containers will be retained. The attribute **ContainersRetentionCount** also supports Application Parameters so users can specify different values for test and production clusters. Use placement constraints to target the container service to a particular node when using this feature to prevent the container service from moving to other nodes. 
+The setting **ContainersRetentionCount** specifies the number of containers to retain when they fail. If a negative value is specified, all failing containers will be retained. When the **ContainersRetentionCount**  attribute is not specified, no containers will be retained. The attribute **ContainersRetentionCount** also supports Application Parameters so users can specify different values for test and production clusters. Use placement constraints to target the container service to a particular node when using this feature to prevent the container service from moving to other nodes. 
 Any containers retained using this feature must be manually removed.
 
 ## Start the Docker daemon with custom arguments
@@ -499,8 +484,3 @@ With the 6.2 version of the Service Fabric runtime and greater, you can start th
 [1]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
 [2]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
 [3]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png
-
-
-
-<!-- Update_Description: new article about service fabric get started containers linux -->
-<!--NEW.date: 12/21/2020-->

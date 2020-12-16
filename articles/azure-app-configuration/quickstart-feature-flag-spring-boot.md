@@ -1,14 +1,11 @@
 ---
 title: Quickstart for adding feature flags to Spring Boot with Azure App Configuration
 description: Add feature flags to Spring Boot apps and manage them using Azure App Configuration
-
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
 
 #Customer intent: As an Spring Boot developer, I want to use feature flags to control feature availability quickly and confidently.
@@ -22,8 +19,8 @@ The Spring Boot Feature Management libraries extend the framework with comprehen
 
 ## Prerequisites
 
-* Azure subscription - [create one for free](https://www.azure.cn/free/)
-* A supported [Java Development Kit SDK](https://docs.azure.cn/java/jdk) with version 8.
+* Azure subscription - [create one for free](https://azure.microsoft.com/free/)
+* A supported [Java Development Kit SDK](/java/azure/jdk) with version 8.
 * [Apache Maven](https://maven.apache.org/download.cgi) version 3.0 or above.
 
 ## Create an App Configuration instance
@@ -33,7 +30,7 @@ The Spring Boot Feature Management libraries extend the framework with comprehen
 7. Select **Feature Manager** > **+Add** to add a feature flag called `Beta`.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="media/add-beta-feature-flag.png" alt-text="Enable feature flag named Beta":::
+    > ![Enable feature flag named Beta](media/add-beta-feature-flag.png)
 
     Leave `label` undefined for now.
 
@@ -206,7 +203,6 @@ Use the [Spring Initializr](https://start.spring.io/) to create a new Spring Boo
     <body>
         <header>
         <!-- Fixed navbar -->
-
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="#">TestFeatureFlags</a>
             <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarCollapse" aria-label="Toggle navigation" type="button" data-target="#navbarCollapse" data-toggle="collapse">
@@ -287,7 +283,7 @@ Use the [Spring Initializr](https://start.spring.io/) to create a new Spring Boo
 
 1. Open a browser window, and go to the URL: `http://localhost:8080/welcome`.
 
-    :::image type="content" source="./media/quickstarts/spring-boot-feature-flag-local-before.png" alt-text="Screenshot shows a browser window with a Welcome message.":::
+    ![Screenshot shows a browser window with a Welcome message.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 1. In the App Configuration portal select **Feature Manager**, and change the state of the **Beta** key to **On**:
 
@@ -297,7 +293,7 @@ Use the [Spring Initializr](https://start.spring.io/) to create a new Spring Boo
 
 1. Refresh the browser page to see the new configuration settings.
 
-    :::image type="content" source="./media/quickstarts/spring-boot-feature-flag-local-after.png" alt-text="Screenshot shows a browser window with a Welcome message and a Beta link called out.":::
+    ![Screenshot shows a browser window with a Welcome message and a Beta link called out.](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## Clean up resources
 
@@ -305,12 +301,8 @@ Use the [Spring Initializr](https://start.spring.io/) to create a new Spring Boo
 
 ## Next steps
 
-In this quickstart, you created a new App Configuration store and used it to manage features in a Spring Boot web app via the [Feature Management libraries](https://docs.azure.cn/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
+In this quickstart, you created a new App Configuration store and used it to manage features in a Spring Boot web app via the [Feature Management libraries](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 * Learn more about [feature management](./concept-feature-management.md).
 * [Manage feature flags](./manage-feature-flags.md).
 * [Use feature flags in a Spring Boot Core app](./use-feature-flags-spring-boot.md).
-
-
-<!-- Update_Description: new article about quickstart feature flag spring boot -->
-<!--NEW.date: 12/21/2020-->

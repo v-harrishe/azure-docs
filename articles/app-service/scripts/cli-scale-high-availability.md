@@ -1,17 +1,14 @@
 ---
-title: CLI - Scale app with Traffic Manager
+title: 'CLI: Scale app with Traffic Manager'
 description: Learn how to use the Azure CLI to automate deployment and management of your App Service app. This sample shows how to scale an worldwide with Traffic Manager.
-
+author: msangapu-msft
 tags: azure-service-management
 
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
 ms.devlang: azurecli
 ms.topic: sample
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/11/2017
+ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
 
@@ -23,7 +20,7 @@ This sample script creates a resource group, two App Service plans, two apps, a 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - This tutorial requires version 2.0 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
+ - This tutorial requires version 2.0 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
 
 ## Sample script
 
@@ -37,19 +34,14 @@ This script uses the following commands to create a resource group, App Service 
 
 | Command | Notes |
 |---|---|
-| [`az group create`](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) | Creates an App Service plan. |
-| [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) | Creates an App Service app. |
-| [`az network traffic-manager profile create`](https://docs.azure.cn/cli/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Creates an Azure Traffic Manager profile. |
-| [`az network traffic-manager endpoint create`](https://docs.azure.cn/cli/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) | Adds an endpoint to an Azure Traffic Manager Profile. |
+| [`az group create`](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Creates an App Service plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Creates an App Service app. |
+| [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) | Creates an Azure Traffic Manager profile. |
+| [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) | Adds an endpoint to an Azure Traffic Manager Profile. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
+For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
 
 Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
-
-
-
-<!-- Update_Description: new article about cli scale high availability -->
-<!--NEW.date: 12/21/2020-->

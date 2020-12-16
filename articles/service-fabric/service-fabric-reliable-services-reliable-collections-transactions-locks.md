@@ -2,21 +2,17 @@
 title: Transactions And Lock Modes in Reliable Collections
 description: Azure Service Fabric Reliable State Manager and Reliable Collections Transactions and Locking.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 5/1/2017
 ---
 # Transactions and lock modes in Azure Service Fabric Reliable Collections
 
 ## Transaction
 
-A transaction is a sequence of operations performed as a single logical unit of work. It exhibits the common [ACID](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/ACID) (*atomicity*, *consistency*, *isolation*, *durability*) properties of database transactions:
+A transaction is a sequence of operations performed as a single logical unit of work. It exhibits the common [ACID](https://en.wikipedia.org/wiki/ACID) (*atomicity*, *consistency*, *isolation*, *durability*) properties of database transactions:
 
 * **Atomicity**: A transaction must be an atomic unit of work. In other words, either all its data modifications are performed, or none of them is performed.
 * **Consistency**: When completed, a transaction must leave all data in a consistent state. All internal data structures must be correct at the end of the transaction.
-* **Isolation**: Modifications made by concurrent transactions must be isolated from the modifications made by any other concurrent transactions. The isolation level used for an operation within an [ITransaction](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.itransaction) is determined by the [IReliableState](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.ireliablestate) performing the operation.
+* **Isolation**: Modifications made by concurrent transactions must be isolated from the modifications made by any other concurrent transactions. The isolation level used for an operation within an [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) is determined by the [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) performing the operation.
 * **Durability**: After a transaction has completed, its effects are permanently in place in the system. The modifications persist even in the event of a system failure.
 
 ### Isolation levels
@@ -84,9 +80,4 @@ In this case, one or both of the operations will time out. In this scenario, an 
 * [Reliable Services notifications](service-fabric-reliable-services-notifications.md)
 * [Reliable Services backup and restore (disaster recovery)](service-fabric-reliable-services-backup-restore.md)
 * [Reliable State Manager configuration](service-fabric-reliable-services-configuration.md)
-* [Developer reference for Reliable Collections](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
-
-
-
-<!-- Update_Description: new article about service fabric reliable services reliable collections transactions locks -->
-<!--NEW.date: 12/21/2020-->
+* [Developer reference for Reliable Collections](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

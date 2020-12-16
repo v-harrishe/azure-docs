@@ -3,15 +3,12 @@ title: 'Manage secure access to resources in spoke VNets for P2S clients'
 titleSuffix: Azure Virtual WAN
 description: This article helps you use Azure Virtual WAN and Azure Firewall rules to manage secure access to virtual networks for User VPN (point-to-site) clients.
 services: virtual-wan
-
+author: cherylmc
 
 ms.service: virtual-wan
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/11/2020
+ms.author: cherylmc
 
 ---
 # Manage secure access to resources in spoke VNets for User VPN clients
@@ -43,8 +40,8 @@ When selecting the authentication method, you have three choices. Each method ha
 * **Azure Active Directory authentication:** Obtain the following:
 
    * The **Application ID** of the Azure VPN Enterprise Application registered in your Azure AD tenant.
-   * The **Issuer**. Example: `https://sts.chinacloudapi.cn/your-Directory-ID`.
-   * The **Azure AD tenant**. Example: `https://login.partner.microsoftonline.cn/your-Directory-ID`.
+   * The **Issuer**. Example: `https://sts.windows.net/your-Directory-ID`.
+   * The **Azure AD tenant**. Example: `https://login.microsoftonline.com/your-Directory-ID`.
 
 * **Radius-based authentication:** Obtain the Radius server IP, Radius server secret, and certificate information.
 
@@ -54,8 +51,7 @@ The following example shows Azure certificate authentication.
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 
-<a name="hub"></a>
-## Create the hub and gateway
+## <a name="hub"></a>Create the hub and gateway
 
 In this section, you create the virtual hub with a point-to-site gateway. When configuring, you can use the following example values:
 
@@ -65,34 +61,29 @@ In this section, you create the virtual hub with a point-to-site gateway. When c
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
-<a name="generate"></a>
-## Generate VPN client configuration files
+## <a name="generate"></a>Generate VPN client configuration files
 
 In this section, you generate and download the configuration profile files. These files are used to configure the native VPN client on the client computer. For information about the contents of the client profile files, see [Point-to-site configuration - certificates](../vpn-gateway/point-to-site-vpn-client-configuration-azure-cert.md).
 
 [!INCLUDE [Download profile](../../includes/virtual-wan-p2s-download-profile-include.md)]
 
-<a name="clients"></a>
-## Configure VPN clients
+## <a name="clients"></a>Configure VPN clients
 
 Use the downloaded profile to configure the remote access clients. The procedure for each operating system is different, follow the instructions that apply to your system.
 
 [!INCLUDE [Configure clients](../../includes/virtual-wan-p2s-configure-clients-include.md)]
 
-<a name="connect-spoke"></a>
-## Connect the spoke VNet
+## <a name="connect-spoke"></a>Connect the spoke VNet
 
 In this section, you attach the spoke virtual network to the virtual WAN hub.
 
 [!INCLUDE [Connect spoke virtual network](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
-<a name="create-vm"></a>
-## Create virtual machines
+## <a name="create-vm"></a>Create virtual machines
 
 In this section, you create two VMs in your VNet, VM1 and VM2. In the network diagram, we use 10.18.0.4 and 10.18.0.5. When configuring your VMs, make sure to select the virtual network that you created (found on the Networking tab). For steps to create a VM, see [Quickstart: Create a VM](../virtual-machines/windows/quick-create-portal.md).
 
-<a name="secure"></a>
-## Secure the virtual hub
+## <a name="secure"></a>Secure the virtual hub
 
 A standard virtual hub has no built-in security policies to protect the resources in spoke virtual networks. A secured virtual hub uses Azure Firewall or a third-party provider to manage incoming and outgoing traffic to protect your resources in Azure.
 
@@ -125,8 +116,7 @@ Once you complete these steps, you will have created an architecture that allows
 
 It can take 5 minutes or more for this process to complete.
 
-<a name="send"></a>
-## Route traffic through Azure Firewall
+## <a name="send"></a>Route traffic through Azure Firewall
 
 In this section, you need to ensure that the traffic is routed through Azure Firewall.
 
@@ -137,8 +127,7 @@ In this section, you need to ensure that the traffic is routed through Azure Fir
 1. Verify that the VNet connection and the Branch connection private traffic is secured by Azure Firewall.
 1. Select **Save**.
 
-<a name="validate"></a>
-## Validate
+## <a name="validate"></a>Validate
 
 Verify the setup of your secured hub.
 
@@ -155,8 +144,3 @@ Verify the setup of your secured hub.
 
 * For more information about Virtual WAN, see the [Virtual WAN FAQ](virtual-wan-faq.md).
 * For more information about Azure Firewall, see the [Azure Firewall FAQ](../firewall/firewall-faq.md).
-
-
-
-<!-- Update_Description: new article about manage secure access resources spoke p2s -->
-<!--NEW.date: 12/21/2020-->

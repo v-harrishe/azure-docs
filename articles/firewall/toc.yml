@@ -92,19 +92,19 @@
 - name: Reference
   items:
   - name: Azure CLI
-    href: https://docs.azure.cn/cli/ext/azure-firewall/network/firewall
+    href: /cli/azure/ext/azure-firewall/network/firewall
   - name: Azure PowerShell
-    href: https://docs.microsoft.com/powershell/module/az.network/new-azfirewall
+    href: /powershell/module/az.network/new-azfirewall
   - name: .NET
-    href: https://docs.azure.cn/dotnet/api
+    href: /dotnet/api
   - name: Java
-    href: https://docs.azure.cn/java/api
+    href: /java/api
   - name: Node.js
-    href: https://docs.azure.cn/develop/nodejs/#azure-sdk
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: Python
-    href: https://docs.azure.cn/develop/python/
+    href: https://azure.microsoft.com/develop/python/
   - name: REST
-    href: https://docs.microsoft.com/rest/api/firewall
+    href: /rest/api/firewall
   - name: Azure Resource Manager
     href: ../azure-resource-manager/management/overview.md
 - name: Resources
@@ -114,14 +114,10 @@
   - name: Author templates
     href: ../azure-resource-manager/templates/template-syntax.md
   - name: Azure Roadmap
-    href: https://www.azure.cn/roadmap/
+    href: https://azure.microsoft.com/roadmap/
   - name: Community templates
-    href: https://www.azure.cn/documentation/templates
+    href: https://azure.microsoft.com/documentation/templates
   - name: Pricing
-    href: https://www.azure.cn/pricing/details/azure-firewall/
+    href: https://azure.microsoft.com/pricing/details/azure-firewall/
   - name: Regional availability
     href: https://azure.microsoft.com/regions/services/
-
-
-<!-- Update_Description: new article about toc. -->
-<!--NEW.date: 12/21/2020-->

@@ -1,14 +1,11 @@
 ---
 title: Managed identities
 description: Learn how managed identities work in Azure App Service and Azure Functions, how to configure a managed identity and generate a token for a back-end resource.
-
+author: mattchenderson
 
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 05/27/2020
+ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: "devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli"
 
@@ -39,7 +36,7 @@ To set up a managed identity in the portal, you will first create an application
 
 4. Within the **System assigned** tab, switch **Status** to **On**. Click **Save**.
 
-    :::image type="content" source="media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png" alt-text="Screenshot that shows where to switch Status to On and then select Save.":::
+    ![Screenshot that shows where to switch Status to On and then select Save.](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -50,29 +47,29 @@ To set up a managed identity in the portal, you will first create an application
 
 To set up a managed identity using the Azure CLI, you will need to use the `az webapp identity assign` command against an existing application. You have three options for running the examples in this section:
 
-- Use [Azure local Shell](../cloud-shell/overview.md) from the Azure portal.
-- Use the embedded Azure local Shell via the "Try It" button, located in the top-right corner of each code block below.
-- [Install the latest version of Azure CLI](https://docs.azure.cn/cli/install-azure-cli) (2.0.31 or later) if you prefer to use a local CLI console. 
+- Use [Azure Cloud Shell](../cloud-shell/overview.md) from the Azure portal.
+- Use the embedded Azure Cloud Shell via the "Try It" button, located in the top-right corner of each code block below.
+- [Install the latest version of Azure CLI](/cli/azure/install-azure-cli) (2.0.31 or later) if you prefer to use a local CLI console. 
 
 The following steps will walk you through creating a web app and assigning it an identity using the CLI:
 
-1. If you're using the Azure CLI in a local console, first sign in to Azure using [az login](https://docs.azure.cn/cli/reference-index#az_login). Use an account that's associated with the Azure subscription under which you would like to deploy the application:
+1. If you're using the Azure CLI in a local console, first sign in to Azure using [az login](/cli/azure/reference-index#az-login). Use an account that's associated with the Azure subscription under which you would like to deploy the application:
 
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
 
 2. Create a web application using the CLI. For more examples of how to use the CLI with App Service, see [App Service CLI samples](../app-service/samples-cli.md):
 
-    ```azurecli
-    az group create --name myResourceGroup --location chinanorth
+    ```azurecli-interactive
+    az group create --name myResourceGroup --location westus
     az appservice plan create --name myPlan --resource-group myResourceGroup --sku S1
     az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
 3. Run the `identity assign` command to create the identity for this application:
 
-    ```azurecli
+    ```azurecli-interactive
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
@@ -84,11 +81,11 @@ The following steps will walk you through creating an app and assigning it an id
 
 #### Using Azure PowerShell for a web app
 
-1. If needed, install the Azure PowerShell using the instructions found in the [Azure PowerShell guide](https://docs.microsoft.com/powershell/azure/), and then run `Connect-AzAccount -Environment AzureChinaCloud` to create a connection with Azure.
+1. If needed, install the Azure PowerShell using the instructions found in the [Azure PowerShell guide](/powershell/azure/), and then run `Login-AzAccount` to create a connection with Azure.
 
 2. Create a web application using Azure PowerShell. For more examples of how to use Azure PowerShell with App Service, see [App Service PowerShell samples](../app-service/samples-powershell.md):
 
-    ```powershell
+    ```azurepowershell-interactive
     # Create a resource group.
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
@@ -101,17 +98,17 @@ The following steps will walk you through creating an app and assigning it an id
 
 3. Run the `Set-AzWebApp -AssignIdentity` command to create the identity for this application:
 
-    ```powershell
+    ```azurepowershell-interactive
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
 
 #### Using Azure PowerShell for a function app
 
-1. If needed, install the Azure PowerShell using the instructions found in the [Azure PowerShell guide](https://docs.microsoft.com/powershell/azure/), and then run `Connect-AzAccount -Environment AzureChinaCloud` to create a connection with Azure.
+1. If needed, install the Azure PowerShell using the instructions found in the [Azure PowerShell guide](/powershell/azure/), and then run `Login-AzAccount` to create a connection with Azure.
 
-2. Create a function app using Azure PowerShell. For more examples of how to use Azure PowerShell with Azure Functions, see the [Az.Functions reference](https://docs.microsoft.com/powershell/module/az.functions/#functions):
+2. Create a function app using Azure PowerShell. For more examples of how to use Azure PowerShell with Azure Functions, see the [Az.Functions reference](/powershell/module/az.functions/#functions):
 
-    ```powershell
+    ```azurepowershell-interactive
     # Create a resource group.
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
@@ -206,7 +203,7 @@ First, you'll need to create a user-assigned identity resource.
 
 6. Search for the identity you created earlier and select it. Click **Add**.
 
-    :::image type="content" source="media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png" alt-text="Managed identity in App Service":::
+    ![Managed identity in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### Using Azure PowerShell
 
@@ -217,11 +214,11 @@ The following steps will walk you through creating an app and assigning it an id
 > [!NOTE]
 > The current version of the Azure PowerShell commandlets for Azure App Service do not support user-assigned identities. The below instructions are for Azure Functions.
 
-1. If needed, install the Azure PowerShell using the instructions found in the [Azure PowerShell guide](https://docs.microsoft.com/powershell/azure/), and then run `Connect-AzAccount -Environment AzureChinaCloud` to create a connection with Azure.
+1. If needed, install the Azure PowerShell using the instructions found in the [Azure PowerShell guide](/powershell/azure/), and then run `Login-AzAccount` to create a connection with Azure.
 
-2. Create a function app using Azure PowerShell. For more examples of how to use Azure PowerShell with Azure Functions, see the [Az.Functions reference](https://docs.microsoft.com/powershell/module/az.functions/#functions). The below script also makes use of `New-AzUserAssignedIdentity` which must be installed separately as per [Create, list or delete a user-assigned managed identity using Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Create a function app using Azure PowerShell. For more examples of how to use Azure PowerShell with Azure Functions, see the [Az.Functions reference](/powershell/module/az.functions/#functions). The below script also makes use of `New-AzUserAssignedIdentity` which must be installed separately as per [Create, list or delete a user-assigned managed identity using Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-    ```powershell
+    ```azurepowershell-interactive
     # Create a resource group.
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
@@ -438,10 +435,9 @@ $accessToken = $tokenResponse.access_token
 
 ---
 
-<a name="asal"></a>
-### Using the Microsoft.Azure.Services.AppAuthentication library for .NET
+### <a name="asal"></a>Using the Microsoft.Azure.Services.AppAuthentication library for .NET
 
-For .NET applications and functions, the simplest way to work with a managed identity is through the Microsoft.Azure.Services.AppAuthentication package. This library will also allow you to test your code locally on your development machine, using your user account from Visual Studio, the [Azure CLI](https://docs.azure.cn/cli), or Active Directory Integrated Authentication. When hosted in the cloud, it will default to using a system-assigned identity, but you can customize this behavior using a connection string environment variable which references the client ID of a user-assigned identity. For more on development options with this library, see the [Microsoft.Azure.Services.AppAuthentication reference]. This section shows you how to get started with the library in your code.
+For .NET applications and functions, the simplest way to work with a managed identity is through the Microsoft.Azure.Services.AppAuthentication package. This library will also allow you to test your code locally on your development machine, using your user account from Visual Studio, the [Azure CLI](/cli/azure), or Active Directory Integrated Authentication. When hosted in the cloud, it will default to using a system-assigned identity, but you can customize this behavior using a connection string environment variable which references the client ID of a user-assigned identity. For more on development options with this library, see the [Microsoft.Azure.Services.AppAuthentication reference]. This section shows you how to get started with the library in your code.
 
 1. Add references to the [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) and any other necessary NuGet packages to your application. The below example also uses [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
@@ -497,8 +493,7 @@ For Java applications and functions, the simplest way to work with a managed ide
     ```
 
 
-<a name="remove"></a>
-## Remove an identity
+## <a name="remove"></a>Remove an identity
 
 A system-assigned identity can be removed by disabling the feature using the portal, PowerShell, or CLI in the same way that it was created. User-assigned identities can be removed individually. To remove all identities, set the identity type to "None".
 
@@ -514,7 +509,7 @@ To remove all identities in an [ARM template](#using-an-azure-resource-manager-t
 
 To remove all identities in Azure PowerShell (Azure Functions only):
 
-```powershell
+```azurepowershell-interactive
 # Update an existing function app to have IdentityType "None".
 Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
 ```
@@ -526,11 +521,6 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 - [Access SQL Database securely using a managed identity](app-service-web-tutorial-connect-msi.md)
 - [Access Azure Storage securely using a managed identity](scenario-secure-app-access-storage.md)
-- [Call Azure Graph securely using a managed identity](scenario-secure-app-access-microsoft-graph-as-app.md)
+- [Call Microsoft Graph securely using a managed identity](scenario-secure-app-access-microsoft-graph-as-app.md)
 
 [Microsoft.Azure.Services.AppAuthentication reference]: ../key-vault/general/service-to-service-authentication.md
-
-
-
-<!-- Update_Description: new article about overview managed identity -->
-<!--NEW.date: 12/21/2020-->

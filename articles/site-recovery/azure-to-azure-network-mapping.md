@@ -1,15 +1,12 @@
 ---
 title: Map virtual networks between two regions in Azure Site Recovery 
 description: Learn about mapping virtual networks between two Azure regions for Azure VM disaster recovery with Azure Site Recovery.
-
+author: Harsha-CS
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/15/2019
+ms.author: harshacs
 
 ---
 # Set up network mapping and IP addressing for VNets
@@ -26,14 +23,14 @@ Map networks as follows:
 
 1. In **Site Recovery Infrastructure**, click **+Network Mapping**.
 
-    :::image type="content" source="./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png" alt-text=" Create a network mapping":::
+    ![ Create a network mapping](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
 3. In **Add network mapping**, select the source and target locations. In our example, the source VM is running in the East Asia region, and replicates to the Southeast Asia region.
 
-    :::image type="content" source="./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png" alt-text="Select source and target":::
+    ![Select source and target](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. Now create a network mapping in the opposite direction. In our example, the source will now be Southeast Asia, and the target will be East Asia.
 
-    :::image type="content" source="./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png" alt-text="Add network mapping pane - Select source and target locations for the target network":::
+    ![Add network mapping pane - Select source and target locations for the target network](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
 ## Map networks when you enable replication
@@ -58,7 +55,7 @@ The subnet of the target VM is selected based on the name of the subnet of the s
 - If a subnet with the same name doesn't exist in the target network, the first subnet in the alphabetical order is set as the target subnet.
 - You can modify the target subnet in the **Compute and Network** settings for the VM.
 
-    :::image type="content" source="./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png" alt-text="Compute and Network compute properties window":::
+    ![Compute and Network compute properties window](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
 ## Set up IP addressing for target VMs
@@ -94,8 +91,3 @@ Target network isn't the failover VNet | - Target IP address will be static with
 
 - Review [networking guidance](./azure-to-azure-about-networking.md) for Azure VM disaster recovery.
 - [Learn more](site-recovery-retain-ip-azure-vm-failover.md) about retaining IP addresses after failover.
-
-
-
-<!-- Update_Description: new article about azure to azure network mapping -->
-<!--NEW.date: 12/21/2020-->

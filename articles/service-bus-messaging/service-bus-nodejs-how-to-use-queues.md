@@ -1,14 +1,11 @@
 ---
 title: How to use azure/service-bus queues in JavaScript
 description: Learn how to write a JavaScript program that uses the latest preview version of @azure/service-bus package to send messages to and receive messages from a Service Bus queue.
-
+author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/09/2020
+ms.author: spelluru
 ms.custom: devx-track-js
 ---
 
@@ -16,7 +13,7 @@ ms.custom: devx-track-js
 In this tutorial, you learn how to use the [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) package in a JavaScript program to send messages to and receive messages from a Service Bus queue.
 
 ## Prerequisites
-- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
+- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) or sign-up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - If you don't have a queue to work with, follow steps in the [Use Azure portal to create a Service Bus queue](service-bus-quickstart-portal.md) article to create a queue. Note down the **connection string** for your Service Bus namespace and the name of the **queue** you created.
 
 > [!NOTE]
@@ -205,9 +202,4 @@ See the following documentation and samples:
 
 - [Azure Service Bus client library for JS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [Samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). The **javascript** folder has JavaScript samples and the **typescript** has TypeScript samples. 
-- [azure-servicebus reference documentation](https://docs.microsoft.com/azure/javascript/api/overview/azure/service-bus)
-
-
-
-<!-- Update_Description: new article about service bus nodejs how to use queues -->
-<!--NEW.date: 12/21/2020-->
+- [azure-servicebus reference documentation](/javascript/api/overview/azure/service-bus)

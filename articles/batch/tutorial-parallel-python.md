@@ -3,20 +3,13 @@ title: Tutorial - Run a parallel workload using the Python API
 description: Tutorial - Process media files in parallel with ffmpeg in Azure Batch using the Batch Python client library
 ms.devlang: python
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
 ---
 
 # Tutorial: Run a parallel workload with Azure Batch using the Python API
 
-Use Azure Batch to run large-scale parallel and high-performance computing (HPC(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)) batch jobs efficiently in Azure. This tutorial walks through a Python example of running a parallel workload using Batch. You learn a common Batch application workflow and how to interact programmatically with Batch and Storage resources. You learn how to:
-
-<!--Not Available on FEATURE HPC-->
-
+Use Azure Batch to run large-scale parallel and high-performance computing (HPC) batch jobs efficiently in Azure. This tutorial walks through a Python example of running a parallel workload using Batch. You learn a common Batch application workflow and how to interact programmatically with Batch and Storage resources. You learn how to:
 
 > [!div class="checklist"]
 > * Authenticate with Batch and Storage accounts
@@ -40,7 +33,7 @@ In this tutorial, you convert MP4 media files in parallel to MP3 format using th
 
 ## Sign in to Azure
 
-Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
+Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 
@@ -68,7 +61,7 @@ Open the file `config.py`. Update the Batch and storage account credential strin
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
 _BATCH_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxE+yXrRvJAqT9BlXwwo1CwF+SwAYOxxxxxxxxxxxxxxxx43pXi/gdiATkvbpLRl3x14pcEQ=='
-_BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.chinacloudapi.cn'
+_BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.azure.com'
 _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
@@ -77,7 +70,8 @@ _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB
 
 To run the script:
 
-```python batch_python_tutorial_ffmpeg.py
+```
+python batch_python_tutorial_ffmpeg.py
 ```
 
 When you run the sample application, the console output is similar to the following. During execution, you experience a pause at `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` while the pool's compute nodes are started. 
@@ -107,7 +101,7 @@ Go to your Batch account in the Azure portal to monitor the pool, compute nodes,
 
 When tasks are running, the heat map is similar to the following:
 
-:::image type="content" source="./media/tutorial-parallel-python/pool.png" alt-text="Pool heat map":::
+![Pool heat map](./media/tutorial-parallel-python/pool.png)
 
 Typical execution time is approximately **5 minutes** when you run the application in its default configuration. Pool creation takes the most time. 
 
@@ -119,7 +113,7 @@ The following sections break down the sample application into the steps that it 
 
 ### Authenticate Blob and Batch clients
 
-To interact with a storage account, the app uses the [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) package to create a [BlockBlobService](https://docs.azure.cn/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) object.
+To interact with a storage account, the app uses the [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) package to create a [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) object.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -127,7 +121,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
-The app creates a [BatchServiceClient](https://docs.azure.cn/python/api/azure.batch.batchserviceclient) object to create and manage pools, jobs, and tasks in the Batch service. The Batch client in the sample uses shared key authentication. Batch also supports authentication through [Azure Active Directory](batch-aad-auth.md), to authenticate individual users or an unattended application.
+The app creates a [BatchServiceClient](/python/api/azure.batch.batchserviceclient) object to create and manage pools, jobs, and tasks in the Batch service. The Batch client in the sample uses shared key authentication. Batch also supports authentication through [Azure Active Directory](batch-aad-auth.md), to authenticate individual users or an unattended application.
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
@@ -140,7 +134,7 @@ batch_client = batch.BatchServiceClient(
 
 ### Upload input files
 
-The app uses the `blob_client` reference create a storage container for the input MP4 files and a container for the task output. Then, it calls the `upload_file_to_container` function to upload MP4 files in the local `InputFiles` directory to the container. The files in storage are defined as Batch [ResourceFile](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.resourcefile) objects that Batch can later download to compute nodes.
+The app uses the `blob_client` reference create a storage container for the input MP4 files and a container for the task output. Then, it calls the `upload_file_to_container` function to upload MP4 files in the local `InputFiles` directory to the container. The files in storage are defined as Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) objects that Batch can later download to compute nodes.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
@@ -161,16 +155,13 @@ input_files = [
 
 ### Create a pool of compute nodes
 
-Next, the sample creates a pool of compute nodes in the Batch account with a call to `create_pool`. This defined function uses the Batch [PoolAddParameter](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.pooladdparameter) class to set the number of nodes, VM size, and a pool configuration. Here, a [VirtualMachineConfiguration](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) object specifies an [ImageReference](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.imagereference) to an Ubuntu Server 18.04 LTS image published in the Azure Marketplace. Batch supports a wide range of VM images in the Azure Marketplace, as well as custom VM images.
+Next, the sample creates a pool of compute nodes in the Batch account with a call to `create_pool`. This defined function uses the Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) class to set the number of nodes, VM size, and a pool configuration. Here, a [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) object specifies an [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) to an Ubuntu Server 18.04 LTS image published in the Azure Marketplace. Batch supports a wide range of VM images in the Azure Marketplace, as well as custom VM images.
 
-The number of nodes and VM size are set using defined constants. Batch supports dedicated nodes and [low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes](batch-low-pri-vms.md), and you can use either or both in your pools. Dedicated nodes are reserved for your pool. Low-priority nodes are offered at a reduced price from surplus VM capacity in Azure. Low-priority nodes become unavailable if Azure does not have enough capacity. The sample by default creates a pool containing only 5 low-priority nodes in size *Standard_A1_v2*. 
+The number of nodes and VM size are set using defined constants. Batch supports dedicated nodes and [low-priority nodes](batch-low-pri-vms.md), and you can use either or both in your pools. Dedicated nodes are reserved for your pool. Low-priority nodes are offered at a reduced price from surplus VM capacity in Azure. Low-priority nodes become unavailable if Azure does not have enough capacity. The sample by default creates a pool containing only 5 low-priority nodes in size *Standard_A1_v2*. 
 
-<!--Not Available on FEATURE low-priority-->
+In addition to physical node properties, this pool configuration includes a [StartTask](/python/api/azure-batch/azure.batch.models.starttask) object. The StartTask executes on each node as that node joins the pool, and each time a node is restarted. In this example, the StartTask runs Bash shell commands to install the ffmpeg package and dependencies on the nodes.
 
-
-In addition to physical node properties, this pool configuration includes a [StartTask](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.starttask) object. The StartTask executes on each node as that node joins the pool, and each time a node is restarted. In this example, the StartTask runs Bash shell commands to install the ffmpeg package and dependencies on the nodes.
-
-The [pool.add](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.pooloperations) method submits the pool to the Batch service.
+The [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) method submits the pool to the Batch service.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -200,7 +191,7 @@ batch_service_client.pool.add(new_pool)
 
 ### Create a job
 
-A Batch job specifies a pool to run tasks on and optional settings such as a priority and schedule for the work. The sample creates a job with a call to `create_job`. This defined function uses the [JobAddParameter](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.jobaddparameter) class to create a job on your pool. The [job.add](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.joboperations) method submits the pool to the Batch service. Initially the job has no tasks.
+A Batch job specifies a pool to run tasks on and optional settings such as a priority and schedule for the work. The sample creates a job with a call to `create_job`. This defined function uses the [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) class to create a job on your pool. The [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) method submits the pool to the Batch service. Initially the job has no tasks.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -212,11 +203,11 @@ batch_service_client.job.add(job)
 
 ### Create tasks
 
-The app creates tasks in the job with a call to `add_tasks`. This defined function creates a list of task objects using the [TaskAddParameter](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.taskaddparameter) class. Each task runs ffmpeg to process an input `resource_files` object using a `command_line` parameter. ffmpeg was previously installed on each node when the pool was created. Here, the command line runs ffmpeg to convert each input MP4 (video) file to an MP3 (audio) file.
+The app creates tasks in the job with a call to `add_tasks`. This defined function creates a list of task objects using the [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) class. Each task runs ffmpeg to process an input `resource_files` object using a `command_line` parameter. ffmpeg was previously installed on each node when the pool was created. Here, the command line runs ffmpeg to convert each input MP4 (video) file to an MP3 (audio) file.
 
-The sample creates an [OutputFile](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.outputfile) object for the MP3 file after running the command line. Each task's output files (one, in this case) are uploaded to a container in the linked storage account, using the task's `output_files` property.
+The sample creates an [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile) object for the MP3 file after running the command line. Each task's output files (one, in this case) are uploaded to a container in the linked storage account, using the task's `output_files` property.
 
-Then, the app adds tasks to the job with the [task.add_collection](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.taskoperations) method, which queues them to run on the compute nodes. 
+Then, the app adds tasks to the job with the [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) method, which queues them to run on the compute nodes. 
 
 ```python
 tasks = list()
@@ -246,7 +237,7 @@ batch_service_client.task.add_collection(job_id, tasks)
 
 When tasks are added to a job, Batch automatically queues and schedules them for execution on compute nodes in the associated pool. Based on the settings you specify, Batch handles all task queuing, scheduling, retrying, and other task administration duties. 
 
-There are many approaches to monitoring task execution. The `wait_for_tasks_to_complete` function in this example uses the [TaskState](https://docs.azure.cn/python/api/azure-batch/azure.batch.models.taskstate) object to monitor tasks for a certain state, in this case the completed state, within a time limit.
+There are many approaches to monitoring task execution. The `wait_for_tasks_to_complete` function in this example uses the [TaskState](/python/api/azure-batch/azure.batch.models.taskstate) object to monitor tasks for a certain state, in this case the completed state, within a time limit.
 
 ```python
 while datetime.datetime.now() < timeout_expiration:
@@ -266,7 +257,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## Clean up resources
 
-After it runs the tasks, the app automatically deletes the input storage container it created, and gives you the option to delete the Batch pool and job. The BatchClient's [JobOperations](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.joboperations) and [PoolOperations](https://docs.azure.cn/python/api/azure-batch/azure.batch.operations.pooloperations) classes both have delete methods, which are called if you confirm deletion. Although you're not charged for jobs and tasks themselves, you are charged for compute nodes. Thus, we recommend that you allocate pools only as needed. When you delete the pool, all task output on the nodes is deleted. However, the input and output files remain in the storage account.
+After it runs the tasks, the app automatically deletes the input storage container it created, and gives you the option to delete the Batch pool and job. The BatchClient's [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) and [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) classes both have delete methods, which are called if you confirm deletion. Although you're not charged for jobs and tasks themselves, you are charged for compute nodes. Thus, we recommend that you allocate pools only as needed. When you delete the pool, all task output on the nodes is deleted. However, the input and output files remain in the storage account.
 
 When no longer needed, delete the resource group, Batch account, and storage account. To do so in the Azure portal, select the resource group for the Batch account and click **Delete resource group**.
 
@@ -287,8 +278,3 @@ For more examples of using the Python API to schedule and process Batch workload
 > [!div class="nextstepaction"]
 > [Batch Python samples](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
 
-
-
-
-<!-- Update_Description: new article about tutorial parallel python -->
-<!--NEW.date: 12/21/2020-->
