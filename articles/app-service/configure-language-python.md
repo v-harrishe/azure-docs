@@ -2,7 +2,11 @@
 title: Configure Linux Python apps
 description: Learn how to configure the Python container in which web apps are run, using both the Azure portal and the Azure CLI. 
 ms.topic: quickstart
-ms.date: 11/16/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
 ---
@@ -15,17 +19,17 @@ The App Service deployment engine automatically activates a virtual environment 
 
 This guide provides key concepts and instructions for Python developers who use a built-in Linux container in App Service. If you've never used Azure App Service, first follow the [Python quickstart](quickstart-python.md) and [Python with PostgreSQL tutorial](tutorial-python-postgresql-app.md).
 
-You can use either the [Azure portal](https://portal.azure.com) or the Azure CLI for configuration:
+You can use either the [Azure portal](https://portal.azure.cn) or the Azure CLI for configuration:
 
 - **Azure portal**, use the app's **Settings** > **Configuration** page as described on [Configure an App Service app in the Azure portal](configure-common.md).
 
 - **Azure CLI**: you have two options.
 
-    - Run commands in the [Azure Cloud Shell](../cloud-shell/overview.md).
-    - Run commands locally by installing the latest version of the [Azure CLI](/cli/azure/install-azure-cli), then sign in to Azure using [az login](/cli/azure/reference-index#az-login).
+    - Run commands in the [Azure local Shell](../cloud-shell/overview.md).
+    - Run commands locally by installing the latest version of the [Azure CLI](https://docs.azure.cn/cli/install-azure-cli), then sign in to Azure using [az login](https://docs.azure.cn/cli/reference-index#az_login).
     
 > [!NOTE]
-> Linux is currently the recommended option for running Python apps in App Service. For information on the Windows option, see [Python on the Windows flavor of App Service](/visualstudio/python/managing-python-on-azure-app-service).
+> Linux is currently the recommended option for running Python apps in App Service. For information on the Windows option, see [Python on the Windows flavor of App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
 
 ## Configure Python version
 
@@ -33,7 +37,7 @@ You can use either the [Azure portal](https://portal.azure.com) or the Azure CLI
 
 - **Azure CLI**:
 
-    -  Show the current Python version with [az webapp config show](/cli/azure/webapp/config#az_webapp_config_show):
+    - Show the current Python version with [az webapp config show](https://docs.azure.cn/cli/webapp/config#az_webapp_config_show):
     
         ```azurecli
         az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
@@ -41,13 +45,13 @@ You can use either the [Azure portal](https://portal.azure.com) or the Azure CLI
         
         Replace `<resource-group-name>` and `<app-name>` with the names appropriate for your web app.
     
-    - Set the Python version with [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set)
+    - Set the Python version with [az webapp config set](https://docs.azure.cn/cli/webapp/config#az_webapp_config_set)
         
         ```azurecli
         az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
         ```
     
-    - Show all Python versions that are supported in Azure App Service with [az webapp list-runtimes](/cli/azure/webapp#az_webapp_list_runtimes):
+    - Show all Python versions that are supported in Azure App Service with [az webapp list-runtimes](https://docs.azure.cn/cli/webapp#az_webapp_list_runtimes):
     
         ```azurecli
         az webapp list-runtimes --linux | grep PYTHON
@@ -56,6 +60,7 @@ You can use either the [Azure portal](https://portal.azure.com) or the Azure CLI
 You can run an unsupported version of Python by building your own container image instead. For more information, see [use a custom Docker image](tutorial-custom-container.md?pivots=container-linux).
 
 <!-- <a> element here to preserve external links-->
+
 <a name="access-environment-variables"></a>
 
 ## Customize build automation
@@ -189,7 +194,7 @@ If the App Service doesn't find a custom command, a Django app, or a Flask app, 
 
 If you deployed code and still see the default app, see [Troubleshooting - App doesn't appear](#app-doesnt-appear).
 
-[![Default App Service on Linux web page](media/configure-language-python/default-python-app.png)](#app-doesnt-appear)
+[:::image type="content" source="media/configure-language-python/default-python-app.png" alt-text="Default App Service on Linux web page":::](#app-doesnt-appear)
 
 Again, if you expect to see a deployed app instead of the default app, see [Troubleshooting - App doesn't appear](#app-doesnt-appear).
 
@@ -205,7 +210,7 @@ To specify a startup command or command file:
 
 - **Azure portal**: select the app's **Configuration** page, then select **General settings**. In the **Startup Command** field, place either the full text of your startup command or the name of your startup command file. Then select **Save** to apply the changes. See [Configure general settings](configure-common.md#configure-general-settings) for Linux containers.
 
-- **Azure CLI**: use the [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) command with the `--startup-file` parameter to set the startup command or file:
+- **Azure CLI**: use the [az webapp config set](https://docs.azure.cn/cli/webapp/config#az_webapp_config_set) command with the `--startup-file` parameter to set the startup command or file:
 
     ```azurecli
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -213,7 +218,7 @@ To specify a startup command or command file:
         
     Replace `<custom-command>` with either the full text of your startup command or the name of your startup command file.
         
-App Service ignores any errors that occur when processing a custom startup command or file, then continues its startup process by looking for Django and Flask apps. If you don't see the behavior you expect, check that your startup command or file is error-free and that a startup command file is deployed to App Service along with your app code. You can also check the [Diagnostic logs](#access-diagnostic-logs) for additional information. Also check the app's **Diagnose and solve problems** page on the [Azure portal](https://portal.azure.com).
+App Service ignores any errors that occur when processing a custom startup command or file, then continues its startup process by looking for Django and Flask apps. If you don't see the behavior you expect, check that your startup command or file is error-free and that a startup command file is deployed to App Service along with your app code. You can also check the [Diagnostic logs](#access-diagnostic-logs) for additional information. Also check the app's **Diagnose and solve problems** page on the [Azure portal](https://portal.azure.cn).
 
 ### Example startup commands
 
@@ -268,7 +273,7 @@ db_server = os.environ['DATABASE_SERVER']
     
 ## Detect HTTPS session
 
-In App Service, [SSL termination](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to check if the user requests are encrypted or not, inspect the `X-Forwarded-Proto` header.
+In App Service, [SSL termination](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/TLS_termination_proxy) (wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) happens at the network load balancers, so all HTTPS requests reach your app as unencrypted HTTP requests. If your app logic needs to check if the user requests are encrypted or not, inspect the `X-Forwarded-Proto` header.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
@@ -369,3 +374,7 @@ The following sections provide additional guidance for specific issues.
 
 > [!div class="nextstepaction"]
 > [App Service Linux FAQ](faq-app-service-linux.md)
+
+
+<!-- Update_Description: new article about configure language python -->
+<!--NEW.date: 12/21/2020-->

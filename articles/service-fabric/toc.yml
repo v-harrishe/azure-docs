@@ -125,7 +125,7 @@
 - name: Samples
   items:
   - name: Code samples
-    href: /samples/browse/
+    href: https://docs.azure.cn/samples/browse/
   - name: Azure PowerShell
     href: service-fabric-powershell-samples.md
   - name: Service Fabric CLI
@@ -591,9 +591,9 @@
     - name: Migrate to Service Fabric
       href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
     - name: Recommended practices
-      href: /azure/architecture/service-fabric/migrate-from-cloud-services
+      href: https://docs.azure.cn/architecture/service-fabric/migrate-from-cloud-services
     - name: Modernize your application
-      href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
+      href: https://docs.azure.cn/architecture/service-fabric/modernize-app-azure-service-fabric
   - name: Manage application lifecycle
     items:
     - name: Package an application
@@ -645,7 +645,7 @@
       - name: Set up continuous integration with Azure Pipelines
         href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
       - name: Deploy your Linux applications using Jenkins
-        href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
+        href: https://docs.azure.cn/developer/jenkins/deploy-to-service-fabric-cluster
   - name: Set up and configure reverse proxy
     items:
     - name: Set up and configure reverse proxy 
@@ -818,11 +818,11 @@
 - name: Reference
   items:
   - name: Azure PowerShell
-    href: /powershell/module/az.servicefabric/
+    href: https://docs.microsoft.com/powershell/module/az.servicefabric/
   - name: PowerShell
-    href: /powershell/module/servicefabric/?view=azureservicefabricps
+    href: https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps
   - name: Azure CLI (az sf)
-    href: /cli/azure/sf
+    href: https://docs.azure.cn/cli/sf
   - name: Service Fabric CLI (sfctl)
     href: service-fabric-sfctl.md
     items:
@@ -886,13 +886,13 @@
     - name: sfctl store
       href: service-fabric-sfctl-store.md
   - name: Java API
-    href: /java/api/overview/azure/servicefabric
+    href: https://docs.azure.cn/java/api/overview/servicefabric
   - name: .NET
-    href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
+    href: https://docs.azure.cn/dotnet/api/overview/service-fabric
   - name: REST
-    href: /rest/api/servicefabric
+    href: https://docs.microsoft.com/rest/api/servicefabric
   - name: Resource Manager template
-    href: /azure/templates/microsoft.servicefabric/clusters
+    href: https://docs.azure.cn/templates/microsoft.servicefabric/clusters
   - name: Service Fabric events
     href: service-fabric-diagnostics-event-generation-operational.md
   - name: Configure cluster settings and fabric upgrade policy
@@ -918,30 +918,35 @@
 - name: Resources
   items:
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/
+    href: https://www.azure.cn/roadmap/
   - name: Common questions
     href: service-fabric-common-questions.md
   - name: Service Fabric managed clusters common questions
     href: faq-managed-cluster.md
-  - name: Microsoft Q&A question page
-    href: /answers/topics/azure-service-fabric.html
+  - name: Azure Q&A question page
+    href: https://docs.microsoft.com/answers/topics/azure-service-fabric.html
   - name: Azure Resource Manager Deployment Guardrails
     href: service-fabric-azure-resource-manager-guardrails.md
   - name: Pricing
-    href: https://azure.microsoft.com/pricing/details/service-fabric/
+    href: https://www.azure.cn/pricing/details/service-fabric/
   - name: Pricing calculator
-    href: https://azure.microsoft.com/pricing/calculator/
+    href: https://www.azure.cn/pricing/calculator/
   - name: Release notes
     href: release-notes.md
   - name: Sample code
-    href: /samples/browse/?products=azure
+    href: https://docs.azure.cn/samples/browse/?products=azure
   - name: Support options
     href: service-fabric-support.md
   - name: Service Fabric versions
     href: service-fabric-versions.md
   - name: Service Updates
-    href: https://azure.microsoft.com/updates/?product=service-fabric
+    href: https://www.azure.cn/updates/?product=service-fabric
   - name: Troubleshooting guides
     href: https://github.com/Azure/Service-Fabric-Troubleshooting-Guides
   - name: Videos
-    href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
+    href: https://www.azure.cn/video-center/
+
+
+
+<!-- Update_Description: new article about toc. -->
+<!--NEW.date: 12/21/2020-->

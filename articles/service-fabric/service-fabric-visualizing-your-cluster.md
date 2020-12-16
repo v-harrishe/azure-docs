@@ -1,8 +1,12 @@
 ---
 title: Visualizing your cluster using Azure Service Fabric Explorer 
-description: Service Fabric Explorer is an application for inspecting and managing cloud applications and nodes in a Microsoft Azure Service Fabric cluster.
+description: Service Fabric Explorer is an application for inspecting and managing cloud applications and nodes in a Azure Azure Service Fabric cluster.
 ms.topic: conceptual
-ms.date: 01/24/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Visualize your cluster with Service Fabric Explorer
 
@@ -39,7 +43,7 @@ For developer workstation setup, you can launch Service Fabric Explorer on your 
 >
 
 ## Connect to a Service Fabric cluster
-To connect to a Service Fabric cluster, you need the clusters management endpoint (FQDN/IP) and the HTTP management endpoint port (19080 by default). For example https\://mysfcluster.westus.cloudapp.azure.com:19080. Use the "Connect to localhost" checkbox to connect to a local cluster on your workstation.
+To connect to a Service Fabric cluster, you need the clusters management endpoint (FQDN/IP) and the HTTP management endpoint port (19080 by default). For example https\://mysfcluster.chinanorth.cloudapp.chinacloudapi.cn:19080. Use the "Connect to localhost" checkbox to connect to a local cluster on your workstation.
 
 ### Connect to a secure cluster
 You can control client access to your Service Fabric cluster either with certificates or using Azure Active Directory (AAD).
@@ -124,12 +128,13 @@ The following operations are possible:
 * Trigger and track Backup of a partition.
 * Trigger and track Restore for a partition.
 
-For more on the Backup and Restore service, see the [REST API reference](/rest/api/servicefabric/sfclient-index-backuprestore).
+For more on the Backup and Restore service, see the [REST API reference](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore).
 ## Next steps
 * [Managing your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric application deployment using PowerShell](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
+
 [sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png
 [sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-map.png
 [sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/sfx-application-tree.png
@@ -139,3 +144,8 @@ For more on the Backup and Restore service, see the [REST API reference](/rest/a
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
 [0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
+
+
+
+<!-- Update_Description: new article about service fabric visualizing your cluster -->
+<!--NEW.date: 12/21/2020-->

@@ -2,17 +2,21 @@
 title: Using private endpoints for Azure App Configuration
 description: Secure your App Configuration store using private endpoints
 services: azure-app-configuration
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 07/15/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 #Customer intent: As a developer using Azure App Configuration, I want to understand how to use private endpoints to enable secure communication with my App Configuration instance.
 ---
 # Using private endpoints for Azure App Configuration
 
-You can use [private endpoints](../private-link/private-endpoint-overview.md) for Azure App Configuration to allow clients on a virtual network (VNet) to securely access data over a [private link](../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your App Configuration store. Network traffic between the clients on the VNet and the App Configuration store traverses over the VNet using a private link on the Microsoft backbone network, eliminating exposure to the public internet.
+You can use [private endpoints](../private-link/private-endpoint-overview.md) for Azure App Configuration to allow clients on a virtual network (VNet) to securely access data over a [private link](../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your App Configuration store. Network traffic between the clients on the VNet and the App Configuration store traverses over the VNet using a private link on the Azure backbone network, eliminating exposure to the public internet.
 
 Using private endpoints for your App Configuration store enables you to:
 - Secure your application configuration details by configuring the firewall to block all connections to App Configuration on the public endpoint.
@@ -29,7 +33,7 @@ While App Configuration doesn't support service endpoints, private endpoints can
 
 When you create a private endpoint for a service in your VNet, a consent request is sent for approval to the service account owner. If the user requesting the creation of the private endpoint is also an owner of the account, this consent request is automatically approved.
 
-Service account owners can manage consent requests and private endpoints through the `Private Endpoints` tab of the config store in the [Azure portal](https://portal.azure.com).
+Service account owners can manage consent requests and private endpoints through the `Private Endpoints` tab of the config store in the [Azure portal](https://portal.azure.cn).
 
 ### Private endpoints for App Configuration 
 
@@ -55,7 +59,7 @@ If you are using a custom DNS server on your network, clients must be able to re
 
 ## Pricing
 
-Enabling private endpoints requires a [Standard tier](https://azure.microsoft.com/pricing/details/app-configuration/) App Configuration store.  To learn about private link pricing details, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link).
+Enabling private endpoints requires a [Standard tier](https://www.azure.cn/pricing/details/app-configuration/) App Configuration store.  To learn about private link pricing details, see [Azure Private Link pricing](https://www.azure.cn/pricing/details/private-link).
 
 ## Next steps
 
@@ -69,3 +73,7 @@ Learn to configure your DNS server with private endpoints:
 
 - [Name resolution for resources in Azure virtual networks](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
 - [DNS configuration for Private Endpoints](../private-link/private-endpoint-overview.md#dns-configuration)
+
+
+<!-- Update_Description: new article about concept private endpoint -->
+<!--NEW.date: 12/21/2020-->

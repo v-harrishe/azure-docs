@@ -2,14 +2,17 @@
 title: Tutorial - Clean up resources | Azure
 description: In this tutorial, you learn how to clean up the Azure resources allocated while creating the web app.
 services: storage, app-service-web
-author: rwike77
+
 manager: CelesteDG
 
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 10/27/2020
-ms.author: ryanwi
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: stsoneff
 ms.custom: azureday1
 #Customer intent: As an application developer, I want to learn how to access Azure Storage for an app using managed identities.
@@ -27,7 +30,7 @@ In this tutorial, you learn how to:
 
 ## Delete the resource group
 
-In the [Azure portal](https://portal.azure.com), select **Resource groups** from the portal menu and select the resource group that contains your app service and app service plan.
+In the [Azure portal](https://portal.azure.cn), select **Resource groups** from the portal menu and select the resource group that contains your app service and app service plan.
 
 Select **Delete resource group** to delete the resource group and all the resources.
 
@@ -52,3 +55,7 @@ In this tutorial, you learned how to:
 > * Delete the Azure resources created while following the tutorial.
 
 Learn how to connect a [.NET Core app](tutorial-dotnetcore-sqldb-app.md), [Python app](tutorial-python-postgresql-app.md), [Java app](tutorial-java-spring-cosmosdb.md), or [Node.js app](tutorial-nodejs-mongodb-app.md) to a database.
+
+
+<!-- Update_Description: new article about scenario secure app clean up resources -->
+<!--NEW.date: 12/21/2020-->

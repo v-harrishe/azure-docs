@@ -3,8 +3,11 @@ title: Service Fabric cluster capacity planning considerations
 description: Node types, durability, reliability, and other things to consider when planning your Service Fabric cluster.
 
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.author: pepogors
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Service Fabric cluster capacity planning considerations
 
@@ -28,7 +31,7 @@ Each cluster requires one **primary node type**, which runs critical system serv
 
 **Non-primary node types** can be used to define application roles (such as *front-end* and *back-end* services) and to physically isolate services within a cluster. Service Fabric clusters can have zero or more non-primary node types.
 
-The primary node type is configured using the `isPrimary` attribute under the node type definition in the Azure Resource Manager deployment template. See the [NodeTypeDescription object](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) for the full list of node type properties. For example usage, open any *AzureDeploy.json* file in [Service Fabric cluster samples](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) and *Find on Page* search for the `nodeTypes` object.
+The primary node type is configured using the `isPrimary` attribute under the node type definition in the Azure Resource Manager deployment template. See the [NodeTypeDescription object](https://docs.azure.cn/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) for the full list of node type properties. For example usage, open any *AzureDeploy.json* file in [Service Fabric cluster samples](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) and *Find on Page* search for the `nodeTypes` object.
 
 ### Node type planning considerations
 
@@ -64,7 +67,7 @@ The *durability level* designates the privileges your Service Fabric VMs have wi
 The table below lists Service Fabric durability tiers, their requirements, and affordances.
 
 | Durability tier  | Required minimum number of VMs | Supported VM Sizes                                                                  | Updates you make to your virtual machine scale set                               | Updates and maintenance initiated by Azure                                                              | 
-| ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| ---------------- |  ---------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Gold             | 5                              | Full-node sizes dedicated to a single customer (for example, L32s, GS5, G5, DS15_v2, D15_v2) | Can be delayed until approved by the Service Fabric cluster | Can be paused for 2 hours per upgrade domain to allow additional time for replicas to recover from earlier failures |
 | Silver           | 5                              | VMs of single core or above with at least 50 GB of local SSD                      | Can be delayed until approved by the Service Fabric cluster | Cannot be delayed for any significant period of time                                                    |
 | Bronze          | 1                              | VMs with at least 50 GB of local SSD                                              | Will not be delayed by the Service Fabric cluster           | Cannot be delayed for any significant period of time                                                    |
@@ -73,7 +76,7 @@ The table below lists Service Fabric durability tiers, their requirements, and a
 > With Bronze durability, automatic OS image upgrade isn't available. While [Patch Orchestration Application](service-fabric-patch-orchestration-application.md) (intended only for non-Azure hosted clusters) is *not recommended* for Silver or greater durability levels, it is your only option to automate Windows updates with respect to Service Fabric upgrade domains.
 
 > [!IMPORTANT]
-> Regardless of durability level, running a [Deallocation](/rest/api/compute/virtualmachinescalesets/deallocate) operation on a virtual machine scale set will destroy the cluster.
+> Regardless of durability level, running a [Deallocation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) operation on a virtual machine scale set will destroy the cluster.
 
 ### Bronze
 
@@ -141,7 +144,7 @@ Here is the recommendation on choosing the reliability tier. The number of seed 
 | 7 or 8 | Gold |
 | 9 and up | Platinum |
 
-When you increase or decrease the size of your cluster (the sum of VM instances in all node types), consider updating the reliability of your cluster from one tier to another. Doing this triggers the cluster upgrades needed to change the system services replica set count. Wait for the upgrade in progress to complete before making any other changes to the cluster, like adding nodes.  You can monitor the progress of the upgrade on Service Fabric Explorer or by running [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+When you increase or decrease the size of your cluster (the sum of VM instances in all node types), consider updating the reliability of your cluster from one tier to another. Doing this triggers the cluster upgrades needed to change the system services replica set count. Wait for the upgrade in progress to complete before making any other changes to the cluster, like adding nodes.  You can monitor the progress of the upgrade on Service Fabric Explorer or by running [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
 ### Capacity planning for reliability
 
@@ -153,7 +156,10 @@ The capacity needs of your cluster will be determined by your specific workload 
 
 - Partial core VM sizes like Standard A0 are not supported.
 - *A-series* VM sizes are not supported for performance reasons.
-- Low-priority VMs are not supported.
+- Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs are not supported.
+
+<!--Not Available on FEATURE Low-priority-->
+
 
 #### Primary node type
 
@@ -187,4 +193,10 @@ For more on cluster planning, see:
 * [Disaster recovery planning](service-fabric-disaster-recovery.md)
 
 <!--Image references-->
+
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
+
+
+
+<!-- Update_Description: new article about service fabric cluster capacity -->
+<!--NEW.date: 12/21/2020-->

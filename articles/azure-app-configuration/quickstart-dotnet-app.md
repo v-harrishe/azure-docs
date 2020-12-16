@@ -1,15 +1,18 @@
 ---
-title: Quickstart for Azure App Configuration with .NET Framework | Microsoft Docs
+title: Quickstart for Azure App Configuration with .NET Framework | Azure Docs
 description: In this article, create a .NET Framework app with Azure App Configuration to centralize storage and management of application settings separate from your code.
 services: azure-app-configuration
 documentationcenter: ''
-author: AlexandraKemperMS
+
 
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 09/28/2020
-ms.author: alkemper
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 #Customer intent: As a .NET Framework developer, I want to manage all my app settings in one place.
 ---
@@ -19,7 +22,7 @@ In this quickstart, you incorporate Azure App Configuration into a .NET Framewor
 
 ## Prerequisites
 
-- Azure subscription - [create one for free](https://azure.microsoft.com/free/dotnet)
+- Azure subscription - [create one for free](https://www.azure.cn/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
@@ -105,3 +108,8 @@ In this quickstart, you created a new App Configuration store and used it with a
 
 > [!div class="nextstepaction"]
 > [Enable dynamic configuration](./enable-dynamic-configuration-dotnet.md)
+
+
+
+<!-- Update_Description: new article about quickstart dotnet app -->
+<!--NEW.date: 12/21/2020-->

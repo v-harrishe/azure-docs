@@ -1,11 +1,15 @@
 ---
 title: Azure CLI samples - Azure App Configuration
 description: Information about sample scripts provided for Azure App Configuration
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: sample
-ms.date: 02/19/2020 
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-azurecli
 ---
 
@@ -24,3 +28,8 @@ The following table includes links to bash scripts for Azure App Configuration b
 |**Delete**||
 | [Delete an App Configuration store](./scripts/cli-delete-service.md) | Deletes an App Configuration store instance.  |
 | | |
+
+
+
+<!-- Update_Description: new article about cli samples -->
+<!--NEW.date: 12/21/2020-->

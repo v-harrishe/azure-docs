@@ -1,34 +1,37 @@
 ---
-title: Tutorial - Web app accesses Microsoft Graph as the user | Azure
-description: In this tutorial, you learn how to access data in Microsoft Graph for a signed-in user.
+title: Tutorial - Web app accesses Azure Graph as the user | Azure
+description: In this tutorial, you learn how to access data in Azure Graph for a signed-in user.
 services: microsoft-graph, app-service-web
-author: rwike77
+
 manager: CelesteDG
 
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
-ms.author: ryanwi
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: stsoneff
 ms.custom: azureday1
-#Customer intent: As an application developer, I want to learn how to access data in Microsoft Graph for a signed-in user.
+#Customer intent: As an application developer, I want to learn how to access data in Azure Graph for a signed-in user.
 ---
 
-# Tutorial: Access Microsoft Graph from a secured app as the user
+# Tutorial: Access Azure Graph from a secured app as the user
 
-Learn how to access Microsoft Graph from a web app running on Azure App Service.
+Learn how to access Azure Graph from a web app running on Azure App Service.
 
-:::image type="content" alt-text="Diagram that shows accessing Microsoft Graph." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
+:::image type="content" alt-text="Diagram that shows accessing Azure Graph." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-You want to add access to Microsoft Graph from your web app and perform some action as the signed-in user. This section describes how to grant delegated permissions to the web app and get the signed-in user's profile information from Azure Active Directory (Azure AD).
+You want to add access to Azure Graph from your web app and perform some action as the signed-in user. This section describes how to grant delegated permissions to the web app and get the signed-in user's profile information from Azure Active Directory (Azure AD).
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
 > * Grant delegated permissions to a web app.
-> * Call Microsoft Graph from a web app for a signed-in user.
+> * Call Azure Graph from a web app for a signed-in user.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,24 +39,24 @@ In this tutorial, you learn how to:
 
 * A web application running on Azure App Service that has the [App Service authentication/authorization module enabled](scenario-secure-app-authentication-app-service.md).
 
-## Grant front-end access to call Microsoft Graph
+## Grant front-end access to call Azure Graph
 
-Now that you've enabled authentication and authorization on your web app, the web app is registered with the Microsoft identity platform and is backed by an Azure AD application. In this step, you give the web app permissions to access Microsoft Graph for the user. (Technically, you give the web app's Azure AD application the permissions to access the Microsoft Graph Azure AD application for the user.)
+Now that you've enabled authentication and authorization on your web app, the web app is registered with the Azure identity platform and is backed by an Azure AD application. In this step, you give the web app permissions to access Azure Graph for the user. (Technically, you give the web app's Azure AD application the permissions to access the Azure Graph Azure AD application for the user.)
 
-In the [Azure portal](https://portal.azure.com) menu, select **Azure Active Directory** or search for and select **Azure Active Directory** from any page.
+In the [Azure portal](https://portal.azure.cn) menu, select **Azure Active Directory** or search for and select **Azure Active Directory** from any page.
 
 Select **App registrations** > **Owned applications** > **View all applications in this directory**. Select your web app name, and then select **API permissions**.
 
-Select **Add a permission**, and then select Microsoft APIs and Microsoft Graph.
+Select **Add a permission**, and then select Azure APIs and Azure Graph.
 
 Select **Delegated permissions**, and then select **User.Read** from the list. Select **Add permissions**.
 
 ## Configure App Service to return a usable access token
 
-The web app now has the required permissions to access Microsoft Graph as the signed-in user. In this step, you configure App Service authentication and authorization to give you a usable access token for accessing Microsoft Graph. For this step, you need the client/app ID of the downstream service (Microsoft Graph). The app ID for Microsoft Graph is *00000003-0000-0000-c000-000000000000*.
+The web app now has the required permissions to access Azure Graph as the signed-in user. In this step, you configure App Service authentication and authorization to give you a usable access token for accessing Azure Graph. For this step, you need the client/app ID of the downstream service (Microsoft Graph). The app ID for Azure Graph is *00000003-0000-0000-c000-000000000000*.
 
 > [!IMPORTANT]
-> If you don't configure App Service to return a usable access token, you receive a ```CompactToken parsing failed with error code: 80049217``` error when you call Microsoft Graph APIs in your code.
+> If you don't configure App Service to return a usable access token, you receive a ```CompactToken parsing failed with error code: 80049217``` error when you call Azure Graph APIs in your code.
 
 Go to [Azure Resource Explorer](https://resources.azure.com/) and using the resource tree, locate your web app. The resource URL should be similar to `https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`.
 
@@ -67,16 +70,16 @@ In the **authsettings** view, select **Edit**. Set ```additionalLoginParams``` t
 "additionalLoginParams": ["response_type=code id_token","resource=00000003-0000-0000-c000-000000000000"],
 ```
 
-Save your settings by selecting **PUT**. This setting can take several minutes to take effect. Your web app is now configured to access Microsoft Graph with a proper access token. If you don't, Microsoft Graph returns an error saying that the format of the compact token is incorrect.
+Save your settings by selecting **PUT**. This setting can take several minutes to take effect. Your web app is now configured to access Azure Graph with a proper access token. If you don't, Azure Graph returns an error saying that the format of the compact token is incorrect.
 
-## Call Microsoft Graph (.NET)
+## Call Azure Graph (.NET)
 
-Your web app now has the required permissions and also adds Microsoft Graph's client ID to the login parameters. Using the [Microsoft.Identity.Web library](https://github.com/AzureAD/microsoft-identity-web/), the web app gets an access token for authentication with Microsoft Graph. In version 1.2.0 and later, the Microsoft.Identity.Web library integrates with and can run alongside the App Service authentication/authorization module. Microsoft.Identity.Web detects that the web app is hosted in App Service and gets the access token from the App Service authentication/authorization module. The access token is then passed along to authenticated requests with the Microsoft Graph API.
+Your web app now has the required permissions and also adds Azure Graph's client ID to the login parameters. Using the [Microsoft.Identity.Web library](https://github.com/AzureAD/microsoft-identity-web/), the web app gets an access token for authentication with Azure Graph. In version 1.2.0 and later, the Microsoft.Identity.Web library integrates with and can run alongside the App Service authentication/authorization module. Microsoft.Identity.Web detects that the web app is hosted in App Service and gets the access token from the App Service authentication/authorization module. The access token is then passed along to authenticated requests with the Azure Graph API.
 
 To see this code as part of a sample application, see the [sample on GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf).
 
 > [!NOTE]
-> The Microsoft.Identity.Web library isn't required in your web app for basic authentication/authorization or to authenticate requests with Microsoft Graph. It's possible to [securely call downstream APIs](tutorial-auth-aad.md#call-api-securely-from-server-code) with only the App Service authentication/authorization module enabled.
+> The Microsoft.Identity.Web library isn't required in your web app for basic authentication/authorization or to authenticate requests with Azure Graph. It's possible to [securely call downstream APIs](tutorial-auth-aad.md#call-api-securely-from-server-code) with only the App Service authentication/authorization module enabled.
 > 
 > However, the App Service authentication/authorization is designed for more basic authentication scenarios. For more complex scenarios (handling custom claims, for example), you need the Microsoft.Identity.Web library or [Microsoft Authentication Library](../active-directory/develop/msal-overview.md). There's a little more setup and configuration work in the beginning, but the Microsoft.Identity.Web library can run alongside the App Service authentication/authorization module. Later, when your web app needs to handle more complex scenarios, you can disable the App Service authentication/authorization module and Microsoft.Identity.Web will already be a part of your app.
 
@@ -111,7 +114,7 @@ Install-Package Microsoft.Identity.Web
 
 ### Startup.cs
 
-In the *Startup.cs* file, the ```AddMicrosoftIdentityWebApp``` method adds Microsoft.Identity.Web to your web app. The ```AddMicrosoftGraph``` method adds Microsoft Graph support.
+In the *Startup.cs* file, the ```AddMicrosoftIdentityWebApp``` method adds Microsoft.Identity.Web to your web app. The ```AddMicrosoftGraph``` method adds Azure Graph support.
 
 ```csharp
 using Microsoft.AspNetCore.Builder;
@@ -142,15 +145,15 @@ public class Startup
 
 ### appsettings.json
 
-*AzureAd* specifies the configuration for the Microsoft.Identity.Web library. In the [Azure portal](https://portal.azure.com), select **Azure Active Directory** from the portal menu and then select **App registrations**. Select the app registration created when you enabled the App Service authentication/authorization module. (The app registration should have the same name as your web app.) You can find the tenant ID and client ID in the app registration overview page. The domain name can be found in the Azure AD overview page for your tenant.
+*AzureAd* specifies the configuration for the Microsoft.Identity.Web library. In the [Azure portal](https://portal.azure.cn), select **Azure Active Directory** from the portal menu and then select **App registrations**. Select the app registration created when you enabled the App Service authentication/authorization module. (The app registration should have the same name as your web app.) You can find the tenant ID and client ID in the app registration overview page. The domain name can be found in the Azure AD overview page for your tenant.
 
-*Graph* specifies the Microsoft Graph endpoint and the initial scopes needed by the app.
+*Graph* specifies the Azure Graph endpoint and the initial scopes needed by the app.
 
 ```json
 {
   "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    "Domain": "fourthcoffeetest.onmicrosoft.com",
+    "Instance": "https://login.partner.microsoftonline.cn/",
+    "Domain": "fourthcoffeetest.partner.onmschina.cn",
     "TenantId": "[tenant-id]",
     "ClientId": "[client-id]",
     // To call an API
@@ -159,7 +162,7 @@ public class Startup
   },
 
   "Graph": {
-    "BaseUrl": "https://graph.microsoft.com/v1.0",
+    "BaseUrl": "https://graph.chinacloudapi.cn/v1.0",
     "Scopes": "user.read"
   },
   "Logging": {
@@ -175,7 +178,7 @@ public class Startup
 
 ### Index.cshtml.cs
 
-The following example shows how to call Microsoft Graph as the signed-in user and get some user information. The ```GraphServiceClient``` object is injected into the controller, and authentication has been configured for you by the Microsoft.Identity.Web library.
+The following example shows how to call Azure Graph as the signed-in user and get some user information. The ```GraphServiceClient``` object is injected into the controller, and authentication has been configured for you by the Microsoft.Identity.Web library.
 
 ```csharp
 using System.Threading.Tasks;
@@ -232,7 +235,11 @@ In this tutorial, you learned how to:
 > [!div class="checklist"]
 >
 > * Grant delegated permissions to a web app.
-> * Call Microsoft Graph from a web app for a signed-in user.
+> * Call Azure Graph from a web app for a signed-in user.
 
 > [!div class="nextstepaction"]
-> [App service accesses Microsoft Graph as the app](scenario-secure-app-access-microsoft-graph-as-app.md)
+> [App service accesses Azure Graph as the app](scenario-secure-app-access-microsoft-graph-as-app.md)
+
+
+<!-- Update_Description: new article about scenario secure app access microsoft graph as user -->
+<!--NEW.date: 12/21/2020-->

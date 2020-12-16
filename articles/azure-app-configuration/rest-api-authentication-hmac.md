@@ -1,11 +1,15 @@
 ---
 title: Azure App Configuration REST API - HMAC authentication
 description: Use HMAC to authenticate to Azure App Configuration by using the REST API
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: reference
-ms.date: 08/17/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # HMAC authentication - REST API reference
@@ -17,7 +21,7 @@ You can authenticate HTTP requests by using the HMAC-SHA256 authentication schem
 - **Credential** - \<Access Key ID\>
 - **Secret** - base64 decoded Access Key Value. ``base64_decode(<Access Key Value>)``
 
-The values for credential (also called `id`) and secret (also called `value`) must be obtained from the instance of Azure App Configuration. You can do this by using the [Azure portal](https://portal.azure.com) or the [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest).
+The values for credential (also called `id`) and secret (also called `value`) must be obtained from the instance of Azure App Configuration. You can do this by using the [Azure portal](https://portal.azure.cn) or the [Azure CLI](https://docs.azure.cn/cli/?preserve-view=true&view=azure-cli-latest).
 
 Provide each request with all HTTP headers required for authentication. The minimum required are:
 
@@ -592,3 +596,7 @@ while IFS= read -r line; do
 done <<< "$headers"
 curl -X "$method" -d "$body" "${header_args[@]}" "https://$host$url"
 ```
+
+
+<!-- Update_Description: new article about rest api authentication hmac -->
+<!--NEW.date: 12/21/2020-->

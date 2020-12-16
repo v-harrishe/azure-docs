@@ -2,16 +2,19 @@
 title: Azure Firewall SNAT private IP address ranges
 description: You can configure IP address ranges for SNAT. 
 services: firewall
-author: vhorne
+
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.author: victorh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Azure Firewall SNAT private IP address ranges
 
-Azure Firewall provides automatic SNAT for all outbound traffic to public IP addresses. By default, Azure Firewall doesn't SNAT with Network rules when the destination IP address is in a private IP address range per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Application rules are always applied using a [transparent proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) whatever the destination IP address.
+Azure Firewall provides automatic SNAT for all outbound traffic to public IP addresses. By default, Azure Firewall doesn't SNAT with Network rules when the destination IP address is in a private IP address range per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Application rules are always applied using a [transparent proxy](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Proxy_server#Transparent_proxy) whatever the destination IP address.
 
 This logic works well when you route traffic directly to the Internet. However, if you've enabled [forced tunneling](forced-tunneling.md), Internet-bound traffic is SNATed to one of the firewall private IP addresses in AzureFirewallSubnet, hiding the source from your on-premises firewall.
 
@@ -50,7 +53,7 @@ New-AzFirewall @azFw
 > [!NOTE]
 > IANAPrivateRanges is expanded to the current defaults on Azure Firewall while the other ranges are added to it. To keep the IANAPrivateRanges default in your private range specification, it must remain in your `PrivateRange` specification as shown in the following examples.
 
-For more information, see [New-AzFirewall](/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
+For more information, see [New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
 
 ### Existing firewall
 
@@ -70,7 +73,7 @@ You can use Azure CLI to specify private IP address ranges for the firewall.
 
 For a new firewall, the Azure CLI command is:
 
-```azurecli-interactive
+```azurecli
 az network firewall create \
 -n <fw-name> \
 -g <resourcegroup-name> \
@@ -87,7 +90,7 @@ az network firewall create \
 
 To configure an existing firewall, the Azure CLI command is:
 
-```azurecli-interactive
+```azurecli
 az network firewall update \
 -n <fw-name> \
 -g <resourcegroup-name> \
@@ -121,3 +124,7 @@ You can use the Azure portal to specify private IP address ranges for the firewa
 ## Next steps
 
 - Learn about [Azure Firewall forced tunneling](forced-tunneling.md).
+
+
+<!-- Update_Description: new article about snat private range -->
+<!--NEW.date: 12/21/2020-->

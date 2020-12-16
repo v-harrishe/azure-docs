@@ -3,28 +3,33 @@ title: 'About Virtual WAN pricing'
 titleSuffix: Azure Virtual WAN
 description: This article describes common Virtual WAN pricing questions
 services: virtual-wan
-author: reyandap
+
 
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/08/2020
-ms.author: reyandap
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: references_pricing
 
 ---
 # About Virtual WAN pricing
 
-Azure Virtual WAN brings multiple network and security services together in a unified framework. It is based on a hub and spoke architecture, where the hubs are Microsoft-managed with various services provided within the hub, such as VPN, ExpressRoute, User VPN (Point-to-site), Firewall, Routing, etc.
+Azure Virtual WAN brings multiple network and security services together in a unified framework. It is based on a hub and spoke architecture, where the hubs are Azure-managed with various services provided within the hub, such as VPN, ExpressRoute, User VPN (Point-to-site), Firewall, Routing, etc.
 
-Each service in Virtual WAN is priced. Therefore, suggesting a single price is not applicable to Virtual WAN. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) provides a mechanism to derive the cost, which is based on the services provisioned in a Virtual WAN. This article discusses commonly asked questions about Virtual WAN pricing.
+Each service in Virtual WAN is priced. Therefore, suggesting a single price is not applicable to Virtual WAN. The [Azure Pricing Calculator](https://www.azure.cn/pricing/calculator/) provides a mechanism to derive the cost, which is based on the services provisioned in a Virtual WAN. This article discusses commonly asked questions about Virtual WAN pricing.
 
 >[!NOTE]
->For current pricing information, see [Virtual WAN pricing](https://azure.microsoft.com/pricing/details/virtual-wan/).
+>For current pricing information, see [Virtual WAN pricing](https://www.azure.cn/pricing/details/virtual-wan/).
 >
 
-## <a name="questions"></a>Common pricing questions
+<a name="questions"></a>
+## Common pricing questions
 
-### <a name="scale-unit"></a>What is a scale unit?
+<a name="scale-unit"></a>
+### What is a scale unit?
 
 A **scale unit** provides the unit for aggregate capacity of Site-to-site (S2S), Point-to-site (P2S), and ExpressRoute (ER) in a virtual hub. For example:
 
@@ -32,9 +37,10 @@ A **scale unit** provides the unit for aggregate capacity of Site-to-site (S2S),
 * **1 ER scale unit** implies a total of 2 Gbps ER gateway in virtual hub costing $0.42/hr.
 * **5 ER scale units** would imply a total of 10 Gbps ER gateway inside a virtual hub VNet priced at $0.42*5/hr. ER increments $0.25/hr from the 6th to 10th scale unit.
 
-### <a name="connection-unit"></a>What is a connection unit?
+<a name="connection-unit"></a>
+### What is a connection unit?
 
-A **connection unit** applies to any on-premises/non-Microsoft endpoint connecting to Azure gateways. For Site-to-site VPN, this value implies branches. For User VPN (Point-to-site), this value implies remote users. For ExpressRoute, this value implies ExpressRoute circuit connections.<br>For example:
+A **connection unit** applies to any on-premises/non-Microsoft endpoint connecting to Azure gateways. For Site-to-site VPN, this value implies branches. For User VPN (Point-to-site), this value implies remote users. For ExpressRoute, this value implies ExpressRoute circuit connections.<br />For example:
 
 * One branch connection connecting to Azure VPN in a virtual hub costs $0.05/hr. Therefore 100 branch connections connecting to an Azure virtual hub would cost $0.05*100/hr.
 
@@ -42,13 +48,15 @@ A **connection unit** applies to any on-premises/non-Microsoft endpoint connecti
 
 * Three remote user connections connecting to the Azure virtual hub P2S gateway would cost $0.03*3/hr.
 
-### <a name="data-transfer"></a>How are data transfer charges calculated?
+<a name="data-transfer"></a>
+### How are data transfer charges calculated?
 
-* Any traffic entering Azure is not charged. Traffic leaving Azure (via VPN, ExpressRoute, or Point-to-site User VPN connections) is subject to the standard [Azure data transfer charges](https://azure.microsoft.com/pricing/details/bandwidth/).
+* Any traffic entering Azure is not charged. Traffic leaving Azure (via VPN, ExpressRoute, or Point-to-site User VPN connections) is subject to the standard [Azure data transfer charges](https://www.azure.cn/pricing/details/data-transfer/).
 
-* For data transfer charges between a Virtual WAN  hub, and a remote Virtual WAN hub or VNet in a different region than the source hub, data transfer charges apply for traffic leaving a hub. Example: Traffic leaving an East US hub will be charged $0.02/GB going to a West US hub. There is no charge for traffic entering the West US hub. All hub to hub traffic is subject to Inter-Region (Intra/Inter-continental) charges [Azure data transfer charges](https://azure.microsoft.com/pricing/details/bandwidth/). 
+* For data transfer charges between a Virtual WAN  hub, and a remote Virtual WAN hub or VNet in a different region than the source hub, data transfer charges apply for traffic leaving a hub. Example: Traffic leaving an China East hub will be charged $0.02/GB going to a China East 2 hub. There is no charge for traffic entering the China East 2 hub. All hub to hub traffic is subject to Inter-Region (Intra/Inter-continental) charges [Azure data transfer charges](https://www.azure.cn/pricing/details/data-transfer/). 
 
-### <a name="fee"></a>What is the difference between a Standard hub fee and a Standard hub processing fee?
+<a name="fee"></a>
+### What is the difference between a Standard hub fee and a Standard hub processing fee?
 
 Virtual WAN comes in two flavors:
 
@@ -70,4 +78,8 @@ Virtual WAN comes in two flavors:
 
 * For more information about Virtual WAN, see the [FAQ](virtual-wan-faq.md).
 
-* For current pricing, see [Virtual WAN pricing](https://azure.microsoft.com/pricing/details/virtual-wan/).
+* For current pricing, see [Virtual WAN pricing](https://www.azure.cn/pricing/details/virtual-wan/).
+
+
+<!-- Update_Description: new article about pricing concepts -->
+<!--NEW.date: 12/21/2020-->

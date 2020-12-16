@@ -2,23 +2,27 @@
 title: Upgrade an Azure Service Fabric cluster
 description: Learn about upgrading the version or configuration of an Azure Service Fabric cluster—setting cluster update mode, upgrading certificates, adding application ports, doing OS patches, and what you can expect when the upgrades are performed.
 ms.topic: conceptual
-ms.date: 11/12/2018
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Upgrading and updating an Azure Service Fabric cluster
 
-For any modern system, designing for upgradability is key to achieving long-term success of your product. An Azure Service Fabric cluster is a resource that you own, but is partly managed by Microsoft. This article describes what is managed automatically and what you can configure yourself.
+For any modern system, designing for upgradability is key to achieving long-term success of your product. An Azure Service Fabric cluster is a resource that you own, but is partly managed by Azure. This article describes what is managed automatically and what you can configure yourself.
 
 ## Controlling the fabric version that runs on your cluster
 
-Make sure your cluster is always running a [supported fabric version](service-fabric-versions.md). Each time Microsoft announces the release of a new version of Service Fabric, the previous version is marked for end of support after a minimum of 60 days from that date. New releases are announced on the [Service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
+Make sure your cluster is always running a [supported fabric version](service-fabric-versions.md). Each time Azure announces the release of a new version of Service Fabric, the previous version is marked for end of support after a minimum of 60 days from that date. New releases are announced on the [Service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
 
 14 days prior to the expiry of the release your cluster is running, a health event is generated that puts your cluster into a warning health state. The cluster remains in a warning state until you upgrade to a supported fabric version.
 
-You can set your cluster to receive automatic fabric upgrades as they are released by Microsoft or you can select a supported fabric version you want your cluster to be on.  To learn more, read [upgrade the Service Fabric version of your cluster](service-fabric-cluster-upgrade-version-azure.md).
+You can set your cluster to receive automatic fabric upgrades as they are released by Azure or you can select a supported fabric version you want your cluster to be on.  To learn more, read [upgrade the Service Fabric version of your cluster](service-fabric-cluster-upgrade-version-azure.md).
 
 ## Fabric upgrade behavior during automatic upgrades
 
-Microsoft maintains the fabric code and configuration that runs in an Azure cluster. We perform automatic monitored upgrades to the software on an as-needed basis. These upgrades could be code, configuration, or both. To make sure that your application suffers no impact or minimal impact due to these upgrades, upgrades are performed in the following phases:
+Azure maintains the fabric code and configuration that runs in an Azure cluster. We perform automatic monitored upgrades to the software on an as-needed basis. These upgrades could be code, configuration, or both. To make sure that your application suffers no impact or minimal impact due to these upgrades, upgrades are performed in the following phases:
 
 ### Phase 1: An upgrade is performed by using all cluster health policies
 
@@ -62,7 +66,7 @@ If the cluster health policies are met, the upgrade is considered successful and
 
 ## Manage certificates
 
-Service Fabric uses [X.509 server certificates](service-fabric-cluster-security.md) that you specify when you create a cluster to secure communications between cluster nodes and authenticate clients. You can add, update, or delete certificates for the cluster and client in the [Azure portal](https://portal.azure.com) or using PowerShell/Azure CLI.  To learn more, read [add or remove certificates](service-fabric-cluster-security-update-certs-azure.md)
+Service Fabric uses [X.509 server certificates](service-fabric-cluster-security.md) that you specify when you create a cluster to secure communications between cluster nodes and authenticate clients. You can add, update, or delete certificates for the cluster and client in the [Azure portal](https://portal.azure.cn) or using PowerShell/Azure CLI.  To learn more, read [add or remove certificates](service-fabric-cluster-security-update-certs-azure.md)
 
 ## Open application ports
 
@@ -102,6 +106,7 @@ The patch orchestration application (POA) is a Service Fabric application that a
 * Learn about [application upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->
+
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
@@ -109,3 +114,8 @@ The patch orchestration application (POA) is a Service Fabric application that a
 [ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
+
+
+
+<!-- Update_Description: new article about service fabric cluster upgrade -->
+<!--NEW.date: 12/21/2020-->

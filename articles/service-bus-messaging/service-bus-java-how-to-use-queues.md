@@ -3,7 +3,11 @@ title: Use Azure Service Bus queues with Java (azure-messaging-servicebus)
 description: In this tutorial, you learn how to use Java to send messages to and receive messages from an Azure Service Bus queue. You use the new azure-messaging-servicebus package. 
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/09/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ---
 
@@ -15,9 +19,9 @@ In this quickstart, you'll create a Java app to send messages to and receive mes
 
 
 ## Prerequisites
-- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) or sign up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
 - If you don't have a queue to work with, follow steps in the [Use Azure portal to create a Service Bus queue](service-bus-quickstart-portal.md) article to create a queue. Note down the **connection string** for your Service Bus namespace and the name of the **queue** you created.
-- Install [Azure SDK for Java][Azure SDK for Java]. If you're using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **Microsoft Azure Libraries for Java** to your project. If you're using IntelliJ, see [Install the Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
+- Install [Azure SDK for Java][Azure SDK for Java]. If you're using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **21Vianet Azure Libraries for Java** to your project. If you're using IntelliJ, see [Install the Azure Toolkit for IntelliJ](https://docs.azure.cn/azure/developer/java/toolkit-for-intellij/installation). 
 
 
 ## Send messages to a queue
@@ -216,9 +220,14 @@ See the following documentation and samples:
 
 - [Azure Service Bus client library for Java - Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Samples on GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API reference](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [Java API reference](https://docs.azure.cn/java/api/overview/servicebus?preserve-view=true&view=azure-java-stable)
 
-[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
-[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
+[Azure SDK for Java]: /developer/java/sdk/java-sdk-azure-get-started
+[Azure Toolkit for Eclipse]: /developer/java/toolkit-for-eclipse/installation
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[BrokeredMessage]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+
+
+
+<!-- Update_Description: new article about service bus java how to use queues -->
+<!--NEW.date: 12/21/2020-->

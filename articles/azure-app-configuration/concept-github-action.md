@@ -1,18 +1,22 @@
 ---
 title: Sync your GitHub repository to App Configuration
 description: Use GitHub Actions to automatically update your App Configuration instance when you update your GitHub repository.
-author: AlexandraKemperMS
-ms.author: alkemper
-ms.date: 05/28/2020
+
+
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.topic: conceptual
 ms.service: azure-app-configuration
 
 ---
 # Sync your GitHub repository to App Configuration
 
-Teams that want to continue using their existing source control practices can use GitHub Actions to automatically sync their GitHub repository with their App Configuration store. This allows you to make changes to your config files as you normally would, while getting App Configuration benefits like: <br>
-&nbsp;&nbsp;&nbsp;&nbsp;•	Centralized configuration outside of your code <br>
-&nbsp;&nbsp;&nbsp;&nbsp;•	Updating configuration without redeploying your entire app <br>
+Teams that want to continue using their existing source control practices can use GitHub Actions to automatically sync their GitHub repository with their App Configuration store. This allows you to make changes to your config files as you normally would, while getting App Configuration benefits like: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;•	Centralized configuration outside of your code <br />
+&nbsp;&nbsp;&nbsp;&nbsp;•	Updating configuration without redeploying your entire app <br />
 &nbsp;&nbsp;&nbsp;&nbsp;•	Integration with services like Azure App Service and Functions. 
 
 A GitHub Actions [workflow](https://help.github.com/articles/about-github-actions#workflow) defines an automated process in a GitHub repository. The *Azure App Configuration Sync* Action triggers updates to an App Configuration instance when changes are made to the source repository. It uses a YAML (.yml) file found in the `/.github/workflows/` path of your repository to define the steps and parameters. You can trigger configuration updates when pushing, reviewing, or branching app configuration files just as you do with app code.
@@ -22,10 +26,10 @@ The GitHub [documentation](https://help.github.com/actions/automating-your-workf
 ## Enable GitHub Actions in your repository
 To start using this GitHub action, go to your repository and select the **Actions** tab. Select **New workflow**, then **Set up a workflow yourself**. Finally, search the marketplace for “Azure App Configuration Sync.”
 > [!div class="mx-imgBorder"]
-> ![Select the Action tab](media/find-github-action.png)
+> :::image type="content" source="media/find-github-action.png" alt-text="Select the Action tab":::
 
 > [!div class="mx-imgBorder"]
-> ![Select the app configuration sync Action](media/app-configuration-sync-action.png)
+> :::image type="content" source="media/app-configuration-sync-action.png" alt-text="Select the app configuration sync Action":::
 
 ## Sync configuration files after a push
 This action syncs Azure App Configuration files when a change is pushed to `appsettings.json`. When a developer pushes a change to `appsettings.json`, the App Configuration Sync action updates the App Configuration instance with the new values.
@@ -207,7 +211,7 @@ jobs:
 Developers using Azure Key Vault with AppConfiguration should use two separate files, typically an appsettings.json and a secretreferences.json. The secretreferences.json will contain the url to the key vault secret.
 
 {
-  "mySecret": "{\"uri\":\"https://myKeyVault.vault.azure.net/secrets/mySecret"}"
+  "mySecret": "{\"uri\":\"https://myKeyVault.vault.azure.cn/secrets/mySecret"}"
 }
 
 The GitHub Action can then be configured to do a strict sync on the appsettings.json, followed by a non-strict sync on secretreferences.json. The following sample will trigger a sync when either file is updated:
@@ -318,3 +322,8 @@ Input parameters specify data used by the action during runtime.  The following 
 ## Next steps
 
 In this article, you learned about the App Configuration Sync GitHub Action and how it can be used to automate updates to your App Configuration instance. To learn how Azure App Configuration reacts to changes in key-value pairs, continue to the next [article](./concept-app-configuration-event.md).
+
+
+
+<!-- Update_Description: new article about concept github action -->
+<!--NEW.date: 12/21/2020-->

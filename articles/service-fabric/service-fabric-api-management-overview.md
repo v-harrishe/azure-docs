@@ -2,7 +2,11 @@
 title: Azure Service Fabric with API Management overview 
 description: This article is an introduction to using Azure API Management as a gateway to your Service Fabric applications. 
 ms.topic: conceptual
-ms.date: 06/22/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Service Fabric with Azure API Management overview
@@ -105,9 +109,15 @@ Follow the [tutorial](service-fabric-tutorial-deploy-api-management.md) to set u
 <!-- links -->
 
 <!-- pics -->
+
 [sf-apim-web-app]: ./media/service-fabric-api-management-overview/sf-apim-web-app.png
 [sf-web-app-stateless-gateway]: ./media/service-fabric-api-management-overview/sf-web-app-stateless-gateway.png
 [sf-apim-static-stateless]: ./media/service-fabric-api-management-overview/sf-apim-static-stateless.png
 [sf-apim-static-stateful]: ./media/service-fabric-api-management-overview/sf-apim-static-stateful.png
 [sf-apim-dynamic-stateless]: ./media/service-fabric-api-management-overview/sf-apim-dynamic-stateless.png
 [sf-apim-dynamic-stateful]: ./media/service-fabric-api-management-overview/sf-apim-dynamic-stateful.png
+
+
+
+<!-- Update_Description: new article about service fabric api management overview -->
+<!--NEW.date: 12/21/2020-->

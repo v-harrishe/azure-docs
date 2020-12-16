@@ -2,12 +2,15 @@
 title: SNAT for outbound connections
 description: Describes how Azure Load Balancer is used to perform SNAT for outbound internet connectivity
 services: load-balancer
-author: asudbring
+
 ms.service: load-balancer
 ms.topic: conceptual
 ms.custom: contperf-fy21q1
-ms.date: 10/13/2020
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Using SNAT for outbound connections
@@ -21,10 +24,10 @@ SNAT enables **IP masquerading** of the backend instance. This masquerading prev
 > [Virtual Network NAT](../virtual-network/nat-overview.md) is the recommended solution. It's dynamic allocation allows for simple configuration and  > the most efficient use of SNAT ports from each IP address. It also allows all resources in the virtual network to share a set of IP addresses without a need for them to share > a load balancer.
 
 >[!Important]
-> Even without outbound SNAT configured, Azure storage accounts within the same region will still be accessible and backend resources will still have access to Microsoft services such as Windows Updates.
+> Even without outbound SNAT configured, Azure storage accounts within the same region will still be accessible and backend resources will still have access to Azure services such as Windows Updates.
 
 >[!NOTE] 
->This article covers Azure Resource Manager deployments only. Review [Outbound connections (Classic)](/previous-versions/azure/load-balancer/load-balancer-outbound-connections-classic) for all Classic deployment scenarios in Azure.
+>This article covers Azure Resource Manager deployments only. Review [Outbound connections (Classic)](https://docs.microsoft.com/previous-versions/azure/load-balancer/load-balancer-outbound-connections-classic) for all Classic deployment scenarios in Azure.
 
 ## <a name ="snat"></a> Sharing frontend IP address across backend resources
 
@@ -54,12 +57,13 @@ When [scenario 2](#scenario2) below is configured, the host for each backend ins
   * Virtual machine without public IP and without standard load balancer.
 		
 
- ### <a name="scenario1"></a> Scenario 1: Virtual machine with public IP
+ <a name="scenario1"></a>
+### Scenario 1: Virtual machine with public IP
 
 
  | Associations | Method | IP protocols |
  | ---------- | ------ | ------------ |
- | Public load balancer or stand-alone | [SNAT (Source Network Address Translation)](#snat) </br> not used. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
+ | Public load balancer or stand-alone | [SNAT (Source Network Address Translation)](#snat) <br /> not used. | TCP (Transmission Control Protocol) <br /> UDP (User Datagram Protocol) <br /> ICMP (Internet Control Message Protocol) <br /> ESP (Encapsulating Security Payload) |
 
 
  #### Description
@@ -71,12 +75,13 @@ When [scenario 2](#scenario2) below is configured, the host for each backend ins
  A public IP assigned to a VM is a 1:1 relationship (rather than 1: many) and implemented as a stateless 1:1 NAT.
 
 
- ### <a name="scenario2"></a>Scenario 2: Virtual machine without public IP and behind Standard public Load Balancer
+ <a name="scenario2"></a>
+### Scenario 2: Virtual machine without public IP and behind Standard public Load Balancer
 
 
  | Associations | Method | IP protocols |
  | ------------ | ------ | ------------ |
- | Public load balancer | Use of load balancer frontend IPs for [SNAT](#snat).| TCP </br> UDP |
+ | Public load balancer | Use of load balancer frontend IPs for [SNAT](#snat).| TCP <br /> UDP |
 
 
  #### Description
@@ -100,12 +105,13 @@ When [scenario 2](#scenario2) below is configured, the host for each backend ins
  In this context, the ephemeral ports used for SNAT are called SNAT ports. It is highly recommended that an [outbound rule](./outbound-rules.md) is explicitly configured. If using default SNAT through a load-balancing rule, SNAT ports are pre-allocated as described in the [Default SNAT ports allocation table](#snatporttable).
 
 
- ### <a name="scenario3"></a>Scenario 3: Virtual machine without public IP and behind Basic Load Balancer
+ <a name="scenario3"></a>
+### Scenario 3: Virtual machine without public IP and behind Basic Load Balancer
 
 
  | Associations | Method | IP protocols |
  | ------------ | ------ | ------------ |
- |None </br> Basic load balancer | [SNAT](#snat) with instance-level dynamic IP address| TCP </br> UDP | 
+ |None <br /> Basic load balancer | [SNAT](#snat) with instance-level dynamic IP address| TCP <br /> UDP | 
 
  #### Description
 
@@ -124,7 +130,8 @@ When [scenario 2](#scenario2) below is configured, the host for each backend ins
  Don't use this scenario for adding IPs to an allow list. Use scenario 1 or 2 where you explicitly declare outbound behavior. [SNAT](#snat) ports are preallocated as described in the [Default SNAT ports allocation table](#snatporttable).
 
 
-## <a name="scenarios"></a> Exhausting ports
+<a name="scenarios"></a>
+## Exhausting ports
 
 Every connection to the same destination IP and destination port will use a SNAT port. This connection maintains a distinct **traffic flow** from the backend instance or **client** to a **server**. This process gives the server a distinct port on which to address traffic. Without this process, the client machine is unaware of which flow a packet is part of.
 
@@ -146,7 +153,8 @@ For UDP connections, the load balancer uses a **port-restricted cone NAT** algor
 
 A port is reused for an unlimited number of connections. The port is only reused if the destination IP or port is different.
 
-## <a name="preallocatedports"></a> Default port allocation
+<a name="preallocatedports"></a>
+## Default port allocation
 
 Each public IP assigned as a frontend IP of your load balancer is given 64,000 SNAT ports for its backend pool members. Ports can't be shared with backend pool members. A range of SNAT ports can only be used by a single backend instance to ensure return packets are routed correctly. 
 
@@ -168,7 +176,8 @@ The following <a name="snatporttable"></a>table shows the SNAT port preallocatio
 >[!NOTE]
 > If you have a backend pool with a max size of 10, each instance can have 64,000/10 = 6,400 ports if you define an explicit outbound rule. According to the above table each will only have 1,024 if you choose automatic allocation.
 
-## <a name="outboundrules"></a> Outbound rules and Virtual Network NAT
+<a name="outboundrules"></a>
+## Outbound rules and Virtual Network NAT
 
 Azure Load Balancer outbound rules and Virtual Network NAT are options available for egress from a virtual network.
 
@@ -178,15 +187,20 @@ For more information about Azure Virtual Network NAT, see [What is Azure Virtual
 
 ## Constraints
 
-*	When a connection is idle with no new packets being sent, the ports will be released after 4 – 120 minutes.
-  *	This threshold can be configured via outbound rules.
-*	Each IP address provides 64,000 ports that can be used for SNAT.
-*	Each port can be used for both TCP and UDP connections to a destination IP address
-  *	A UDP SNAT port is needed whether the destination port is unique or not. For every UDP connection to a destination IP, one UDP SNAT port is used.
-  *	A TCP SNAT port can be used for multiple connections to the same destination IP provided the destination ports are different.
-*	SNAT exhaustion occurs when a backend instance runs out of given SNAT Ports. A load balancer can still have unused SNAT ports. If a backend instance’s used SNAT ports exceed its given SNAT ports, it will be unable to establish new outbound connections.
+* When a connection is idle with no new packets being sent, the ports will be released after 4 – 120 minutes.
+  * This threshold can be configured via outbound rules.
+* Each IP address provides 64,000 ports that can be used for SNAT.
+* Each port can be used for both TCP and UDP connections to a destination IP address
+  * A UDP SNAT port is needed whether the destination port is unique or not. For every UDP connection to a destination IP, one UDP SNAT port is used.
+  * A TCP SNAT port can be used for multiple connections to the same destination IP provided the destination ports are different.
+* SNAT exhaustion occurs when a backend instance runs out of given SNAT Ports. A load balancer can still have unused SNAT ports. If a backend instance’s used SNAT ports exceed its given SNAT ports, it will be unable to establish new outbound connections.
 
 ## Next steps
 
-*	[Troubleshoot outbound connection failures because of SNAT exhaustion](./troubleshoot-outbound-connection.md)
-*	[Review SNAT metrics](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) and familiarize yourself with the correct way to filter, split, and view them.
+* [Troubleshoot outbound connection failures because of SNAT exhaustion](./troubleshoot-outbound-connection.md)
+* [Review SNAT metrics](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) and familiarize yourself with the correct way to filter, split, and view them.
+
+
+
+<!-- Update_Description: new article about load balancer outbound connections -->
+<!--NEW.date: 12/21/2020-->

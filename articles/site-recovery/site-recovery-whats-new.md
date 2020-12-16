@@ -1,15 +1,19 @@
 ---
 title: What's new in Azure Site Recovery
-description: Provides a summary of new features and the latest updates in the Azure Site Recovery service.
+description: Provides a summary of new features and the latest updates in the Microsoft Azure Site Recovery service.
 ms.topic: conceptual
-ms.date: 10/22/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # What's new in Site Recovery
 
 The [Azure Site Recovery](site-recovery-overview.md) service is updated and improved on an ongoing basis. To help you stay up-to-date, this article provides you with information about the latest releases, new features, and new content. This page is updated on a regular basis.
 
-You can follow and subscribe to Site Recovery update notifications in the [Azure updates](https://azure.microsoft.com/updates/?product=site-recovery) channel.
+You can follow and subscribe to Site Recovery update notifications in the [Azure updates](https://www.azure.cn/updates/?product=site-recovery) channel.
 
 ## Supported updates
 
@@ -258,7 +262,7 @@ Features added this month are summarized in the table.
 
 **Feature** | **Details**
 --- | ---
-Storage account | Site Recovery now supports the use of storage accounts with firewall enabled for Hyper-V to Azure disaster recovery.  You can select firewall-enabled storage accounts as a target account, or for cache storage. If you use firewall-enabled account, make sure that you enable the option to allow trusted Microsoft services.<br/><br/> This is supported for Hyper-V VMs with or without System Center VMM.
+Storage account | Site Recovery now supports the use of storage accounts with firewall enabled for Hyper-V to Azure disaster recovery.  You can select firewall-enabled storage accounts as a target account, or for cache storage. If you use firewall-enabled account, make sure that you enable the option to allow trusted Azure services.<br/><br/> This is supported for Hyper-V VMs with or without System Center VMM.
 
 
 ## Updates (August 2019)
@@ -409,7 +413,7 @@ Features added this month are summarized in the table.
 --- | ---
 **Network mapping** | For Azure VM disaster recovery, you can now use any available target network when you enable replication.
 **Standard SSD** | You can now set up disaster recovery for Azure VMs using [Standard SSD disks](../virtual-machines/disks-types.md#standard-ssd).
-**Storage Spaces Direct** | You can set up disaster recovery for apps running on Azure VM apps by using [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) for high availability.  Using Storage Spaces Direct (S2D) together with Site Recovery provides comprehensive protection of Azure VM workloads. S2D lets you host a guest cluster in Azure. This is especially useful when a VM hosts a critical application, such as SAP ASCS layer, SQL Server, or scale-out file server.
+**Storage Spaces Direct** | You can set up disaster recovery for apps running on Azure VM apps by using [Storage Spaces Direct](https://docs.azure.cn/windows-server/storage/storage-spaces/storage-spaces-direct-overview) for high availability.  Using Storage Spaces Direct (S2D) together with Site Recovery provides comprehensive protection of Azure VM workloads. S2D lets you host a guest cluster in Azure. This is especially useful when a VM hosts a critical application, such as SAP ASCS layer, SQL Server, or scale-out file server.
 
 
 ### VMware/physical server disaster recovery
@@ -501,7 +505,7 @@ Updates don't require a VM restart, and don't affect replication. [Learn more](a
 
 ### Pricing calculator for Azure VM disaster recovery
 
-Disaster Recovery of Azure VMs incurs VM licensing costs, and network and storage costs. Azure provides a [pricing calculator](https://aka.ms/a2a-cost-estimator) to help you figure out these costs. Site Recovery now provides an [example pricing estimate](https://aka.ms/a2a-cost-estimator) that prices a sample deployment based on a three-tier app using six VMs with 12 Standard HDD disks and 6 Premium SSD disks.
+Disaster Recovery of Azure VMs incurs VM licensing costs, and network and storage costs. Azure provides a [pricing calculator](https://www.azure.cn/pricing/calculator/) to help you figure out these costs. Site Recovery now provides an [example pricing estimate](https://www.azure.cn/pricing/calculator/) that prices a sample deployment based on a three-tier app using six VMs with 12 Standard HDD disks and 6 Premium SSD disks.
 
 - The sample presumes a data change of 10 GB a day for standard, and 20 GB for premium.
 - For your particular deployment, you can change the variables to estimate costs.
@@ -603,4 +607,8 @@ Features added this month are summarized in the table.
 
 ## Next steps
 
-Keep up-to-date with our updates on the [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) page.
+Keep up-to-date with our updates on the [Azure Updates](https://www.azure.cn/updates/?product=site-recovery) page.
+
+
+<!-- Update_Description: new article about site recovery whats new -->
+<!--NEW.date: 12/21/2020-->

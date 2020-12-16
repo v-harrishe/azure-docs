@@ -1,18 +1,22 @@
 ---
-title: Azure Service Bus frequently asked questions (FAQ) | Microsoft Docs
+title: Azure Service Bus frequently asked questions (FAQ) | Azure Docs
 description: This article provides answers to some of the frequently asked questions (FAQ) about Azure Service Bus.
 ms.topic: article
-ms.date: 09/16/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Azure Service Bus - Frequently asked questions (FAQ)
 
-This article discusses some frequently asked questions about Microsoft Azure Service Bus. You can also visit the [Azure Support FAQs](https://azure.microsoft.com/support/faq/) for general Azure pricing and support information.
+This article discusses some frequently asked questions about Azure Azure Service Bus. You can also visit the [Azure Support FAQs](https://www.azure.cn/support/faq/) for general Azure pricing and support information.
 
 
 ## General questions about Azure Service Bus
 ### What is Azure Service Bus?
-[Azure Service Bus](service-bus-messaging-overview.md) is an asynchronous messaging cloud platform that enables you to send data between decoupled systems. Microsoft offers this feature as a service, which means that you don't need to host your own hardware to use it.
+[Azure Service Bus](service-bus-messaging-overview.md) is an asynchronous messaging cloud platform that enables you to send data between decoupled systems. Azure offers this feature as a service, which means that you don't need to host your own hardware to use it.
 
 ### What is a Service Bus namespace?
 A [namespace](service-bus-create-namespace-portal.md) provides a scoping container for addressing Service Bus resources within your application. Creating a namespace is necessary to use Service Bus and is one of the first steps in getting started.
@@ -30,7 +34,8 @@ Ordering isn't ensured when using partitioned entities. In the event that a part
 
  Partitioned entities are no longer supported in the [Premium SKU](service-bus-premium-messaging.md). 
 
-### <a name="in-region-data-residency"></a>Where does Azure Service Bus store customer data?
+<a name="in-region-data-residency"></a>
+### Where does Azure Service Bus store customer data?
 Azure Service Bus stores customer data. This data is automatically stored by Service Bus in a single region, so this service automatically satisfies in region data residency requirements including those specified in the [Trust Center](https://azuredatacentermap.azurewebsites.net/).
 
 ### What ports do I need to open on the firewall? 
@@ -52,7 +57,7 @@ The official Azure SDKs generally use the AMQP protocol for sending and receivin
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
-The older WindowsAzure.ServiceBus package for the .NET Framework has an option to use the legacy "Service Bus Messaging Protocol" (SBMP), also referred to as "NetMessaging". This protocol uses TCP ports 9350-9354. The default mode for this package is to automatically detect whether those ports are available for communication and will switch to WebSockets with TLS over port 443 if that is not the case. You can override this setting and force this mode by setting the `Https` [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) on the [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) setting, which applies globally to the application.
+The older WindowsAzure.ServiceBus package for the .NET Framework has an option to use the legacy "Service Bus Messaging Protocol" (SBMP), also referred to as "NetMessaging". This protocol uses TCP ports 9350-9354. The default mode for this package is to automatically detect whether those ports are available for communication and will switch to WebSockets with TLS over port 443 if that is not the case. You can override this setting and force this mode by setting the `Https` [ConnectivityMode](https://docs.azure.cn/dotnet/api/microsoft.servicebus.connectivitymode) on the [`ServiceBusEnvironment.SystemConnectivity`](https://docs.azure.cn/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) setting, which applies globally to the application.
 
 ### What IP addresses do I need to add to allow list?
 To find the right IP addresses to add to allow list for your connections, follow these steps:
@@ -60,7 +65,7 @@ To find the right IP addresses to add to allow list for your connections, follow
 1. Run the following command from a command prompt: 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.servicebus.chinacloudapi.cn
     ```
 2. Note down the IP address returned in `Non-authoritative answer`. 
 
@@ -69,14 +74,14 @@ If you use the **zone redundancy** for your namespace, you need to do a few addi
 1. First, you run nslookup on the namespace.
 
     ```
-    nslookup <yournamespace>.servicebus.windows.net
+    nslookup <yournamespace>.servicebus.chinacloudapi.cn
     ```
 2. Note down the name in the **non-authoritative answer** section, which is in one of the following formats: 
 
     ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
+    <name>-s1.chinacloudapp.cn
+    <name>-s2.chinacloudapp.cn
+    <name>-s3.chinacloudapp.cn
     ```
 3. Run nslookup for each one with suffixes s1, s2, and s3 to get the IP addresses of all three instances running in three availability zones, 
 
@@ -103,15 +108,15 @@ The following properties of a queue and topic are immutable. Consider this limit
 ## Pricing
 This section answers some frequently asked questions about the Service Bus pricing structure.
 
-The [Service Bus pricing and billing](https://azure.microsoft.com/pricing/details/service-bus/) article explains the billing meters in Service Bus. For specific information about Service Bus pricing options, see [Service Bus pricing details](https://azure.microsoft.com/pricing/details/service-bus/).
+The [Service Bus pricing and billing](https://www.azure.cn/pricing/details/service-bus/) article explains the billing meters in Service Bus. For specific information about Service Bus pricing options, see [Service Bus pricing details](https://www.azure.cn/pricing/details/service-bus/).
 
-You can also visit the [Azure Support FAQs](https://azure.microsoft.com/support/faq/) for general Azure pricing information. 
+You can also visit the [Azure Support FAQs](https://www.azure.cn/support/faq/) for general Azure pricing information. 
 
 ### How do you charge for Service Bus?
 For complete information about Service Bus pricing, see [Service Bus pricing details][Pricing overview]. In addition to the prices noted, you are charged for associated data transfers for egress outside of the data center in which your application is provisioned.
 
 ### What usage of Service Bus is subject to data transfer? What isn't?
-Any data transfer within a given Azure region is provided at no charge, as well as any inbound data transfer. Data transfer outside a region is subject to egress charges, which can be found [here](https://azure.microsoft.com/pricing/details/bandwidth/).
+Any data transfer within a given Azure region is provided at no charge, as well as any inbound data transfer. Data transfer outside a region is subject to egress charges, which can be found [here](https://www.azure.cn/pricing/details/data-transfer/).
 
 ### Does Service Bus charge for storage?
 No. Service Bus doesn't charge for storage. However, there's a quota limiting the maximum amount of data that can be persisted per queue/topic. See the next FAQ.
@@ -143,7 +148,7 @@ Shared Access Signatures are an authentication mechanism based on SHA-256 secure
 ## Subscription and namespace management
 ### How do I migrate a namespace to another Azure subscription?
 
-You can move a namespace from one Azure subscription to another, using either the [Azure portal](https://portal.azure.com) or PowerShell commands. To execute the operation, the namespace must already be active. The user executing the commands must be an administrator on both the source and target subscriptions.
+You can move a namespace from one Azure subscription to another, using either the [Azure portal](https://portal.azure.cn) or PowerShell commands. To execute the operation, the namespace must already be active. The user executing the commands must be an administrator on both the source and target subscriptions.
 
 #### Portal
 
@@ -156,7 +161,7 @@ The following sequence of PowerShell commands moves a namespace from one Azure s
 ```powershell
 # Create a new resource group in target subscription
 Select-AzSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-New-AzResourceGroup -Name 'targetRG' -Location 'East US'
+New-AzResourceGroup -Name 'targetRG' -Location 'China East'
 
 # Move namespace from source subscription to target subscription
 Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
@@ -168,13 +173,18 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 To learn more about Service Bus, see the following articles:
 
 * [Introducing Azure Service Bus Premium (blog post)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Introducing Azure Service Bus Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Introducing Azure Service Bus Premium (Channel9)](https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Service Bus overview](service-bus-messaging-overview.md)
 * [Get started with Service Bus queues](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
-[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Pricing overview]: https://www.azure.cn/pricing/details/service-bus/
 [Quotas overview]: service-bus-quotas.md
 [Exceptions overview]: service-bus-messaging-exceptions.md
 [Shared Access Signatures]: service-bus-sas.md
+
+
+
+<!-- Update_Description: new article about service bus faq -->
+<!--NEW.date: 12/21/2020-->

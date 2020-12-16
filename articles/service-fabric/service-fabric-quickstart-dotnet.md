@@ -2,7 +2,11 @@
 title: Quickly create a .NET app on Service Fabric in Azure
 description: In this quickstart, you create a .NET application for Azure using the Service Fabric reliable services sample application.
 ms.topic: quickstart
-ms.date: 06/26/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc, devcenter, vs-azure
 ---
 # Quickstart: Deploy a .NET reliable services application to Service Fabric
@@ -11,7 +15,7 @@ Azure Service Fabric is a distributed systems platform for deploying and managin
 
 This quickstart shows how to deploy your first .NET application to Service Fabric. When you're finished, you have a voting application with an ASP.NET Core web front end that saves voting results in a stateful back-end service in the cluster.
 
-![Application Screenshot](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
+:::image type="content" source="./media/service-fabric-quickstart-dotnet/application-screenshot.png" alt-text="Application Screenshot":::
 
 Using this application you learn how to:
 
@@ -28,7 +32,7 @@ To complete this quickstart:
 
 1. [Install Visual Studio 2019](https://www.visualstudio.com/) with the **Azure development** and **ASP.NET and web development** workloads.
 2. [Install Git](https://git-scm.com/)
-3. [Install the Microsoft Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
+3. [Install the Azure Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. Run the following command to enable Visual Studio to deploy to the local Service Fabric cluster:
 
    ```powershell
@@ -47,7 +51,7 @@ After you install the runtime, SDKs, Visual Studio tools, Docker, and have Docke
 > Docker running when you create the cluster is included as a best-practice.
 > Test that Docker is running by opening a terminal window and running `docker ps` to see if an error occurs. If the response does not indicate an error, Docker is running and you're ready to build a cluster.
 >
-> [Set up Windows 10 or Windows Server for containers](/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [Set up Windows 10 or Windows Server for containers](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Open a new, elevated PowerShell window as an administrator.
 2. Run the following PowerShell command to create a development cluster:
@@ -79,7 +83,7 @@ Right-click the Visual Studio icon in the Start Menu and choose **Run as adminis
 
 Open the **Voting.sln** Visual Studio solution from the repository you cloned.
 
-By default, the Voting application listens on port 8080.  The application port is set in the */VotingWeb/PackageRoot/ServiceManifest.xml* file.  You can change the application port by updating the **Port** attribute of the **Endpoint** element.  To deploy and run the application locally, the application port must be open and available on your computer.  If you change the application port, replace the new application port value for "8080" throughout this article.
+By default, the Voting application listens on port 8080. The application port is set in the */VotingWeb/PackageRoot/ServiceManifest.xml* file.  You can change the application port by updating the **Port** attribute of the **Endpoint** element.  To deploy and run the application locally, the application port must be open and available on your computer.  If you change the application port, replace the new application port value for "8080" throughout this article.
 
 To deploy the application, press **F5**.
 
@@ -88,7 +92,7 @@ To deploy the application, press **F5**.
 
 When the deployment is complete, launch a browser and open `http://localhost:8080` to view the web front end of the application.
 
-![Application front end](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
+:::image type="content" source="./media/service-fabric-quickstart-dotnet/application-screenshot-new.png" alt-text="Application front end":::
 
 You can now add a set of voting options, and start taking votes. The application runs and stores all data in your Service Fabric cluster, without the need for a separate database.
 
@@ -99,7 +103,7 @@ The voting application consists of two services:
 * Web front-end service (VotingWeb)- An ASP.NET Core web front-end service, which serves the web page and exposes web APIs to communicate with the backend service.
 * Back-end service (VotingData)- An ASP.NET Core web service, which exposes an API to store the vote results in a reliable dictionary persisted on disk.
 
-![Application Diagram](./media/service-fabric-quickstart-dotnet/application-diagram.png)
+:::image type="content" source="./media/service-fabric-quickstart-dotnet/application-diagram.png" alt-text="Application Diagram":::
 
 When you vote in the application, the following events occur:
 
@@ -122,7 +126,7 @@ To look at what happens in the code, complete the following steps:
 3. Go back to the browser and click a voting option or add a new voting option. You hit the first breakpoint in the web front end's api controller.
    * This step is where the JavaScript in the browser sends a request to the web API controller in the front-end service.
 
-     ![Add Vote Front-End Service](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     :::image type="content" source="./media/service-fabric-quickstart-dotnet/addvote-frontend.png" alt-text="Add Vote Front-End Service":::
 
    * First, construct the URL to the ReverseProxy for our back-end service **(1)**.
    * Then, send the HTTP PUT Request to the ReverseProxy **(2)**.
@@ -132,7 +136,7 @@ To look at what happens in the code, complete the following steps:
    - If prompted by the browser, grant ServiceFabricAllowedUsers group read and execute permissions for Debug Mode.
    - You're now at the break point in the back-end service.
 
-     ![Add Vote Back-End Service](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+     :::image type="content" source="./media/service-fabric-quickstart-dotnet/addvote-backend.png" alt-text="Add Vote Back-End Service":::
 
    - In the first line in the method **(1)** the `StateManager` gets or adds a reliable dictionary called `counts`.
    - All interactions with values in a reliable dictionary require a transaction, this using statement **(2)** creates that transaction.
@@ -154,12 +158,12 @@ To upgrade the application, do the following:
 5. Click the **Manifest Version** button to change the version of the service and application.
 6. Change the version of the **Code** element under **VotingWebPkg** to "2.0.0", for example, and click **Save**.
 
-    ![Change Version Dialog](./media/service-fabric-quickstart-dotnet/change-version.png)
+    :::image type="content" source="./media/service-fabric-quickstart-dotnet/change-version.png" alt-text="Change Version Dialog":::
 7. In the **Publish Service Fabric Application** dialog, check the **Upgrade the Application checkbox**.
-8.  Change **Target profile** to **PublishProfiles\Local.5Node.xml** and ensure that **Connection Endpoint** is set to **Local Cluster**. 
+8. Change **Target profile** to **PublishProfiles\Local.5Node.xml** and ensure that **Connection Endpoint** is set to **Local Cluster**. 
 9. Select **Upgrade the Application**.
 
-    ![Publish Dialog Upgrade Setting](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
+    :::image type="content" source="./media/service-fabric-quickstart-dotnet/upgrade-app.png" alt-text="Publish Dialog Upgrade Setting":::
 
 10. Click **Publish**.
 
@@ -167,7 +171,7 @@ To upgrade the application, do the following:
 
 11. Open your browser and browse to the cluster address on port 19080. For example, `http://localhost:19080/`.
 12. Click on the **Applications** node in the tree view, and then **Upgrades in Progress** in the right-hand pane. You see how the upgrade rolls through the upgrade domains in your cluster, making sure each domain is healthy before proceeding to the next. An upgrade domain in the progress bar appears green when the health of the domain has been verified.
-    ![Upgrade View in Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
+    :::image type="content" source="./media/service-fabric-quickstart-dotnet/upgrading.png" alt-text="Upgrade View in Service Fabric Explorer":::
 
     Service Fabric makes upgrades safe by waiting two minutes after upgrading the service on each node in the cluster. Expect the entire update to take approximately eight minutes.
 
@@ -185,3 +189,8 @@ In this quickstart, you learned how to:
 To learn more about Service Fabric and .NET, take a look at this tutorial:
 > [!div class="nextstepaction"]
 > [.NET application on Service Fabric](service-fabric-tutorial-create-dotnet-app.md)
+
+
+
+<!-- Update_Description: new article about service fabric quickstart dotnet -->
+<!--NEW.date: 12/21/2020-->

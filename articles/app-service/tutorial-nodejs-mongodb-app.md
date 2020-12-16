@@ -1,11 +1,15 @@
 ---
-title: 'Tutorial: Node.js app with MongoDB' 
+title: Tutorial - Node.js app with MongoDB 
 description: Learn how to get a Node.js app working in Azure, with connection to a MongoDB database in Azure (Cosmos DB). MEAN.js is used in the tutorial.
 
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/16/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ---
@@ -25,7 +29,7 @@ zone_pivot_groups: app-service-platform-windows-linux
 
 ::: zone-end
 
-![MEAN.js app running in Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
+:::image type="content" source="./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png" alt-text="MEAN.js app running in Azure App Service":::
 
 What you'll learn:
 
@@ -108,7 +112,7 @@ Navigate to `http://localhost:3000` in a browser. Click **Sign Up** in the top m
 
 The MEAN.js sample application stores user data in the database. If you are successful at creating a user and signing in, then your app is writing data to the local MongoDB database.
 
-![MEAN.js connects successfully to MongoDB](./media/tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
+:::image type="content" source="./media/tutorial-nodejs-mongodb-app/mongodb-connect-success.png" alt-text="MEAN.js connects successfully to MongoDB":::
 
 Select **Admin > Manage Articles** to add some articles.
 
@@ -118,7 +122,7 @@ To stop Node.js at any time, press `Ctrl+C` in the terminal.
 
 In this step, you create a MongoDB database in Azure. When your app is deployed to Azure, it uses this cloud database.
 
-For MongoDB, this tutorial uses [Azure Cosmos DB](/azure/documentdb/). Cosmos DB supports MongoDB client connections.
+For MongoDB, this tutorial uses [Azure Cosmos DB](https://docs.azure.cn/azure/documentdb/). Cosmos DB supports MongoDB client connections.
 
 ### Create a resource group
 
@@ -127,14 +131,14 @@ For MongoDB, this tutorial uses [Azure Cosmos DB](/azure/documentdb/). Cosmos DB
 ### Create a Cosmos DB account
 
 > [!NOTE]
-> There is a cost to creating the Azure Cosmos DB databases in this tutorial in your own Azure subscription. To use a free Azure Cosmos DB account for seven days, you can use the [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) experience. Just click the **Create** button in the MongoDB tile to create a free MongoDB database on Azure. Once the database is created, navigate to **Connection String** in the portal and retrieve your Azure Cosmos DB connection string for use later in the tutorial.
+> There is a cost to creating the Azure Cosmos DB databases in this tutorial in your own Azure subscription. To use a free Azure Cosmos DB account for seven days, you can use the [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/ (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) experience. Just click the **Create** button in the MongoDB tile to create a free MongoDB database on Azure. Once the database is created, navigate to **Connection String** in the portal and retrieve your Azure Cosmos DB connection string for use later in the tutorial.
 >
 
-In the Cloud Shell, create a Cosmos DB account with the [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) command.
+In the local Shell, create a Cosmos DB account with the [`az cosmosdb create`](https://docs.azure.cn/cli/cosmosdb#az_cosmosdb_create) command.
 
-In the following command, substitute a unique Cosmos DB name for the *\<cosmosdb-name>* placeholder. This name is used as the part of the Cosmos DB endpoint, `https://<cosmosdb-name>.documents.azure.com/`, so the name needs to be unique across all Cosmos DB accounts in Azure. The name must contain only lowercase letters, numbers, and the hyphen (-) character, and must be between 3 and 50 characters long.
+In the following command, substitute a unique Cosmos DB name for the *\<cosmosdb-name>* placeholder. This name is used as the part of the Cosmos DB endpoint, `https://<cosmosdb-name>.documents.azure.cn/`, so the name needs to be unique across all Cosmos DB accounts in Azure. The name must contain only lowercase letters, numbers, and the hyphen (-) character, and must be between 3 and 50 characters long.
 
-```azurecli-interactive
+```azurecli
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
@@ -151,7 +155,7 @@ When the Cosmos DB account is created, the Azure CLI shows information similar t
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://&lt;cosmosdb-name&gt;.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb-name&gt;.documents.azure.cn:443/",
   "failoverPolicies": 
   ...
   &lt; Output truncated for readability &gt;
@@ -164,9 +168,9 @@ In this step, you connect your MEAN.js sample application to the Cosmos DB datab
 
 ### Retrieve the database key
 
-To connect to the Cosmos DB database, you need the database key. In the Cloud Shell, use the [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az-cosmosdb-list-keys) command to retrieve the primary key.
+To connect to the Cosmos DB database, you need the database key. In the local Shell, use the [`az cosmosdb list-keys`](https://docs.azure.cn/cli/cosmosdb#az_cosmosdb_list_keys) command to retrieve the primary key.
 
-```azurecli-interactive
+```azurecli
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
 ```
 
@@ -193,7 +197,7 @@ Copy the following code into it. Be sure to replace the two *\<cosmosdb-name>* p
 ```javascript
 module.exports = {
   db: {
-    uri: 'mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false'
+    uri: 'mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.cn:10250/mean?ssl=true&sslverifycertificate=false'
   }
 };
 ```
@@ -231,7 +235,7 @@ MEAN.JS
 
 Environment:     production
 Server:          http://0.0.0.0:8443
-Database:        mongodb://&lt;cosmosdb-name&gt;:&lt;primary-master-key&gt;@&lt;cosmosdb-name&gt;.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
+Database:        mongodb://&lt;cosmosdb-name&gt;:&lt;primary-master-key&gt;@&lt;cosmosdb-name&gt;.documents.azure.cn:10250/mean?ssl=true&sslverifycertificate=false
 App version:     0.5.0
 MEAN.JS version: 0.5.0
 </pre>
@@ -281,12 +285,12 @@ In this step, you deploy your MongoDB-connected Node.js application to Azure App
 
 By default, the MEAN.js project keeps _config/env/local-production.js_ out of the Git repository. So for your Azure app, you use app settings to define your MongoDB connection string.
 
-To set app settings, use the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command in the Cloud Shell. 
+To set app settings, use the [`az webapp config appsettings set`](https://docs.azure.cn/cli/webapp/config/appsettings#az_webapp_config_appsettings_set) command in the local Shell. 
 
 The following example configures a `MONGODB_URI` app setting in your Azure app. Replace the *\<app-name>*, *\<cosmosdb-name>*, and *\<primary-master-key>* placeholders.
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
+```azurecli
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.cn:10250/mean?ssl=true"
 ```
 
 In Node.js code, you [access this app setting](configure-language-nodejs.md#access-environment-variables) with `process.env.MONGODB_URI`, just like you would access any environment variable. 
@@ -343,7 +347,7 @@ Click **Sign Up** in the top menu and create a dummy user.
 
 If you are successful and the app automatically signs in to the created user, then your MEAN.js app in Azure has connectivity to the MongoDB (Cosmos DB) database. 
 
-![MEAN.js app running in Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
+:::image type="content" source="./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png" alt-text="MEAN.js app running in Azure App Service":::
 
 Select **Admin > Manage Articles** to add some articles. 
 
@@ -462,7 +466,7 @@ Select **Admin > Manage Articles**, then add an article by selecting the **+** b
 
 You see the new `Comment` textbox now.
 
-![Added comment field to Articles](./media/tutorial-nodejs-mongodb-app/added-comment-field.png)
+:::image type="content" source="./media/tutorial-nodejs-mongodb-app/added-comment-field.png" alt-text="Added comment field to Articles":::
 
 In the terminal, stop Node.js by typing `Ctrl+C`. 
 
@@ -477,7 +481,7 @@ git push azure master
 
 Once the `git push` is complete, navigate to your Azure app and try out the new functionality.
 
-![Model and database changes published to Azure](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
+:::image type="content" source="media/tutorial-nodejs-mongodb-app/added-comment-field-published.png" alt-text="Model and database changes published to Azure":::
 
 If you added any articles earlier, you still can see them. Existing data in your Cosmos DB is not lost. Also, your updates to the data schema and leaves your existing data intact.
 
@@ -487,9 +491,9 @@ If you added any articles earlier, you still can see them. Existing data in your
 
 While your Node.js application runs in Azure App Service, you can get the console logs piped to your terminal. That way, you can get the same diagnostic messages to help you debug application errors.
 
-To start log streaming, use the [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) command in the Cloud Shell.
+To start log streaming, use the [`az webapp log tail`](https://docs.azure.cn/cli/webapp/log#az_webapp_log_tail) command in the local Shell.
 
-```azurecli-interactive
+```azurecli
 az webapp log tail --name <app-name> --resource-group myResourceGroup
 ``` 
 
@@ -507,15 +511,15 @@ Stop log streaming at any time by typing `Ctrl+C`.
 
 ## Manage your Azure app
 
-Go to the [Azure portal](https://portal.azure.com) to see the app you created.
+Go to the [Azure portal](https://portal.azure.cn) to see the app you created.
 
 From the left menu, click **App Services**, then click the name of your Azure app.
 
-![Portal navigation to Azure app](./media/tutorial-nodejs-mongodb-app/access-portal.png)
+:::image type="content" source="./media/tutorial-nodejs-mongodb-app/access-portal.png" alt-text="Portal navigation to Azure app":::
 
 By default, the portal shows your app's **Overview** page. This page gives you a view of how your app is doing. Here, you can also perform basic management tasks like browse, stop, start, restart, and delete. The tabs on the left side of the page show the different configuration pages you can open.
 
-![App Service page in Azure portal](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
+:::image type="content" source="./media/tutorial-nodejs-mongodb-app/web-app-blade.png" alt-text="App Service page in Azure portal":::
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -541,3 +545,8 @@ Or, check out other resources:
 
 > [!div class="nextstepaction"]
 > [Configure Node.js app](configure-language-nodejs.md)
+
+
+
+<!-- Update_Description: new article about tutorial nodejs mongodb app -->
+<!--NEW.date: 12/21/2020-->

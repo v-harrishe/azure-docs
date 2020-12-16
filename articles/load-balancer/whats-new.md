@@ -2,11 +2,14 @@
 title: What's new in Azure Load Balancer
 description: Learn what's new with Azure Load Balancer, such as the latest release notes, known issues, bug fixes, deprecated functionality, and upcoming changes.
 services: load-balancer
-author: anavinahar
+
 ms.service: load-balancer
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.author: anavin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # What's new in Azure Load Balancer?
 
@@ -17,7 +20,7 @@ Azure Load Balancer is updated regularly. Stay up to date with the latest announ
 - Bug fixes
 - Deprecated functionality (if applicable)
 
-You can also find the latest Azure Load Balancer updates and subscribe to the RSS feed [here](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer).
+You can also find the latest Azure Load Balancer updates and subscribe to the RSS feed [here](https://www.azure.cn/updates/?category=networking&query=load%20balancer).
 
 ## Recent releases
 
@@ -43,3 +46,8 @@ The product group is actively working on resolutions for the following known iss
 ## Next steps
 
 For more information about Azure Load Balancer, see [What is Azure Load Balancer?](load-balancer-overview.md) and [frequently asked questions](load-balancer-faqs.md).
+
+
+
+<!-- Update_Description: new article about whats new -->
+<!--NEW.date: 12/21/2020-->

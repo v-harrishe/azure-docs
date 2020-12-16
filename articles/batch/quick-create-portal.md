@@ -2,7 +2,11 @@
 title: Azure Quickstart - Run your first Batch job in the Azure portal
 description: This quickstart shows how to use the Azure portal to create a Batch account, a pool of compute nodes, and a job that runs basic tasks on the pool.
 ms.topic: quickstart
-ms.date: 08/17/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc
 ---
 
@@ -12,13 +16,13 @@ Get started with Azure Batch by using the Azure portal to create a Batch account
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- An Azure account with an active subscription. [Create an account for free](https://www.azure.cn/pricing/1rmb-trial-full/).
 
 ## Create a Batch account
 
 Follow these steps to create a sample Batch account for test purposes. You need a Batch account to create pools and jobs. As shown here, you can link an Azure storage account with the Batch account. Although not required for this quickstart, the storage account is useful to deploy applications and store input and output data for most real-world workloads.
 
-1. In the [Azure portal](https://portal.azure.com), select **Create a resource** > **Compute** > **Batch Service**. 
+1. In the [Azure portal](https://portal.azure.cn), select **Create a resource** > **Compute** > **Batch Service**. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Screenshot of Batch Service in the Azure Marketplace.":::
 
@@ -45,16 +49,16 @@ Now that you have a Batch account, create a sample pool of Windows compute nodes
    |Setting  |Value  |
    |---------|---------|
    |**Image Type**|Marketplace|
-   |**Publisher**     |microsoftwindowsserver|
-   |**Offer**     |windowsserver|
-   |**Sku**     |2019-datacenter-core-smalldisk|
+   |**Publisher** |microsoftwindowsserver|
+   |**Offer** |windowsserver|
+   |**Sku** |2019-datacenter-core-smalldisk|
 
 1. Scroll down to enter **Node Size** and **Scale** settings. The suggested node size offers a good balance of performance versus cost for this quick example.
   
    |Setting  |Value  |
    |---------|---------|
-   |**Node pricing tier**     |Standard A1|
-   |**Target dedicated nodes**     |2|
+   |**Node pricing tier** |Standard A1|
+   |**Target dedicated nodes** |2|
 
 1. Keep the defaults for remaining settings, and select **OK** to create the pool.
 
@@ -110,3 +114,8 @@ In this quickstart, you created a Batch account, a Batch pool, and a Batch job. 
 
 > [!div class="nextstepaction"]
 > [Azure Batch tutorials](./tutorial-parallel-dotnet.md)
+
+
+
+<!-- Update_Description: new article about quick create portal -->
+<!--NEW.date: 12/21/2020-->

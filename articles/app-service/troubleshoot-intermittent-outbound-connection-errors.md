@@ -1,19 +1,22 @@
 ---
 title: Troubleshooting intermittent outbound connection errors in Azure App Service
 description: Troubleshoot intermittent connection errors and related performance issues in Azure App Service
-author: v-miegge
+
 manager: barbkess
 
 ms.topic: troubleshooting
-ms.date: 11/19/2020
-ms.author: ramakoni
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: security-recommendations,fasttrack-edit
 
 ---
 
 # Troubleshooting intermittent outbound connection errors in Azure App Service
 
-This article helps you troubleshoot intermittent connection errors and related performance issues in [Azure App Service](./overview.md). This topic will provide more information on, and troubleshooting methodologies for, exhaustion of source address network translation (SNAT) ports. If you require more help at any point in this article, contact the Azure experts at the [MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, file an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+This article helps you troubleshoot intermittent connection errors and related performance issues in [Azure App Service](./overview.md). This topic will provide more information on, and troubleshooting methodologies for, exhaustion of source address network translation (SNAT) ports. If you require more help at any point in this article, contact the Azure experts at the [Azure support](https://support.azure.cn/support/contact/). Alternatively, file an Azure support incident. Go to the [Azure Support site](https://www.azure.cn/support/options/.
 
 ## Symptoms
 
@@ -54,9 +57,9 @@ General strategies for mitigating SNAT port exhaustion are discussed in the [Pro
 
 ### Modify the application to use connection pooling
 
-* For pooling HTTP connections, review [Pool HTTP connections with HttpClientFactory](/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory).
-* For information on SQL Server connection pooling, review [SQL Server Connection Pooling (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
-* For implementing pooling with entity framework applications, review [DbContext pooling](/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling).
+* For pooling HTTP connections, review [Pool HTTP connections with HttpClientFactory](https://docs.azure.cn/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory).
+* For information on SQL Server connection pooling, review [SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+* For implementing pooling with entity framework applications, review [DbContext pooling](https://docs.azure.cn/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling).
 
 Here is a collection of links for implementing Connection pooling by different solution stack.
 
@@ -104,11 +107,11 @@ Although PHP does not support connection pooling, you can try using persistent d
 
 ### Modify the application to reuse connections
 
-*  For additional pointers and examples on managing connections in Azure functions, review [Manage connections in Azure Functions](../azure-functions/manage-connections.md).
+* For additional pointers and examples on managing connections in Azure functions, review [Manage connections in Azure Functions](../azure-functions/manage-connections.md).
 
 ### Modify the application to use less aggressive retry logic
 
-* For additional guidance and examples, review [Retry pattern](/azure/architecture/patterns/retry).
+* For additional guidance and examples, review [Retry pattern](https://docs.azure.cn/azure/architecture/patterns/retry).
 
 ### Use keepalives to reset the outbound idle timeout
 
@@ -116,7 +119,7 @@ Although PHP does not support connection pooling, you can try using persistent d
 
 ### Additional guidance specific to App Service:
 
-* A [load test](/azure/devops/test/load-test/app-service-web-app-performance-test) should simulate real world data in a steady feeding speed. Testing apps and functions under real world stress can identify and resolve SNAT port exhaustion issues ahead of time.
+* A [load test](https://docs.azure.cn/azure/devops/test/load-test/app-service-web-app-performance-test) should simulate real world data in a steady feeding speed. Testing apps and functions under real world stress can identify and resolve SNAT port exhaustion issues ahead of time.
 * Ensure that the back-end services can return responses quickly. For troubleshooting performance issues with Azure SQL Database, review [Troubleshoot Azure SQL Database performance issues with Intelligent Insights](../azure-sql/database/intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow).
 * Scale out the App Service plan to more instances. For more information on scaling, see [Scale an app in Azure App Service](./manage-scale-up.md). Each worker instance in an app service plan is allocated a number of SNAT ports. If you spread your usage across more instances, you might get the SNAT port usage per instance below the recommended limit of 100 outbound connections, per unique remote endpoint.
 * Consider moving to [App Service Environment (ASE)](./environment/using-an-ase.md), where you are allotted a single outbound IP address, and the limits for connections and SNAT ports are much higher. In an ASE, the number of SNAT ports per instance is based on the [Azure load balancer preallocation table](../load-balancer/load-balancer-outbound-connections.md#snatporttable) - so for example an ASE with 1-50 worker instances has 1024 preallocated ports per instance, while an ASE with 51-100 worker instances has 512 preallocated ports per instance.
@@ -139,7 +142,7 @@ If you do not know the application behavior enough to determine the cause quickl
 
 You can use [App Service Diagnostics](./overview-diagnostics.md) to find SNAT port allocation information, and observe the SNAT ports allocation metric of an App Service site. To find SNAT port allocation information, follow the following steps:
 
-1. To access App Service diagnostics, navigate to your App Service web app or App Service Environment in the [Azure portal](https://portal.azure.com/). In the left navigation, select **Diagnose and solve problems**.
+1. To access App Service diagnostics, navigate to your App Service web app or App Service Environment in the [Azure portal](https://portal.azure.cn/). In the left navigation, select **Diagnose and solve problems**.
 2. Select Availability and Performance Category
 3. Select SNAT Port Exhaustion tile in the list of available tiles under the category. The practice is to keep it below 128.
 If you do need it, you can still open a support ticket and the support engineer will get the metric from back-end for you.
@@ -175,3 +178,8 @@ You cannot change any Azure settings to release the used SNAT ports sooner, as a
 
 * [SNAT with App Service](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
 * [Troubleshoot slow app performance issues in Azure App Service](./troubleshoot-performance-degradation.md)
+
+
+
+<!-- Update_Description: new article about troubleshoot intermittent outbound connection errors -->
+<!--NEW.date: 12/21/2020-->

@@ -1,11 +1,14 @@
 ---
 title: Azure security baseline for App Service
 description: The App Service security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-author: msmbaldwin
+
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.author: mbaldwin
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -27,7 +30,7 @@ To see how App Service completely maps to the Azure Security Benchmark, see the 
 **Guidance**: 
 When using App Service in the Isolated pricing tier, also called an App Service Environment (ASE) you can deploy directly into a subnet within your Azure Virtual Network. Use network security groups to secure your Azure App Service Environment by blocking inbound and outbound traffic to resources in your virtual network, or to restrict access to apps in an App Service Environment.
 
-By default, network security groups include an implicit deny rule at the lowest priority, which requires you to explicitly add allow rules. Add allow rules for your network security group based on a least privileged networking approach. The underlying virtual machines that are used to host the App Service Environment are not directly accessible because they are in a Microsoft-managed subscription.
+By default, network security groups include an implicit deny rule at the lowest priority, which requires you to explicitly add allow rules. Add allow rules for your network security group based on a least privileged networking approach. The underlying virtual machines that are used to host the App Service Environment are not directly accessible because they are in a Azure-managed subscription.
 
 Protect an App Service Environment by routing traffic through a Web Application Firewall (WAF) enabled Azure Application Gateway. Use service endpoints in conjunction with the Application Gateway to secure inbound publishing traffic to your app.  
 
@@ -70,7 +73,7 @@ Use Azure Firewall to send traffic and centrally create, enforce, and log applic
 
 - [Understand Network Security provided by Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [How to Enable Monitoring and Protection of App Service](/azure/security-center/defender-for-app-service-introduction)
+- [How to Enable Monitoring and Protection of App Service](https://docs.azure.cn/azure/security-center/defender-for-app-service-introduction)
 
 **Azure Security Center monitoring**: Yes
 
@@ -101,7 +104,7 @@ Additionally, review and follow recommendations in the Locking down an App Servi
 
 - [Locking down an App Service Environment](environment/firewall-integration.md)
 
-- [Azure Web application firewall on Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
+- [Azure Web application firewall on Azure Application Gateway](../application-gateway/ag-overview.md)
 
 - [Azure App Service Access Restrictions](app-service-ip-restrictions.md)
 
@@ -123,7 +126,7 @@ Use service endpoints to restrict access to your web app from an Azure Virtual N
 
 - [Azure App Service Static IP Restrictions](app-service-ip-restrictions.md)
 
-- [Azure Web application firewall on Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
+- [Azure Web application firewall on Azure Application Gateway](../application-gateway/ag-overview.md)
 
 - [How to configure a Web Application Firewall (WAF) for App Service Environment](environment/app-service-app-service-environment-web-application-firewall.md)
 
@@ -137,7 +140,7 @@ Use service endpoints to restrict access to your web app from an Azure Virtual N
 
 **Guidance**: Monitors requests and responses that are sent to and from App Service apps with Security Center. Attacks against a web application can be monitored by using a real-time Application Gateway that has Web Application Firewall, enabled with integrated logging from Azure Monitor to track Web Application Firewall alerts and easily monitor trends.
 
-- [Azure Web Application Firewall on Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
+- [Azure Web Application Firewall on Azure Application Gateway](../application-gateway/ag-overview.md)
 
 **Azure Security Center monitoring**: Yes
 
@@ -163,11 +166,11 @@ Review the referenced links for additional information.
 
 - [Azure App Service Static IP Restrictions](app-service-ip-restrictions.md)
 
-- [Azure Web application firewall on Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
+- [Azure Web application firewall on Azure Application Gateway](../application-gateway/ag-overview.md)
 
 - [How to configure end-to-end TLS by using Application Gateway with the portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Secure the ASE as described in Locking down an App Service](/azure/app-service/environment/firewall-integration)
+- [Secure the ASE as described in Locking down an App Service](https://docs.azure.cn/azure/app-service/environment/firewall-integration)
 
 **Azure Security Center monitoring**: Yes
 
@@ -179,7 +182,7 @@ Review the referenced links for additional information.
 
 You can allow or deny the traffic for the corresponding service by specifying the service tag name in the appropriate source or destination field of a rule. App Service inbound addresses are tracked in the AppService IP service tag. There is no IP service tag that contains the outbound addresses used by App Service.
 
-Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
+Azure manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
 
 - [Virtual network service tags](../virtual-network/service-tags-overview.md)
 
@@ -204,7 +207,7 @@ Review the referenced links for additional information.
 
 - [How to configure end-to-end TLS by using Application Gateway with the portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Secure the ASE as described in Locking down an App Service](/azure/app-service/environment/firewall-integration)
+- [Secure the ASE as described in Locking down an App Service](https://docs.azure.cn/azure/app-service/environment/firewall-integration)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -220,7 +223,7 @@ Apply any of the built-in Azure Policy definitions related to tagging effects, s
 
 - [How to create and use tags](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service Access Restrictions](/azure/app-service/app-service-ip-restrictions)
+- [Azure App Service Access Restrictions](https://docs.azure.cn/azure/app-service/app-service-ip-restrictions)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -259,7 +262,7 @@ It is recommended that you create a process with automated tools to monitor netw
 **Guidance**: Integrate your App Service Environment (ASE) with Azure Monitor to send logs to Azure Storage, Azure Event Hubs, or Log Analytics. 
 Enable Azure Activity log diagnostic settings for control plane audit logging. Security alerts from Security Center are published to the Azure Activity log. Audit Azure Activity log data, which let’s you determine the "what, who, and when" for any write operations (PUT, POST, DELETE) performed at the control plane level for Azure App Service and other Azure resources. Save your queries for future use, pin query results to Azure Dashboards, and create log alerts. Also, use the Data Access REST API in Application Insights to access your telemetry programmatically.
 
-Use Microsoft Azure Sentinel, a scalable, cloud-native, security information event management (SIEM) available to connect to various data sources and connectors, based on your business requirements. You can also enable and on-board data to a third-party security information event management (SIEM) system, such as Barracuda in Azure Marketplace.
+Use Azure Azure Sentinel, a scalable, cloud-native, security information event management (SIEM) available to connect to various data sources and connectors, based on your business requirements. You can also enable and on-board data to a third-party security information event management (SIEM) system, such as Barracuda in Azure Marketplace.
 
 - [Logging ASE Activity](environment/using-an-ase.md#logging)
 
@@ -343,7 +346,7 @@ Monitor attacks against your App Service apps by using a real-time Web Applicati
 
 **Guidance**: Azure Active Directory (Azure AD) has built-in roles that must be explicitly assigned and query-able. Use the Azure AD PowerShell module to perform ad hoc queries to discover accounts that are members of administrative groups.
 
-- [How to get members of a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
+- [How to get members of a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [How to use managed identities for App Service and Azure Functions](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -422,7 +425,7 @@ When you enable authentication and authorization with one of these providers, it
 
 Implement multifactor authentication for Azure AD. Administrators need to ensure that the subscription accounts in the portal are protected. The subscription is vulnerable to attacks because it manages the resources that you created. 
 
-- [Azure Security MFA](/previous-versions/azure/security/develop/secure-aad-app)
+- [Azure Security MFA](https://docs.microsoft.com/previous-versions/azure/security/develop/secure-aad-app)
 
 - [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -436,7 +439,7 @@ Implement multifactor authentication for Azure AD. Administrators need to ensure
 
 **Guidance**: Use Privileged Access Workstations (PAW) with multifactor authentication configured to log into and configure Azure resources.
 
-- [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Learn about Privileged Access Workstations](https://docs.azure.cn/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -528,7 +531,7 @@ Use Azure AD Identity Protection to configure automated responses to detected su
 
 **Responsibility**: Customer
 
-### 3.13: Provide Microsoft with access to relevant customer data during support scenarios
+### 3.13: Provide Azure with access to relevant customer data during support scenarios
 
 **Guidance**: Not available for App Service. Customer Lockbox is not supported for Azure App Service.
 
@@ -560,7 +563,7 @@ There are two deployment types for an App Service environment (ASE). Both let yo
 
 - External Application Service Environment - Exposes the  App Service Environment hosted apps on an internet-accessible IP address.
 
--  internal load balancer (ILB) Application Service Environment - Exposes the App Service Environment hosted apps on an IP address inside your Virtual Network. The internal endpoint is an internal load balancer (ILB), which is why it is called an ILB ASE. 
+- internal load balancer (ILB) Application Service Environment - Exposes the App Service Environment hosted apps on an IP address inside your Virtual Network. The internal endpoint is an internal load balancer (ILB), which is why it is called an ILB ASE. 
 
 For the multi-tenant App Service (an app not in the Isolated tier), use Virtual Network Integration for your app's access to resources in your Virtual network.  Use private site access to make an app accessible only from a private network, such as one from within an Azure Virtual network. Virtual Network Integration is used only to make outbound calls from your app into your Virtual Network. The Virtual Network Integration feature behaves differently when it is used with a virtual network in the same region and with virtual networks in other regions. 
  
@@ -578,7 +581,7 @@ For the multi-tenant App Service (an app not in the Isolated tier), use Virtual 
 
 **Guidance**: While data identification, classification, and loss prevention features are not yet available for App Service, you can reduce the data exfiltration risk from the virtual network by removing all rules where the destination uses a 'tag' for Internet or Azure services. 
 
-Microsoft manages the underlying infrastructure for App Service and has implemented strict controls to prevent the loss or exposure of your data.
+Azure manages the underlying infrastructure for App Service and has implemented strict controls to prevent the loss or exposure of your data.
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -602,7 +605,7 @@ Microsoft manages the underlying infrastructure for App Service and has implemen
 
 Tag App Service apps that may be processing sensitive information. Implement third-party solution, if necessary for compliance purposes.
 
-Microsoft manages the underlying platform and treats all customer data as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
+Azure manages the underlying platform and treats all customer data as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -656,7 +659,7 @@ Note that while locally attached disks can be used optionally by websites as tem
 
 Review and follow recommendations from Security Center for securing your App Service apps.
 
-- [How to add continuous security validation to your CI/CD pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
+- [How to add continuous security validation to your CI/CD pipeline](https://docs.azure.cn/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [How to implement Azure Security Center vulnerability assessment recommendations](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -666,7 +669,7 @@ Review and follow recommendations from Security Center for securing your App Ser
 
 ### 5.5: Use a risk-rating process to prioritize the remediation of discovered vulnerabilities
 
-**Guidance**: Microsoft performs vulnerability management on the underlying systems that support App Service. However, you can use the severity of the recommendations within Security Center as well as the Secure Score to measure risk within your environment. Your Secure Score is based on how many Security Center recommendations you have mitigated. To prioritize the recommendations to resolve first, consider the severity of each.
+**Guidance**: Azure performs vulnerability management on the underlying systems that support App Service. However, you can use the severity of the recommendations within Security Center as well as the Secure Score to measure risk within your environment. Your Secure Score is based on how many Security Center recommendations you have mitigated. To prioritize the recommendations to resolve first, consider the severity of each.
 
 - [Security recommendations reference guide](../security-center/recommendations-reference.md)
 
@@ -686,7 +689,7 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 - [How to create queries with Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
+- [How to view your Azure Subscriptions](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Understand Azure RBAC](../role-based-access-control/overview.md)
 
@@ -841,7 +844,7 @@ Similarly, use WebJobs in App Service to inventory unapproved software applicati
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Configure Azure Conditional Access to limit the ability of users to interact with Azure Resource Manager, by configuring "Block access" for the "Microsoft Azure Management" App.
+**Guidance**: Configure Azure Conditional Access to limit the ability of users to interact with Azure Resource Manager, by configuring "Block access" for the "21Vianet Azure Management" App.
 
 - [How to configure Conditional Access to block access to Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -893,7 +896,7 @@ Apply built-in policy definitions such as:
 
 It is recommended that you document the process to apply the built-in policy definitions for standardized usage.   
 
-- [How to view available Azure Policy Aliases](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
+- [How to view available Azure Policy Aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -919,9 +922,9 @@ It is recommended that you document the process to apply the built-in policy def
 
 Use your existing Continuous Integration (CI) and Continuous Delivery (CD) pipeline to deploy a known-secure configuration.
 
-- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
+- [How to store code in Azure DevOps](https://docs.azure.cn/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos Documentation](/azure/devops/repos/?preserve-view=true&view=azure-devops)
+- [Azure Repos Documentation](https://docs.azure.cn/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -1002,7 +1005,7 @@ Ensure that regular and automated back-ups are occurring at a frequency as defin
 
 - [Understand Azure App Service backup capability](manage-backup.md)
 
-- [Customer-managed keys for Azure Storage encryption](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Customer-managed keys for Azure Storage encryption](../storage/common/customer-managed-keys-overview.md?toc=%2fstorage%2fblobs%2ftoc.json)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -1052,7 +1055,7 @@ More information is available at the referenced links.
 
 Azure Storage encryption is enabled for all storage accounts, including both Resource Manager and classic storage accounts. Azure Storage encryption cannot be disabled. Because your data is secured by default, you don't need to modify your code or applications to take advantage of Azure Storage encryption.
 
-By default, data in a storage account is encrypted with Microsoft-managed keys. You can rely on Microsoft-managed keys for the encryption of your data, or you can manage encryption with your own keys. Ensure soft delete is enabled in Azure Key Vault.
+By default, data in a storage account is encrypted with Azure-managed keys. You can rely on Azure-managed keys for the encryption of your data, or you can manage encryption with your own keys. Ensure soft delete is enabled in Azure Key Vault.
 
 - [Understand Azure Storage encryption for data at rest](../storage/common/storage-service-encryption.md)
 
@@ -1104,7 +1107,7 @@ Additionally, clearly mark subscriptions (for example, production, non-productio
 
 ### 10.4: Provide security incident contact details and configure alert notifications for security incidents
 
-**Guidance**: Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that the customer's data has been accessed by an unlawful or unauthorized party.  Review incidents after the fact to ensure that issues are resolved.
+**Guidance**: Security incident contact information will be used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that the customer's data has been accessed by an unlawful or unauthorized party.  Review incidents after the fact to ensure that issues are resolved.
 
 - [How to set the Azure Security Center Security Contact](../security-center/security-center-provide-security-contact-details.md)
 
@@ -1140,9 +1143,9 @@ Additionally, clearly mark subscriptions (for example, production, non-productio
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: Follow the Microsoft Rules of Engagement to ensure your Penetration Tests are not in violation of Microsoft policies: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Guidance**: Follow the Azure Rules of Engagement to ensure your Penetration Tests are not in violation of Azure policies: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-You can find more information on Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications.
+You can find more information on Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications.
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
@@ -1154,3 +1157,7 @@ You can find more information on Microsoft’s strategy and execution of Red Tea
 
 - See the [Azure security benchmark](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
+
+
+<!-- Update_Description: new article about security baseline -->
+<!--NEW.date: 12/21/2020-->

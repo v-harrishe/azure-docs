@@ -1,10 +1,14 @@
 ---
 title: Built-in policy definitions for Azure Service Bus Messaging
 description: Lists Azure Policy built-in policy definitions for Azure Service Bus Messaging. These built-in policy definitions provide common approaches to managing your Azure resources.
-ms.date: 11/20/2020
+
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+
 ms.topic: reference
-author: spelluru
-ms.author: spelluru
+author: rockboyfor
+ms.author: v-yeche
 ms.service: service-bus-messaging
 ms.custom: subject-policy-reference
 ---
@@ -28,3 +32,8 @@ the link in the **Version** column to view the source on the
 - See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).
 - Review the [Azure Policy definition structure](../governance/policy/concepts/definition-structure.md).
 - Review [Understanding policy effects](../governance/policy/concepts/effects.md).
+
+
+
+<!-- Update_Description: new article about policy reference -->
+<!--NEW.date: 12/21/2020-->

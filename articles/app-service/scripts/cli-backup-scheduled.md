@@ -1,13 +1,16 @@
 ---
-title: 'CLI: Create a scheduled backup'
+title: CLI - Create a scheduled backup
 description: Learn how to use the Azure CLI to automate deployment and management of your App Service app. This sample shows how to create a scheduled backup for an app.
-author: msangapu-msft
+
 tags: azure-service-management
 
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 12/11/2017
-ms.author: msangapu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
@@ -18,9 +21,9 @@ This sample script creates an app in App Service with its related resources, and
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-If you choose to install and use the CLI locally, you need Azure CLI version 2.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install the Azure CLI]( /cli/azure/install-azure-cli). 
+If you choose to install and use the CLI locally, you need Azure CLI version 2.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install the Azure CLI](https://docs.azure.cn/cli/install-azure-cli). 
 
 ## Sample script
 
@@ -34,18 +37,23 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | Creates a storage account. |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | Creates an Azure storage container. |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | Generates an SAS token for an Azure storage container.  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Creates an App Service plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Creates an App Service app. |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az-webapp-config-backup-update) | Configures a new backup schedule for an App Service app. |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az-webapp-config-backup-show) | Shows the backup schedule for an App Service app. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Gets a list of backups for an App Service app. |
+| [`az group create`](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
+| [`az storage account create`](https://docs.azure.cn/cli/storage/account#az_storage_account_create) | Creates a storage account. |
+| [`az storage container create`](https://docs.azure.cn/cli/storage/container#az_storage_container_create) | Creates an Azure storage container. |
+| [`az storage container generate-sas`](https://docs.azure.cn/cli/storage/container#az_storage_container_generate_sas) | Generates an SAS token for an Azure storage container.  |
+| [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) | Creates an App Service plan. |
+| [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) | Creates an App Service app. |
+| [`az webapp config backup update`](https://docs.azure.cn/cli/webapp/config/backup#az_webapp_config_backup_update) | Configures a new backup schedule for an App Service app. |
+| [`az webapp config backup show`](https://docs.azure.cn/cli/webapp/config/backup#az_webapp_config_backup_show) | Shows the backup schedule for an App Service app. |
+| [`az webapp config backup list`](https://docs.azure.cn/cli/webapp/config/backup#az_webapp_config_backup_list) | Gets a list of backups for an App Service app. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
+For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
 
 Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
+
+
+
+<!-- Update_Description: new article about cli backup scheduled -->
+<!--NEW.date: 12/21/2020-->

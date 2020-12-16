@@ -2,7 +2,11 @@
 title: Choose VM sizes and images for pools
 description: How to choose from the available VM sizes and OS versions for compute nodes in Azure Batch pools
 ms.topic: conceptual
-ms.date: 11/24/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
@@ -68,7 +72,7 @@ Batch pools in the Virtual Machine configuration support almost all [VM sizes](.
 
 ### Using Generation 2 VM Images
 
-Some VM series, such as [Mv2](../virtual-machines/mv2-series.md), can only be used with [generation 2 VM images](../virtual-machines/generation-2.md). Generation 2 VM images are specified like any VM image, using the 'sku' property of the ['imageReference'](/rest/api/batchservice/pool/add#imagereference) configuration; the 'sku' strings have a suffix such as "-g2" or "-gen2". To get a list of VM images supported by Batch, including generation 2 images, use the ['list supported images'](/rest/api/batchservice/account/listsupportedimages) API, [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage), or [Azure CLI](/cli/azure/batch/pool/supported-images).
+Some VM series, such as [Mv2](../virtual-machines/mv2-series.md), can only be used with [generation 2 VM images](../virtual-machines/generation-2.md). Generation 2 VM images are specified like any VM image, using the 'sku' property of the ['imageReference'](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) configuration; the 'sku' strings have a suffix such as "-g2" or "-gen2". To get a list of VM images supported by Batch, including generation 2 images, use the ['list supported images'](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages) API, [PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage), or [Azure CLI](https://docs.azure.cn/cli/batch/pool/supported-images).
 
 ### Pools in Cloud Service configuration
 
@@ -81,7 +85,10 @@ Batch pools in the Cloud Service configuration support all [VM sizes for Cloud S
 
 ## Size considerations
 
-- **Application requirements** - Consider the characteristics and requirements of the application you'll run on the nodes. Aspects like whether the application is multithreaded and how much memory it consumes can help determine the most suitable and cost-effective node size. For multi-instance [MPI workloads](batch-mpi.md) or CUDA applications, consider specialized [HPC](../virtual-machines/sizes-hpc.md) or [GPU-enabled](../virtual-machines/sizes-gpu.md) VM sizes, respectively. For more information, see [Use RDMA-capable or GPU-enabled instances in Batch pools](batch-pool-compute-intensive-sizes.md).
+- **Application requirements** - Consider the characteristics and requirements of the application you'll run on the nodes. Aspects like whether the application is multithreaded and how much memory it consumes can help determine the most suitable and cost-effective node size. For multi-instance [MPI workloads](batch-mpi.md) or CUDA applications, consider specialized [HPC(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)](../virtual-machines/sizes-hpc.md) or [GPU-enabled](../virtual-machines/sizes-gpu.md) VM sizes, respectively. For more information, see [Use RDMA-capable or GPU-enabled instances in Batch pools](batch-pool-compute-intensive-sizes.md).
+
+<!--Not Available on FEATURE HPC-->
+
 
 - **Tasks per node** - It's typical to select a node size assuming one task runs on a node at a time. However, it might be advantageous to have multiple tasks (and therefore multiple application instances) [run in parallel](batch-parallel-node-tasks.md) on compute nodes during job execution. In this case, it is common to choose a multicore node size to accommodate the increased demand of parallel task execution.
 
@@ -97,11 +104,16 @@ Batch pools in the Cloud Service configuration support all [VM sizes for Cloud S
 
 Use one of the following APIs to return a list of Windows and Linux VM images currently supported by Batch, including the node agent SKU IDs for each image:
 
-- Batch Service REST API: [List Supported Images](/rest/api/batchservice/account/listsupportedimages)
-- PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
-- Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
+- Batch Service REST API: [List Supported Images](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages)
+- PowerShell: [Get-AzBatchSupportedImage](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)
+- Azure CLI: [az batch pool supported-images](https://docs.azure.cn/cli/batch/pool/supported-images#az-batch-pool-supported-images)
 
 ## Next steps
 
 - Learn about the [Batch service workflow and primary resources](batch-service-workflow-features.md) such as pools, nodes, jobs, and tasks.
 - For information about using compute-intensive VM sizes, see [Use RDMA-capable or GPU-enabled instances in Batch pools](batch-pool-compute-intensive-sizes.md).
+
+
+
+<!-- Update_Description: new article about batch pool vm sizes -->
+<!--NEW.date: 12/21/2020-->

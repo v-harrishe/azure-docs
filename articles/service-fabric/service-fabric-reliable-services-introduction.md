@@ -1,10 +1,13 @@
 ---
 title: Overview of the Reliable Service programming model 
 description: Learn about Service Fabric's Reliable Service programming model, and get started writing your own services.
-author: masnider
+
 ms.topic: conceptual
-ms.date: 3/9/2018
-ms.author: masnider
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Reliable Services overview
 
@@ -102,3 +105,8 @@ Consider Reliable Services APIs if:
 * [Reliable Services quickstart](service-fabric-reliable-services-quick-start.md)
 * [Reliable collections](service-fabric-reliable-services-reliable-collections.md)
 * [The Reliable Actors programming model](service-fabric-reliable-actors-introduction.md)
+
+
+
+<!-- Update_Description: new article about service fabric reliable services introduction -->
+<!--NEW.date: 12/21/2020-->

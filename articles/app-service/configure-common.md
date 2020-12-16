@@ -4,7 +4,11 @@ description: Learn to configure common settings for an App Service app in the Az
 keywords: azure app service, web app, app settings, environment variables
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 12/07/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "devx-track-csharp, seodec18, devx-track-azurecli"
 
 ---
@@ -18,11 +22,11 @@ In App Service, app settings are variables passed as environment variables to th
 
 In the [Azure portal], search for and select **App Services**, and then select your app. 
 
-![Search for App Services](./media/configure-common/search-for-app-services.png)
+:::image type="content" source="./media/configure-common/search-for-app-services.png" alt-text="Search for App Services":::
 
 In the app's left menu, select **Configuration** > **Application settings**.
 
-![Application Settings](./media/configure-common/open-ui.png)
+:::image type="content" source="./media/configure-common/open-ui.png" alt-text="Application Settings":::
 
 For ASP.NET and ASP.NET Core developers, setting app settings in App Service are like setting them in `<appSettings>` in *Web.config* or *appsettings.json*, but the values in App Service override the ones in *Web.config* or *appsettings.json*. You can keep development settings (for example, local MySQL password) in *Web.config* or *appsettings.json* and production secrets (for example, Azure MySQL database password) safely in App Service. The same code uses your development settings when you debug locally, and it uses your production secrets when deployed to Azure.
 
@@ -83,23 +87,23 @@ App settings have the following JSON formatting:
 
 You can use the Azure CLI to create and manage settings from the command line.
 
-- Assign a value to a setting with [az webapp config app settings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set):
+- Assign a value to a setting with [az webapp config app settings set](https://docs.azure.cn/cli/webapp/config/appsettings#az_webapp_config_appsettings_set):
 
-    ```azurecli-interactive
+    ```azurecli
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
     ```
         
     Replace `<setting-name>` with the name of the setting, and `<value>` with the value to assign to it. This command creates the setting if it doesn't already exist.
     
-- Show all settings and their values with [az webapp config appsettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list):
+- Show all settings and their values with [az webapp config appsettings list](https://docs.azure.cn/cli/webapp/config/appsettings#az_webapp_config_appsettings_list):
     
-    ```azurecli-interactive
+    ```azurecli
     az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
     ```
     
-- Remove one or more settings with [az webapp config app settings delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete):
+- Remove one or more settings with [az webapp config app settings delete](https://docs.azure.cn/cli/webapp/config/appsettings#az_webapp_config_appsettings_delete):
 
-    ```azurecli-interactive
+    ```azurecli
     az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
     ```
     
@@ -109,7 +113,7 @@ You can use the Azure CLI to create and manage settings from the command line.
 
 In the [Azure portal], search for and select **App Services**, and then select your app. In the app's left menu, select **Configuration** > **Application settings**.
 
-![Application Settings](./media/configure-common/open-ui.png)
+:::image type="content" source="./media/configure-common/open-ui.png" alt-text="Application Settings":::
 
 For ASP.NET and ASP.NET Core developers, setting connection strings in App Service are like setting them in `<connectionStrings>` in *Web.config*, but the values you set in App Service override the ones in *Web.config*. You can keep development settings (for example, a database file) in *Web.config* and production secrets (for example, SQL Database credentials) safely in App Service. The same code uses your development settings when you debug locally, and it uses your production secrets when deployed to Azure.
 
@@ -184,7 +188,7 @@ Connection strings have the following JSON formatting:
 
 In the [Azure portal], search for and select **App Services**, and then select your app. In the app's left menu, select **Configuration** > **General settings**.
 
-![General settings](./media/configure-common/open-general.png)
+:::image type="content" source="./media/configure-common/open-general.png" alt-text="General settings":::
 
 Here, you can configure some common settings for the app. Some settings require you to [scale up to higher pricing tiers](manage-scale-up.md).
 
@@ -192,7 +196,7 @@ Here, you can configure some common settings for the app. Some settings require 
 
     For Linux apps and custom container apps, you can select the language runtime version and set an optional **Startup command** or a startup command file.
 
-    ![General settings for Linux containers](./media/configure-common/open-general-linux.png)
+    :::image type="content" source="./media/configure-common/open-general-linux.png" alt-text="General settings for Linux containers":::
 
 - **Platform settings**: Lets you configure settings for the hosting platform, including:
     - **Bitness**: 32-bit or 64-bit.
@@ -201,11 +205,11 @@ Here, you can configure some common settings for the app. Some settings require 
       > [!NOTE]
       > With the Always On feature, the front end load balancer sends a request to the application root. This application endpoint of the App Service can't be configured.
     - **Managed pipeline version**: The IIS [pipeline mode]. Set it to **Classic** if you have a legacy app that requires an older version of IIS.
-    - **HTTP version**: Set to **2.0** to enable support for [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protocol.
+    - **HTTP version**: Set to **2.0** to enable support for [HTTPS/2](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/HTTP/2) protocol.
     > [!NOTE]
     > Most modern browsers support HTTP/2 protocol over TLS only, while non-encrypted traffic continues to use HTTP/1.1. To ensure that client browsers connect to your app with HTTP/2, secure your custom DNS name. For more information, see [Secure a custom DNS name with a TLS/SSL binding in Azure App Service](configure-ssl-bindings.md).
     - **ARR affinity**: In a multi-instance deployment, ensure that the client is routed to the same instance for the life of the session. You can set this option to **Off** for stateless applications.
-- **Debugging**: Enable remote debugging for [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure), or [Node.js](configure-language-nodejs.md#debug-remotely) apps. This option turns off automatically after 48 hours.
+- **Debugging**: Enable remote debugging for [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](https://docs.microsoft.com/visualstudio/debugger/remote-debugging-azure), or [Node.js](configure-language-nodejs.md#debug-remotely) apps. This option turns off automatically after 48 hours.
 - **Incoming client certificates**: require client certificates in [mutual authentication](app-service-web-configure-tls-mutual-auth.md).
 
 ## Configure default documents
@@ -214,7 +218,7 @@ This setting is only for Windows apps.
 
 In the [Azure portal], search for and select **App Services**, and then select your app. In the app's left menu, select **Configuration** > **Default documents**.
 
-![Default documents](./media/configure-common/open-documents.png)
+:::image type="content" source="./media/configure-common/open-documents.png" alt-text="Default documents":::
 
 The default document is the web page that's displayed at the root URL for a website. The first matching file in the list is used. To add a new default document, click **New document**. Don't forget to click **Save**.
 
@@ -224,7 +228,7 @@ If the app uses modules that route based on URL instead of serving static conten
 
 In the [Azure portal], search for and select **App Services**, and then select your app. In the app's left menu, select **Configuration** > **Path mappings**.
 
-![Path mappings](./media/configure-common/open-path.png)
+:::image type="content" source="./media/configure-common/open-path.png" alt-text="Path mappings":::
 
 > [!NOTE] 
 > The **Path mappings** tab may display OS-specific settings that differ from the example shown here.
@@ -246,7 +250,7 @@ From the **Path mappings** tab, click **New virtual application or directory**.
 - To map a virtual directory to a physical path, leave the **Directory** check box selected. Specify the virtual directory and the corresponding relative (physical) path to the website root (`D:\home`).
 - To mark a virtual directory as a web application, clear the **Directory** check box.
   
-  ![Directory check box](./media/configure-common/directory-check-box.png)
+  :::image type="content" source="./media/configure-common/directory-check-box.png" alt-text="Directory check box":::
 
 ### Containerized apps
 
@@ -293,10 +297,15 @@ See [Configure a custom Linux container for Azure App Service](configure-custom-
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
-[Azure Portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.cn/
 [Configure a custom domain name in Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Set up staging environments in Azure App Service]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: ./web-sites-monitor.md
 [Monitoring basics in Azure App Service]: ./web-sites-monitor.md
 [pipeline mode]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Scale an app in Azure App Service]: ./manage-scale-up.md
+
+
+
+<!-- Update_Description: new article about configure common -->
+<!--NEW.date: 12/21/2020-->

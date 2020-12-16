@@ -3,7 +3,11 @@ title: Tutorial - Run a parallel R simulation with Azure Batch
 description: Tutorial - Step by step instructions to run a Monte Carlo financial simulation in Azure Batch using the R doAzureParallel package
 ms.devlang: r
 ms.topic: tutorial
-ms.date: 10/08/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc
 ---
 
@@ -29,7 +33,7 @@ This tutorial shows you how to deploy a Batch pool and run a parallel R job in A
 
 ## Sign in to Azure
 
-Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+Sign in to the Azure portal at [https://portal.azure.cn](https://portal.azure.cn).
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 ## Install doAzureParallel
@@ -66,7 +70,7 @@ When complete, the credentials file looks similar to the following:
   "batchAccount": {
     "name": "mybatchaccount",
     "key": "xxxxxxxxxxxxxxxxE+yXrRvJAqT9BlXwwo1CwF+SwAYOxxxxxxxxxxxxxxxx43pXi/gdiATkvbpLRl3x14pcEQ==",
-    "url": "https://mybatchaccount.mybatchregion.batch.azure.com"
+    "url": "https://mybatchaccount.mybatchregion.batch.chinacloudapi.cn"
   },
   "storageAccount": {
     "name": "mystorageaccount",
@@ -84,7 +88,7 @@ setCredentials("credentials.json")
 
 ## Create a Batch pool
 
-doAzureParallel includes a function to generate an Azure Batch pool (cluster) to run parallel R jobs. The nodes run an Ubuntu-based [Azure Data Science Virtual Machine](../machine-learning/data-science-virtual-machine/overview.md). Microsoft R Open and popular R packages are pre-installed on this image. You can view or customize certain cluster settings, such as the number and size of the nodes.
+doAzureParallel includes a function to generate an Azure Batch pool (cluster) to run parallel R jobs. The nodes run an Ubuntu-based [Azure Data Science Virtual Machine](../machine-learning/data-science-virtual-machine/overview.md). Azure R Open and popular R packages are pre-installed on this image. You can view or customize certain cluster settings, such as the number and size of the nodes.
 
 To generate a cluster configuration JSON file in your working directory:
 
@@ -92,12 +96,18 @@ To generate a cluster configuration JSON file in your working directory:
 generateClusterConfig("cluster.json")
 ```
 
-Open the file to view the default configuration, which includes 3 dedicated nodes and 3 [low-priority](batch-low-pri-vms.md) nodes. These settings are just examples that you can experiment with or modify. Dedicated nodes are reserved for your pool. Low-priority nodes are offered at a reduced price from surplus VM capacity in Azure. Low-priority nodes become unavailable if Azure does not have enough capacity.
+Open the file to view the default configuration, which includes 3 dedicated nodes and 3 [low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)](batch-low-pri-vms.md) nodes. These settings are just examples that you can experiment with or modify. Dedicated nodes are reserved for your pool. Low-priority nodes are offered at a reduced price from surplus VM capacity in Azure. Low-priority nodes become unavailable if Azure does not have enough capacity.
+
+<!--Not Available on FEATURE low-priority-->
+
 
 For this tutorial, change the configuration as follows:
 
 * Increase the `taskSlotsPerNode` to *2*, to take advantage of both cores on each node
-* Set `dedicatedNodes` to *0*, so you can try the low-priority VMs available for Batch. Set the `min` of `lowPriorityNodes` to *5*. and the `max` to *10*, or choose smaller numbers if desired.
+* Set `dedicatedNodes` to *0*, so you can try the low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) VMs available for Batch. Set the `min` of `lowPriorityNodes` to *5*. and the `max` to *10*, or choose smaller numbers if desired.
+
+<!--Not Available on FEATURE low-priority-->
+
 
 Leave defaults for the remaining settings, and save the file. It should look similar to the following:
 
@@ -188,7 +198,7 @@ hist(closingPrices_s)
 
 Output is similar to the following:
 
-![Screenshot shows a histogram of closing prices](media/tutorial-r-doazureparallel/closing-prices-local.png)
+:::image type="content" source="media/tutorial-r-doazureparallel/closing-prices-local.png" alt-text="Screenshot shows a histogram of closing prices":::
   
 A local simulation completes in a few seconds or less:
 
@@ -217,7 +227,7 @@ end_p <- Sys.time()
 
 The simulation distributes tasks to the nodes in the Batch pool. You can see the activity in the heat map for the pool in the Azure portal. Go to **Batch accounts** > *myBatchAccount*. Click **Pools** > *myPoolName*.
 
-![Heat map of pool running parallel R tasks](media/tutorial-r-doazureparallel/pool.png)
+:::image type="content" source="media/tutorial-r-doazureparallel/pool.png" alt-text="Heat map of pool running parallel R tasks":::
 
 After a few minutes, the simulation finishes. The package automatically merges the results and pulls them down from the nodes. Then, you are ready to use the results in your R session.
 
@@ -227,7 +237,7 @@ hist(closingPrices_p)
 
 Output is similar to the following:
 
-![Distribution of closing prices](media/tutorial-r-doazureparallel/closing-prices.png)
+:::image type="content" source="media/tutorial-r-doazureparallel/closing-prices.png" alt-text="Distribution of closing prices":::
 
 How long did the parallel simulation take?
 
@@ -258,3 +268,8 @@ For more information about doAzureParallel, see the documentation and samples on
 
 > [!div class="nextstepaction"]
 > [doAzureParallel package](https://github.com/Azure/doAzureParallel/)
+
+
+
+<!-- Update_Description: new article about tutorial r doazureparallel -->
+<!--NEW.date: 12/21/2020-->
