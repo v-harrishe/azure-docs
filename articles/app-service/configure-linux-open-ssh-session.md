@@ -2,20 +2,23 @@
 title: SSH access for Linux containers
 description: You can open an SSH session to a Linux container in Azure App Service. Custom Linux containers are supported with some modifications to your custom image.
 keywords: azure app service, web app, linux, oss
-author: msangapu-msft
+
 
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
-ms.date: 02/25/2019
-ms.author: msangapu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seodec18
 
 ---
 # Open an SSH session to a Linux container in Azure App Service
 
-[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) is commonly used to execute administrative commands remotely from a command-line terminal. App Service on Linux provides SSH support into the app container. 
+[Secure Shell (SSH)](https://wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Secure_Shell) is commonly used to execute administrative commands remotely from a command-line terminal. App Service on Linux provides SSH support into the app container. 
 
-![Linux App Service SSH](./media/configure-linux-open-ssh-session/app-service-linux-ssh.png)
+:::image type="content" source="./media/configure-linux-open-ssh-session/app-service-linux-ssh.png" alt-text="Linux App Service SSH":::
 
 You can also connect to the container directly from your local development machine using SSH and SFTP.
 
@@ -35,16 +38,16 @@ See [Configure SSH in a custom container](configure-custom-container.md#enable-s
 
 Using TCP tunneling you can create a network connection between your development machine and Web App for Containers over an authenticated WebSocket connection. It enables you to open an SSH session with your container running in App Service from the client of your choice.
 
-To get started, you need to install [Azure CLI](/cli/azure/install-azure-cli). To see how it works without installing Azure CLI, open [Azure Cloud Shell](../cloud-shell/overview.md). 
+To get started, you need to install [Azure CLI](https://docs.azure.cn/cli/install-azure-cli). To see how it works without installing Azure CLI, open [Azure local Shell](../cloud-shell/overview.md). 
 
-Open a remote connection to your app using the [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) command. Specify _\<subscription-id>_, _\<group-name>_ and \_\<app-name>_ for your app.
+Open a remote connection to your app using the [az webapp remote-connection create](https://docs.azure.cn/cli/ext/webapp/webapp/remote-connection#ext_webapp_az_webapp_remote_connection_create) command. Specify _\<subscription-id>_, _\<group-name>_ and \_\<app-name>_ for your app.
 
-```azurecli-interactive
+```azurecli
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&` at the end of the command is just for convenience if you are using Cloud Shell. It runs the process in the background so that you can run the next command in the same shell.
+> `&` at the end of the command is just for convenience if you are using local Shell. It runs the process in the background so that you can run the next command in the same shell.
 
 The command output gives you the information you need to open an SSH session.
 
@@ -109,11 +112,16 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## Next steps
 
-You can post questions and concerns on the [Azure forum](/answers/topics/azure-webapps.html).
+You can post questions and concerns on the [Azure forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 For more information on Web App for Containers, see:
 
-* [Introducing remote debugging of Node.js apps on Azure App Service from VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Introducing remote debugging of Node.js apps on Azure App Service from VS Code](https://medium.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [Quickstart: Run a custom container on App Service](quickstart-custom-container.md?pivots=container-linux)
 * [Using Ruby in Azure App Service on Linux](quickstart-ruby.md)
 * [Azure App Service Web App for Containers FAQ](faq-app-service-linux.md)
+
+
+
+<!-- Update_Description: new article about configure linux open ssh session -->
+<!--NEW.date: 12/21/2020-->

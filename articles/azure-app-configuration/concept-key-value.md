@@ -1,11 +1,15 @@
 ---
 title: Understand Azure App Configuration key-value store
 description: Understand key-value storage in Azure App Configuration, which stores configuration data as key-values. Key-values are a representation of application settings.
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 08/04/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Keys and values
@@ -37,7 +41,7 @@ There are two general approaches to naming keys used for configuration data: fla
 * Easier to manage. A key name hierarchy represents logical groups of configuration data.
 * Easier to use. It's simpler to write a query that pattern-matches keys in a hierarchical structure and retrieves only a portion of configuration data. Also, many newer programming frameworks have native support for hierarchical configuration data such that your application can make use of specific sets of configuration.
 
-You can organize keys in App Configuration hierarchically in many ways. Think of such keys as [URIs](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier). Each hierarchical key is a resource *path* composed of one or more components that are joined together by delimiters. Choose what character to use as a delimiter based on what your application, programming language, or framework needs. Use multiple delimiters for different keys in App Configuration.
+You can organize keys in App Configuration hierarchically in many ways. Think of such keys as [URIs](https://en.wikipedia.org (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /wiki/Uniform_Resource_Identifier). Each hierarchical key is a resource *path* composed of one or more components that are joined together by delimiters. Choose what character to use as a delimiter based on what your application, programming language, or framework needs. Use multiple delimiters for different keys in App Configuration.
 
 ### Label keys
 
@@ -94,3 +98,8 @@ Each key-value in App Configuration has a content-type attribute. You can option
 * [Point-in-time snapshot](./concept-point-time-snapshot.md)
 * [Feature management](./concept-feature-management.md)
 * [Event handling](./concept-app-configuration-event.md)
+
+
+
+<!-- Update_Description: new article about concept key value -->
+<!--NEW.date: 12/21/2020-->

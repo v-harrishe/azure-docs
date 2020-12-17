@@ -1,11 +1,14 @@
 ---
 title: Deploy a cluster across Availability Zones
 description: Learn how to create an Azure Service Fabric cluster across Availability Zones.
-author: peterpogorski
+
 
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: pepogors
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Deploy an Azure Service Fabric cluster across Availability Zones
 Availability Zones in Azure is a high-availability offering that protects your applications and data from datacenter failures. An Availability Zone is a unique physical location equipped with independent power, cooling, and networking within an Azure region.
@@ -411,11 +414,11 @@ The Service Fabric nodeType must be enabled to support multiple availability zon
 
 ### Migration to the node type with multiple Availability Zones
 For all migration scenarios, a new nodeType needs to added which will have multiple availability zones supported. An existing nodeType can’t be migrated to support multiple zones.
-The article [here](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) captures the detailed steps of adding a new nodeType and also adding the other resources required for the new nodeType like the IP and LB resources. 
+The article [here](https://docs.azure.cn/service-fabric/service-fabric-scale-up-primary-node-type ) captures the detailed steps of adding a new nodeType and also adding the other resources required for the new nodeType like the IP and LB resources. 
 The same article also describes now to retire the existing nodeType after the nodeType with multiple Availability zones is added to the cluster.
 
 * Migration from a nodeType which is using basic LB and IP resources:
-    This is already described [here](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) for the solution with one node type per AZ. 
+    This is already described [here](https://docs.azure.cn/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) for the solution with one node type per AZ. 
     For the new node type, the only difference is that there is only 1 virtual machine scale set and 1 nodetype for all AZ’s instead of 1 each per AZ.
 * Migration from a nodeType which is using the Standard SKU LB and IP resources with NSG:
     Follow the same procedure as described above with the exception that there is no need to add new LB, IP and NSG resources, and the same resources can be reused in the new nodeType.
@@ -423,3 +426,8 @@ The same article also describes now to retire the existing nodeType after the no
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
+
+
+
+<!-- Update_Description: new article about service fabric cross availability zones -->
+<!--NEW.date: 12/21/2020-->

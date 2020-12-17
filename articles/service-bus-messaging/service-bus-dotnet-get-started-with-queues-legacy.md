@@ -1,9 +1,13 @@
 ---
-title: Get started with Azure Service Bus queues | Microsoft Docs
+title: Get started with Azure Service Bus queues | Azure Docs
 description: In this tutorial, you create .NET Core console applications to send messages to and receive messages from a Service Bus queue.
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.date: 09/01/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 
@@ -17,7 +21,7 @@ In this tutorial, you create .NET Core console applications to send messages to 
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), version 2.0 or later.
-- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) or sign up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
 - If you don't have a queue to work with, follow steps in the [Use Azure portal to create a Service Bus queue](service-bus-quickstart-portal.md) article to create a queue.
 
   - Read the quick overview of Service Bus queues.
@@ -179,7 +183,7 @@ Select the name of your queue in the namespace **Overview** window to display qu
 
 The **Active message count** value for the queue is now **10**. Each time you run this sender app without retrieving the messages, this value increases by 10.
 
-The current size of the queue increments the **CURRENT** value in **Essentials**  each time the app adds messages to the queue.
+The current size of the queue increments the **CURRENT** value in **Essentials** each time the app adds messages to the queue.
 
 The next section describes how to retrieve these messages.
 
@@ -395,3 +399,8 @@ Check out our [GitHub repository with samples](https://github.com/Azure/azure-se
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues-legacy/messages-sent-to-essentials.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues-legacy/queue-message-receive-in-essentials.png
 
+
+
+
+<!-- Update_Description: new article about service bus dotnet get started with queues legacy -->
+<!--NEW.date: 12/21/2020-->

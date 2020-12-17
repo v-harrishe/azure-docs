@@ -2,7 +2,11 @@
 title: Azure Service Fabric environment variables 
 description: Learn about environment variables in Azure Service Fabric. Contains a reference of a full list of variables and their uses.
 ms.topic: reference
-ms.date: 12/07/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Service Fabric environment variables
 
@@ -12,8 +16,8 @@ Service Fabric has built-in environment variables set for each service instance.
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | The fabric uri name of the application                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | The name of the code package to which the process belongs              | Code                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | The ip address or FQDN of the endpoint                                 | 10.0.0.1                                                     |
-| Fabric\_Endpoint\_*ServiceEndpointName*              | Port number for the endpoint                                  | 8234                                                                 |
+| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName* | The ip address or FQDN of the endpoint                                 | 10.0.0.1                                                     |
+| Fabric\_Endpoint\_*ServiceEndpointName* | Port number for the endpoint                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | Log folder                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
 | Fabric_Folder_App_Temp                       | Temp folder                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
 | Fabric_Folder_App_Work                       | Work folder                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |
@@ -41,3 +45,8 @@ Internal Environment Variables Used by Service Fabric Runtime:
 - FabricActivatorAddress
 - FabricPackageFileName
 - HostedServiceName
+
+
+
+<!-- Update_Description: new article about service fabric environment variables reference -->
+<!--NEW.date: 12/21/2020-->

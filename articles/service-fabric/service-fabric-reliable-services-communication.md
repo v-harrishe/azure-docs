@@ -2,7 +2,11 @@
 title: Reliable Services communication overview 
 description: Overview of the Reliable Services communication model, including opening listeners on services, resolving endpoints, and communicating between services.
 ms.topic: conceptual
-ms.date: 11/01/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # How to use the Reliable Services communication APIs
@@ -203,10 +207,10 @@ FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefa
 To connect to services in a different cluster, a ServicePartitionResolver can be created with a set of cluster gateway endpoints. Note that gateway endpoints are just different endpoints for connecting to the same cluster. For example:
 
 ```csharp
-ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
+ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.chinacloudapi.cn:19000", "mycluster.cloudapp.chinacloudapi.cn:19001");
 ```
 ```java
-FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
+FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver("mycluster.cloudapp.chinacloudapi.cn:19000", "mycluster.cloudapp.chinacloudapi.cn:19001");
 ```
 
 Alternatively, `ServicePartitionResolver` can be given a function for creating a `FabricClient` to use internally:
@@ -418,3 +422,8 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 * [ASP.NET Core with Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Remote procedure calls with Reliable Services remoting](service-fabric-reliable-services-communication-remoting.md)
 * [WCF communication by using Reliable Services](service-fabric-reliable-services-communication-wcf.md)
+
+
+
+<!-- Update_Description: new article about service fabric reliable services communication -->
+<!--NEW.date: 12/21/2020-->

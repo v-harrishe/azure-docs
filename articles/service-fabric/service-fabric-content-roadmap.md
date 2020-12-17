@@ -3,7 +3,11 @@ title: Learn more about Azure Service Fabric
 description: Learn about the core concepts and major areas of Azure Service Fabric. Provides an extended overview of Service Fabric and how to create microservices. 
 
 ms.topic: conceptual
-ms.date: 12/08/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # So you want to learn about Service Fabric?
 Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices.  Service Fabric has a large surface area, however, and there's a lot to learn.  This article provides a synopsis of Service Fabric and describes the core concepts, programming models, application lifecycle, testing, clusters, and health monitoring. Read the [Overview](service-fabric-overview.md) and [What are microservices?](service-fabric-overview-microservices.md) for an introduction and how Service Fabric can be used to create microservices. This article does not contain a comprehensive content list, but does link to overview and getting started articles for every area of Service Fabric. 
@@ -82,7 +86,7 @@ A [guest executable](service-fabric-guest-executables-introduction.md) is an exi
 ## Application lifecycle
 As with other platforms, an application on Service Fabric usually goes through the following phases: design, development, testing, deployment, upgrade, maintenance, and removal. Service Fabric provides first-class support for the full application lifecycle of cloud applications, from development through deployment, daily management, and maintenance to eventual decommissioning. The service model enables several different roles to participate independently in the application lifecycle. [Service Fabric application lifecycle](service-fabric-application-lifecycle.md) provides an overview of the APIs and how they are used by the different roles throughout the phases of the Service Fabric application lifecycle. 
 
-The entire app lifecycle can be managed using [PowerShell cmdlets](/powershell/module/ServiceFabric/), [CLI commands](service-fabric-sfctl.md), [C# APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java APIs](/java/api/overview/azure/servicefabric), and [REST APIs](/rest/api/servicefabric/). You can also set up continuous integration/continuous deployment pipelines using tools such as [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) or [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
+The entire app lifecycle can be managed using [PowerShell cmdlets](https://docs.microsoft.com/powershell/module/ServiceFabric/), [CLI commands](service-fabric-sfctl.md), [C# APIs](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java APIs](https://docs.azure.cn/java/api/overview/servicefabric), and [REST APIs](https://docs.microsoft.com/rest/api/servicefabric/). You can also set up continuous integration/continuous deployment pipelines using tools such as [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) or [Jenkins](https://docs.azure.cn/azure/developer/jenkins/deploy-to-service-fabric-cluster).
 
 ## Test applications and services
 To create truly cloud-scale services, it is critical to verify that your applications and services can withstand real-world failures. The Fault Analysis Service is designed for testing services that are built on Service Fabric. With the [Fault Analysis Service](service-fabric-testability-overview.md), you can induce meaningful faults and run complete test scenarios against your applications. These faults and scenarios exercise and validate the numerous states and transitions that a service will experience throughout its lifetime, all in a controlled, safe, and consistent manner.
@@ -102,7 +106,7 @@ To create truly cloud-scale services, it is critical to verify that your applica
 ## Clusters
 A [Service Fabric cluster](service-fabric-deploy-anywhere.md) is a network-connected set of virtual or physical machines into which your microservices are deployed and managed. Clusters can scale to thousands of machines. A machine or VM that is part of a cluster is called a cluster node. Each node is assigned a node name (a string). Nodes have characteristics such as placement properties. Each machine or VM has an auto-start service, `FabricHost.exe`, which starts running upon boot and then starts two executables: Fabric.exe and FabricGateway.exe. These two executables make up the node. For testing scenarios, you can host multiple nodes on a single machine or VM by running multiple instances of `Fabric.exe` and `FabricGateway.exe`.
 
-Service Fabric clusters can be created on virtual or physical machines running Windows Server or Linux. You are able to deploy and run Service Fabric applications in any environment where you have a set of Windows Server or Linux computers that are interconnected: on-premises, on Microsoft Azure, or on any cloud provider.
+Service Fabric clusters can be created on virtual or physical machines running Windows Server or Linux. You are able to deploy and run Service Fabric applications in any environment where you have a set of Windows Server or Linux computers that are interconnected: on-premises, on Azure Azure, or on any cloud provider.
 
 ### Clusters on Azure
 Running Service Fabric clusters on Azure provides integration with other Azure features and services, which makes operations and management of the cluster easier and more reliable. A cluster is an Azure Resource Manager resource, so you can model clusters like any other resources in Azure. Resource Manager also provides easy management of all resources used by the cluster as a single unit. Clusters on Azure are integrated with Azure diagnostics and Azure Monitor logs. Cluster node types are [virtual machine scale sets](../virtual-machine-scale-sets/index.yml), so autoscaling functionality is built in.
@@ -136,7 +140,7 @@ If you add new nodes to the cluster, Service Fabric rebalances the partition rep
 ### Cluster upgrades
 Periodically, new versions of the Service Fabric runtime are released. Perform runtime, or fabric, upgrades on your cluster so that you are always running a [supported version](service-fabric-support.md). In addition to fabric upgrades, you can also update cluster configuration such as certificates or application ports.
 
-A Service Fabric cluster is a resource that you own, but is partly managed by Microsoft. Microsoft is responsible for patching the underlying OS and performing fabric upgrades on your cluster. You can set your cluster to receive automatic fabric upgrades, when Microsoft releases a new version, or choose to select a supported fabric version that you want. Fabric and configuration upgrades can be set through the Azure portal or through Resource Manager. For more information, read [Upgrade a Service Fabric cluster](service-fabric-cluster-upgrade.md). 
+A Service Fabric cluster is a resource that you own, but is partly managed by Azure. Azure is responsible for patching the underlying OS and performing fabric upgrades on your cluster. You can set your cluster to receive automatic fabric upgrades, when Azure releases a new version, or choose to select a supported fabric version that you want. Fabric and configuration upgrades can be set through the Azure portal or through Resource Manager. For more information, read [Upgrade a Service Fabric cluster](service-fabric-cluster-upgrade.md). 
 
 A standalone cluster is a resource that you entirely own. You are responsible for patching the underlying OS and initiating fabric upgrades. If your cluster can connect to [https://www.microsoft.com/download](https://www.microsoft.com/download), you can set your cluster to automatically download and provision the new Service Fabric runtime package. You would then initiate the upgrade. If your cluster can't access [https://www.microsoft.com/download](https://www.microsoft.com/download), you can manually download the new runtime package from an internet connected machine and then initiate the upgrade. For more information, read [Upgrade a standalone Service Fabric cluster](service-fabric-cluster-upgrade-windows-server.md).
 
@@ -155,7 +159,7 @@ Out of the box, Service Fabric components report health on all entities in the c
 
 Service Fabric provides multiple ways to [view health reports](service-fabric-view-entities-aggregated-health.md) aggregated in the health store:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) or other visualization tools.
-* Health queries (through [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), the [C# FabricClient APIs](/dotnet/api/system.fabric.fabricclient.healthclient) and [Java FabricClient APIs](/java/api/system.fabric), or [REST APIs](/rest/api/servicefabric)).
+* Health queries (through [PowerShell](https://docs.microsoft.com/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), the [C# FabricClient APIs](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient) and [Java FabricClient APIs](https://docs.azure.cn/java/api/system.fabric), or [REST APIs](https://docs.microsoft.com/rest/api/servicefabric)).
 * General queries that return a list of entities that have health as one of the properties (through PowerShell, CLI, the APIs, or REST).
 
 ## Monitoring and diagnostics
@@ -184,10 +188,14 @@ Multiple products are available that cover these three areas, and you are free t
 * Learn to [monitor and diagnose services](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Learn to [test your apps and services](service-fabric-testability-overview.md).
 * Learn to [manage and orchestrate cluster resources](service-fabric-cluster-resource-manager-introduction.md).
-* Look through the [Service Fabric samples](/samples/browse/?products=azure).
+* Look through the [Service Fabric samples](https://docs.azure.cn/samples/browse/?products=azure).
 * Learn about [Service Fabric support options](service-fabric-support.md).
 * Read the [team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) for articles and announcements.
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
+
+
+<!-- Update_Description: new article about service fabric content roadmap -->
+<!--NEW.date: 12/21/2020-->

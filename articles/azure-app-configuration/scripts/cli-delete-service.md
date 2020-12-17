@@ -3,13 +3,16 @@ title: Azure CLI Script Sample - Delete an Azure App Configuration Store
 titleSuffix: Azure App Configuration
 description: Delete an Azure App Configuration store using a sample Azure CLI script. See reference article links to commands used in the script.
 services: azure-app-configuration
-author: AlexandraKemperMS
+
 
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 02/19/2020
-ms.author: alkemper 
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-azurecli
 ---
 
@@ -21,11 +24,11 @@ This sample script deletes an instance of Azure App Configuration.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - This tutorial requires version 2.0 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
+ - This tutorial requires version 2.0 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
 
 ## Sample script
 
-```azurecli-interactive
+```azurecli
 #/bin/bash
 
 # Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
@@ -40,10 +43,15 @@ This script uses the following commands to delete an App Configuration store. Ea
 
 | Command | Notes |
 |---|---|
-| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | Deletes an App Configuration store resource. |
+| [az appconfig delete](https://docs.azure.cn/cli/appconfig#az_appconfig_delete) | Deletes an App Configuration store resource. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
+For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
 
 Additional App Configuration CLI script samples can be found in the [Azure App Configuration CLI samples](../cli-samples.md).
+
+
+
+<!-- Update_Description: new article about cli delete service -->
+<!--NEW.date: 12/21/2020-->

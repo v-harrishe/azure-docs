@@ -3,7 +3,11 @@ title: Use Azure Service Bus topics and subscriptions with Java
 description: In this quickstart, you write Java code to send messages to an Azure Service Bus topic and then receive messages from subscriptions to that topic. 
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 06/23/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ---
 
@@ -16,7 +20,7 @@ In this quickstart, you write Java code to send messages to an Azure Service Bus
 
 ## Prerequisites
 
-1. An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [Visual Studio or MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) or sign-up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [Visual Studio or MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
 2. Follow steps in the [Quickstart: Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md) to do the following tasks:
     1. Create a Service Bus **namespace**.
     2. Get the **connection string**.
@@ -25,9 +29,9 @@ In this quickstart, you write Java code to send messages to an Azure Service Bus
 3. [Azure SDK for Java][Azure SDK for Java].
 
 ## Configure your application to use Service Bus
-Make sure you have installed the [Azure SDK for Java][Azure SDK for Java] before building this sample. If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **Microsoft Azure Libraries for Java** to your project:
+Make sure you have installed the [Azure SDK for Java][Azure SDK for Java] before building this sample. If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **21Vianet Azure Libraries for Java** to your project:
 
-![Add Microsoft Azure Libraries for Java to your Eclipse project](media/service-bus-java-how-to-use-topics-subscriptions-legacy/eclipse-azure-libraries-java.png)
+:::image type="content" source="media/service-bus-java-how-to-use-topics-subscriptions-legacy/eclipse-azure-libraries-java.png" alt-text="Add Azure Azure Libraries for Java to your Eclipse project":::
 
 You also need to add the following JARs to the Java Build Path:
 
@@ -67,7 +71,7 @@ public class MyServiceBusTopicClient {
 		// TODO Auto-generated method stub
 
 		TopicClient sendClient;
-		String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
+		String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
         sendClient = new TopicClient(new ConnectionStringBuilder(connectionString, "BasicTopic"));       
         sendMessagesAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
 	}
@@ -129,7 +133,7 @@ public class MyServiceBusSubscriptionClient {
     static final Gson GSON = new Gson();
     
 	public static void main(String[] args) throws Exception, ServiceBusException {
-		String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
+		String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
 		
         SubscriptionClient subscription1Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription1"), ReceiveMode.PEEKLOCK);
         SubscriptionClient subscription2Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription2"), ReceiveMode.PEEKLOCK);
@@ -455,13 +459,17 @@ Message sending: Id = 9
 ## Next steps
 For more information, see [Service Bus queues, topics, and subscriptions][Service Bus queues, topics, and subscriptions].
 
-[Azure SDK for Java]: /java/api/overview/azure/
-[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
+[Azure SDK for Java]: https://docs.azure.cn/java/api/overview/
+[Azure Toolkit for Eclipse]: /developer/java/toolkit-for-eclipse/installation
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[SqlFilter]: https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter
+[SqlFilter.SqlExpression]: https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
+[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions-legacy/sb-queues-13.png
 [2]: ./media/service-bus-java-how-to-use-topics-subscriptions-legacy/sb-queues-04.png
 [3]: ./media/service-bus-java-how-to-use-topics-subscriptions-legacy/sb-queues-09.png
+
+
+<!-- Update_Description: new article about service bus java how to use topics subscriptions legacy -->
+<!--NEW.date: 12/21/2020-->

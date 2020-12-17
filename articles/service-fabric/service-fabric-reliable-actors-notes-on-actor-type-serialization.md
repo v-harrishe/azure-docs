@@ -2,11 +2,15 @@
 title: Reliable Actors notes on actor type serialization 
 description: Discusses basic requirements for defining serializable classes that can be used to define Service Fabric Reliable Actors states and interfaces
 ms.topic: conceptual
-ms.date: 11/02/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # Notes on Service Fabric Reliable Actors type serialization
-The arguments of all methods, result types of the tasks returned by each method in an actor interface, and objects stored in an actor's state manager must be [data contract serializable](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). This also applies to the arguments of the methods defined in [actor event interfaces](service-fabric-reliable-actors-events.md). (Actor event interface methods always return void.)
+The arguments of all methods, result types of the tasks returned by each method in an actor interface, and objects stored in an actor's state manager must be [data contract serializable](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). This also applies to the arguments of the methods defined in [actor event interfaces](service-fabric-reliable-actors-events.md). (Actor event interface methods always return void.)
 
 ## Custom data types
 In this example, the following actor interface defines a method that returns a custom data type called `VoicemailBox`:
@@ -136,3 +140,8 @@ public class VoicemailBox implements Serializable
 * [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
 * [Actor polymorphism and object-oriented design patterns](service-fabric-reliable-actors-polymorphism.md)
 * [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
+
+
+
+<!-- Update_Description: new article about service fabric reliable actors notes on actor type serialization -->
+<!--NEW.date: 12/21/2020-->

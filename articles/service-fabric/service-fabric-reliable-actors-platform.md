@@ -2,7 +2,11 @@
 title: Reliable Actors on Service Fabric 
 description: Describes how Reliable Actors are layered on Reliable Services and use the features of the Service Fabric platform.
 ms.topic: conceptual
-ms.date: 3/9/2018
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # How Reliable Actors use the Service Fabric platform
@@ -83,13 +87,19 @@ When you're using GUIDs/UUIDs and strings, the values are hashed to an Int64. Ho
 ## Next steps
 * [Actor state management](service-fabric-reliable-actors-state-management.md)
 * [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API reference documentation](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
+* [Actors API reference documentation](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.actors)
 * [.NET sample code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java sample code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
+
+
+
+<!-- Update_Description: new article about service fabric reliable actors platform -->
+<!--NEW.date: 12/21/2020-->

@@ -1,11 +1,15 @@
 ---
 title: Azure App Configuration REST API - locks
 description: Reference pages for working with key-value locks by using the Azure App Configuration REST API
-author: AlexandraKemperMS
-ms.author: alkemper
+
+
 ms.service: azure-app-configuration
 ms.topic: reference
-ms.date: 08/17/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Locks
@@ -108,3 +112,8 @@ The following request applies the operation only if the current key-value repres
 PUT|DELETE /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
 If-None-Match: "4f6dd610dd5e4deebc7fbaef685fb903"
 ```
+
+
+
+<!-- Update_Description: new article about rest api locks -->
+<!--NEW.date: 12/21/2020-->

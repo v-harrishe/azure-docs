@@ -1,12 +1,15 @@
 ---
 title: 'Use Azure Service Bus queues with Python azure-servicebus package version 7.0.0'
 description: This article shows you how to use Python to send messages to, and receive messages from Azure Service Bus queues. 
-author: spelluru
+
 documentationcenter: python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/18/2020
-ms.author: spelluru
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: seo-python-october2019, devx-track-python
 ---
 
@@ -14,9 +17,9 @@ ms.custom: seo-python-october2019, devx-track-python
 This article shows you how to use Python to send messages to, and receive messages from Azure Service Bus queues. 
 
 ## Prerequisites
-- An Azure subscription. You can activate your [Visual Studio or MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) or sign-up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- An Azure subscription. You can activate your [Visual Studio or MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
 - If you don't have a queue to work with, follow steps in the [Use Azure portal to create a Service Bus queue](service-bus-quickstart-portal.md) article to create a queue. Note down the **connection string** for your Service Bus namespace and the name of the **queue** you created.
-- Python 2.7 or higher, with the [Python Azure Service Bus](https://pypi.python.org/pypi/azure-servicebus) package installed. For more information, see the [Python Installation Guide](/azure/developer/python/azure-sdk-install). 
+- Python 2.7 or higher, with the [Python Azure Service Bus](https://pypi.python.org/pypi/azure-servicebus) package installed. For more information, see the [Python Installation Guide](https://docs.azure.cn/azure/developer/python/azure-sdk-install). 
 
 ## Send messages to a queue
 
@@ -203,4 +206,8 @@ See the following documentation and samples:
 - [Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - The **sync_samples** folder has samples that show you how to interact with Service Bus in a synchronous manner. In this quick start, you used this method. 
     - The **async_samples** folder has samples that show you how to interact with Service Bus in an asynchronous manner. 
-- [azure-servicebus reference documentation](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [azure-servicebus reference documentation](https://docs.azure.cn/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+
+
+<!-- Update_Description: new article about service bus python how to use queues -->
+<!--NEW.date: 12/21/2020-->

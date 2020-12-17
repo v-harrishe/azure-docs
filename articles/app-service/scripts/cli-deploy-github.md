@@ -1,14 +1,17 @@
 ---
-title: 'CLI: Deploy an app from GitHub'
+title: CLI - Deploy an app from GitHub
 description: Learn how to use the Azure CLI to automate deployment and management of your App Service app. This sample shows how to deploy an app from GitHub.
-author: msangapu-msft
+
 tags: azure-service-management
 
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 12/11/2017
-ms.author: msangapu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
 
@@ -20,7 +23,7 @@ This sample script creates an app in App Service with its related resources. It 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - This tutorial requires version 2.0 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
+ - This tutorial requires version 2.0 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
 
 ## Sample script
 
@@ -34,13 +37,18 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Creates an App Service plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Creates an App Service app. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config) | Associates an App Service app with a Git or Mercurial repository. |
+| [`az group create`](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
+| [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) | Creates an App Service plan. |
+| [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) | Creates an App Service app. |
+| [`az webapp deployment source config`](https://docs.azure.cn/cli/webapp/deployment/source#az_webapp_deployment_source_config) | Associates an App Service app with a Git or Mercurial repository. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
+For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
 
 Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
+
+
+
+<!-- Update_Description: new article about cli deploy github -->
+<!--NEW.date: 12/21/2020-->

@@ -2,7 +2,11 @@
 title: Convert Azure Cloud Services apps to Service Fabric 
 description: This guide compares Cloud Services Web and Worker Roles and Service Fabric stateless services to help migrate from Cloud Services to Service Fabric.
 ms.topic: conceptual
-ms.date: 11/02/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # Guide to converting Web and Worker Roles to Service Fabric stateless services
@@ -243,5 +247,11 @@ Read more about Service Fabric Reliable Services and the fundamental differences
 * [Conceptual guide to the differences between Cloud Services and Service Fabric](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
+
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
+
+
+
+<!-- Update_Description: new article about service fabric cloud services migration worker role stateless service -->
+<!--NEW.date: 12/21/2020-->

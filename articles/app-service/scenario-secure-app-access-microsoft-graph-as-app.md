@@ -1,35 +1,38 @@
 ---
-title: Tutorial - Web app accesses Microsoft Graph as the app| Azure
-description: In this tutorial, you learn how to access data in Microsoft Graph by using managed identities.
+title: Tutorial - Web app accesses Azure Graph as the app| Azure
+description: In this tutorial, you learn how to access data in Azure Graph by using managed identities.
 services: microsoft-graph, app-service-web
-author: rwike77
+
 manager: CelesteDG
 
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/07/2020
-ms.author: ryanwi
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.reviewer: stsoneff
 ms.custom: azureday1
-#Customer intent: As an application developer, I want to learn how to access data in Microsoft Graph by using managed identities.
+#Customer intent: As an application developer, I want to learn how to access data in Azure Graph by using managed identities.
 ---
 
-# Tutorial: Access Microsoft Graph from a secured app as the app
+# Tutorial: Access Azure Graph from a secured app as the app
 
-Learn how to access Microsoft Graph from a web app running on Azure App Service.
+Learn how to access Azure Graph from a web app running on Azure App Service.
 
-:::image type="content" alt-text="Diagram that shows accessing Microsoft Graph." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
+:::image type="content" alt-text="Diagram that shows accessing Azure Graph." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-You want to call Microsoft Graph for the web app. A safe way to give your web app access to data is to use a [system-assigned managed identity](../active-directory/managed-identities-azure-resources/overview.md). A managed identity from Azure Active Directory allows App Service to access resources through role-based access control (RBAC), without requiring app credentials. After assigning a managed identity to your web app, Azure takes care of the creation and distribution of a certificate. You don't have to worry about managing secrets or app credentials.
+You want to call Azure Graph for the web app. A safe way to give your web app access to data is to use a [system-assigned managed identity](../active-directory/managed-identities-azure-resources/overview.md). A managed identity from Azure Active Directory allows App Service to access resources through role-based access control (RBAC), without requiring app credentials. After assigning a managed identity to your web app, Azure takes care of the creation and distribution of a certificate. You don't have to worry about managing secrets or app credentials.
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
 > * Create a system-assigned managed identity on a web app.
-> * Add Microsoft Graph API permissions to a managed identity.
-> * Call Microsoft Graph from a web app by using managed identities.
+> * Add Azure Graph API permissions to a managed identity.
+> * Call Azure Graph from a web app by using managed identities.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,9 +48,9 @@ Take note of the **Object ID** value, which you'll need in the next step.
 
 :::image type="content" alt-text="Screenshot that shows the system-assigned identity." source="./media/scenario-secure-app-access-microsoft-graph/create-system-assigned-identity.png":::
 
-## Grant access to Microsoft Graph
+## Grant access to Azure Graph
 
-When accessing the Microsoft Graph, the managed identity needs to have proper permissions for the operation it wants to perform. Currently, there's no option to assign such permissions through the Azure portal. The following script will add the requested Microsoft Graph API permissions to the managed identity service principal object.
+When accessing the Azure Graph, the managed identity needs to have proper permissions for the operation it wants to perform. Currently, there's no option to assign such permissions through the Azure portal. The following script will add the requested Azure Graph API permissions to the managed identity service principal object.
 
 # [PowerShell](#tab/azure-powershell)
 
@@ -63,12 +66,12 @@ $webAppName="SecureWebApp-20201102125811"
 # Get the ID of the managed identity for the web app.
 $spID = (Get-AzWebApp -ResourceGroupName $resourceGroup -Name $webAppName).identity.principalid
 
-# Check the Microsoft Graph documentation for the permission you need for the operation.
+# Check the Azure Graph documentation for the permission you need for the operation.
 $PermissionName = "User.Read.All"
 
-Connect-AzureAD -TenantId $TenantID
+Connect-AzureAD -AzureEnvironmentName AzureChinaCloud -TenantId $TenantID
 
-# Get the service principal for Microsoft Graph.
+# Get the service principal for Azure Graph.
 $GraphServicePrincipal = Get-AzureADServicePrincipal -SearchString "Microsoft Graph"
 
 # Assign permissions to the managed identity service principal.
@@ -81,7 +84,7 @@ New-AzureAdServiceAppRoleAssignment -ObjectId $spID -PrincipalId $spID `
 
 # [Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
+```azurecli
 az login
 
 webAppName="SecureWebApp-20201106120003"
@@ -92,7 +95,7 @@ graphResourceId=$(az ad sp list --display-name "Microsoft Graph" --query [0].obj
 
 appRoleId=$(az ad sp list --display-name "Microsoft Graph" --query "[0].appRoles[?value=='User.Read.All' && contains(allowedMemberTypes, 'Application')].id" --output tsv)
 
-uri=https://graph.microsoft.com/v1.0/servicePrincipals/$spId/appRoleAssignments
+uri=https://graph.chinacloudapi.cn/v1.0/servicePrincipals/$spId/appRoleAssignments
 
 body="{'principalId':'$spId','resourceId':'$graphResourceId','appRoleId':'$appRoleId'}"
 
@@ -101,7 +104,7 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 
 ---
 
-After executing the script, you can verify in the [Azure portal](https://portal.azure.com) that the requested API permissions are assigned to the managed identity.
+After executing the script, you can verify in the [Azure portal](https://portal.azure.cn) that the requested API permissions are assigned to the managed identity.
 
 Go to **Azure Active Directory**, and then select **Enterprise applications**. This pane displays all the service principals in your tenant. In **All Applications**, select the service principal for the managed identity. 
 
@@ -111,13 +114,13 @@ Select the service principal for the managed identity.
 
 :::image type="content" alt-text="Screenshot that shows the All applications option." source="./media/scenario-secure-app-access-microsoft-graph/enterprise-apps-all-applications.png":::
 
-In **Overview**, select **Permissions**, and you'll see the added permissions for Microsoft Graph.
+In **Overview**, select **Permissions**, and you'll see the added permissions for Azure Graph.
 
 :::image type="content" alt-text="Screenshot that shows the Permissions pane." source="./media/scenario-secure-app-access-microsoft-graph/enterprise-apps-permissions.png":::
 
-## Call Microsoft Graph (.NET)
+## Call Azure Graph (.NET)
 
-The [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) class is used to get a token credential for your code to authorize requests to Microsoft Graph. Create an instance of the [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) class, which uses the managed identity to fetch tokens and attach them to the service client. The following code example gets the authenticated token credential and uses it to create a service client object, which gets the users in the group.
+The [DefaultAzureCredential](https://docs.azure.cn/dotnet/api/azure.identity.defaultazurecredential) class is used to get a token credential for your code to authorize requests to Azure Graph. Create an instance of the [DefaultAzureCredential](https://docs.azure.cn/dotnet/api/azure.identity.defaultazurecredential) class, which uses the managed identity to fetch tokens and attach them to the service client. The following code example gets the authenticated token credential and uses it to create a service client object, which gets the users in the group.
 
 To see this code as part of a sample application, see the [sample on GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
 
@@ -163,11 +166,11 @@ public IList<MSGraphUser> Users { get; set; }
 
 public async Task OnGetAsync()
 {
-    // Create the Microsoft Graph service client with a DefaultAzureCredential class, which gets an access token by using the available Managed Identity.
+    // Create the Azure Graph service client with a DefaultAzureCredential class, which gets an access token by using the available Managed Identity.
     var credential = new DefaultAzureCredential();
     var token = credential.GetToken(
         new Azure.Core.TokenRequestContext(
-            new[] { "https://graph.microsoft.com/.default" }));
+            new[] { "https://graph.chinacloudapi.cn/.default" }));
 
     var accessToken = token.Token;
     var graphServiceClient = new GraphServiceClient(
@@ -215,7 +218,11 @@ In this tutorial, you learned how to:
 > [!div class="checklist"]
 >
 > * Create a system-assigned managed identity on a web app.
-> * Add Microsoft Graph API permissions to a managed identity.
-> * Call Microsoft Graph from a web app by using managed identities.
+> * Add Azure Graph API permissions to a managed identity.
+> * Call Azure Graph from a web app by using managed identities.
 
 Learn how to connect a [.NET Core app](tutorial-dotnetcore-sqldb-app.md), [Python app](tutorial-python-postgresql-app.md), [Java app](tutorial-java-spring-cosmosdb.md), or [Node.js app](tutorial-nodejs-mongodb-app.md) to a database.
+
+
+<!-- Update_Description: new article about scenario secure app access microsoft graph as app -->
+<!--NEW.date: 12/21/2020-->

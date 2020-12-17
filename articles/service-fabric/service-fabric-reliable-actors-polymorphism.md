@@ -2,7 +2,11 @@
 title: Polymorphism in the Reliable Actors framework 
 description: Build hierarchies of .NET interfaces and types in the Reliable Actors framework to reuse functionality and API definitions.
 ms.topic: conceptual
-ms.date: 11/02/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # Polymorphism in the Reliable Actors framework
@@ -85,3 +89,8 @@ Note the `ActorService` attribute on the actor type. This attribute tells the Re
 <!-- Image references -->
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
+
+
+
+<!-- Update_Description: new article about service fabric reliable actors polymorphism -->
+<!--NEW.date: 12/21/2020-->

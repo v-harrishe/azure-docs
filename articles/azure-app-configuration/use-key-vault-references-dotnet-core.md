@@ -1,9 +1,9 @@
 ---
-title: Tutorial for using Azure App Configuration Key Vault references in an ASP.NET Core app | Microsoft Docs
+title: Tutorial for using Azure App Configuration Key Vault references in an ASP.NET Core app | Azure Docs
 description: In this tutorial, you learn how to use Azure App Configuration's Key Vault references from an ASP.NET Core app
 services: azure-app-configuration
 documentationcenter: ''
-author: AlexandraKemperMS
+
 editor: ''
 
 ms.assetid: 
@@ -11,8 +11,11 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/08/2020
-ms.author: alkemper
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "devx-track-csharp, mvc"
 
 #Customer intent: I want to update my ASP.NET Core application to reference values stored in Key Vault through App Configuration.
@@ -47,7 +50,7 @@ Before you start this tutorial, install the [.NET Core SDK](https://dotnet.micro
 
 1. Select the **Create a resource** option in the upper-left corner of the Azure portal:
 
-    ![Screenshot shows the Create a resource option in the Azure portal.](./media/quickstarts/search-services.png)
+    :::image type="content" source="./media/quickstarts/search-services.png" alt-text="Screenshot shows the Create a resource option in the Azure portal.":::
 1. In the search box, enter **Key Vault**.
 1. From the results list, select **Key vaults** on the left.
 1. In **Key vaults**, select **Add**.
@@ -61,7 +64,7 @@ Before you start this tutorial, install the [.NET Core SDK](https://dotnet.micro
 
 At this point, your Azure account is the only one authorized to access this new vault.
 
-![Screenshot shows your key vault.](./media/quickstarts/vault-properties.png)
+:::image type="content" source="./media/quickstarts/vault-properties.png" alt-text="Screenshot shows your key vault.":::
 
 ## Add a secret to Key Vault
 
@@ -78,7 +81,7 @@ To add a secret to the vault, you need to take just a few additional steps. In t
 
 ## Add a Key Vault reference to App Configuration
 
-1. Sign in to the [Azure portal](https://portal.azure.com). Select **All resources**, and then select the App Configuration store instance that you created in the quickstart.
+1. Sign in to the [Azure portal](https://portal.azure.cn). Select **All resources**, and then select the App Configuration store instance that you created in the quickstart.
 
 1. Select **Configuration Explorer**.
 
@@ -90,7 +93,7 @@ To add a secret to the vault, you need to take just a few additional steps. In t
 
 ## Connect to Key Vault
 
-1. In this tutorial, you use a service principal for authentication to Key Vault. To create this service principal, use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
+1. In this tutorial, you use a service principal for authentication to Key Vault. To create this service principal, use the Azure CLI [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac) command:
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
@@ -104,11 +107,11 @@ To add a secret to the vault, you need to take just a few additional steps. In t
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
     "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
     "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net/"
+    "activeDirectoryEndpointUrl": "https://login.partner.microsoftonline.cn",
+    "resourceManagerEndpointUrl": "https://management.chinacloudapi.cn/",
+    "sqlManagementEndpointUrl": "https://management.core.chinacloudapi.cn:8443/",
+    "galleryEndpointUrl": "https://gallery.chinacloudapi.cn/",
+    "managementEndpointUrl": "https://management.core.chinacloudapi.cn/"
     }
     ```
 
@@ -250,7 +253,7 @@ To add a secret to the vault, you need to take just a few additional steps. In t
 
 1. Open a browser window, and go to `http://localhost:5000`, which is the default URL for the web app hosted locally.
 
-    ![Quickstart local app launch](./media/key-vault-reference-launch-local.png)
+    :::image type="content" source="./media/key-vault-reference-launch-local.png" alt-text="Quickstart local app launch":::
 
 ## Clean up resources
 
@@ -262,3 +265,8 @@ In this tutorial, you created an App Configuration key that references a value s
 
 > [!div class="nextstepaction"]
 > [Managed identity integration](./howto-integrate-azure-managed-service-identity.md)
+
+
+
+<!-- Update_Description: new article about use key vault references dotnet core -->
+<!--NEW.date: 12/21/2020-->

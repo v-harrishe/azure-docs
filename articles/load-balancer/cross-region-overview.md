@@ -4,14 +4,17 @@ titleSuffix: Azure Load Balancer
 description: Overview of cross region load balancer tier for Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
-author: asudbring
+
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/22/2020
-ms.author: allensu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: references_regions
 
 ---
@@ -30,9 +33,9 @@ Azure Standard Load Balancer supports cross-region load balancing enabling geo-r
 * [Build on existing load balancer](#build-cross-region-solution-on-existing-azure-load-balancer) solution with no learning curve
 
 > [!IMPORTANT]
-> Cross-region load balancer is currently in preview and hidden in the preview portal. Sign-in to **https://preview.portal.azure.com** to view and deploy the feature.. </br> </br>
+> Cross-region load balancer is currently in preview and hidden in the preview portal. Sign-in to **https://preview.portal.azure.com** to view and deploy the feature.. <br /> <br />
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> For more information, see [Supplemental Terms of Use for Azure Azure Previews](https://www.azure.cn/support/legal/subscription-agreement/).
 
 Cross-region load balancing offers the same benefits of high performance and low latency as regional standard load balancer. 
 
@@ -57,14 +60,14 @@ The health probe of the cross-region load balancer gathers information about ava
 
 The geo-proximity load-balancing algorithm is based on the geographic location of your users and your regional deployments. 
 
-Traffic started from a client will hit the closest participating region and travel through the Microsoft global network backbone to arrive at the closest regional deployment. 
+Traffic started from a client will hit the closest participating region and travel through the Azure global network backbone to arrive at the closest regional deployment. 
 
 For example, you have a cross-region load balancer with standard load balancers in Azure regions:
 
-* West US
+* China North
 * North Europe
 
-If a flow is started from Seattle, traffic enters West US. This region is the closest participating region from Seattle. The traffic is routed to the closest region load balancer, which is West US.
+If a flow is started from Seattle, traffic enters China North. This region is the closest participating region from Seattle. The traffic is routed to the closest region load balancer, which is China North.
 
 Azure cross-region load balancer uses geo-proximity load-balancing algorithm for the routing decision. 
 
@@ -94,11 +97,11 @@ Add your existing load balancer deployments to a cross-region load balancer for 
 This region doesn't affect how the traffic will be routed. If a home region goes down, it doesn't impact the flow of traffic.
 
 ### Home regions
-* East US 2
-* West US
+* China East 2
+* China North
 * West Europe
 * Southeast Asia
-* Central US
+* China North
 * North Europe
 * East Asia
 
@@ -107,28 +110,28 @@ This region doesn't affect how the traffic will be routed. If a home region goes
 
 A **participating region** is where the global public IP of the load balancer is available. 
 
-Traffic started by the user will travel to the closest participating region through the Microsoft core network. 
+Traffic started by the user will travel to the closest participating region through the Azure core network. 
 
 Cross-region load balancer routes the traffic to the appropriate regional load balancer.
 
 ### Participating regions
-* East US 
+* China East 
 * West Europe 
-* Central US 
-* East US 2 
-* West US 
+* China North 
+* China East 2 
+* China North 
 * North Europe 
-* South Central US 
-* West US 2 
+* South China North 
+* China North 2 
 * UK South 
 * Southeast Asia 
-* North Central US 
+* North China North 
 * Japan East 
 * East Asia 
-* West Central US 
+* China North 
 * Australia Southeast 
 * Australia East 
-* Central India 
+* China East 2 
 
 ## Limitations
 
@@ -141,7 +144,7 @@ Cross-region load balancer routes the traffic to the appropriate regional load b
 * A health probe can't be configured currently. A default health probe automatically collects availability information about the regional load balancer every 20 seconds. 
 
 ## Pricing and SLA
-Cross-region load balancer, shares the [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) of standard load balancer.
+Cross-region load balancer, shares the [SLA](https://www.azure.cn/support/legal/sla/load-balancer/v1_0/ ) of standard load balancer.
 
  
 ## Next steps
@@ -149,3 +152,8 @@ Cross-region load balancer, shares the [SLA](https://azure.microsoft.com/support
 - See [Tutorial: Create a cross-region load balancer using the Azure portal](tutorial-cross-region-portal.md) to create a cross-region load balancer.
 - See [Create a public standard load balancer](quickstart-load-balancer-standard-public-portal.md) to create a standard regional load balancer.
 - Learn more about [Azure Load Balancer](load-balancer-overview.md).
+
+
+
+<!-- Update_Description: new article about cross region overview -->
+<!--NEW.date: 12/21/2020-->

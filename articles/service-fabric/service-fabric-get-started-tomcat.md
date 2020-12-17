@@ -3,8 +3,11 @@ title: Create a container for Apache Tomcat on Linux
 description: Create Linux container to expose an application running on Apache Tomcat server on Azure Service Fabric. Build a Docker image with your application and Apache Tomcat server, push the image to a container registry, build and deploy a Service Fabric container application.
 
 ms.topic: conceptual
-ms.date: 6/08/2018
-ms.author: pepogors
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Create Service Fabric container running Apache Tomcat server on Linux
@@ -86,7 +89,7 @@ Follow the steps in this section to build a Docker image based on an Apache Tomc
    - `http://localhost:8080/hello/sayhello` 
    - `http://localhost:8080/hello/sayhi` 
 
-   ![Hello world /sayhi](./media/service-fabric-get-started-tomcat/hello.png)
+   :::image type="content" source="./media/service-fabric-get-started-tomcat/hello.png" alt-text="Hello world /sayhi":::
 
 2. Stop the container and delete it from your development computer:
 
@@ -96,26 +99,26 @@ Follow the steps in this section to build a Docker image based on an Apache Tomc
    ```
 
 ## Push the Tomcat image to your container registry
-Now that you've verified that the Tomcat image runs in a container on your development computer, push it to a repository in a container registry to [reduce disruption](../container-registry/buffer-gate-public-content.md) to your image development and deployment workflows. This article uses Azure Container Registry to store the image, but, with some modification of steps, you can use any container registry you choose. In this article the registry name is assumed to be *myregistry* and the full registry name is myregistry.azurecr.io. Change these appropriately for your scenario. 
+Now that you've verified that the Tomcat image runs in a container on your development computer, push it to a repository in a container registry to [reduce disruption](../container-registry/buffer-gate-public-content.md) to your image development and deployment workflows. This article uses Azure Container Registry to store the image, but, with some modification of steps, you can use any container registry you choose. In this article the registry name is assumed to be *myregistry* and the full registry name is myregistry.azurecr.cn. Change these appropriately for your scenario. 
 
 1. Run `docker login` to sign in to your container registry with your [registry credentials](../container-registry/container-registry-authentication.md).
 
    The following example passes the ID and password of an Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md). For example, you might have assigned a service principal to your registry for an automation scenario. Or, you could sign in using your registry username and password.
 
    ```bash
-   docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+   docker login myregistry.azurecr.cn -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
    ```
 
 2. The following command creates a tag, or alias, of the image, with a fully qualified path to your registry. This example places the image in the `samples` namespace to avoid clutter in the root of the registry.
 
    ```bash
-   docker tag tomcattest myregistry.azurecr.io/samples/tomcattest
+   docker tag tomcattest myregistry.azurecr.cn/samples/tomcattest
    ```
 
 3. Push the image to your container registry:
 
    ```bash
-   docker push myregistry.azurecr.io/samples/tomcattest
+   docker push myregistry.azurecr.cn/samples/tomcattest
    ```
 
 ## Build and deploy the Service Fabric container application
@@ -130,11 +133,11 @@ Now that you've pushed the Tomcat image to a container registry, you can build a
 
    * Name your application: ServiceFabricTomcat
    * Name of the application service: TomcatService
-   * Input the Image Name: Provide the URL for the container image in your container registry; for example, myregistry.azurecr.io/samples/tomcattest.
+   * Input the Image Name: Provide the URL for the container image in your container registry; for example, myregistry.azurecr.cn/samples/tomcattest.
    * Commands: Leave this blank. Since this image has a workload entry-point defined, you don't need to explicitly specify input commands (commands run inside the container, which will keep the container running after startup).
    * Number of instances of guest container application: 1
 
-   ![Service Fabric Yeoman generator for containers](./media/service-fabric-get-started-tomcat/yo-generator.png)
+   :::image type="content" source="./media/service-fabric-get-started-tomcat/yo-generator.png" alt-text="Service Fabric Yeoman generator for containers":::
 
 10. In the service manifest (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*), add the following XML under the root **ServiceManfest** tag to open the port your application is listening to requests on. The **Endpoint** tag declares the protocol and port for the endpoint. For this article, the containerized service listens on port 8080: 
 
@@ -144,6 +147,7 @@ Now that you've pushed the Tomcat image to a container registry, you can build a
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
        listen. Please note that if your service is partitioned, this port is shared with 
        replicas of different partitions that are placed in your code. -->
+
       <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
     </Endpoints>
    </Resources>
@@ -203,7 +207,7 @@ Now that you've pushed the Tomcat image to a container registry, you can build a
     
    Expand the **Applications** node and note that there is now an entry for your application type, **ServiceFabricTomcatType**, and another for the first instance of that type. It may take a few minutes for the application to fully deploy, so be patient.
 
-   ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
+   :::image type="content" source="./media/service-fabric-get-started-tomcat/service-fabric-explorer.png" alt-text="Service Fabric Explorer":::
 
 
 1. To access the application on the Tomcat server, open a browser window and enter any of the following URLs. If you deployed to the local cluster, use *localhost* for *PublicIPorFQDN*. You will see a variant of the "Hello World!" welcome screen for each URL.
@@ -223,7 +227,7 @@ After you push the image to the container registry you can delete the local imag
 
 ```
 docker rmi tomcattest
-docker rmi myregistry.azurecr.io/samples/tomcattest
+docker rmi myregistry.azurecr.cn/samples/tomcattest
 ```
 
 ## Next steps
@@ -232,3 +236,8 @@ docker rmi myregistry.azurecr.io/samples/tomcattest
 * Learn more about running [containers on Service Fabric](service-fabric-containers-overview.md).
 
 
+
+
+
+<!-- Update_Description: new article about service fabric get started tomcat -->
+<!--NEW.date: 12/21/2020-->

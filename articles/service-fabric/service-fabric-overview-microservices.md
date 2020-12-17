@@ -2,7 +2,11 @@
 title: Introduction to microservices on Azure
 description: An overview of why building cloud applications with a microservices approach is important for modern application development and how Azure Service Fabric provides a platform to achieve this.
 ms.topic: conceptual
-ms.date: 01/07/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Why use a microservices approach to building applications
 
@@ -16,11 +20,11 @@ Here are some changing business needs:
 
 These business needs are affecting *how* we build applications.
 
-For more information about the Azure approach to microservices, see [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+For more information about the Azure approach to microservices, see [Microservices: An application revolution powered by the cloud](https - //azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
 
 ## Monolithic vs. microservices design approach
 
-Applications evolve over time. Successful applications evolve by being useful to people. Unsuccessful applications don't evolve and are eventually deprecated. Here's the question: how much do you know about your requirements today and what they'll be in the future? For example, let's say you're building a reporting application for a department in your company. You're sure the application applies only within the scope of your company and that the reports won't be kept long. Your approach will be different from that of, say, building a service that delivers video content to tens of millions of customers.
+Applications evolve over time. Successful applications evolve by being useful to people. Unsuccessful applications dont evolve and are eventually deprecated. Here's the question: how much do you know about your requirements today and what they'll be in the future? For example, let's say you're building a reporting application for a department in your company. You're sure the application applies only within the scope of your company and that the reports won't be kept long. Your approach will be different from that of, say, building a service that delivers video content to tens of millions of customers.
 
 Sometimes, getting something out the door as a proof of concept is the driving factor. You know the application can be redesigned later. There's little point in over-engineering something that never gets used. On the other hand, when companies build for the cloud, the expectation is growth and usage. Growth and scale are unpredictable. We want to prototype quickly while also knowing that we're on a path that can handle future success. This is the lean startup approach: build, measure, learn, and iterate.
 
@@ -124,16 +128,16 @@ Health is different from diagnostics. Health is about the microservice reporting
 
 ## Guidance for designing microservices on Azure
 
-Visit the Azure architecture center for guidance on [designing and building microservices on Azure](/azure/architecture/microservices/).
+Visit the Azure architecture center for guidance on [designing and building microservices on Azure](https://docs.azure.cn/azure/architecture/microservices/).
 
 ## Service Fabric as a microservices platform
 
-Azure Service Fabric emerged when Microsoft transitioned from delivering boxed products, which were typically monolithic, to delivering services. The experience of building and operating large services, like Azure SQL Database and Azure Cosmos DB, shaped Service Fabric. The platform evolved over time as more services adopted it. Service Fabric had to run not only in Azure but also in standalone Windows Server deployments.
+Azure Service Fabric emerged when Azure transitioned from delivering boxed products, which were typically monolithic, to delivering services. The experience of building and operating large services, like Azure SQL Database and Azure Cosmos DB, shaped Service Fabric. The platform evolved over time as more services adopted it. Service Fabric had to run not only in Azure but also in standalone Windows Server deployments.
 
 ***The aim of Service Fabric is to solve the hard problems of building and running a service and to use infrastructure resources efficiently, so teams can solve business problems by using a microservices approach.***
 
 This short video introduces Service Fabric and microservices:
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
+> [!VIDEO https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric helps you build applications that use a microservices approach by providing:
 
@@ -186,11 +190,16 @@ The objective of Service Fabric is to reduce the complexities of building micros
 
 ## Next steps
 
-* [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure Architecture Center: Building microservices on Azure](/azure/architecture/microservices/)
+* [Microservices: An application revolution powered by the cloud](https - //azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Azure Architecture Center: Building microservices on Azure](https://docs.azure.cn/azure/architecture/microservices/)
 * [Azure Service Fabric application and cluster best practices](service-fabric-best-practices-overview.md)
 * [Service Fabric terminology overview](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 [Image3]: media/service-fabric-overview-microservices/microservices-migration.png
+
+
+
+<!-- Update_Description: new article about service fabric overview microservices -->
+<!--NEW.date: 12/21/2020-->

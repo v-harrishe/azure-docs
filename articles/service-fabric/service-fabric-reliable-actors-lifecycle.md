@@ -2,7 +2,11 @@
 title: Overview the Azure Service Fabric actor lifecycle 
 description: Explains Service Fabric Reliable Actor lifecycle, garbage collection, and manually deleting actors and their state
 ms.topic: conceptual
-ms.date: 10/06/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # Actor lifecycle, automatic garbage collection, and manual delete
@@ -105,9 +109,15 @@ Garbage collection of deactivated actors only cleans up the actor object, but it
 * [Actor events](service-fabric-reliable-actors-events.md)
 * [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
 * [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API reference documentation](/previous-versions/azure/dn971626(v=azure.100))
+* [Actor API reference documentation](https://docs.microsoft.com/previous-versions/azure/dn971626(v=azure.100))
 * [C# Sample code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java Sample code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
+
+
+
+<!-- Update_Description: new article about service fabric reliable actors lifecycle -->
+<!--NEW.date: 12/21/2020-->

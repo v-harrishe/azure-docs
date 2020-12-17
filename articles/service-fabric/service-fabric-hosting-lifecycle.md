@@ -1,11 +1,14 @@
 ---
 title: Azure Service Fabric Hosting activation and deactivation lifecycle 
 description: Explains the lifecycle of Application and ServicePackage on a node  
-author: tugup
+
 
 ms.topic: conceptual
-ms.date: 05/1/2020
-ms.author: tugup
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Azure Service Fabric hosting lifecycle
 
@@ -156,9 +159,15 @@ Configs with defaults impacting the activation/decativation.
 [Deploy and remove applications][a4]. This article describes how to use PowerShell to manage application instances.
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
+
 [a1]: service-fabric-application-model.md
 [a2]: service-fabric-hosting-model.md
 [a3]: service-fabric-package-apps.md
 [a4]: service-fabric-deploy-remove-applications.md
 
-[p1]: /powershell/module/servicefabric/copy-servicefabricservicepackagetonode
+[p1]: https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricservicepackagetonode
+
+
+
+<!-- Update_Description: new article about service fabric hosting lifecycle -->
+<!--NEW.date: 12/21/2020-->

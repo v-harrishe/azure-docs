@@ -2,7 +2,11 @@
 title: Reliable Actors state management 
 description: Describes how Reliable Actors state is managed, persisted, and replicated for high availability.
 ms.topic: conceptual
-ms.date: 11/02/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 # Reliable Actors state management
@@ -114,3 +118,8 @@ If you ever see that database file size of an Actor Service is increasing beyond
 State that's stored in Reliable Actors must be serialized before its written to disk and replicated for high availability. Learn more about [Actor type serialization](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
 Next, learn more about [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md).
+
+
+
+<!-- Update_Description: new article about service fabric reliable actors state management -->
+<!--NEW.date: 12/21/2020-->

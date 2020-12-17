@@ -1,13 +1,16 @@
 ---
-title: Quickstart for Azure App Configuration with Azure Functions | Microsoft Docs
+title: Quickstart for Azure App Configuration with Azure Functions | Azure Docs
 description: In this quickstart, make an Azure Functions app with Azure App Configuration and C#. Create and connect to an App Configuration store. Test the function locally.
 services: azure-app-configuration
-author: AlexandraKemperMS
+
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 09/28/2020
-ms.author: alkemper
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 
 #Customer intent: As an Azure Functions developer, I want to manage all my app settings in one place using Azure App Configuration.
 ---
@@ -17,7 +20,7 @@ In this quickstart, you incorporate the Azure App Configuration service into an 
 
 ## Prerequisites
 
-- Azure subscription - [create one for free](https://azure.microsoft.com/free/dotnet)
+- Azure subscription - [create one for free](https://www.azure.cn/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) with the **Azure development** workload.
 - [Azure Functions tools](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
@@ -104,11 +107,11 @@ In this quickstart, you incorporate the Azure App Configuration service into an 
 
 3. Copy the URL of your function from the Azure Functions runtime output.
 
-    ![Quickstart Function debugging in VS](./media/quickstarts/function-visual-studio-debugging.png)
+    :::image type="content" source="./media/quickstarts/function-visual-studio-debugging.png" alt-text="Quickstart Function debugging in VS":::
 
 4. Paste the URL for the HTTP request into your browser's address bar. The following image shows the response in the browser to the local GET request returned by the function.
 
-    ![Quickstart Function launch local](./media/quickstarts/dotnet-core-function-launch-local.png)
+    :::image type="content" source="./media/quickstarts/dotnet-core-function-launch-local.png" alt-text="Quickstart Function launch local":::
 
 ## Clean up resources
 
@@ -116,7 +119,11 @@ In this quickstart, you incorporate the Azure App Configuration service into an 
 
 ## Next steps
 
-In this quickstart, you created a new App Configuration store and used it with an Azure Functions app via the [App Configuration provider](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration). To learn how to configure your Azure Functions app to dynamically refresh configuration settings, continue to the next tutorial.
+In this quickstart, you created a new App Configuration store and used it with an Azure Functions app via the [App Configuration provider](https://docs.azure.cn/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration). To learn how to configure your Azure Functions app to dynamically refresh configuration settings, continue to the next tutorial.
 
 > [!div class="nextstepaction"]
 > [Enable dynamic configuration](./enable-dynamic-configuration-azure-functions-csharp.md)
+
+
+<!-- Update_Description: new article about quickstart azure functions csharp -->
+<!--NEW.date: 12/21/2020-->

@@ -2,7 +2,11 @@
 title: Specify environment variables for services
 description: Shows you how to use environment variables for applications in Service Fabric
 ms.topic: conceptual
-ms.date: 12/06/2017
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # How to specify environment variables for services in Service Fabric
 
@@ -51,3 +55,8 @@ environment:
 To learn more about some of the core concepts that are discussed in this article, see the [Manage applications for multiple environments articles](service-fabric-manage-multiple-environment-app-configuration.md).
 
 For information about other app management capabilities that are available in Visual Studio, see [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+
+
+
+<!-- Update_Description: new article about service fabric how to specify environment variables -->
+<!--NEW.date: 12/21/2020-->

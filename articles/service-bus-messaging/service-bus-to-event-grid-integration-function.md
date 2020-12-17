@@ -2,10 +2,13 @@
 title: Handle Service Bus events via Event Grid using Azure Functions
 description: This article provides steps for handling Service Bus events via Event Grid using Azure Functions. 
 documentationcenter: .net
-author: spelluru
+
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.author: spelluru
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: devx-track-csharp
 ---
 
@@ -84,19 +87,19 @@ To create an Azure Event Grid subscription, follow these steps:
     2. Enter a **name** for the **system topic**. System topics are topics created for Azure resources such as Azure Storage account and Azure Service Bus. To learn more about system topics, see [System topics overview](../event-grid/system-topics.md).
     2. Select **Azure Function** for **Endpoint Type**, and click **Select an endpoint**. 
 
-        ![Service Bus - Event Grid subscription](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png" alt-text="Service Bus - Event Grid subscription":::
     3. On the **Select Azure Function** page, select the subscription, resource group, function app, slot, and the function, and then select **Confirm selection**. 
 
-        ![Function - select the endpoint](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png" alt-text="Function - select the endpoint":::
     4. On the **Create Event Subscription** page, switch to the **Filters** tab, and do the following tasks:
         1. Select **Enable subject filtering**
         2. Enter the name of the subscription to the Service Bus topic (**S1**) you created earlier.
         3. Select the **Create** button. 
 
-            ![Event subscription filter](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+            :::image type="content" source="./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png" alt-text="Event subscription filter":::
 4. Switch to the **Event Subscriptions** tab of the **Events** page and confirm that you see the event subscription in the list.
 
-    ![Event subscription in the list](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png" alt-text="Event subscription in the list":::
 
 ## Monitor the Functions app
 The messages you sent to the Service Bus topic earlier are forwarded to the subscription (S1). Event Grid forwards the messages at the subscription to the Azure function. In this step of the tutorial, you confirm the function was invoked and view the logged informational messages. 
@@ -136,7 +139,7 @@ If you don't see any function invocations after waiting and refreshing for somet
 * Learn more about [Azure Event Grid](../event-grid/index.yml).
 * Learn more about [Azure Functions](../azure-functions/index.yml).
 * Learn more about the [Logic Apps feature of Azure App Service](../logic-apps/index.yml).
-* Learn more about [Azure Service Bus](/azure/service-bus/).
+* Learn more about [Azure Service Bus](https://docs.azure.cn/azure/service-bus/).
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png
@@ -157,3 +160,7 @@ If you don't see any function invocations after waiting and refreshing for somet
 [18]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid18.png
 [20]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal.png
 [21]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal2.png
+
+
+<!-- Update_Description: new article about service bus to event grid integration function -->
+<!--NEW.date: 12/21/2020-->

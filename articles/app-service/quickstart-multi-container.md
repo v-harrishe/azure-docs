@@ -1,12 +1,15 @@
 ---
-title: 'Quickstart: Create a multi-container app'
+title: Quickstart - Create a multi-container app
 description: Get started with multi-container apps on Azure App Service by deploying your first multi-container app.
 keywords: azure app service, web app, linux, docker, compose, multicontainer, multi-container, web app for containers, multiple containers, container, wordpress, azure db for mysql, production database with containers
-author: msangapu-msft
+
 
 ms.topic: quickstart
-ms.date: 08/23/2019
-ms.author: msangapu
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
 
@@ -23,7 +26,7 @@ ms.custom: mvc, seodec18, devx-track-azurecli
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-This article requires version 2.0.32 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
+This article requires version 2.0.32 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
 
 ## Download the sample
 
@@ -31,7 +34,7 @@ For this quickstart, you use the compose file from [Docker](https://docs.docker.
 
 [!code-yml[Main](../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
-In the Cloud Shell, create a quickstart directory and then change to it.
+In the local Shell, create a quickstart directory and then change to it.
 
 ```bash
 mkdir quickstart
@@ -51,10 +54,10 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-In the Cloud Shell, create a resource group with the [`az group create`](/cli/azure/group#az-group-create) command. The following example creates a resource group named *myResourceGroup* in the *South Central US* location. To see all supported locations for App Service on Linux in **Standard** tier, run the [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) command.
+In the local Shell, create a resource group with the [`az group create`](https://docs.azure.cn/cli/group#az_group_create) command. The following example creates a resource group named *myResourceGroup* in the *South China North* location. To see all supported locations for App Service on Linux in **Standard** tier, run the [`az appservice list-locations --sku S1 --linux-workers-enabled`](https://docs.azure.cn/cli/appservice#az_appservice_list_locations) command.
 
-```azurecli-interactive
-az group create --name myResourceGroup --location "South Central US"
+```azurecli
+az group create --name myResourceGroup --location "South China North"
 ```
 
 You generally create your resource group and the resources in a region near you.
@@ -63,11 +66,11 @@ When the command finishes, a JSON output shows you the resource group properties
 
 ## Create an Azure App Service plan
 
-In the Cloud Shell, create an App Service plan in the resource group with the [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) command.
+In the local Shell, create an App Service plan in the resource group with the [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) command.
 
 The following example creates an App Service plan named `myAppServicePlan` in the **Standard** pricing tier (`--sku S1`) and in a Linux container (`--is-linux`).
 
-```azurecli-interactive
+```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
 ```
 
@@ -77,11 +80,11 @@ When the App Service plan has been created, the Azure CLI shows information simi
 {
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
-  "geoRegion": "South Central US",
+  "geoRegion": "South China North",
   "hostingEnvironmentProfile": null,
   "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
   "kind": "linux",
-  "location": "South Central US",
+  "location": "South China North",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
   &lt; JSON data removed for brevity. &gt;
@@ -96,7 +99,7 @@ When the App Service plan has been created, the Azure CLI shows information simi
 > [!NOTE]
 > Docker Compose on Azure App Services currently has a limit of 4,000 characters at this time.
 
-In your Cloud Shell terminal, create a multi-container [web app](overview.md#app-service-on-linux) in the `myAppServicePlan` App Service plan with the [az webapp create](/cli/azure/webapp#az-webapp-create) command. Don't forget to replace _\<app_name>_ with a unique app name (valid characters are `a-z`, `0-9`, and `-`).
+In your local Shell terminal, create a multi-container [web app](overview.md#app-service-on-linux) in the `myAppServicePlan` App Service plan with the [az webapp create](https://docs.azure.cn/cli/webapp#az_webapp_create) command. Don't forget to replace _\<app_name>_ with a unique app name (valid characters are `a-z`, `0-9`, and `-`).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -138,4 +141,10 @@ Browse to the deployed app at (`http://<app_name>.azurewebsites.net`). The app m
 > [Configure a custom container](configure-custom-container.md)
 
 <!--Image references-->
+
 [1]: media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png
+
+
+
+<!-- Update_Description: new article about quickstart multi container -->
+<!--NEW.date: 12/21/2020-->

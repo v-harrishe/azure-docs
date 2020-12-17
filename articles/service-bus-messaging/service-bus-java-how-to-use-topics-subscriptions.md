@@ -3,7 +3,11 @@ title: Use Azure Service Bus topics and subscriptions with Java (azure-messaging
 description: In this quickstart, you write Java code using the azure-messaging-servicebus package to send messages to an Azure Service Bus topic and then receive messages from subscriptions to that topic. 
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/09/2020
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Send messages to an Azure Service Bus topic and receive messages from subscriptions to the topic (Java)
@@ -14,9 +18,9 @@ In this quickstart, you write Java code using the azure-messaging-servicebus pac
 
 ## Prerequisites
 
-- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [Visual Studio or MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) or sign-up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [Visual Studio or MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
 - Follow steps in the [Quickstart: Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md). Note down the connection string, topic name, and a subscription name. You'll use only one subscription for this quickstart. 
-- Install [Azure SDK for Java][Azure SDK for Java]. If you're using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **Microsoft Azure Libraries for Java** to your project. If you're using IntelliJ, see [Install the Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
+- Install [Azure SDK for Java][Azure SDK for Java]. If you're using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] that includes the Azure SDK for Java. You can then add the **21Vianet Azure Libraries for Java** to your project. If you're using IntelliJ, see [Install the Azure Toolkit for IntelliJ](https://docs.azure.cn/azure/developer/java/toolkit-for-intellij/installation). 
 
 
 ## Send messages to a topic
@@ -221,12 +225,16 @@ See the following documentation and samples:
 
 - [Azure Service Bus client library for Java - Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Samples on GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API reference](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
+- [Java API reference](https://docs.azure.cn/java/api/overview/servicebus?preserve-view=true&view=azure-java-preview)
 
 
-[Azure SDK for Java]: /java/api/overview/azure/
-[Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
+[Azure SDK for Java]: https://docs.azure.cn/java/api/overview/
+[Azure Toolkit for Eclipse]: /developer/java/toolkit-for-eclipse/installation
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[SqlFilter]: https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter
+[SqlFilter.SqlExpression]: https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
+[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+
+
+<!-- Update_Description: new article about service bus java how to use topics subscriptions -->
+<!--NEW.date: 12/21/2020-->

@@ -3,10 +3,14 @@ title: Change Azure Service Fabric cluster settings
 description: This article describes the fabric settings and the fabric upgrade policies that you can customize.
 
 ms.topic: reference
-ms.date: 08/30/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 # Customize Service Fabric cluster settings
-This article describes the various fabric settings for your Service Fabric cluster that you can customize. For clusters hosted in Azure, you can customize settings through the [Azure portal](https://portal.azure.com) or by using an Azure Resource Manager template. For more information, see [Upgrade the configuration of an Azure cluster](service-fabric-cluster-config-upgrade-azure.md). For standalone clusters, you customize settings by updating the *ClusterConfig.json* file and performing a configuration upgrade on your cluster. For more information, see [Upgrade the configuration of a standalone cluster](service-fabric-cluster-config-upgrade-windows-server.md).
+This article describes the various fabric settings for your Service Fabric cluster that you can customize. For clusters hosted in Azure, you can customize settings through the [Azure portal](https://portal.azure.cn) or by using an Azure Resource Manager template. For more information, see [Upgrade the configuration of an Azure cluster](service-fabric-cluster-config-upgrade-azure.md). For standalone clusters, you customize settings by updating the *ClusterConfig.json* file and performing a configuration upgrade on your cluster. For more information, see [Upgrade the configuration of a standalone cluster](service-fabric-cluster-config-upgrade-windows-server.md).
 
 There are three different upgrade policies:
 
@@ -361,7 +365,7 @@ The following is a list of Fabric settings that you can customize, organized by 
 |NTLMAuthenticationPasswordSecret|SecureString, default is Common::SecureString("")|Static|Is an encrypted has that is used to generate the password for NTLM users. Has to be set if NTLMAuthenticationEnabled is true. Validated by the deployer. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan, default is Common::TimeSpan::FromMinutes(3)|Dynamic|Specify timespan in seconds. Environment-specific settings The periodic interval at which Hosting scans for new certificates to be used for FileStoreService NTLM configuration. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan, default is Common::TimeSpan::FromMinutes(4)|Dynamic| Specify timespan in seconds. The timeout for configuring NTLM users using certificate common names. The NTLM users are needed for FileStoreService shares. |
-|PruneContainerImages|bool, default is FALSE|Dynamic| Remove unused application container images from nodes. When an ApplicationType is unregistered from the Service Fabric cluster, the container images that were used by this application will be removed on nodes where it was downloaded by Service Fabric. The pruning runs every hour, so it may take up to one hour (plus time to prune the image) for images to be removed from the cluster.<br>Service Fabric will never download or remove images not related to an application.  Unrelated images that were downloaded manually or otherwise must be removed explicitly.<br>Images that should not be deleted can be specified in the ContainerImagesToSkip parameter.| 
+|PruneContainerImages|bool, default is FALSE|Dynamic| Remove unused application container images from nodes. When an ApplicationType is unregistered from the Service Fabric cluster, the container images that were used by this application will be removed on nodes where it was downloaded by Service Fabric. The pruning runs every hour, so it may take up to one hour (plus time to prune the image) for images to be removed from the cluster.<br />Service Fabric will never download or remove images not related to an application.  Unrelated images that were downloaded manually or otherwise must be removed explicitly.<br />Images that should not be deleted can be specified in the ContainerImagesToSkip parameter.| 
 |RegisterCodePackageHostTimeout|TimeSpan, default is Common::TimeSpan::FromSeconds(120)|Dynamic| Specify timespan in seconds. The timeout value for the FabricRegisterCodePackageHost sync call. This is applicable for only multi code package application hosts like FWP |
 |RequestTimeout|TimeSpan, default is Common::TimeSpan::FromSeconds(30)|Dynamic| Specify timespan in seconds. This represents the timeout for communication between the user's application host and Fabric process for various hosting related operations such as factory registration; runtime registration. |
 |RunAsPolicyEnabled| bool, default is FALSE|Static| Enables running code packages as local user other than the user under which fabric process is running. In order to enable this policy Fabric must be running as SYSTEM or as user who has SeAssignPrimaryTokenPrivilege. |
@@ -644,14 +648,14 @@ The following is a list of Fabric settings that you can customize, organized by 
 ## Security
 | **Parameter** | **Allowed Values** |**Upgrade Policy**| **Guidance or Short Description** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|string, default is ""|Static|AAD Cert Endpoint Format, default Azure Commercial, specified for non-default environment such as Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
+|AADCertEndpointFormat|string, default is ""|Static|AAD Cert Endpoint Format, default Azure Commercial, specified for non-default environment such as Azure China Cloud "https:\//portal.partner.microsoftonline.cn/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|string, default is ""|Static|Native Client application name or ID representing Fabric Clients |
 |AADClusterApplication|string, default is ""|Static|Web API application name or ID representing the cluster |
-|AADLoginEndpoint|string, default is ""|Static|AAD Login Endpoint, default Azure Commercial, specified for non-default environment such as Azure Government "https:\//login.microsoftonline.us" |
+|AADLoginEndpoint|string, default is ""|Static|AAD Login Endpoint, default Azure Commercial, specified for non-default environment such as Azure China Cloud "https:\//portal.partner.microsoftonline.cn" |
 |AADTenantId|string, default is ""|Static|Tenant ID (GUID) |
 |AcceptExpiredPinnedClusterCertificate|bool, default is FALSE|Dynamic|Flag indicating whether to accept expired cluster certificates declared by thumbprint Applies only to cluster certificates; so as to keep the cluster alive. |
 |AdminClientCertThumbprints|string, default is ""|Dynamic|Thumbprints of certificates used by clients in admin role. It is a comma-separated name list. |
-|AADTokenEndpointFormat|string, default is ""|Static|AAD Token Endpoint, default Azure Commercial, specified for non-default environment such as Azure Government "https:\//login.microsoftonline.us/{0}" |
+|AADTokenEndpointFormat|string, default is ""|Static|AAD Token Endpoint, default Azure Commercial, specified for non-default environment such as Azure China Cloud "https:\//portal.partner.microsoftonline.cn/{0}" |
 |AdminClientClaims|string, default is ""|Dynamic|All possible claims expected from admin clients; the same format as ClientClaims; this list internally gets added to ClientClaims; so no need to also add the same entries to ClientClaims. |
 |AdminClientIdentities|string, default is ""|Dynamic|Windows identities of fabric clients in admin role; used to authorize privileged fabric operations. It is a comma-separated list; each entry is a domain account name or group name. For convenience; the account that runs fabric.exe is automatically assigned admin role; so is group ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|string, default is /home/sfuser/sfusercerts |Static|Folder where AppRunAsAccountGroup X509 certificates and private keys are located |
@@ -917,3 +921,8 @@ The following is a list of Fabric settings that you can customize, organized by 
 
 ## Next steps
 For more information, see [Upgrade the configuration of an Azure cluster](service-fabric-cluster-config-upgrade-azure.md) and [Upgrade the configuration of a standalone cluster](service-fabric-cluster-config-upgrade-windows-server.md).
+
+
+
+<!-- Update_Description: new article about service fabric cluster fabric settings -->
+<!--NEW.date: 12/21/2020-->

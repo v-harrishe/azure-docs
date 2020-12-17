@@ -3,14 +3,18 @@ title: Create a .NET app on Service Fabric in Azure
 description: In this tutorial, you learn how to create an application with an ASP.NET Core front-end and a reliable service stateful back-end and deploy the application to a cluster.
 
 ms.topic: tutorial
-ms.date: 07/10/2019
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ms.custom: "mvc, devx-track-js, devx-track-csharp"
 ---
 # Tutorial: Create and deploy an application with an ASP.NET Core Web API front-end service and a stateful back-end service
 
-This tutorial is part one of a series.  You will learn how to create an Azure Service Fabric application with an ASP.NET Core Web API front end and a stateful back-end service to store your data. When you're finished, you have a voting application with an ASP.NET Core web front-end that saves voting results in a stateful back-end service in the cluster. This tutorial series requires a Windows developer machine. If you don't want to manually create the voting application, you can [download the source code](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) for the completed application and skip ahead to [Walk through the voting sample application](#walkthrough_anchor).  If you prefer, you can also watch a [video walk-through](https://channel9.msdn.com/Events/Connect/2017/E100) of this tutorial.
+This tutorial is part one of a series.  You will learn how to create an Azure Service Fabric application with an ASP.NET Core Web API front end and a stateful back-end service to store your data. When you're finished, you have a voting application with an ASP.NET Core web front-end that saves voting results in a stateful back-end service in the cluster. This tutorial series requires a Windows developer machine. If you don't want to manually create the voting application, you can [download the source code](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) for the completed application and skip ahead to [Walk through the voting sample application](#walkthrough_anchor).  If you prefer, you can also watch a [video walk-through](https://channel9.msdn.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /Events/Connect/2017/E100) of this tutorial.
 
-![AngularJS+ASP.NET API Front End, Connecting to a stateful backend service on Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+:::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png" alt-text="AngularJS+ASP.NET API Front End, Connecting to a stateful backend service on Service Fabric":::
 
 In part one of the series, you learn how to:
 
@@ -30,14 +34,14 @@ In this tutorial series you learn how to:
 ## Prerequisites
 
 Before you begin this tutorial:
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* If you don't have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/)
 * [Install Visual Studio 2019](https://www.visualstudio.com/) version 15.5 or later with the **Azure development** and **ASP.NET and web development** workloads.
 * [Install the Service Fabric SDK](service-fabric-get-started.md)
 
 ## Create an ASP.NET Web API service as a reliable service
 
 First, create the web front-end of the voting application using ASP.NET Core. ASP.NET Core is a lightweight, cross-platform web development framework that you can use to create modern web UI and web APIs. 
-To get a complete understanding of how ASP.NET Core integrates with Service Fabric, we strongly recommend reading through the [ASP.NET Core in Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) article. For now, you can follow this tutorial to get started quickly. To learn more about ASP.NET Core, see the [ASP.NET Core Documentation](/aspnet/core/).
+To get a complete understanding of how ASP.NET Core integrates with Service Fabric, we strongly recommend reading through the [ASP.NET Core in Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) article. For now, you can follow this tutorial to get started quickly. To learn more about ASP.NET Core, see the [ASP.NET Core Documentation](https://docs.azure.cn/aspnet/core/).
 
 1. Launch Visual Studio as an **administrator**.
 
@@ -47,15 +51,15 @@ To get a complete understanding of how ASP.NET Core integrates with Service Fabr
 
 4. Name the application **Voting** and click **OK**.
 
-   ![New project dialog in Visual Studio](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog.png)
+   :::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog.png" alt-text="New project dialog in Visual Studio":::
 
 5. On the **New Service Fabric Service** page, choose **Stateless ASP.NET Core**, name your service **VotingWeb**, then click **OK**.
    
-   ![Choosing ASP.NET web service in the new service dialog](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png) 
+   :::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png" alt-text="Choosing ASP.NET web service in the new service dialog"::: 
 
 6. The next page provides a set of ASP.NET Core project templates. For this tutorial, choose **Web Application (Model-View-Controller)**, then click **OK**.
    
-   ![Choose ASP.NET project type](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
+   :::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png" alt-text="Choose ASP.NET project type":::
 
    Visual Studio creates an application and a service project and displays them in Solution Explorer.
 
@@ -304,6 +308,7 @@ In Solution Explorer, open  *VotingWeb/PackageRoot/ServiceManifest.xml*.  Find t
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
+
       <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
     </Endpoints>
   </Resources>
@@ -319,7 +324,7 @@ You can now go ahead and run the Voting application for debugging. In Visual Stu
 
 After the Voting application has been deployed to your local Service Fabric cluster, your web app will open in a browser tab automatically and should look like this:
 
-![ASP.NET Core front-end](./media/service-fabric-tutorial-create-dotnet-app/debug-front-end.png)
+:::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/debug-front-end.png" alt-text="ASP.NET Core front-end":::
 
 To stop debugging the application, go back to Visual Studio and press **Shift+F5**.
 
@@ -341,7 +346,7 @@ In this tutorial, you create a service which stores a counter value in a reliabl
 
     Visual Studio creates the VotingData service project and displays it in Solution Explorer.
 
-    ![Solution Explorer](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
+    :::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png" alt-text="Solution Explorer":::
 
 ### Add the VoteDataController.cs file
 
@@ -455,7 +460,7 @@ To find the reverse proxy port used in your local development cluster, view the 
 2. Select **Cluster -> Manifest**.
 3. Make a note of the HttpApplicationGatewayEndpoint element port. By default this should be 19081. If it is not 19081, you will need to change the port in the GetProxyAddress method of the following VotesController.cs code.
 
-<a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
+<a name="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
 ### Update the VotesController.cs file
 
@@ -572,7 +577,7 @@ public class VotesController : Controller
 }
 ```
 
-<a id="walkthrough" name="walkthrough_anchor"></a>
+<a name="walkthrough" name="walkthrough_anchor"></a>
 
 ## Walk through the voting sample application
 
@@ -581,7 +586,7 @@ The voting application consists of two services:
 * Web front-end service (VotingWeb)- An ASP.NET Core web front-end service, which serves the web page and exposes web APIs to communicate with the backend service.
 * Back-end service (VotingData)- An ASP.NET Core web service, which exposes an API to store the vote results in a reliable dictionary persisted on disk.
 
-![Application Diagram](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+:::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png" alt-text="Application Diagram":::
 
 When you vote in the application the following events occur:
 
@@ -608,7 +613,7 @@ To look at what happens in the code, complete the following steps:
 
    1. This is where the JavaScript in the browser sends a request to the web API controller in the front-end service.
 
-      ![Add Vote Front-End Service](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      :::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png" alt-text="Add Vote Front-End Service":::
 
    2. First construct the URL to the ReverseProxy for the back-end service **(1)**.
    3. Then send the HTTP PUT Request to the ReverseProxy **(2)**.
@@ -617,7 +622,7 @@ To look at what happens in the code, complete the following steps:
 5. Press **F5** to continue.
    1. You are now at the break point in the back-end service.
 
-      ![Add Vote Back-End Service](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      :::image type="content" source="./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png" alt-text="Add Vote Back-End Service":::
 
    2. In the first line in the method **(1)** use the `StateManager` to get or add a reliable dictionary called `counts`.
    3. All interactions with values in a reliable dictionary require a transaction, this using statement **(2)** creates that transaction.
@@ -638,3 +643,8 @@ In this part of the tutorial, you learned how to:
 Advance to the next tutorial:
 > [!div class="nextstepaction"]
 > [Deploy the application to Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+
+
+
+<!-- Update_Description: new article about service fabric tutorial create dotnet app -->
+<!--NEW.date: 12/21/2020-->

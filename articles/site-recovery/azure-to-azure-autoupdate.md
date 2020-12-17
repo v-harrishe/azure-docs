@@ -2,12 +2,15 @@
 title: Automatic update of the Mobility service in Azure Site Recovery
 description: Overview of automatic update of the Mobility service when replicating Azure VMs by using Azure Site Recovery.
 services: site-recovery
-author: sideeksh
+
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/02/2020
-ms.author: sideeksh
+author: rockboyfor
+ms.date: 12/21/2020
+ms.testscope: yes|no
+ms.testdate: 12/21/2020null
+ms.author: v-yeche
 ---
 
 # Automatic update of the Mobility service in Azure-to-Azure replication
@@ -86,9 +89,9 @@ $TaskId = [guid]::NewGuid().ToString()
 $SubscriptionId = "00000000-0000-0000-0000-000000000000"
 $AsrApiVersion = "2018-01-10"
 $RunAsConnectionName = "AzureRunAsConnection"
-$ArmEndPoint = "https://management.azure.com"
-$AadAuthority = "https://login.windows.net/"
-$AadAudience = "https://management.core.windows.net/"
+$ArmEndPoint = "https://management.chinacloudapi.cn"
+$AadAuthority = "https://login.chinacloudapi.cn/"
+$AadAudience = "https://management.core.chinacloudapi.cn/"
 $AzureEnvironment = "AzureCloud"
 $Timeout = "160"
 function Throw-TerminatingErrorMessage
@@ -494,3 +497,8 @@ If you can't enable automatic updates, see the following common errors and recom
 
   > [!NOTE]
   > After you renew the certificate, refresh the page to display the current status.
+
+
+
+<!-- Update_Description: new article about azure to azure autoupdate -->
+<!--NEW.date: 12/21/2020-->
