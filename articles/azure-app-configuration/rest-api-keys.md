@@ -1,15 +1,11 @@
 ---
 title: Azure App Configuration REST API - Keys
 description: Reference pages for working with keys using the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Keys
@@ -179,8 +175,3 @@ Link: <relative uri>; rel="original"
     ]
 }
 ```
-
-
-
-<!-- Update_Description: new article about rest api keys -->
-<!--NEW.date: 12/21/2020-->

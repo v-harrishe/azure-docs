@@ -3,14 +3,11 @@ title: Use per-environment configuration
 titleSuffix: Azure App Configuration
 description: Use labels to provide per-environment configuration values.
 ms.service: azure-app-configuration
-
+author: AlexandraKemperMS
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 3/12/2020
+ms.author: alkemper
 
 ---
 # Use labels to enable configurations for different environments
@@ -26,7 +23,7 @@ To demonstrate this functionality, you'll modify the web app created in [Quickst
 In the Azure portal, go to **Configuration Explorer** and find the *TestApp:Settings:FontColor* key that you created in the quickstart. Select its context menu and then select **Add Value**.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/labels-add-value.png" alt-text="Add Value menu item":::
+> ![Add Value menu item](media/labels-add-value.png)
 
 On the **Add Value** screen, enter a **Value** of **red** and a **Label** of **Development**. Leave **Content type** empty. Select **Apply**.
 
@@ -34,7 +31,7 @@ On the **Add Value** screen, enter a **Value** of **red** and a **Label** of **D
 
 By default, Azure App Configuration only loads configuration values with no label. If you've defined labels for your configuration values, you'll want to specify the labels to use when connecting to App Configuration.
 
-In the previous section, you created a different configuration value for the development environment. You use the `HostingEnvironment.EnvironmentName` variable to dynamically determine which environment the app currently runs in. To learn more, see [Use multiple environments in ASP.NET Core](https://docs.azure.cn/aspnet/core/fundamentals/environments).
+In the previous section, you created a different configuration value for the development environment. You use the `HostingEnvironment.EnvironmentName` variable to dynamically determine which environment the app currently runs in. To learn more, see [Use multiple environments in ASP.NET Core](/aspnet/core/fundamentals/environments).
 
 Load configuration values with the label corresponding to the current environment by passing the environment name into the `Select` method:
 
@@ -75,20 +72,15 @@ dotnet run
 
 Use a web browser to go to `http://localhost:5000`. You'll notice that the font color is black.
 
-:::image type="content" source="media/labels-website-prod.png" alt-text="Web application running with production configuration":::
+![Web application running with production configuration](media/labels-website-prod.png)
 
 Update `launchSettings.json` to set the `ASPNETCORE_ENVIRONMENT` variable to `Development`. Run `dotnet run` again. 
 
 You'll notice that the font color is now red. This is because the application now uses the value of `TestApp:Settings:FontColor` that has the `Development` label. All other configuration values remain the same as their production values.
 
-:::image type="content" source="media/labels-website-dev.png" alt-text="Web application running with development configuration":::
+![Web application running with development configuration](media/labels-website-dev.png)
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Configuration in ASP.NET Core](https://docs.azure.cn/aspnet/core/fundamentals/configuration/)
-
-
-
-<!-- Update_Description: new article about howto labels aspnet core -->
-<!--NEW.date: 12/21/2020-->
+> [Configuration in ASP.NET Core](/aspnet/core/fundamentals/configuration/)

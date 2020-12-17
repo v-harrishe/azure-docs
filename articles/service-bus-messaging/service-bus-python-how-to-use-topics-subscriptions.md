@@ -2,14 +2,11 @@
 title: 'Use Azure Service Bus topics and subscriptions with Python azure-servicebus package version 7.0.0'
 description: This article shows you how to use Python to send messages to a topic and receive messages from subscription.
 documentationcenter: python
-
+author: spelluru
 ms.devlang: python
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/18/2020
+ms.author: spelluru
 ms.custom: devx-track-python
 ---
 
@@ -17,9 +14,9 @@ ms.custom: devx-track-python
 This article shows you how to use Python to send messages a Service Bus topic and receive messages from a subscription to the topic. 
 
 ## Prerequisites
-- An Azure subscription. You can activate your [Visual Studio or MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
+- An Azure subscription. You can activate your [Visual Studio or MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) or sign-up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Follow steps in the [Quickstart: Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md). Note down the connection string, topic name, and a subscription name. You'll use only one subscription for this quickstart. 
-- Python 2.7 or higher, with the [Azure Python SDK][Azure Python package] package installed. For more information, see the [Python Installation Guide](https://docs.azure.cn/azure/developer/python/azure-sdk-install).
+- Python 2.7 or higher, with the [Azure Python SDK][Azure Python package] package installed. For more information, see the [Python Installation Guide](/azure/developer/python/azure-sdk-install).
 
 ## Send messages to a topic
 
@@ -215,8 +212,4 @@ See the following documentation and samples:
 - [Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - The **sync_samples** folder has samples that show you how to interact with Service Bus in a synchronous manner. In this quick start, you used this method. 
     - The **async_samples** folder has samples that show you how to interact with Service Bus in an asynchronous manner. 
-- [azure-servicebus reference documentation](https://docs.azure.cn/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
-
-
-<!-- Update_Description: new article about service bus python how to use topics subscriptions -->
-<!--NEW.date: 12/21/2020-->
+- [azure-servicebus reference documentation](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

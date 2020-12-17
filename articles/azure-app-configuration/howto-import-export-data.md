@@ -2,14 +2,11 @@
 title: Import or export data with Azure App Configuration
 description: Learn how to import or export configuration data to or from Azure App Configuration. Exchange data between your App Configuration store and code project.
 services: azure-app-configuration
-
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 02/25/2020
+ms.author: alkemper
 ---
 
 # Import or export configuration data
@@ -22,7 +19,7 @@ This article provides a guide for importing and exporting data with App Configur
 
 Import brings configuration data into an App Configuration store from an existing source. Use the import function to migrate data into an App Configuration store or aggregate data from multiple sources. App Configuration supports importing from a JSON, YAML, or properties file.
 
-Import data by using either the [Azure portal](https://portal.azure.cn) or the [Azure CLI](./scripts/cli-import.md). From the Azure portal, follow these steps:
+Import data by using either the [Azure portal](https://portal.azure.com) or the [Azure CLI](./scripts/cli-import.md). From the Azure portal, follow these steps:
 
 1. Browse to your App Configuration store, and select **Import/Export** from the **Operations** menu.
 
@@ -32,7 +29,7 @@ Import data by using either the [Azure portal](https://portal.azure.cn) or the [
 
 1. Select the **Folder** icon, and browse to the file to import.
 
-    :::image type="content" source="./media/import-file.png" alt-text="Import file":::
+    ![Import file](./media/import-file.png)
 
 1. Select a **Separator**, and optionally enter a **Prefix** to use for imported key names.
 
@@ -40,13 +37,13 @@ Import data by using either the [Azure portal](https://portal.azure.cn) or the [
 
 1. Select **Apply** to finish the import.
 
-    :::image type="content" source="./media/import-file-complete.png" alt-text="Import file finished":::
+    ![Import file finished](./media/import-file-complete.png)
 
 ## Export data
 
 Export writes configuration data stored in App Configuration to another destination. Use the export function, for example, to save data in an App Configuration store to a file that's embedded with your application code during deployment.
 
-Export data by using either the [Azure portal](https://portal.azure.cn) or the [Azure CLI](./scripts/cli-export.md). From the Azure portal, follow these steps:
+Export data by using either the [Azure portal](https://portal.azure.com) or the [Azure CLI](./scripts/cli-export.md). From the Azure portal, follow these steps:
 
 1. Browse to your App Configuration store, and select **Import/Export**.
 
@@ -58,13 +55,9 @@ Export data by using either the [Azure portal](https://portal.azure.cn) or the [
 
 1. Select **Apply** to finish the export.
 
-    :::image type="content" source="./media/export-file-complete.png" alt-text="Export file finished":::
+    ![Export file finished](./media/export-file-complete.png)
 
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Create an ASP.NET Core web app](./quickstart-aspnet-core-app.md)
-
-
-<!-- Update_Description: new article about howto import export data -->
-<!--NEW.date: 12/21/2020-->

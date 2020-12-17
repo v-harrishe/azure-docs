@@ -1,15 +1,12 @@
 ---
 title: Enable Zone to Zone Disaster Recovery for Azure Virtual Machines
 description: This article describes when and how to use Zone to Zone Disaster Recovery for Azure virtual machines.
-
+author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 04/28/2020
+ms.author: sideeksh
 
 ---
 
@@ -93,7 +90,7 @@ Log in to the Azure portal.
 
 3. As shown below, in the Basics tab, select ‘Yes’ for ‘Disaster Recovery between Availability Zones?’
 
-    :::image type="content" source="./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-basic-settings-blade.png" alt-text="Basic Settings page":::
+    ![Basic Settings page](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-basic-settings-blade.png)
 
 4. If you accept all defaults, click ‘Review + Start replication’ followed by ‘Start replication’.
 
@@ -101,14 +98,14 @@ Log in to the Azure portal.
 
 6. Change the settings away from default wherever appropriate. For users of Azure to Azure Disaster Recovery, this page might seem familiar. More details on the options presented on this blade can be found [here](./azure-to-azure-tutorial-enable-replication.md)
 
-    :::image type="content" source="./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png" alt-text="Advanced Settings page":::
+    ![Advanced Settings page](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
 7. Click on ‘Next: Review + Start replication’ and then ‘Start replication’.
 
 ## FAQs
 
 **1. How does pricing work for Zone to Zone Disaster Recovery?**
-Pricing for Zone to Zone Disaster Recovery is identical to the pricing of Azure to Azure Disaster Recovery. You can find more details on the pricing page [here](https://www.azure.cn/pricing/details/site-recovery/) and [here](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/). Note that the egress charges that you would see in zone to zone disaster recovery would be lower than region to region disaster recovery.
+Pricing for Zone to Zone Disaster Recovery is identical to the pricing of Azure to Azure Disaster Recovery. You can find more details on the pricing page [here](https://azure.microsoft.com/pricing/details/site-recovery/) and [here](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/). Note that the egress charges that you would see in zone to zone disaster recovery would be lower than region to region disaster recovery.
 
 **2. What is the SLA for RTO and RPO?**
 The RTO SLA is the same as that for Site Recovery overall. We promise RTO of up to 2 hours. There is no defined SLA for RPO.
@@ -131,8 +128,3 @@ To perform a Disaster Recovery drill, please follow the steps outlined [here](./
 To perform a failover and reprotect VMs in the secondary zone, follow the steps outlined [here](./azure-to-azure-tutorial-failover-failback.md).
 
 To failback to the primary zone, follow the steps outlined [here](./azure-to-azure-tutorial-failback.md).
-
-
-
-<!-- Update_Description: new article about azure to azure how to enable zone to zone disaster recovery -->
-<!--NEW.date: 12/21/2020-->

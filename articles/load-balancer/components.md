@@ -3,17 +3,14 @@ title: Azure Load Balancer components
 description: Overview of Azure Load Balancer components
 services: load-balancer
 documentationcenter: na
-
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/04/2020
+ms.author: allensu
 
 ---
 # Azure Load Balancer components
@@ -40,7 +37,7 @@ The nature of the IP address determines the **type** of load balancer created. P
 | **Description** | A public load balancer maps the public IP and port of incoming traffic to the private IP and port of the VM. Load balancer maps traffic the other way around for the response traffic from the VM. You can distribute specific types of traffic across multiple VMs or services by applying load-balancing rules. For example, you can spread the load of web request traffic across multiple web servers.| An internal load balancer distributes traffic to resources that are inside a virtual network. Azure restricts access to the frontend IP addresses of a virtual network that are load balanced. Front-end IP addresses and virtual networks are never directly exposed to an internet endpoint. Internal line-of-business applications run in Azure and are accessed from within Azure or from on-premises resources. |
 | **SKUs supported** | Basic, Standard | Basic, Standard |
 
-:::image type="content" source="./media/load-balancer-overview/load-balancer.png" alt-text="Tiered load balancer example":::
+![Tiered load balancer example](./media/load-balancer-overview/load-balancer.png)
 
 Load balancer can have multiple frontend IPs. Learn more about [multiple frontends](load-balancer-multivip-overview.md).
 
@@ -143,7 +140,3 @@ Basic load balancer doesn't support outbound rules.
 - Learn more about [Network Security Groups](../virtual-network/network-security-groups-overview.md).
 - Learn more about [Load balancer limits](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer).
 - Learn about using [Port forwarding](./tutorial-load-balancer-port-forwarding-portal.md).
-
-
-<!-- Update_Description: new article about components -->
-<!--NEW.date: 12/21/2020-->

@@ -2,11 +2,7 @@
 title: Specify port number of a service using parameters
 description: Shows you how to use parameters to specify the port for an application in Service Fabric
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/06/2017
 ---
 # How to specify the port number of a service using parameters in Service Fabric
 
@@ -81,8 +77,3 @@ When publishing your application from Visual Studio using the Cloud.xml publish 
 To learn more about some of the core concepts that are discussed in this article, see the [Manage applications for multiple environments articles](service-fabric-manage-multiple-environment-app-configuration.md).
 
 For information about other app management capabilities that are available in Visual Studio, see [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
-
-
-
-<!-- Update_Description: new article about service fabric how to specify port number using parameters -->
-<!--NEW.date: 12/21/2020-->

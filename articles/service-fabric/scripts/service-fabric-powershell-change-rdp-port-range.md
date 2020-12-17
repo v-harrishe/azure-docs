@@ -1,18 +1,14 @@
----
-title: Azure PowerShell Script Sample - Change the RDP port range | Azure Docs
+﻿---
+title: Azure PowerShell Script Sample - Change the RDP port range | Microsoft Docs
 description: Azure PowerShell Script Sample - Changes the RDP port range of a deployed cluster.
 services: service-fabric
 tags: azure-service-management
-
-
+author: athinanthny
+ms.author: atsenthi
 ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 03/19/2018
 ---
 
 # Update the RDP port range values
@@ -21,7 +17,7 @@ This sample script changes the RDP port range values on the cluster node VMs aft
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](https://docs.microsoft.com/powershell/azure/).
+If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](/powershell/azure/).
 
 ## Sample script
 
@@ -33,16 +29,11 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Gets the `Microsoft.Network/loadBalancers` resource. |
-|[Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource)|Updates the `Microsoft.Network/loadBalancers` resource.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Gets the `Microsoft.Network/loadBalancers` resource. |
+|[Set-AzResource](/powershell/module/az.resources/set-azresource)|Updates the `Microsoft.Network/loadBalancers` resource.|
 
 ## Next steps
 
-For more information on the Azure PowerShell module, see [Azure PowerShell documentation](https://docs.microsoft.com/powershell/azure/).
+For more information on the Azure PowerShell module, see [Azure PowerShell documentation](/powershell/azure/).
 
 Additional Azure Powershell samples for Azure Service Fabric can be found in the [Azure PowerShell samples](../service-fabric-powershell-samples.md).
-
-
-
-<!-- Update_Description: new article about service fabric powershell change rdp port range -->
-<!--NEW.date: 12/21/2020-->

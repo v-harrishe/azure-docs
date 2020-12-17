@@ -2,11 +2,7 @@
 title: Managed identities for Azure
 description: Learn about using Managed identities for Azure with Service Fabric.
 ms.topic: conceptual 
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/09/2019
 ---
 
 # Using Managed identities for Azure with Service Fabric
@@ -66,8 +62,3 @@ The following scenarios are not supported or not recommended; note these actions
 - [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)
 - [Grant an Azure Service Fabric application access to other Azure resources](./how-to-grant-access-other-resources.md)
 - [Declaring and using application secrets as KeyVaultReferences](./service-fabric-keyvault-references.md)
-
-
-
-<!-- Update_Description: new article about concepts managed identity -->
-<!--NEW.date: 12/21/2020-->

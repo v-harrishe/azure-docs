@@ -2,16 +2,12 @@
 title: Azure Service Fabric - Configure container repository credentials
 description: Configure repository credentials to download images from container registry
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/09/2019
 ---
 
 # Configure repository credentials for your application to download container images
 
-Configure container registry authentication by adding `RepositoryCredentials` to the `ContainerHostPolicies` section of your application manifest. Add the account and password for your container registry (*myregistry.azurecr.cn* in the example below), which allows the service to download the container image from the repository.
+Configure container registry authentication by adding `RepositoryCredentials` to the `ContainerHostPolicies` section of your application manifest. Add the account and password for your container registry (*myregistry.azurecr.io* in the example below), which allows the service to download the container image from the repository.
 
 ```xml
 <ServiceManifestImport>
@@ -93,14 +89,14 @@ Service Fabric supports using tokens as credentials to download images for your 
 
 1. Ensure that *System Assigned Managed Identity* is enabled for the VM.
 
-    :::image type="content" source="./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png" alt-text="Azure portal: Create virtual machine scale set identity option":::
+    ![Azure portal: Create virtual machine scale set identity option](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
 > [!NOTE]
 > For user-assigned managed identity, skip this step. The remaining steps below will work the same, as long as the scale set is only associated with a single user-assigned managed identity.
 
 2. Grant permissions to the virtual machine scale set to pull/read images from the registry. From the Access Control (IAM) blade of your Azure Container Registry in the Azure portal, add a *role assignment* for your virtual machine:
 
-    :::image type="content" source="./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png" alt-text="Add VM principal to ACR":::
+    ![Add VM principal to ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
 3. Next, modify your application manifest. In the `ContainerHostPolicies` section, add the attribute `‘UseTokenAuthenticationCredentials=”true”`.
 
@@ -122,8 +118,3 @@ Service Fabric supports using tokens as credentials to download images for your 
 ## Next steps
 
 * See more about [Container registry authentication](../container-registry/container-registry-authentication.md).
-
-
-
-<!-- Update_Description: new article about configure container repository credentials -->
-<!--NEW.date: 12/21/2020-->

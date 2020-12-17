@@ -1,16 +1,13 @@
 ---
 title: Quickstart for adding feature flags to ASP.NET Core
 description: Add feature flags to ASP.NET Core apps and manage them using Azure App Configuration
-
+author: AlexandraKemperMS
 
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/28/2020
+ms.author: alkemper
 
 #Customer intent: As an ASP.NET Core developer, I want to use feature flags to control feature availability quickly and confidently.
 ---
@@ -23,7 +20,7 @@ The .NET Core Feature Management libraries extend the framework with comprehensi
 
 ## Prerequisites
 
-* Azure subscription - [create one for free](https://www.azure.cn/free/dotnet)
+* Azure subscription - [create one for free](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## Create an App Configuration store
@@ -33,13 +30,13 @@ The .NET Core Feature Management libraries extend the framework with comprehensi
 8. Select **Operations** > **Feature manager** > **Add** to add a feature flag called *Beta*.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="media/add-beta-feature-flag.png" alt-text="Enable feature flag named Beta":::
+    > ![Enable feature flag named Beta](media/add-beta-feature-flag.png)
 
     Leave **Label** empty for now. Select **Apply** to save the new feature flag.
 
 ## Create an ASP.NET Core web app
 
-Use the [.NET Core command-line interface (CLI)](https://docs.microsoft.com/dotnet/core/tools) to create a new ASP.NET Core MVC project. The advantage of using the .NET Core CLI instead of Visual Studio is that the .NET Core CLI is available across the Windows, macOS, and Linux platforms.
+Use the [.NET Core command-line interface (CLI)](/dotnet/core/tools) to create a new ASP.NET Core MVC project. The advantage of using the .NET Core CLI instead of Visual Studio is that the .NET Core CLI is available across the Windows, macOS, and Linux platforms.
 
 Run the following command to create an ASP.NET Core MVC project in a new *TestFeatureFlags* folder:
 
@@ -67,9 +64,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
     dotnet user-secrets set ConnectionStrings:AppConfig "<your_connection_string>"
     ```
 
-    Secret Manager is used only to test the web app locally. When the app is deployed to [Azure App Service](https://www.azure.cn/home/features/app-service/web), use the **Connection Strings** application setting in App Service instead of Secret Manager to store the connection string.
+    Secret Manager is used only to test the web app locally. When the app is deployed to [Azure App Service](https://azure.microsoft.com/services/app-service/web), use the **Connection Strings** application setting in App Service instead of Secret Manager to store the connection string.
 
-    Access this secret using the .NET Core Configuration API. A colon (`:`) works in the configuration name with the Configuration API on all supported platforms. For more information, see [Configuration keys and values](https://docs.azure.cn/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
+    Access this secret using the .NET Core Configuration API. A colon (`:`) works in the configuration name with the Configuration API on all supported platforms. For more information, see [Configuration keys and values](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
 1. In *Program.cs*, update the `CreateWebHostBuilder` method to use App Configuration by calling the `AddAzureAppConfiguration` method.
 
@@ -107,7 +104,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    With the preceding change, the [configuration provider for App Configuration](https://docs.azure.cn/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) has been registered with the .NET Core Configuration API.
+    With the preceding change, the [configuration provider for App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) has been registered with the .NET Core Configuration API.
 
 1. In *Startup.cs*, add a reference to the .NET Core feature manager:
 
@@ -210,15 +207,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
     dotnet run
     ```
 
-1. Open a browser window, and go to `http://localhost:5000`, which is the default URL for the web app hosted locally. If you're working in the Azure local Shell, select the **Web Preview** button followed by **Configure**. When prompted, select port 5000.
+1. Open a browser window, and go to `http://localhost:5000`, which is the default URL for the web app hosted locally. If you're working in the Azure Cloud Shell, select the **Web Preview** button followed by **Configure**. When prompted, select port 5000.
 
-    :::image type="content" source="./media/quickstarts/cloud-shell-web-preview.png" alt-text="Locate the Web Preview button":::
+    ![Locate the Web Preview button](./media/quickstarts/cloud-shell-web-preview.png)
 
     Your browser should display a page similar to the image below.
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Local quickstart app before change" border="true":::
 
-1. Sign in to the [Azure portal](https://portal.azure.cn). Select **All resources**, and select the App Configuration store instance that you created in the quickstart.
+1. Sign in to the [Azure portal](https://portal.azure.com). Select **All resources**, and select the App Configuration store instance that you created in the quickstart.
 
 1. Select **Feature manager**. 
 
@@ -236,13 +233,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## Next steps
 
-In this quickstart, you created a new App Configuration store and used it to manage features in an ASP.NET Core web app via the [Feature Management libraries](https://docs.azure.cn/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
+In this quickstart, you created a new App Configuration store and used it to manage features in an ASP.NET Core web app via the [Feature Management libraries](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 * Learn more about [feature management](./concept-feature-management.md).
 * [Manage feature flags](./manage-feature-flags.md).
 * [Use feature flags in an ASP.NET Core app](./use-feature-flags-dotnet-core.md).
 * [Use dynamic configuration in an ASP.NET Core app](./enable-dynamic-configuration-aspnet-core.md)
-
-
-<!-- Update_Description: new article about quickstart feature flag aspnet core -->
-<!--NEW.date: 12/21/2020-->

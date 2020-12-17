@@ -1,9 +1,9 @@
 ---
-title: Quickstart for adding feature flags to .NET Framework apps | Azure Docs | Azure Docs
+title: Quickstart for adding feature flags to .NET Framework apps | Microsoft Docs | Microsoft Docs
 description: A quickstart for adding feature flags to .NET Framework apps and managing them in Azure App Configuration
 services: azure-app-configuration
 documentationcenter: ''
-
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: 
 ms.service: azure-app-configuration
@@ -12,11 +12,8 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/19/2020
+ms.author: alkemper
 
 #Customer intent: As a .NET Framework developer, I want to use feature flags to control feature availability quickly and confidently.
 ---
@@ -28,7 +25,7 @@ The .NET Feature Management libraries extend the framework with feature flag sup
 
 ## Prerequisites
 
-- Azure subscription - [create one for free](https://www.azure.cn/free/dotnet)
+- Azure subscription - [create one for free](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
@@ -39,7 +36,7 @@ The .NET Feature Management libraries extend the framework with feature flag sup
 7. Select **Feature Manager** > **+Add** to add a feature flag called `Beta`.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="media/add-beta-feature-flag.png" alt-text="Enable feature flag named Beta":::
+    > ![Enable feature flag named Beta](media/add-beta-feature-flag.png)
 
     Leave `label` undefined for now.
 
@@ -121,7 +118,7 @@ The .NET Feature Management libraries extend the framework with feature flag sup
 
 1. Press Ctrl + F5 to build and run the console app.
 
-    :::image type="content" source="./media/quickstarts/dotnet-app-feature-flag.png" alt-text="App with feature flag enabled":::
+    ![App with feature flag enabled](./media/quickstarts/dotnet-app-feature-flag.png)
 
 ## Clean up resources
 
@@ -133,8 +130,3 @@ In this quickstart, you created a feature flag in App Configuration and used it 
 
 > [!div class="nextstepaction"]
 > [Enable dynamic configuration](./enable-dynamic-configuration-dotnet.md)
-
-
-
-<!-- Update_Description: new article about quickstart feature flag dotnet -->
-<!--NEW.date: 12/21/2020-->

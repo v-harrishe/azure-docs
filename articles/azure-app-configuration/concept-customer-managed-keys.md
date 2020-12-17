@@ -1,13 +1,9 @@
 ---
 title: Use customer-managed keys to encrypt your configuration data 
 description: Encrypt your configuration data using customer-managed keys
-
-
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 
@@ -30,10 +26,7 @@ When users enable the customer managed key capability on their Azure App Configu
 The following components are required to successfully enable the customer-managed key capability for Azure App Configuration:
 - Standard tier Azure App Configuration instance
 - Azure Key Vault with soft-delete and purge-protection features enabled
-- An RSA or RSA-HSM(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) key within the Key Vault
-
-<!--Not Available on FEATURE HSM-->
-
+- An RSA or RSA-HSM key within the Key Vault
     - The key must not be expired, it must be enabled, and it must have both wrap and unwrap capabilities enabled
 
 Once these resources are configured, two steps remain to allow Azure App Configuration to use the Key Vault key:
@@ -48,7 +41,7 @@ To begin, you will need a properly configured Azure App Configuration instance. 
 - [Create a Java Spring app with Azure App Configuration](quickstart-java-spring-app.md)
 
 >[!TIP]
-> The Azure local Shell is a free interactive shell that you can use to run the command line instructions in this article.  It has common Azure tools preinstalled, including the .NET Core SDK. If you are logged in to your Azure subscription, launch your [Azure local Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) from shell.azure.com.  You can learn more about Azure local Shell by [reading our documentation](../cloud-shell/overview.md)
+> The Azure Cloud Shell is a free interactive shell that you can use to run the command line instructions in this article.  It has common Azure tools preinstalled, including the .NET Core SDK. If you are logged in to your Azure subscription, launch your [Azure Cloud Shell](https://shell.azure.com) from shell.azure.com.  You can learn more about Azure Cloud Shell by [reading our documentation](../cloud-shell/overview.md)
 
 ### Create and configure an Azure Key Vault
 1. Create an Azure Key Vault using the Azure CLI.  Note that both `vault-name` and `resource-group-name` are user-provided and must be unique.  We use `contoso-vault` and `contoso-resource-group` in these examples.
@@ -63,20 +56,14 @@ To begin, you will need a properly configured Azure App Configuration instance. 
     az keyvault update --name contoso-vault --resource-group contoso-resource-group --enable-purge-protection --enable-soft-delete
     ```
     
-1. Create a Key Vault key. Provide a unique `key-name` for this key, and substitute the names of the Key Vault (`contoso-vault`) created in step 1. Specify whether you prefer `RSA` or `RSA-HSM(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)` encryption.
-
-<!--Not Available on FEATURE HSM-->
-
+1. Create a Key Vault key. Provide a unique `key-name` for this key, and substitute the names of the Key Vault (`contoso-vault`) created in step 1. Specify whether you prefer `RSA` or `RSA-HSM` encryption.
 
     ```azurecli
-    az keyvault key create --name key-name --kty {RSA or RSA-HSM(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)} --vault-name contoso-vault
-
-<!--Not Available on FEATURE HSM-->
-
+    az keyvault key create --name key-name --kty {RSA or RSA-HSM} --vault-name contoso-vault
     ```
     
-    The output from this command shows the key ID ("kid") for the generated key.  Make a note of the key ID to use later in this exercise.  The key ID has the form: `https://{my key vault}.vault.azure.cn/keys/{key-name}/{Key version}`.  The key ID has three important components:
-    1. Key Vault URI: `https://{my key vault}.vault.azure.cn
+    The output from this command shows the key ID ("kid") for the generated key.  Make a note of the key ID to use later in this exercise.  The key ID has the form: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}`.  The key ID has three important components:
+    1. Key Vault URI: `https://{my key vault}.vault.azure.net
     1. Key Vault key name: {Key Name}
     1. Key Vault key version: {Key version}
 
@@ -113,8 +100,3 @@ Your Azure App Configuration instance is now configured to use a customer-manage
 
 ## Next Steps
 In this article, you configured your Azure App Configuration instance to use a customer-managed key for encryption.  Learn how to [integrate your service with Azure Managed Identities](howto-integrate-azure-managed-service-identity.md).
-
-
-
-<!-- Update_Description: new article about concept customer managed keys -->
-<!--NEW.date: 12/21/2020-->

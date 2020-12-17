@@ -2,15 +2,12 @@
 title: Integrate Azure App Configuration using a continuous integration and delivery pipeline
 description: Learn to implement continuous integration and delivery using Azure App Configuration
 services: azure-app-configuration
-
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 04/19/2020
+ms.author: alkemper
 
 # Customer intent: I want to use Azure App Configuration data in my CI/CD pipeline.
 
@@ -35,9 +32,9 @@ You can use any code editor to do the steps in this tutorial. [Visual Studio Cod
 
 ### Prerequisites
 
-If you build locally, download and install the [Azure CLI](https://docs.azure.cn/cli/install-azure-cli) if you haven’t already.
+If you build locally, download and install the [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) if you haven’t already.
 
-To do a cloud build, with Azure DevOps for example, make sure the [Azure CLI](https://docs.azure.cn/cli/install-azure-cli) is installed in your build system.
+To do a cloud build, with Azure DevOps for example, make sure the [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) is installed in your build system.
 
 ### Export an App Configuration store
 
@@ -100,15 +97,11 @@ To do a cloud build, with Azure DevOps for example, make sure the [Azure CLI](ht
 
 4. Open a browser window and go to `http://localhost:5000`, which is the default URL for the web app hosted locally.
 
-    :::image type="content" source="./media/quickstarts/aspnet-core-app-launch-local.png" alt-text="Quickstart app launch local":::
+    ![Quickstart app launch local](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## Next steps
 
 In this tutorial, you exported Azure App Configuration data to be used in a deployment pipeline. To learn more about how to use App Configuration, continue to the Azure CLI samples.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](https://docs.azure.cn/cli/appconfig)
-
-
-<!-- Update_Description: new article about integrate ci cd pipeline -->
-<!--NEW.date: 12/21/2020-->
+> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)

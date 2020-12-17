@@ -1,15 +1,11 @@
 ---
 title: Azure Active Directory REST API - authentication
 description: Use Azure Active Directory to authenticate to Azure App Configuration by using the REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Azure Active Directory authentication
@@ -49,7 +45,7 @@ Request the Azure AD token with a proper audience. For Azure App Configuration, 
 
 ### Azure AD authority
 
-The Azure AD authority is the endpoint you use for acquiring an Azure AD token. It's in the form of `https://login.partner.microsoftonline.cn/{tenantId}`. The `{tenantId}` segment refers to the Azure AD tenant ID to which the user or application who is trying to authenticate belongs.
+The Azure AD authority is the endpoint you use for acquiring an Azure AD token. It's in the form of `https://login.microsoftonline.com/{tenantId}`. The `{tenantId}` segment refers to the Azure AD tenant ID to which the user or application who is trying to authenticate belongs.
 
 ### Authentication libraries
 
@@ -85,7 +81,3 @@ WWW-Authenticate: HMAC-SHA256, Bearer error="invalid_token", error_description="
 **Reason:** The Azure AD token isn't valid.
 
 **Solution:** Acquire an Azure AD token from the Azure AD authority. Ensure that the Azure AD tenant is the one associated with the subscription to which the configuration store belongs. This error can appear if the principal belongs to more than one Azure AD tenant.
-
-
-<!-- Update_Description: new article about rest api authentication azure ad -->
-<!--NEW.date: 12/21/2020-->

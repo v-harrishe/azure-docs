@@ -2,11 +2,7 @@
 title: Configure the upgrade of a Service Fabric application 
 description: Learn how to configure the settings for upgrading a Service Fabric application by using Microsoft Visual Studio.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/29/2017
 ---
 # Configure the upgrade of a Service Fabric application in Visual Studio
 Visual Studio tools for Azure Service Fabric provide upgrade support for publishing to local or remote clusters. There are three scenarios in which you want to upgrade your application to a newer version instead of replacing the application during testing and debugging:
@@ -53,7 +49,7 @@ If you’re using the Visual Studio Service Fabric tools to upgrade a Service Fa
 3. If you select UnmonitoredManual upgrade mode, you must manually start a PowerShell console to continue and finish the upgrade process. Refer to [Service Fabric application upgrade: advanced topics](service-fabric-application-upgrade-advanced.md) to learn how manual upgrade works.
 
 ## Upgrade an application by using PowerShell
-You can use PowerShell cmdlets to upgrade a Service Fabric application. See [Service Fabric application upgrade tutorial](service-fabric-application-upgrade-tutorial.md) and [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) for detailed information.
+You can use PowerShell cmdlets to upgrade a Service Fabric application. See [Service Fabric application upgrade tutorial](service-fabric-application-upgrade-tutorial.md) and [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) for detailed information.
 
 ## Specify a health check policy in the application manifest file
 Every service in a Service Fabric application can have its own health policy parameters that override the default values. You can provide these parameter values in the application manifest file.
@@ -75,8 +71,3 @@ The following example shows how to apply a unique health check policy for each s
 ```
 ## Next steps
 For more information about upgrading an application, see [Upgrade an application using Visual Studio](service-fabric-application-upgrade-tutorial.md).
-
-
-
-<!-- Update_Description: new article about service fabric visualstudio configure upgrade -->
-<!--NEW.date: 12/21/2020-->

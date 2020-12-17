@@ -1,16 +1,13 @@
 ---
 title: Node.js best practices and troubleshooting
 description: Learn the best practices and troubleshooting steps for Node.js applications running in Azure App Service.
-
+author: msangapu-msft
 
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/09/2017
+ms.author: msangapu
 ms.custom: seodec18
 ---
 # Best practices and troubleshooting guide for node applications on Azure App Service Windows
@@ -64,7 +61,6 @@ The default behavior of IIS is that it buffers response data up to 4 MB before f
 <configuration>
     <system.webServer>
         <!-- ... -->
-
         <iisnode flushResponse="true" />
     </system.webServer>
 </configuration>
@@ -90,7 +86,7 @@ The default value is false. If enabled, your node application can connect to a n
 
 ### idlePageOutTimePeriod
 
-The default value is 0, which means this feature is disabled. When set to some value greater than 0, iisnode will page out all its child processes every ‘idlePageOutTimePeriod’ in milliseconds. See [documentation](https://docs.microsoft.com/windows/desktop/api/psapi/nf-psapi-emptyworkingset) to understand what page out means. This setting is useful for applications that consume a high amount of memory and want to page out memory to disk occasionally to free up RAM.
+The default value is 0, which means this feature is disabled. When set to some value greater than 0, iisnode will page out all its child processes every ‘idlePageOutTimePeriod’ in milliseconds. See [documentation](/windows/desktop/api/psapi/nf-psapi-emptyworkingset) to understand what page out means. This setting is useful for applications that consume a high amount of memory and want to page out memory to disk occasionally to free up RAM.
 
 > [!WARNING]
 > Use caution when enabling the following configuration settings on production applications. The recommendation is to not enable them on live production applications.
@@ -273,13 +269,8 @@ NODE.exe has a setting called `NODE_PENDING_PIPE_INSTANCES`. On Azure App Servic
 Follow these links to learn more about node.js applications on Azure App Service.
 
 * [Get started with Node.js web apps in Azure App Service](quickstart-nodejs.md)
-* [How to debug a Node.js web app in Azure App Service](https://docs.microsoft.com/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
+* [How to debug a Node.js web app in Azure App Service](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Using Node.js Modules with Azure applications](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://docs.microsoft.com/archive/blogs/silverlining/windows-azure-websites-node-js)
+* [Azure App Service Web Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js Developer Center](../nodejs-use-node-modules-azure-apps.md)
-* [Exploring the Super Secret Kudu Debug Console](https://www.azure.cn/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
-
-
-
-<!-- Update_Description: new article about app service web nodejs best practices and troubleshoot guide -->
-<!--NEW.date: 12/21/2020-->
+* [Exploring the Super Secret Kudu Debug Console](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -3,11 +3,7 @@ title: Get started with Azure Service Bus queues (Azure.Messaging.ServiceBus)
 description: In this tutorial, you create a .NET Core C# application to send messages to and receive messages from a Service Bus queue.
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/13/2020
 ms.custom: devx-track-csharp
 ---
 
@@ -20,7 +16,7 @@ In this tutorial, you create a .NET Core console application to send messages to
 ## Prerequisites
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)
-- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
+- An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) or sign up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - If you don't have a queue to work with, follow steps in the [Use Azure portal to create a Service Bus queue](service-bus-quickstart-portal.md) article to create a queue. Note down the **connection string** for your Service Bus namespace and the name of the **queue** you created.
 
 ## Send messages to a queue
@@ -168,7 +164,7 @@ Launch Visual Studio and create a new **Console App (.NET Core)** project for C#
 
     Notice the following values:
     - The **Active message count** value for the queue is now **4**. Each time you run this sender app without retrieving the messages, this value increases by 4.
-    - The current size of the queue increments the **CURRENT** value in **Essentials** each time the app adds messages to the queue.
+    - The current size of the queue increments the **CURRENT** value in **Essentials**  each time the app adds messages to the queue.
     - In the **Messages** chart in the bottom **Metrics** section, you can see that there are four incoming messages for the queue. 
 
 ## Receive messages from a queue
@@ -271,8 +267,4 @@ See the following documentation and samples:
 
 - [Azure Service Bus client library for .NET - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
 - [Samples on GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [.NET API reference](https://docs.azure.cn/dotnet/api/azure.messaging.servicebus?preserve-view=true&view=azure-dotnet-preview)
-
-
-<!-- Update_Description: new article about service bus dotnet get started with queues -->
-<!--NEW.date: 12/21/2020-->
+- [.NET API reference](/dotnet/api/azure.messaging.servicebus?preserve-view=true&view=azure-dotnet-preview)

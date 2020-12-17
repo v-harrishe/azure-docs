@@ -2,11 +2,7 @@
 title: Run your app from a ZIP package 
 description: Deploy your app's ZIP package with atomicity. Improve the predictability and reliability of your app's behavior during the ZIP deployment process.
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/14/2020
 
 ---
 
@@ -33,7 +29,7 @@ In contrast, when you run directly from a package, the files in the package are 
 
 The `WEBSITE_RUN_FROM_PACKAGE` app setting enables running from a package. To set it, run the following command with Azure CLI.
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_RUN_FROM_PACKAGE="1"
 ```
 
@@ -41,9 +37,9 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## Run the package
 
-The easiest way to run a package in your App Service is with the Azure CLI [az webapp deployment source config-zip](https://docs.azure.cn/cli/webapp/deployment/source#az_webapp_deployment_source_config_zip) command. For example:
+The easiest way to run a package in your App Service is with the Azure CLI [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) command. For example:
 
-```azurecli
+```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
 ```
 
@@ -57,8 +53,8 @@ You can also run a package from an external URL, such as Azure Blob Storage. You
 
 Once you upload your file to Blob storage and have an SAS URL for the file, set the `WEBSITE_RUN_FROM_PACKAGE` app setting to the URL. The following example does it by using Azure CLI:
 
-```azurecli
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="https://myblobstorage.blob.core.chinacloudapi.cn/content/SampleCoreMVCApp.zip?st=2018-02-13T09%3A48%3A00Z&se=2044-06-14T09%3A48%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=bNrVrEFzRHQB17GFJ7boEanetyJ9DGwBSV8OM3Mdh%2FM%3D"
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="https://myblobstorage.blob.core.windows.net/content/SampleCoreMVCApp.zip?st=2018-02-13T09%3A48%3A00Z&se=2044-06-14T09%3A48%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=bNrVrEFzRHQB17GFJ7boEanetyJ9DGwBSV8OM3Mdh%2FM%3D"
 ```
 
 If you publish an updated package with the same name to Blob storage, you need to restart your app so that the updated package is loaded into App Service.
@@ -74,8 +70,3 @@ If you publish an updated package with the same name to Blob storage, you need t
 
 - [Continuous deployment for Azure App Service](deploy-continuous-deployment.md)
 - [Deploy code with a ZIP or WAR file](deploy-zip.md)
-
-
-
-<!-- Update_Description: new article about deploy run package -->
-<!--NEW.date: 12/21/2020-->

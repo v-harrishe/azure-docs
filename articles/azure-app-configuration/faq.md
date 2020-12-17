@@ -2,14 +2,11 @@
 title: Azure App Configuration FAQ
 description: Read answers to frequently asked questions (FAQ) about Azure App Configuration, such as how it's different from Azure Key Vault.
 services: azure-app-configuration
-
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 02/19/2020
+ms.author: alkemper
 ---
 
 # Azure App Configuration FAQ
@@ -92,7 +89,7 @@ The following are considerations for choosing a tier.
     Standard tier stores are limited to 20,000 requests per hour. When the quota is exhausted, HTTP status code 429 is returned for all requests until the end of the hour.
 
 - **Service level agreement**: The standard tier has an SLA of 99.9% availability. The free tier doesn't have an SLA.
-- **Security features**: Both tiers include basic security functionality, including encryption with Azure-managed keys, authentication via HMAC or Azure Active Directory, Azure RBAC support, managed identity, and service tags. The Standard tier offers more advanced security functionality, including Private Link support and encryption with customer-managed keys.
+- **Security features**: Both tiers include basic security functionality, including encryption with Microsoft-managed keys, authentication via HMAC or Azure Active Directory, Azure RBAC support, managed identity, and service tags. The Standard tier offers more advanced security functionality, including Private Link support and encryption with customer-managed keys.
 - **Cost**: Standard tier stores have a daily usage charge. The first 200,000 requests each day are included in the daily charge. There's also an overage charge for requests past the daily allocation. There's no cost to use a free tier store.
 
 ## Can I upgrade a store from the Free tier to the Standard tier? Can I downgrade a store from the Standard tier to the Free tier?
@@ -131,8 +128,3 @@ You can reach us directly on [GitHub](https://github.com/Azure/AppConfiguration/
 ## Next steps
 
 * [About Azure App Configuration](./overview.md)
-
-
-
-<!-- Update_Description: new article about faq -->
-<!--NEW.date: 12/21/2020-->

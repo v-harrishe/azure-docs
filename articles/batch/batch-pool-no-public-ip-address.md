@@ -1,13 +1,10 @@
 ---
 title: Create an Azure Batch pool without public IP addresses
 description: Learn how to create a pool without public IP addresses
-
+author: pkshultz
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/9/2020
+ms.author: peshultz
 ms.custom: references_regions
 
 ---
@@ -23,9 +20,9 @@ By default, all the compute nodes in an Azure Batch virtual machine configuratio
 To restrict access to these nodes and reduce the discoverability of these nodes from the internet, you can provision the pool without public IP addresses.
 
 > [!IMPORTANT]
-> Support for pools without public IP addresses in Azure Batch is currently in public preview for the following regions: France Central, East Asia, China North, South China North, China North 2, China East, North Europe, China East 2, China North, West Europe, North China North, China North, Australia East, Japan East, Japan West.
+> Support for pools without public IP addresses in Azure Batch is currently in public preview for the following regions: France Central, East Asia, West Central US, South Central US, West US 2, East US, North Europe, East US 2, Central US, West Europe, North Central US, West US, Australia East, Japan East, Japan West.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
-> For more information, see [Supplemental Terms of Use for Azure Azure Previews](https://www.azure.cn/support/legal/subscription-agreement/).
+> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Prerequisites
 
@@ -38,10 +35,7 @@ To restrict access to these nodes and reduce the discoverability of these nodes 
     ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
-> For each 100 dedicated or low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes, Batch allocates one private link service and one load balancer. These resources are limited by the subscription's [resource quotas](../azure-resource-manager/management/azure-subscription-service-limits.md). For large pools, you might need to [request a quota increase](batch-quota-limit.md#increase-a-quota) for one or more of these resources. Additionally, no resource locks should be applied to any resource created by Batch, since this prevent cleanup of resources as a result of user-initiated actions such as deleting a pool or resizing to zero.
-
-<!--Not Available on FEATURE low-priority-->
-
+> For each 100 dedicated or low-priority nodes, Batch allocates one private link service and one load balancer. These resources are limited by the subscription's [resource quotas](../azure-resource-manager/management/azure-subscription-service-limits.md). For large pools, you might need to [request a quota increase](batch-quota-limit.md#increase-a-quota) for one or more of these resources. Additionally, no resource locks should be applied to any resource created by Batch, since this prevent cleanup of resources as a result of user-initiated actions such as deleting a pool or resizing to zero.
 
 ## Current limitations
 
@@ -56,18 +50,15 @@ To restrict access to these nodes and reduce the discoverability of these nodes 
 1. In the **Pools** window, select **Add**.
 1. On the **Add Pool** window, select the option you intend to use from the **Image Type** dropdown.
 1. Select the correct **Publisher/Offer/Sku** of your image.
-1. Specify the remaining required settings, including the **Node size**, **Target dedicated nodes**, and **Low-priority(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD) nodes**, as well as any desired optional settings.
-
-<!--Not Available on FEATURE Low-priority-->
-
+1. Specify the remaining required settings, including the **Node size**, **Target dedicated nodes**, and **Low-priority nodes**, as well as any desired optional settings.
 1. Optionally select a virtual network and subnet you wish to use. This virtual network must be in the same resource group as the pool you are creating.
 1. In **IP address provisioning type**, select **NoPublicIPAddresses**.
 
-:::image type="content" source="./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png" alt-text="Screenshot of the Add pool screen with NoPublicIPAddresses selected.":::
+![Screenshot of the Add pool screen with NoPublicIPAddresses selected.](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 
 ## Use the Batch REST API to create a pool without public IP addresses
 
-The example below shows how to use the [Azure Batch REST API](https://docs.microsoft.com/rest/api/batchservice/pool/add) to create a pool that uses public IP addresses.
+The example below shows how to use the [Azure Batch REST API](/rest/api/batchservice/pool/add) to create a pool that uses public IP addresses.
 
 ### REST API URI
 
@@ -124,8 +115,3 @@ Another way to provide outbound connectivity is to use a user-defined route (UDR
 
 - Learn more about [creating pools in a virtual network](batch-virtual-network.md).
 - Learn how to [use private endpoints with Batch accounts](private-connectivity.md).
-
-
-
-<!-- Update_Description: new article about batch pool no public ip address -->
-<!--NEW.date: 12/21/2020-->

@@ -1,14 +1,11 @@
 ---
 title: Use Azure PowerShell to create a Service Bus queue
 description: In this quickstart, you learn how to create a Service Bus namespace and a queue in the namespace by using the Azure PowerShell.  
-
+author: spelluru
 ms.devlang: dotnet
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/12/2020
+ms.author: spelluru 
 ms.custom: devx-track-azurepowershell
 ---
 
@@ -20,37 +17,37 @@ This quickstart shows you how to create a Service Bus namespace and a queue usin
 
 ## Prerequisites
 
-To complete this quickstart, make sure you have an Azure subscription. If you don't have an Azure subscription, you can create a [trial account][] before you begin. 
+To complete this quickstart, make sure you have an Azure subscription. If you don't have an Azure subscription, you can create a [free account][] before you begin. 
 
-In this quickstart, you use Azure local Shell that you can launch after sign into the Azure portal. For details about Azure local Shell, see [Overview of Azure local Shell](../cloud-shell/overview.md). You can also [install](https://docs.microsoft.com/powershell/azure/install-Az-ps) and use Azure PowerShell on your machine. 
+In this quickstart, you use Azure Cloud Shell that you can launch after sign into the Azure portal. For details about Azure Cloud Shell, see [Overview of Azure Cloud Shell](../cloud-shell/overview.md). You can also [install](/powershell/azure/install-Az-ps) and use Azure PowerShell on your machine. 
 
 
 ## Provision resources
-1. Sign into the [Azure portal](https://portal.azure.cn).
-2. Launch Azure local Shell by selecting the icon shown in the following image: 
+1. Sign into the [Azure portal](https://portal.azure.com).
+2. Launch Azure Cloud Shell by selecting the icon shown in the following image: 
 
-    :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Launch local Shell":::
-3. In the bottom local Shell window, switch from **Bash** to **PowerShell**. 
+    :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Launch Cloud Shell":::
+3. In the bottom Cloud Shell window, switch from **Bash** to **PowerShell**. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="Switch to PowerShell mode":::    
 4. Run the following command to create an Azure resource group. Update the resource group name and the location if you want. 
 
-    ```powershell
-    New-AzResourceGroup –Name ContosoRG –Location chinaeast
+    ```azurepowershell-interactive
+    New-AzResourceGroup –Name ContosoRG –Location eastus
     ```
 5. Run the following command to create a Service Bus messaging namespace. In this example, `ContosoRG` is the resource group you created in the previous step. `ContosoSBusNS` is the name of the Service Bus namespace created in that resource group. 
 
-    ```powershell
-    New-AzServiceBusNamespace -ResourceGroupName ContosoRG -Name ContosoSBusNS -Location chinaeast
+    ```azurepowershell-interactive
+    New-AzServiceBusNamespace -ResourceGroupName ContosoRG -Name ContosoSBusNS -Location eastus
     ```
 6. Run the following to create a queue in the namespace you created in the previous step. 
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzServiceBusQueue -ResourceGroupName ContosoRG -NamespaceName ContosoSBusNS -Name ContosoOrdersQueue 
     ```
 7. Get the primary connection string for the namespace. You use this connection string to connect to the queue and send and receive messages. 
 
-    ```powershell    
+    ```azurepowershell-interactive    
     Get-AzServiceBusKey -ResourceGroupName ContosoRG -Namespace ContosoSBusNS -Name RootManageSharedAccessKey
     ```
 
@@ -67,10 +64,5 @@ In this article, you created a Service Bus namespace and a queue in the namespac
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-[trial account]: https://www.azure.cn/free/
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 
-
-
-
-<!-- Update_Description: new article about service bus quickstart powershell -->
-<!--NEW.date: 12/21/2020-->

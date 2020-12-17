@@ -155,42 +155,37 @@
   - name: Code samples
     href: https://azure.microsoft.com/resources/samples/?service=load-balancer
   - name: Azure PowerShell
-    href: https://docs.microsoft.com/powershell/module/az.network
+    href: /powershell/module/az.network
   - name: Azure CLI
-    href: https://docs.azure.cn/cli/network/lb
+    href: /cli/azure/network/lb
   - name: .NET
-    href: https://docs.azure.cn/dotnet/api/microsoft.azure.management.network.models
+    href: /dotnet/api/microsoft.azure.management.network.models
   - name: Java
-    href: https://docs.azure.cn/java/api/com.microsoft.azure.management.network
+    href: /java/api/com.microsoft.azure.management.network
   - name: Node.js
-    href: https://docs.azure.cn/javascript/api/@azure/arm-network/loadbalancers
+    href: /javascript/api/@azure/arm-network/loadbalancers
   - name: Ruby
     href: https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2020_03_01/LoadBalancers
   - name: Python
-    href: https://docs.azure.cn/python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations
+    href: /python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations
   - name: REST
-    href: https://docs.microsoft.com/rest/api/load-balancer/loadbalancers
+    href: /rest/api/load-balancer/loadbalancers
   - name: Resource Manager template
-    href: https://docs.azure.cn/templates/microsoft.network/loadbalancers
+    href: /azure/templates/microsoft.network/loadbalancers
     displayName: ARM
 - name: Resources
   items:
-  - name: Build your skills with Azure Learn
-    href: https://docs.microsoft.com/learn/browse/?products=azure-load-balancer
+  - name: Build your skills with Microsoft Learn
+    href: /learn/browse/?products=azure-load-balancer
   - name: Azure Roadmap
-    href: https://www.azure.cn/roadmap/?category=networking
+    href: https://azure.microsoft.com/roadmap/?category=networking
   - name: Azure Load Balancer feedback
-    href: https://support.azure.cn/support/contact//forums/217313-networking/category/77467-load-balancing
+    href: https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing
   - name: Pricing
-    href: https://www.azure.cn/pricing/details/load-balancer/
+    href: https://azure.microsoft.com/pricing/details/load-balancer/
   - name: Pricing calculator
-    href: https://www.azure.cn/pricing/calculator/
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: Product updates
-    href: https://www.azure.cn/updates/?product=load-balancer
+    href: https://azure.microsoft.com/updates/?product=load-balancer
   - name: FAQ
     href: load-balancer-faqs.md
-
-
-
-<!-- Update_Description: new article about TOC. -->
-<!--NEW.date: 12/21/2020-->

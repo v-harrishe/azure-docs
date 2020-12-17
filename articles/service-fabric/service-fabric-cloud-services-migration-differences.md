@@ -2,14 +2,10 @@
 title: Differences between Cloud Services and Service Fabric 
 description: A conceptual overview for migrating applications from Cloud Services to Service Fabric.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/02/2017
 ---
 # Learn about the differences between Cloud Services and Service Fabric before migrating applications.
-Azure Azure Service Fabric is the next-generation cloud application platform for highly scalable, highly reliable distributed applications. It introduces many new features for packaging, deploying, upgrading, and managing distributed cloud applications. 
+Microsoft Azure Service Fabric is the next-generation cloud application platform for highly scalable, highly reliable distributed applications. It introduces many new features for packaging, deploying, upgrading, and managing distributed cloud applications. 
 
 This is an introductory guide to migrating applications from Cloud Services to Service Fabric. It focuses primarily on architectural and design differences between Cloud Services and Service Fabric.
 
@@ -77,7 +73,7 @@ The same communication model can be used in Service Fabric. This can be useful w
 ![Service Fabric direct communication][8]
 
 ## Parity
-[Cloud Services is similar to Service Fabric in degree of control versus ease of use, but it’s now a legacy service and Service Fabric is recommended for new development](https://docs.azure.cn/azure/architecture/guide/technology-choices/compute-decision-tree); the following is an API comparison:
+[Cloud Services is similar to Service Fabric in degree of control versus ease of use, but it’s now a legacy service and Service Fabric is recommended for new development](/azure/architecture/guide/technology-choices/compute-decision-tree); the following is an API comparison:
 
 
 | **Cloud Service API** | **Service Fabric API** | **Notes** |
@@ -100,7 +96,6 @@ The simplest migration path from Cloud Services to Service Fabric is to replace 
 * [Simple migration: convert a Web or Worker Role to a Service Fabric stateless service](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
 <!--Image references-->
-
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png
 [2]: ./media/service-fabric-cloud-services-migration-differences/topology-service-fabric.png
 [5]: ./media/service-fabric-cloud-services-migration-differences/cloud-service-communication-direct.png
@@ -110,7 +105,3 @@ The simplest migration path from Cloud Services to Service Fabric is to replace 
 [9]: ./media/service-fabric-cloud-services-migration-differences/cloud-services-architecture.png
 [10]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-simple.png
 [11]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-full.png
-
-
-<!-- Update_Description: new article about service fabric cloud services migration differences -->
-<!--NEW.date: 12/21/2020-->

@@ -2,11 +2,7 @@
 title: Debug your application in Visual Studio 
 description: Improve the reliability and performance of your services by developing and debugging them in Visual Studio on a local development cluster.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ---
 # Debug your Service Fabric application by using Visual Studio
@@ -55,16 +51,16 @@ In certain scenarios you might need to run a script as part of starting a debugg
 
 In Visual Studio, you can add a file called **Start-Service.ps1** in the **Scripts** folder of the Service Fabric Application project (.sfproj). This script will be invoked after the application has been created in the local cluster.
 
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## Debug a remote Service Fabric application
 If your Service Fabric applications are running on a Service Fabric cluster in Azure, you can remotely debug these applications, directly from Visual Studio.
 
 > [!NOTE]
-> The feature requires [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) and [Azure SDK for .NET 2.9](https://www.azure.cn/downloads/).    
+> The feature requires [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) and [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/).    
 
 <!-- -->
-
 > [!WARNING]
 > Remote debugging is meant for dev/test scenarios and not to be used in production environments, because of the impact on the running applications.
 
@@ -102,13 +98,12 @@ If your Service Fabric applications are running on a Service Fabric cluster in A
 You're also able to stream traces directly from a remote cluster node to Visual Studio. This feature allows you to stream ETW trace events, produced on a Service Fabric cluster node.
 
 > [!NOTE]
-> This feature requires [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) and [Azure SDK for .NET 2.9](https://www.azure.cn/downloads/).
+> This feature requires [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) and [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/).
 > This feature only supports clusters running in Azure.
 > 
 > 
 
 <!-- -->
-
 > [!WARNING]
 > Streaming traces is meant for dev/test scenarios and not to be used in production environments, because of the impact on the running applications.
 > In a production scenario, you should rely on forwarding events using Azure Diagnostics.
@@ -136,7 +131,6 @@ You're also able to stream traces directly from a remote cluster node to Visual 
 * [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
 
 <!--Image references-->
-
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png
 [diagnosticevents]: ./media/service-fabric-debugging-your-application/diagnosticevents.png
 [viewdiagnosticevents]: ./media/service-fabric-debugging-your-application/viewdiagnosticevents.png
@@ -151,8 +145,3 @@ You're also able to stream traces directly from a remote cluster node to Visual 
 [viewingstreamingtraces]: ./media/service-fabric-debugging-your-application/viewingstreamingtraces.png
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png
 [disablestreamingtraces]: ./media/service-fabric-debugging-your-application/disablestreamingtraces.png
-
-
-
-<!-- Update_Description: new article about service fabric debugging your application -->
-<!--NEW.date: 12/21/2020-->

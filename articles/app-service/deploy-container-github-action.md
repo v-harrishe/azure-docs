@@ -3,11 +3,8 @@ title: Custom container CI/CD from GitHub Actions
 description: Learn how to use GitHub Actions to deploy your custom Linux container to App Service from a CI/CD pipeline.
 ms.devlang: na
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/04/2020
+ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
 
@@ -29,10 +26,10 @@ For an Azure App Service container workflow, the file has three sections:
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://www.azure.cn/pricing/1rmb-trial-full/)
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - A GitHub account. If you don't have one, sign up for [free](https://github.com/join). You need to have code in a GitHub repository to deploy to Azure App Service. 
 - A working container registry and Azure App Service app for containers. This example uses Azure Container Registry. Make sure to complete the full deployment to Azure App Service for containers. Unlike regular web apps, web apps for containers do not have a default landing page. Publish the container to have a working example.
-    - [Learn how to create a containerized Node.js application using Docker, push the container image to a registry, and then deploy the image to Azure App Service](https://docs.azure.cn/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [Learn how to create a containerized Node.js application using Docker, push the container image to a registry, and then deploy the image to Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
   		
 ## Generate deployment credentials
 
@@ -49,15 +46,15 @@ A publish profile is an app-level credential. Set up your publish profile as a G
 1. On the **Overview** page, select **Get Publish profile**.
 
     > [!NOTE]
-    > As of October 2020, Linux web apps will need the app setting `WEBSITE_WEBDEPLOY_USE_SCM` set to `true` **before downloading the file**. This requirement will be removed in the future. See [Configure an App Service app in the Azure portal](https://docs.azure.cn/azure/app-service/configure-common), to learn how to configure common web app settings.  
+    > As of October 2020, Linux web apps will need the app setting `WEBSITE_WEBDEPLOY_USE_SCM` set to `true` **before downloading the file**. This requirement will be removed in the future. See [Configure an App Service app in the Azure portal](/azure/app-service/configure-common), to learn how to configure common web app settings.  
 
 1. Save the downloaded file. You'll use the contents of the file to create a GitHub secret.
 
 # [Service principal](#tab/service-principal)
 
-You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) with the [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac) command in the [Azure CLI](https://docs.azure.cn/cli/). Run this command with [Azure local Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /) in the Azure portal or by selecting the **Try it** button.
+You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) with the [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). Run this command with [Azure Cloud Shell](https://shell.azure.com/) in the Azure portal or by selecting the **Try it** button.
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
                             --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
                             --sdk-auth
@@ -139,12 +136,12 @@ jobs:
     - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: mycontainer.azurecr.cn
+        login-server: mycontainer.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t mycontainer.azurecr.cn/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.cn/myapp:${{ github.sha }}     
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
 You can also use [Docker Login](https://github.com/azure/docker-login) to log into multiple container registries at the same time. This example includes two new GitHub secrets for authentication with docker.io. The example assumes that there is a Dockerfile at the root level of the registry. 
@@ -162,7 +159,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: mycontainer.azurecr.cn
+        login-server: mycontainer.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - uses: azure/docker-login@v1
@@ -171,21 +168,21 @@ jobs:
         username: ${{ secrets.DOCKERIO_USERNAME }}
         password: ${{ secrets.DOCKERIO_PASSWORD }}
     - run: |
-        docker build . -t mycontainer.azurecr.cn/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.cn/myapp:${{ github.sha }}     
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
 ## Deploy to an App Service container
 
 To deploy your image to a custom container in App Service, use the `azure/webapps-deploy@v2` action. This action has seven parameters:
 
-| **Parameter** | **Explanation** |
+| **Parameter**  | **Explanation**  |
 |---------|---------|
 | **app-name** | (Required) Name of the App Service app | 
 | **publish-profile** | (Optional) Applies to Web Apps(Windows and Linux) and Web App Containers(linux). Multi container scenario not supported. Publish profile (\*.publishsettings) file contents with Web Deploy secrets | 
 | **slot-name** | (Optional) Enter an existing Slot other than the Production slot |
 | **package** | (Optional) Applies to Web App only: Path to package or folder. \*.zip, \*.war, \*.jar or a folder to deploy |
-| **images** | (Required) Applies to Web App Containers only: Specify the fully qualified container image(s) name. For example, 'myregistry.azurecr.cn/nginx:latest' or 'python:3.7.2-alpine/'. For a multi-container app, multiple container image names can be provided (multi-line separated) |
+| **images** | (Required) Applies to Web App Containers only: Specify the fully qualified container image(s) name. For example, 'myregistry.azurecr.io/nginx:latest' or 'python:3.7.2-alpine/'. For a multi-container app, multiple container image names can be provided (multi-line separated) |
 | **configuration-file** | (Optional) Applies to Web App Containers only: Path of the Docker-Compose file. Should be a fully qualified path or relative to the default working directory. Required for multi-container apps. |
 | **startup-command** | (Optional) Enter the start-up command. For ex. dotnet run or dotnet filename.dll |
 
@@ -205,19 +202,19 @@ jobs:
 
     - uses: azure/docker-login@v1
       with:
-        login-server: mycontainer.azurecr.cn
+        login-server: mycontainer.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
     - run: |
-        docker build . -t mycontainer.azurecr.cn/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.cn/myapp:${{ github.sha }}     
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'myapp'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        images: 'mycontainer.azurecr.cn/myapp:${{ github.sha }}'
+        images: 'mycontainer.azurecr.io/myapp:${{ github.sha }}'
 ```
 # [Service principal](#tab/service-principal)
 
@@ -241,17 +238,17 @@ jobs:
     
     - uses: azure/docker-login@v1
       with:
-        login-server: mycontainer.azurecr.cn
+        login-server: mycontainer.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t mycontainer.azurecr.cn/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.cn/myapp:${{ github.sha }}     
+        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
+        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
       
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'myapp'
-        images: 'mycontainer.azurecr.cn/myapp:${{ github.sha }}'
+        images: 'mycontainer.azurecr.io/myapp:${{ github.sha }}'
     
     - name: Azure logout
       run: |
@@ -277,8 +274,3 @@ You can find our set of Actions grouped into different repositories on GitHub, e
 - [K8s deploy](https://github.com/Azure/k8s-deploy)
 
 - [Starter Workflows](https://github.com/actions/starter-workflows)
-
-
-
-<!-- Update_Description: new article about deploy container github action -->
-<!--NEW.date: 12/21/2020-->

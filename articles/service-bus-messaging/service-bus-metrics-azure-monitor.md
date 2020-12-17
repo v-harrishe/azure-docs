@@ -1,32 +1,28 @@
 ---
-title: Azure Service Bus metrics in Azure Monitor| Azure Docs
+title: Azure Service Bus metrics in Azure Monitor| Microsoft Docs
 description: This article explains how to use Azure Monitor to monitor Service Bus entities (queues, topics, and subscriptions).
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/18/2020
 ---
 
 # Azure Service Bus metrics in Azure Monitor
 
 Service Bus metrics give you the state of resources in your Azure subscription. With a rich set of metrics data, you can assess the overall health of your Service Bus resources, not only at the namespace level, but also at the entity level. These statistics can be important as they help you to monitor the state of Service Bus. Metrics can also help troubleshoot root-cause issues without needing to contact Azure support.
 
-Azure Monitor provides unified user interfaces for monitoring across various Azure services. For more information, see [Monitoring in Azure Azure](../azure-monitor/overview.md) and the [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) sample on GitHub.
+Azure Monitor provides unified user interfaces for monitoring across various Azure services. For more information, see [Monitoring in Microsoft Azure](../azure-monitor/overview.md) and the [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) sample on GitHub.
 
 > [!IMPORTANT]
 > When there has not been any interaction with an entity for 2 hours, the metrics will start showing "0" as a value until the entity is no longer idle.
 
 ## Access metrics
 
-Azure Monitor provides multiple ways to access metrics. You can either access metrics through the [Azure portal](https://portal.azure.cn), or use the Azure Monitor APIs (REST and .NET) and analysis solutions such as Azure Monitor logs and Event Hubs. For more information, see [Metrics in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
+Azure Monitor provides multiple ways to access metrics. You can either access metrics through the [Azure portal](https://portal.azure.com), or use the Azure Monitor APIs (REST and .NET) and analysis solutions such as Azure Monitor logs and Event Hubs. For more information, see [Metrics in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).
 
 Metrics are enabled by default, and you can access the most recent 30 days of data. If you need to keep data for a longer period of time, you can archive metrics data to an Azure Storage account. This value is configured in [diagnostic settings](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor.
 
 ## Access metrics in the portal
 
-You can monitor metrics over time in the [Azure portal](https://portal.azure.cn). The following example shows how to view successful requests and incoming requests at the account level:
+You can monitor metrics over time in the [Azure portal](https://portal.azure.com). The following example shows how to view successful requests and incoming requests at the account level:
 
 ![Screenshot of the Monitor - Metrics (preview) page in the Azure portal.][1]
 
@@ -66,7 +62,7 @@ Counts the number of data and management operations requests.
 The following two types of errors are classified as user errors:
 
 1. Client-side errors (In HTTP that would be 400 errors).
-2. Errors that occur while processing messages, such as [MessageLockLostException](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
+2. Errors that occur while processing messages, such as [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
 
 
 ## Message metrics
@@ -120,31 +116,31 @@ Azure Service Bus supports the following dimensions for metrics in Azure Monitor
 
 1. On the **Metrics** tab of the **Service Bus Namespace** page, select **Configure alerts**. 
 
-    :::image type="content" source="./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png" alt-text="Metrics page - Configure alerts menu":::
+    ![Metrics page - Configure alerts menu](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
 2. Select the **Select target** option, and do the following actions on the **Select a resource** page: 
     1. Select **Service Bus Namespaces** for the **Filter by resource type** field. 
     2. Select your subscription for the **Filter by subscription** field.
     3. Select the **service bus namespace** from the list. 
     4. Select **Done**. 
     
-        :::image type="content" source="./media/service-bus-metrics-azure-monitor/select-namespace.png" alt-text="Select namespace":::
+        ![Select namespace](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Select **Add criteria**, and do the following actions on the **Configure signal logic** page:
     1. Select **Metrics** for **Signal type**. 
     2. Select a signal. For example: **Service errors**. 
 
-        :::image type="content" source="./media/service-bus-metrics-azure-monitor/select-server-errors.png" alt-text="Select server errors":::
+        ![Select server errors](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Select **Greater than** for **Condition**.
     2. Select **Total** for **Time Aggregation**. 
     3. Enter **5** for **Threshold**. 
     4. Select **Done**.    
 
-        :::image type="content" source="./media/service-bus-metrics-azure-monitor/specify-condition.png" alt-text="Specify condition":::    
+        ![Specify condition](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. On the **Create rule** page, expand **Define alert details**, and do the following actions:
     1. Enter a **name** for the alert. 
     2. Enter a **description** for the alert.
     3. Select **severity** for the alert. 
 
-        :::image type="content" source="./media/service-bus-metrics-azure-monitor/alert-details.png" alt-text="Screenshot of the Create rule page. Define alert details is expanded and the fields for Alert rule name, Description, and Severity are highlighted.":::
+        ![Screenshot of the Create rule page. Define alert details is expanded and the fields for Alert rule name, Description, and Severity are highlighted.](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. On the **Create rule** page, expand **Define action group**, select **New action group**, and do the following actions on the **Add action group page**. 
     1. Enter a name for the action group.
     2. Enter a short name for the action group. 
@@ -162,7 +158,7 @@ Azure Service Bus supports the following dimensions for metrics in Azure Monitor
         4. On the **Add action group** page, select **OK**. 
 1. On the **Create rule** page, select **Create alert rule**. 
 
-    :::image type="content" source="./media/service-bus-metrics-azure-monitor/create-alert-rule.png" alt-text="Create alert rule button":::
+    ![Create alert rule button](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
 ## Next steps
 
@@ -170,7 +166,3 @@ See the [Azure Monitor overview](../azure-monitor/overview.md).
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-
-<!-- Update_Description: new article about service bus metrics azure monitor -->
-<!--NEW.date: 12/21/2020-->

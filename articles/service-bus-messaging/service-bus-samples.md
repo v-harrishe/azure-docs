@@ -1,17 +1,14 @@
 ---
 title: Azure Service Bus messaging samples overview
 description: The Service Bus messaging samples demonstrate key features in Azure Service Bus messaging. Provides links to samples on GitHub. 
-
+author: spelluru
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/14/2020
+ms.author: spelluru
 ---
 
 # Service Bus messaging samples
-The Service Bus messaging samples demonstrate key features in [Service Bus messaging](https://www.azure.cn/home/features/service-bus/). Currently, you can find the samples in the following places:
+The Service Bus messaging samples demonstrate key features in [Service Bus messaging](https://azure.microsoft.com/services/service-bus/). Currently, you can find the samples in the following places:
 
 ## .NET samples
 
@@ -23,7 +20,7 @@ The Service Bus messaging samples demonstrate key features in [Service Bus messa
 ## Java samples
 | Package | Samples location | 
 | ------- | ---------------- | 
-| azure-messaging-servicebus (latest) | https://docs.azure.cn/java/servicebus-samples/ |
+| azure-messaging-servicebus (latest) | https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/ |
 | azure-servicebus (legacy) | https://github.com/Azure/azure-service-bus/tree/master/samples/Java |
 
 ## Python samples
@@ -44,8 +41,3 @@ The Service Bus messaging samples demonstrate key features in [Service Bus messa
 ## Management samples
 You can find management samples on GitHub at https://github.com/Azure/azure-service-bus/tree/master/samples/Management.
 
-
-
-
-<!-- Update_Description: new article about service bus samples -->
-<!--NEW.date: 12/21/2020-->

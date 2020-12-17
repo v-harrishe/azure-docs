@@ -1,12 +1,9 @@
 ---
-title: General questions about the Microsoft Azure Site Recovery service
+title: General questions about the Azure Site Recovery service
 description: This article discusses popular general questions about Azure Site Recovery.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 7/14/2020
+ms.author: raynew
 
 ---
 # General questions about Azure Site Recovery
@@ -54,7 +51,7 @@ No, Data is replicated to Azure storage in your subscription. When you perform a
 Yes.
 
 ### What platforms do you currently support?
-We support Azure Pack, Cloud Platform System, and System Center based (2012 and higher) deployments. [Learn more](https://docs.microsoft.com/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) about Azure Pack and Site Recovery integration.
+We support Azure Pack, Cloud Platform System, and System Center based (2012 and higher) deployments. [Learn more](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) about Azure Pack and Site Recovery integration.
 
 ### Do you support single Azure Pack and single VMM server deployments?
 Yes, you can replicate Hyper-V virtual machines to Azure, or between service provider sites.  Note that if you replicate between service provider sites, Azure runbook integration isn't available.
@@ -62,12 +59,12 @@ Yes, you can replicate Hyper-V virtual machines to Azure, or between service pro
 ## Pricing
 
 ### Where can I find pricing information?
-Review [Site Recovery pricing](https://www.azure.cn/pricing/details/site-recovery/) details.
+Review [Site Recovery pricing](https://azure.microsoft.com/pricing/details/site-recovery/) details.
 
 
 ### How can I calculate approximate charges during the use of Site Recovery?
 
-You can use the [pricing calculator](https://www.azure.cn/pricing/calculator) to estimate costs while using Site Recovery.
+You can use the [pricing calculator](https://aka.ms/asr_pricing_calculator) to estimate costs while using Site Recovery.
 
 For detailed estimate on costs, run the deployment planner tool for [VMware](./site-recovery-deployment-planner.md) or [Hyper-V](https://aka.ms/asr-deployment-planner), and use the [cost estimation report](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
@@ -168,7 +165,7 @@ Azure Site Recovery replicates data to an Azure storage account or managed disks
 
 ### Why can't I replicate over VPN?
 
-When you replicate to Azure, replication traffic reaches the public endpoints of an Azure Storage. Thus you can only replicate over the public internet or via ExpressRoute (Azure peering or an existing public peering).
+When you replicate to Azure, replication traffic reaches the public endpoints of an Azure Storage. Thus you can only replicate over the public internet or via ExpressRoute (Microsoft peering or an existing public peering).
 
 ### Can I use Riverbed SteelHeads for replication?
 
@@ -177,8 +174,8 @@ Our partner, Riverbed, provides detailed guidance on working with Azure Site Rec
 ### Can I use ExpressRoute to replicate virtual machines to Azure?
 Yes, [ExpressRoute can be used](concepts-expressroute-with-site-recovery.md) to replicate on-premises virtual machines to Azure.
 
-- Azure Site Recovery replicates data to an Azure Storage over a public endpoint. You need to set up [Azure peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) or use an existing [public peering](../expressroute/about-public-peering.md) (deprecated for new circuits)  to use ExpressRoute for Site Recovery replication.
-- Azure peering is the recommended routing domain for replication.
+- Azure Site Recovery replicates data to an Azure Storage over a public endpoint. You need to set up [Microsoft peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) or use an existing [public peering](../expressroute/about-public-peering.md) (deprecated for new circuits)  to use ExpressRoute for Site Recovery replication.
+- Microsoft peering is the recommended routing domain for replication.
 - Replication is not supported over private peering.
 - If you're protecting VMware machines or physical machines, ensure that the [Networking Requirements](vmware-azure-configuration-server-requirements.md#network-requirements) for Configuration Server are also met. Connectivity to specific URLs is required by Configuration Server for orchestration of Site Recovery replication. ExpressRoute cannot be used for this connectivity.
 - After the virtual machines have been failed over to an Azure virtual network you can access them using the [private peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) setup with the Azure virtual network.
@@ -193,10 +190,10 @@ You need an LRS or GRS storage. We recommend GRS so that data is resilient if a 
 * **Azure VMs, VMware VMs, physical servers:** A replication frequency isn't relevant here. Replication is continuous.
 
 ### Can I extend replication from existing recovery site to another tertiary site?
-Extended or chained replication isn't supported. Request this feature in [feedback forum](https://support.azure.cn/support/contact/).
+Extended or chained replication isn't supported. Request this feature in [feedback forum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### Can I do an offline replication the first time I replicate to Azure?
-This isn't supported. Request this feature in the [feedback forum](https://support.azure.cn/support/contact/).
+This isn't supported. Request this feature in the [feedback forum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### Can I exclude specific disks from replication?
 This is supported when you're replicating VMware VMs and Hyper-V VMs to Azure, using the Azure portal.
@@ -215,16 +212,16 @@ Yes. You can read more about throttling bandwidth in these articles:
 Yes. Azure Site Recovery for Linux Operation System supports application custom scripts for app-consistency. The custom script with pre and post-options will be used by the Azure Site Recovery Mobility Agent during app-consistency. Below are the steps to enable it.
 
 1. Sign in as root into the machine.
-2. Change directory to Azure Site Recovery Mobility Agent install location. Default is "/usr/local/ASR"<br />
+2. Change directory to Azure Site Recovery Mobility Agent install location. Default is "/usr/local/ASR"<br>
     `# cd /usr/local/ASR`
-3. Change directory to "VX/scripts" under install location<br />
+3. Change directory to "VX/scripts" under install location<br>
     `# cd VX/scripts`
-4. Create a bash shell script named "customscript.sh" with execute permissions for root user.<br />
-    a. The script should support "--pre" and "--post" (Note the double dashes) command-line options<br />
-    b. When the script is called with pre-option, it should freeze the application input/output and when called with post-option, it should thaw the application input/output.<br />
-    c. A sample template -<br />
+4. Create a bash shell script named "customscript.sh" with execute permissions for root user.<br>
+    a. The script should support "--pre" and "--post" (Note the double dashes) command-line options<br>
+    b. When the script is called with pre-option, it should freeze the application input/output and when called with post-option, it should thaw the application input/output.<br>
+    c. A sample template -<br>
 
-    `# cat customscript.sh`<br />
+    `# cat customscript.sh`<br>
 
 ```
     #!/bin/bash
@@ -293,7 +290,7 @@ The following screenshot illustrates the example. In the screenshot:
 - Within the past hour, there are recovery points with a frequency of 5 minutes.
 - Beyond the past hour, Site Recovery keeps only 1 recovery point.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/recoverypoints.png" alt-text="List of generated recovery points":::
+   ![List of generated recovery points](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
 ### How far back can I recover?
 
@@ -329,7 +326,7 @@ Azure is designed for resilience. Site Recovery is already engineered for failov
 You can trigger an unplanned failover from the secondary site. Site Recovery doesn't need connectivity from the primary site to perform the failover.
 
 ### Is failover automatic?
-Failover isn't automatic. You initiate failovers with single click in the portal, or you can use [Site Recovery PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices) to trigger a failover. Failing back is a simple action in the Site Recovery portal.
+Failover isn't automatic. You initiate failovers with single click in the portal, or you can use [Site Recovery PowerShell](/powershell/module/az.recoveryservices) to trigger a failover. Failing back is a simple action in the Site Recovery portal.
 
 To automate you could use on-premises Orchestrator or Operations Manager to detect a virtual machine failure, and then trigger the failover using the SDK.
 
@@ -360,7 +357,3 @@ Yes. You can automate Site Recovery workflows using the Rest API, PowerShell, or
 
 ## Next steps
 * Read the [Site Recovery overview](site-recovery-overview.md)
-
-
-<!-- Update_Description: new article about site recovery faq -->
-<!--NEW.date: 12/21/2020-->

@@ -1,16 +1,13 @@
 ---
-title: Configure ExpressRoute encryption - IPsec over ExpressRoute for Azure Virtual WAN
+title: 'Configure ExpressRoute encryption: IPsec over ExpressRoute for Azure Virtual WAN'
 description: Learn how to use Azure Virtual WAN to create a site-to-site VPN connection over ExpressRoute private peering.
 services: virtual-wan
-
+author: cherylmc
 
 ms.service: virtual-wan
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/22/2020
+ms.author: cherylmc
 
 ---
 # ExpressRoute encryption: IPsec over ExpressRoute for Virtual WAN
@@ -57,8 +54,7 @@ In both of these examples, Azure will send traffic to 10.0.1.0/24 over the VPN c
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-<a name="openvwan"></a>
-## 1. Create a virtual WAN and hub with gateways
+## <a name="openvwan"></a>1. Create a virtual WAN and hub with gateways
 
 The following Azure resources and the corresponding on-premises configurations must be in place before you proceed:
 
@@ -67,8 +63,7 @@ The following Azure resources and the corresponding on-premises configurations m
 
 For the steps to create an Azure virtual WAN and a hub with an ExpressRoute association, see [Create an ExpressRoute association using Azure Virtual WAN](virtual-wan-expressroute-portal.md). For the steps to create a VPN gateway in the virtual WAN, see [Create a site-to-site connection using Azure Virtual WAN](virtual-wan-site-to-site-portal.md).
 
-<a name="site"></a>
-## 2. Create a site for the on-premises network
+## <a name="site"></a>2. Create a site for the on-premises network
 
 The site resource is the same as the non-ExpressRoute VPN sites for a virtual WAN. The IP address of the on-premises VPN device can now be either a private IP address, or a public IP address in the on-premises network reachable via ExpressRoute private peering created in step 1.
 
@@ -100,8 +95,7 @@ The site resource is the same as the non-ExpressRoute VPN sites for a virtual WA
 
 1. Select **Next: Review + create >** to check the setting values and create the VPN site. If you selected **Hubs** to connect, the connection will be established between the on-premises network and the hub VPN gateway.
 
-<a name="hub"></a>
-## 3. Update the VPN connection setting to use ExpressRoute
+## <a name="hub"></a>3. Update the VPN connection setting to use ExpressRoute
 
 After you create the VPN site and connect to the hub, use the following steps to configure the connection to use ExpressRoute private peering:
 
@@ -121,8 +115,7 @@ After you create the VPN site and connect to the hub, use the following steps to
 
 After you save your changes, the hub VPN gateway will use the private IP addresses on the VPN gateway to establish the IPsec/IKE connections with the on-premises VPN device over ExpressRoute.
 
-<a name="associate"></a>
-## 4. Get the private IP addresses for the hub VPN gateway
+## <a name="associate"></a>4. Get the private IP addresses for the hub VPN gateway
 
 Download the VPN device configuration to get the private IP addresses of the hub VPN gateway. You need these addresses to configure the on-premises VPN device.
 
@@ -144,11 +137,11 @@ The device configuration file contains the settings to use when you're configuri
            ```
            "AddressSpace":"10.51.230.0/24"
            ```
-    * Address space of the virtual networks that are connected to the hub.<br />Example:
+    * Address space of the virtual networks that are connected to the hub.<br>Example:
            ```
            "ConnectedSubnets":["10.51.231.0/24"]
             ```
-    * IP addresses of the virtual hub's VPN gateway. Because each connection of the VPN gateway is composed of two tunnels in active-active configuration, you'll see both IP addresses listed in this file. In this example, you see `Instance0` and `Instance1` for each site, and they're private IP addresses instead of public IP addresses.<br />Example:
+    * IP addresses of the virtual hub's VPN gateway. Because each connection of the VPN gateway is composed of two tunnels in active-active configuration, you'll see both IP addresses listed in this file. In this example, you see `Instance0` and `Instance1` for each site, and they're private IP addresses instead of public IP addresses.<br>Example:
            ``` 
            "Instance0":"10.51.230.4"
            "Instance1":"10.51.230.5"
@@ -171,7 +164,7 @@ The device configuration file contains the settings to use when you're configuri
       "vpnSiteConnections":[{
         "hubConfiguration":{
           "AddressSpace":"10.51.230.0/24",
-          "Region":"China East 2",
+          "Region":"West US 2",
           "ConnectedSubnets":["10.51.231.0/24"]
         },
         "gatewayConfiguration":{
@@ -200,7 +193,7 @@ The device configuration file contains the settings to use when you're configuri
       "vpnSiteConnections":[{
         "hubConfiguration":{
           "AddressSpace":"10.51.230.0/24",
-          "Region":"China East 2",
+          "Region":"West US 2",
           "ConnectedSubnets":["10.51.231.0/24"]
         },
         "gatewayConfiguration":{
@@ -227,32 +220,24 @@ If you need instructions to configure your device, you can use the instructions 
 * A new virtual WAN can support both IKEv1 and IKEv2.
 * A virtual WAN can use only route-based VPN devices and device instructions.
 
-<a name="viewwan"></a>
-## 5. View your virtual WAN
+## <a name="viewwan"></a>5. View your virtual WAN
 
 1. Go to the virtual WAN.
 1. On the **Overview** page, each point on the map represents a hub.
 1. In the **Hubs and connections** section, you can view hub, site, region, and VPN connection status. You can also view bytes in and out.
 
-<a name="connectmon"></a>
-## 6. Monitor a connection
+## <a name="connectmon"></a>6. Monitor a connection
 
 Create a connection to monitor communication between an Azure virtual machine (VM) and a remote site. For information about how to set up a connection monitor, see [Monitor network communication](~/articles/network-watcher/connection-monitor.md). The source field is the VM IP in Azure, and the destination IP is the site IP.
 
-<a name="cleanup"></a>
-## 7. Clean up resources
+## <a name="cleanup"></a>7. Clean up resources
 
-When you no longer need these resources, you can use [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all of the resources that it contains. Run the following PowerShell command, and replace `myResourceGroup` with the name of your resource group:
+When you no longer need these resources, you can use [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) to remove the resource group and all of the resources that it contains. Run the following PowerShell command, and replace `myResourceGroup` with the name of your resource group:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## Next steps
 
 This article helps you create a VPN connection over ExpressRoute private peering by using Virtual WAN. To learn more about Virtual WAN and related features, see the [Virtual WAN overview](virtual-wan-about.md).
-
-
-
-<!-- Update_Description: new article about vpn over expressroute -->
-<!--NEW.date: 12/21/2020-->

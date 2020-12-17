@@ -2,11 +2,7 @@
 title: Events in actor-based Azure Service Fabric actors
 description: Learn about events for Service Fabric Reliable Actors, an effective way to communicate between actor and client.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/06/2017
 ms.custom: devx-track-csharp
 ---
 # Actor events
@@ -99,12 +95,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ## Next steps
 * [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
 * [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
-* [Actor API reference documentation](https://docs.microsoft.com/previous-versions/azure/dn971626(v=azure.100))
+* [Actor API reference documentation](/previous-versions/azure/dn971626(v=azure.100))
 * [C# Sample code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core Sample code](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java Sample code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
-
-
-
-<!-- Update_Description: new article about service fabric reliable actors events -->
-<!--NEW.date: 12/21/2020-->
