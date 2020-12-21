@@ -1,17 +1,14 @@
 ---
-title: CLI - Connect an app to SQL Database
+title: 'CLI: Connect an app to SQL Database'
 description: Learn how to use the Azure CLI to automate deployment and management of your App Service app. This sample shows how to connect an app to SQL Database.
-
+author: msangapu-msft
 tags: azure-service-management
 
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
 ms.devlang: azurecli
 ms.topic: sample
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/11/2017
+ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
 ---
 
@@ -21,9 +18,9 @@ This sample script creates a database in Azure SQL Database and an App Service a
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the CLI locally, you need Azure CLI version 2.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install the Azure CLI](https://docs.azure.cn/cli/install-azure-cli).
+If you choose to install and use the CLI locally, you need Azure CLI version 2.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install the Azure CLI]( /cli/azure/install-azure-cli).
 
 ## Sample script
 
@@ -37,21 +34,16 @@ This script uses the following commands to create a resource group, App Service 
 
 | Command | Notes |
 |---|---|
-| [`az group create`](https://docs.azure.cn/cli/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan#az_appservice_plan_create) | Creates an App Service plan. |
-| [`az webapp create`](https://docs.azure.cn/cli/webapp#az_webapp_create) | Creates an App Service app. |
-| [`az sql server create`](https://docs.azure.cn/cli/sql/server#az_sql_server_create) | Creates a server.  |
-| [`az sql db create`](https://docs.azure.cn/cli/sql/db#az_sql_db_create) | Creates a new database. |
-| [`az sql db show-connection-string`](https://docs.azure.cn/cli/sql/db#az_sql_db_show_connection_string) | Generates a connection string to a database. |
-| [`az webapp config appsettings set`](https://docs.azure.cn/cli/webapp/config/appsettings#az_webapp_config_appsettings_set) | Creates or updates an app setting for an App Service app. App settings are exposed as environment variables for your app. |
+| [`az group create`](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Creates an App Service plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Creates an App Service app. |
+| [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) | Creates a server.  |
+| [`az sql db create`](/cli/azure/sql/db#az-sql-db-create) | Creates a new database. |
+| [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) | Generates a connection string to a database. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Creates or updates an app setting for an App Service app. App settings are exposed as environment variables for your app. |
 
 ## Next steps
 
-For more information on the Azure CLI, see [Azure CLI documentation](https://docs.azure.cn/cli).
+For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
 
 Additional App Service CLI script samples can be found in the [Azure App Service documentation](../samples-cli.md).
-
-
-
-<!-- Update_Description: new article about cli connect to sql -->
-<!--NEW.date: 12/21/2020-->

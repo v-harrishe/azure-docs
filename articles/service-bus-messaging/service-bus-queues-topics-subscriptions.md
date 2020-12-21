@@ -2,11 +2,7 @@
 title: Azure Service Bus messaging - queues, topics, and subscriptions
 description: This article provides an overview of Azure Service Bus messaging entities (queue, topics, and subscriptions).
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/04/2020
 ---
 
 # Service Bus queues, topics, and subscriptions
@@ -25,19 +21,19 @@ Using queues to intermediate between message producers and consumers provides an
 You can create queues using the [Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md), or [Resource Manager templates](service-bus-resource-manager-namespace-queue.md). Then, send and receive messages using clients written in [C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [Python](service-bus-python-how-to-use-queues.md), [JavaScript](service-bus-nodejs-how-to-use-queues.md), [PHP](service-bus-php-how-to-use-queues.md), and [Ruby](service-bus-ruby-how-to-use-queues.md). 
 
 ### Receive modes
-You can specify two different modes in which Service Bus receives messages: **ReceiveAndDelete** or **PeekLock**. In the [ReceiveAndDelete](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode) mode, when Service Bus receives the request from the consumer, it marks the message as being consumed and returns it to the consumer application. This mode is the simplest model. It works best for scenarios in which the application can tolerate not processing a message if a failure occurs. To understand this scenario, consider a scenario in which the consumer issues the receive request and then crashes before processing it. As Service Bus marks the message as being consumed, the application begins consuming messages upon restart. It will miss the message that it consumed before the crash.
+You can specify two different modes in which Service Bus receives messages: **ReceiveAndDelete** or **PeekLock**. In the [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) mode, when Service Bus receives the request from the consumer, it marks the message as being consumed and returns it to the consumer application. This mode is the simplest model. It works best for scenarios in which the application can tolerate not processing a message if a failure occurs. To understand this scenario, consider a scenario in which the consumer issues the receive request and then crashes before processing it. As Service Bus marks the message as being consumed, the application begins consuming messages upon restart. It will miss the message that it consumed before the crash.
 
-In the [PeekLock](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode) mode, the receive operation becomes two-stage, which makes it possible to support applications that can't tolerate missing messages. When Service Bus receives the request, it does the following operations:
+In the [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mode, the receive operation becomes two-stage, which makes it possible to support applications that can't tolerate missing messages. When Service Bus receives the request, it does the following operations:
 
 1. Finds the next message to be consumed.
 1. Locks it to prevent other consumers from receiving it.
 1. Then, return the message to the application. 
 
-After the application finishes processing the message or stores it reliably for future processing, it completes the second stage of the receive process by calling [`CompleteAsync`](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) on the message. When Service Bus receives the **CompleteAsync** request, it marks the message as being consumed.
+After the application finishes processing the message or stores it reliably for future processing, it completes the second stage of the receive process by calling [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) on the message. When Service Bus receives the **CompleteAsync** request, it marks the message as being consumed.
 
-If the application is unable to process the message for some reason, it can call the [`AbandonAsync`](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) method on the message (instead of [`CompleteAsync`](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync)). This method enables Service Bus to unlock the message and make it available to be received again, either by the same consumer or by another competing consumer. Secondly, there's a timeout associated with the lock. If the application fails to process the message before the lock timeout expires, Service Bus unlocks the message and makes it available to be received again.
+If the application is unable to process the message for some reason, it can call the [`AbandonAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) method on the message (instead of [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync)). This method enables Service Bus to unlock the message and make it available to be received again, either by the same consumer or by another competing consumer. Secondly, there's a timeout associated with the lock. If the application fails to process the message before the lock timeout expires, Service Bus unlocks the message and makes it available to be received again.
 
-If the application crashes after it processes the message, but before it calls [`CompleteAsync`](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync), Service Bus redelivers the message to the application when it restarts. This process is often called **at-least once** processing. That is, each message is processed at least once. However, in certain situations the same message may be redelivered. If your scenario can't tolerate duplicate processing, add additional logic in your application to detect duplicates. You can achieve it by using the [MessageId](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.messageid) property of the message, which remains constant across delivery attempts. This feature is known as **exactly once** processing.
+If the application crashes after it processes the message, but before it calls [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync), Service Bus redelivers the message to the application when it restarts. This process is often called **at-least once** processing. That is, each message is processed at least once. However, in certain situations the same message may be redelivered. If your scenario can't tolerate duplicate processing, add additional logic in your application to detect duplicates. You can achieve it by using the [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) property of the message, which remains constant across delivery attempts. This feature is known as **exactly once** processing.
 
 ## Topics and subscriptions
 A queue allows processing of a message by a single consumer. In contrast to queues, topics and subscriptions provide a one-to-many form of communication in a **publish and subscribe** pattern. It's useful for scaling to large numbers of recipients. Each published message is made available to each subscription registered with the topic. Publisher sends a message to a topic and one or more subscribers receive a copy of the message, depending on filter rules set on these subscriptions. The subscriptions can use additional filters to restrict the messages that they want to receive. Publishers send messages to a topic in the same way that they send messages to a queue. But, consumers don't receive messages directly from the topic. Instead, consumers receive messages from subscriptions of the topic. A topic subscription resembles a virtual queue that receives copies of the messages that are sent to the topic. Consumers receive messages from a subscription identically to the way they receive messages from a queue.
@@ -52,7 +48,7 @@ In many scenarios, messages that have specific characteristics must be processed
 
 For a full working example, see the [TopicSubscriptionWithRuleOperationsSample sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) on GitHub.
 
-For more information about possible filter values, see the documentation for the [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter) and [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlruleaction) classes.
+For more information about possible filter values, see the documentation for the [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) and [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) classes.
 
 ## Java message service (JMS) 2.0 entities (Preview)
 The following entities are accessible through the Java message service (JMS) 2.0 API.
@@ -75,8 +71,3 @@ For more information and examples of using Service Bus messaging, see the follow
 * [Tutorial: Update inventory using Azure portal and topics/subscriptions](service-bus-tutorial-topics-subscriptions-portal.md)
 
 
-
-
-
-<!-- Update_Description: new article about service bus queues topics subscriptions -->
-<!--NEW.date: 12/21/2020-->

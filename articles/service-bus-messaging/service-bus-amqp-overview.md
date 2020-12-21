@@ -2,15 +2,11 @@
 title: Overview of AMQP 1.0 in Azure Service Bus
 description: Learn how Azure Service Bus supports Advanced Message Queuing Protocol (AMQP), an open standard protocol.
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/20/2020
 ---
 
 # AMQP 1.0 support in Service Bus
-The Azure Service Bus cloud service uses the [Advanced Message Queueing Protocol (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) as its primary means of communication. Azure has been engaged with partners across the industry, both customers and vendors of competing messaging brokers, to develop and evolve AMQP over the past decade, with new extensions being developed in the [OASIS AMQP Technical Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1.0 is an ISO and IEC standard ([ISO 19464:20149](https://www.iso.org/standard/64955.html)). 
+The Azure Service Bus cloud service uses the [Advanced Message Queueing Protocol (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) as its primary means of communication. Microsoft has been engaged with partners across the industry, both customers and vendors of competing messaging brokers, to develop and evolve AMQP over the past decade, with new extensions being developed in the [OASIS AMQP Technical Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1.0 is an ISO and IEC standard ([ISO 19464:20149](https://www.iso.org/standard/64955.html)). 
 
 AMQP enables you to build cross-platform, hybrid applications using an vendor-neutral and implementation-neutral, open standard protocol. You can construct applications using components that are built using different languages and frameworks, and that run on different operating systems. All these components can connect to Service Bus and seamlessly exchange structured business messages efficiently and at full fidelity.
 
@@ -63,11 +59,11 @@ The following figure illustrates an example deployment in which Java clients run
 
 All supported Service Bus client libraries available via the Azure SDK use AMQP 1.0.
 
-- [Azure Service Bus for .NET](https://docs.azure.cn/dotnet/api/overview/service-bus?preserve-view=true&view=azure-dotnet)
-- [Azure Service Bus libraries for Java](https://docs.azure.cn/java/api/overview/servicebus?preserve-view=true&view=azure-java-stable)
+- [Azure Service Bus for .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [Azure Service Bus libraries for Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [Azure Service Bus provider for Java JMS 2.0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus Modules for JavaScript and TypeScript](https://docs.azure.cn/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Azure Service Bus libraries for Python](https://docs.azure.cn/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [Azure Service Bus Modules for JavaScript and TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [Azure Service Bus libraries for Python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
@@ -89,7 +85,3 @@ Ready to learn more? Visit the following links:
 [Using Service Bus from .NET with AMQP]: service-bus-amqp-dotnet.md
 [Using Service Bus from Java with AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
 [Installing Apache Qpid Proton-C on an Azure Linux VM]:
-
-
-<!-- Update_Description: new article about service bus amqp overview -->
-<!--NEW.date: 12/21/2020-->

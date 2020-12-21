@@ -2,14 +2,11 @@
 title: Azure Firewall rule processing logic
 description: Azure Firewall has NAT rules, network rules, and applications rules. The rules are processed according to the rule type.
 services: firewall
-
+author: vhorne
 ms.service: firewall
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/18/2020
+ms.author: victorh
 ---
 
 # Configure Azure Firewall rules
@@ -104,7 +101,3 @@ If you change a rule to deny previously allowed traffic, any relevant existing s
 ## Next steps
 
 - Learn how to [deploy and configure an Azure Firewall](tutorial-firewall-deploy-portal.md).
-
-
-<!-- Update_Description: new article about rule processing -->
-<!--NEW.date: 12/21/2020-->

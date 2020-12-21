@@ -2,11 +2,7 @@
 title: Azure Service Fabric differences between Linux and Windows 
 description: Differences between the Azure Service Fabric on Linux and Azure Service Fabric on Windows.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 2/23/2018
 ---
 # Differences between Service Fabric on Linux and Windows
 
@@ -83,8 +79,3 @@ There are some features that are supported on Windows, but not yet on Linux. Eve
 * [Create and deploy your first Service Fabric Java application on Linux using Service Fabric Plugin for Eclipse](service-fabric-get-started-eclipse.md)
 * [Create your first CSharp application on Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [Use the Service Fabric CLI to manage your applications](service-fabric-application-lifecycle-sfctl.md)
-
-
-
-<!-- Update_Description: new article about service fabric linux windows differences -->
-<!--NEW.date: 12/21/2020-->

@@ -1,15 +1,11 @@
----
+﻿---
 title: Azure App Configuration REST API - key-value
 description: Reference pages for working with key-values by using the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Key-values
@@ -397,8 +393,3 @@ HTTP/1.1 204 No Content
 ## Delete key (conditionally)
 
 This is similar to the "Set key (conditionally)" section earlier in this article.
-
-
-
-<!-- Update_Description: new article about rest api key value -->
-<!--NEW.date: 12/21/2020-->

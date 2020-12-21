@@ -1,15 +1,11 @@
----
+﻿---
 title: Azure Active Directory REST API - Test Using Fiddler
 description: Use Fiddler to test the Azure App Configuration REST API
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/17/2020
 ---
 
 # Test the Azure App Configuration REST API using Fiddler
@@ -70,8 +66,3 @@ To test the REST API using [Fiddler](https://www.telerik.com/fiddler), you'll ne
     }
     ```
 1. Use [Fiddler's Composer](https://docs.telerik.com/fiddler/Generate-Traffic/Tasks/CreateNewRequest) to generate and send a request
-
-
-
-<!-- Update_Description: new article about rest api fiddler -->
-<!--NEW.date: 12/21/2020-->

@@ -1,17 +1,14 @@
 ---
-title: .NET Framework Tutorial - dynamic configuration in Azure App Configuration
+title: '.NET Framework Tutorial: dynamic configuration in Azure App Configuration'
 description: In this tutorial, you learn how to dynamically update the configuration data for .NET Framework apps using Azure App Configuration. 
 services: azure-app-configuration
-
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/24/2020
+ms.author: alkemper
 
 #Customer intent: I want to dynamically update my .NET Framework app to use the latest configuration data in App Configuration.
 ---
@@ -30,7 +27,7 @@ In this tutorial, you learn how to:
 > * Inject the latest configuration in your application.
 ## Prerequisites
 
-- Azure subscription - [create one for free](https://www.azure.cn/free/)
+- Azure subscription - [create one for free](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.1 or later](https://dotnet.microsoft.com/download)
 
@@ -133,9 +130,9 @@ In this tutorial, you learn how to:
 
 1. Press Ctrl + F5 to build and run the console app.
 
-    :::image type="content" source="./media/dotnet-app-run.png" alt-text="App launch local":::
+    ![App launch local](./media/dotnet-app-run.png)
 
-1. Sign in to the [Azure portal](https://portal.azure.cn). Select **All resources**, and select the App Configuration store instance that you created in the quickstart.
+1. Sign in to the [Azure portal](https://portal.azure.com). Select **All resources**, and select the App Configuration store instance that you created in the quickstart.
 
 1. Select **Configuration Explorer**, and update the values of the following keys:
 
@@ -145,7 +142,7 @@ In this tutorial, you learn how to:
 
 1. Back in the running application, press the Enter key to trigger a refresh and print the updated value in the Command Prompt or PowerShell window.
 
-    :::image type="content" source="./media/dotnet-app-run-refresh.png" alt-text="App refresh local":::
+    ![App refresh local](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
     > Since the cache expiration time was set to 10 seconds using the `SetCacheExpiration` method while specifying the configuration for the refresh operation, the value for the configuration setting will only be updated if at least 10 seconds have elapsed since the last refresh for that setting.
@@ -160,8 +157,3 @@ In this tutorial, you enabled your .NET Framework app to dynamically refresh con
 
 > [!div class="nextstepaction"]
 > [Managed identity integration](./howto-integrate-azure-managed-service-identity.md)
-
-
-
-<!-- Update_Description: new article about enable dynamic configuration dotnet -->
-<!--NEW.date: 12/21/2020-->

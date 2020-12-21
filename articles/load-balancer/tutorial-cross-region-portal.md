@@ -1,16 +1,12 @@
 ---
-title: Tutorial - Create a cross-region load balancer using the Azure portal
+title: 'Tutorial: Create a cross-region load balancer using the Azure portal'
 titleSuffix: Azure Load Balancer
 description: Get started with this tutorial deploying a cross-region Azure Load Balancer with the Azure portal.
-
-
+author: asudbring
+ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/24/2020
 #Customer intent: As a administrator, I want to deploy a cross-region load balancer for global high availability of my application or service.
 ---
 
@@ -26,12 +22,12 @@ In this tutorial, you learn how to:
 > * Create a load balancer rule.
 > * Test the load balancer.
 
-If you don’t have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
+If you don’t have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 > [!IMPORTANT]
 > Cross-region Azure Load Balancer is currently in public preview.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
-> For more information, see [Supplemental Terms of Use for Azure Azure Previews](https://www.azure.cn/support/legal/subscription-agreement/).
+> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Prerequisites
 
@@ -53,11 +49,11 @@ In this section, you'll create a cross-region load balancer and public IP addres
 2. In the **Basics** tab of the **Create load balancer** page, enter, or select the following information: 
 
     | Setting                 | Value                                              |
-    | --- | --- |
+    | ---                     | ---                                                |
     | Subscription               | Select your subscription.    |    
     | Resource group         | Select **Create new** and enter **CreateCRLBTutorial-rg** in the text box.|
-    | Name                   | Enter **myLoadBalancer-CR** |
-    | Region         | Select **China North**.                                        |
+    | Name                   | Enter **myLoadBalancer-CR**                                   |
+    | Region         | Select **West US**.                                        |
     | Type          | Select **Public**.                                        |
     | SKU           | Select **Standard** |
     | Tier           | Select **Global** |
@@ -66,7 +62,7 @@ In this section, you'll create a cross-region load balancer and public IP addres
     | Routing preference| Select **Microsoft network** |
 
     > [!NOTE]
-    > Cross region load-balancer can only be deployed in the following home regions: **China East 2, China North, West Europe, Southeast Asia, China North, North Europe, East Asia**. For more information, see **https://aka.ms/homeregionforglb**.
+    > Cross region load-balancer can only be deployed in the following home regions: **East US 2, West US, West Europe, Southeast Asia, Central US, North Europe, East Asia**. For more information, see **https://aka.ms/homeregionforglb**.
 
 
 3. Accept the defaults for the remaining settings, and then select **Review + create**.
@@ -206,8 +202,3 @@ For more information on cross-region load balancer, see [Cross-region load balan
 Advance to the next article to learn how to:
 > [!div class="nextstepaction"]
 > [Load balance VMs across availability zones](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-
-
-
-<!-- Update_Description: new article about tutorial cross region portal -->
-<!--NEW.date: 12/21/2020-->

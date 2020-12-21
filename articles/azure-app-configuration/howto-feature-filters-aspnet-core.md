@@ -4,14 +4,10 @@ titleSuffix: Azure App Configuration
 description: Learn how to use feature filters to enable conditional feature flags
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 3/9/2020
 ---
 # Use feature filters to enable conditional feature flags
 
@@ -25,7 +21,7 @@ The `Microsoft.FeatureManagement` library includes three feature filters:
 - `TimeWindowFilter` enables the feature flag during a specified window of time.
 - `TargetingFilter` enables the feature flag for specified users and groups.
 
-You can also create your own feature filter that implements the [Microsoft.FeatureManagement.IFeatureFilter interface](https://docs.azure.cn/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
+You can also create your own feature filter that implements the [Microsoft.FeatureManagement.IFeatureFilter interface](/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
 
 ## Registering a feature filter
 
@@ -52,31 +48,31 @@ You can configure these settings for feature flags defined in Azure App Configur
 1. Click on the context menu for the *Beta* feature flag that you created in the quickstart. Click **Edit**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/edit-beta-feature-flag.png" alt-text="Edit Beta feature flag":::
+    > ![Edit Beta feature flag](./media/edit-beta-feature-flag.png)
 
 1. In the **Edit** screen, select the **On** radio button if it isn't already selected. Then click the **Add Filter** button. (The **On** radio button's label will change to read **Conditional**.)
 
 1. In the **Key** field, enter *Microsoft.Percentage*.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/feature-flag-add-filter.png" alt-text="Add feature filter":::
+    > ![Add feature filter](./media/feature-flag-add-filter.png)
 
 1. Click the context menu next to the feature filter key. Click **Edit Parameters**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/feature-flag-edit-filter-parameters.png" alt-text="Edit feature filter parameters":::
+    > ![Edit feature filter parameters](./media/feature-flag-edit-filter-parameters.png)
 
 1. Hover under the **Name** header so that text boxes appear in the grid. Enter a **Name** of *Value* and a **Value** of 50. The **Value** field indicates the percentage of requests for which to enable the feature filter.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/feature-flag-set-filter-parameters.png" alt-text="Set feature filter parameters":::
+    > ![Set feature filter parameters](./media/feature-flag-set-filter-parameters.png)
 
 1. Click **Apply** to return to the **Edit feature flag** screen. Then click **Apply** again to save the feature flag settings.
 
 1. The **State** of the feature flag now appears as *Conditional*. This state indicates that the feature flag will be enabled or disabled on a per-request basis, based on the criteria enforced by the feature filter.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/feature-flag-filter-enabled.png" alt-text="Conditional feature flag":::
+    > ![Conditional feature flag](./media/feature-flag-filter-enabled.png)
 
 ## Feature filters in action
 
@@ -89,8 +85,3 @@ To see the effects of this feature flag, launch the application and hit the **Re
 
 > [!div class="nextstepaction"]
 > [Enable staged rollout of features for targeted audiences](./howto-targetingfilter-aspnet-core.md)
-
-
-
-<!-- Update_Description: new article about howto feature filters aspnet core -->
-<!--NEW.date: 12/21/2020-->

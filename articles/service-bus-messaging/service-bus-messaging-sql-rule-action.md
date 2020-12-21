@@ -1,17 +1,13 @@
 ---
-title: Azure Service Bus Subscription Rule SQL Action syntax  | Azure Docs
+title: Azure Service Bus Subscription Rule SQL Action syntax  | Microsoft Docs
 description: This article provides a reference for SQL rule action syntax. The actions are written in SQL-language based syntax that is performed against a message.
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/24/2020
 ---
 
 # Subscription Rule SQL Action Syntax
 
-A *SQL action* is used to manipulate message metadata after a message has been selected by a filter of a subscription rule. It is a text expression that leans on a subset of the SQL-92 standard. Action expressions are used with the `sqlExpression` element of the 'action' property of a Service Bus `Rule` in an [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md), or the Azure CLI `az servicebus topic subscription rule create` command's [`--action-sql-expression`](https://docs.azure.cn/cli/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) argument, and several SDK functions that allow managing subscription rules.
+A *SQL action* is used to manipulate message metadata after a message has been selected by a filter of a subscription rule. It is a text expression that leans on a subset of the SQL-92 standard. Action expressions are used with the `sqlExpression` element of the 'action' property of a Service Bus `Rule` in an [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md), or the Azure CLI `az servicebus topic subscription rule create` command's [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) argument, and several SDK functions that allow managing subscription rules.
   
   
 ```  
@@ -52,7 +48,7 @@ A *SQL action* is used to manipulate message metadata after a message has been s
   
 ## Arguments  
   
-- `<scope>` is an optional string indicating the scope of the `<property_name>`. Valid values are `sys` or `user`. The `sys` value indicates system scope where `<property_name>` is a public property name of the [BrokeredMessage Class](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` indicates user scope where `<property_name>` is a key of the [BrokeredMessage Class](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) dictionary. `user` scope is the default scope if `<scope>` is not specified.  
+-   `<scope>` is an optional string indicating the scope of the `<property_name>`. Valid values are `sys` or `user`. The `sys` value indicates system scope where `<property_name>` is a public property name of the [BrokeredMessage Class](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` indicates user scope where `<property_name>` is a key of the [BrokeredMessage Class](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) dictionary. `user` scope is the default scope if `<scope>` is not specified.  
   
 ### Remarks  
 
@@ -110,9 +106,9 @@ An attempt to access a non-existent system property is an error, while an attemp
   
  `<pattern>` must be an expression that is evaluated as a string. It is used as a pattern for the LIKE operator.      It can contain the following wildcard characters:  
   
-- `%`:  Any string of zero or more characters.  
+-   `%`:  Any string of zero or more characters.  
   
-- `_`: Any single character.  
+-   `_`: Any single character.  
   
 ## escape_char  
   
@@ -136,7 +132,7 @@ An attempt to access a non-existent system property is an error, while an attemp
   
 ### Arguments  
   
-- `<integer_constant>` is a string of numbers that are not enclosed in quotation marks and do not contain decimal points. The values are stored as `System.Int64` internally, and follow the same range.  
+-   `<integer_constant>` is a string of numbers that are not enclosed in quotation marks and do not contain decimal points. The values are stored as `System.Int64` internally, and follow the same range.  
   
      The following are examples of long constants:  
   
@@ -145,7 +141,7 @@ An attempt to access a non-existent system property is an error, while an attemp
     2  
     ```  
   
-- `<decimal_constant>` is a string of numbers that are not enclosed in quotation marks, and contain a decimal point. The values are stored as `System.Double` internally, and follow the same range/precision.  
+-   `<decimal_constant>` is a string of numbers that are not enclosed in quotation marks, and contain a decimal point. The values are stored as `System.Double` internally, and follow the same range/precision.  
   
      In a future version, this number might be stored in a different data type to support exact number semantics, so you should not rely on the fact the underlying data type is `System.Double` for `<decimal_constant>`.  
   
@@ -156,7 +152,7 @@ An attempt to access a non-existent system property is an error, while an attemp
     2.0  
     ```  
   
-- `<approximate_number_constant>` is a number written in scientific notation. The values are stored as `System.Double` internally, and follow the same range/precision. The following are examples of approximate number constants:  
+-   `<approximate_number_constant>` is a number written in scientific notation. The values are stored as `System.Double` internally, and follow the same range/precision. The following are examples of approximate number constants:  
   
     ```  
     101.5E5  
@@ -205,17 +201,13 @@ The `property(name)` function returns the value of the property referenced by `n
 - SET performs implicit conversion if possible when the expression type and the existing property type are different.
 - Action fails if non-existent system properties were referenced.
 - Action does not fail if non-existent user properties were referenced.
-- A non-existent user property is evaluated as "Unknown" internally, following the same semantics as [SQLFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter) when evaluating operators.
+- A non-existent user property is evaluated as "Unknown" internally, following the same semantics as [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) when evaluating operators.
 
 ## Next steps
 
-- [SQLRuleAction class (.NET Framework)](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLRuleAction class (.NET Standard)](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
-- [SqlRuleAction class (Java)](https://docs.azure.cn/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
-- [SqlRuleAction (JavaScript)](https://docs.azure.cn/javascript/api/@azure/service-bus/sqlruleaction)
-- [az servicebus topic subscription rule](https://docs.azure.cn/cli/servicebus/topic/subscription/rule#az-servicebus-topic-subscription-rule)
-- [New-AzServiceBusRule](https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule)
-
-
-<!-- Update_Description: new article about service bus messaging sql rule action -->
-<!--NEW.date: 12/21/2020-->
+- [SQLRuleAction class (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction class (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction class (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

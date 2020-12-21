@@ -1,14 +1,11 @@
 ---
 title: Azure security baseline for Site Recovery
 description: The Site Recovery security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-
+author: msmbaldwin
 ms.service: site-recovery
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/26/2020
+ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -32,7 +29,7 @@ Recovery security baseline mapping file](https://github.com/MicrosoftDocs/Securi
 
 ### 1.1: Protect Azure resources within virtual networks
 
-**Guidance**: Azure Azure Site Recovery does not support deployment into an Azure Virtual Network. Configure Site Recovery service with an Azure Private Endpoint to enforce secure communications over your network.
+**Guidance**: Microsoft Azure Site Recovery does not support deployment into an Azure Virtual Network. Configure Site Recovery service with an Azure Private Endpoint to enforce secure communications over your network.
 
 - [Azure Site Recovery Private Link Support](azure-to-azure-how-to-enable-replication-private-endpoints.md)
 
@@ -170,9 +167,9 @@ Visualize and query log results, and configure alerts to take actions based on m
 
 **Guidance**: No roles are assigned by default. They need to be explicitly assigned based on business need. Any role assignments can be checked with PowerShell CLI or Azure Active Directory (Azure AD) to discover accounts that are members of administrative groups.
 
-- [How to get a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
+- [How to get a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [How to get members of a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
+- [How to get members of a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure Security Center monitoring**: Yes
 
@@ -203,11 +200,11 @@ Create a process to track identity and access control for administrative account
 
 **Guidance**: Use Azure app registration with a Service Principal to retrieve a token to be used to interact with your Recovery Services vaults through API calls.
 
-- [How to call Azure REST APIs](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+- [How to call Azure REST APIs](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-- [How to register your client application (service principal) with Azure AD](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+- [How to register your client application (service principal) with Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Azure Recovery Services API information](https://docs.microsoft.com/rest/api/recoveryservices)
+- [Azure Recovery Services API information](/rest/api/recoveryservices)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -228,7 +225,7 @@ Create a process to track identity and access control for administrative account
 
 **Guidance**: Use a secure, Azure-managed workstation (also known as a Privileged Access Workstation (PAW)) with Azure multifactor authentication for administrative tasks and to perform privileged actions on Site Recovery resources.
 
-- [Privileged Access Workstations](https://docs.azure.cn/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [Planning a cloud-based Azure AD Multi-Factor Authentication deployment](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -350,13 +347,13 @@ Turn off virtual machines, which store or process sensitive data, when not in us
 
 **Guidance**: Use Private Link or Private Endpoint, network security groups, and service tags to mitigate any opportunities for data exfiltration from the Site Recovery enabled virtual machines.
 
-Azure manages the underlying platform used by Site Recovery and treats all customer content as sensitive and guard against customer data loss and exposure. Azure has implemented and maintains a suite of robust data protection controls and capabilities to ensure customer data within Azure remains secure. 
+Microsoft manages the underlying platform used by Site Recovery and treats all customer content as sensitive and guard against customer data loss and exposure. Microsoft has implemented and maintains a suite of robust data protection controls and capabilities to ensure customer data within Azure remains secure. 
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
 - [Replicate virtual machines with Azure Private Endpoints](azure-to-azure-how-to-enable-replication-private-endpoints.md)
 
-- [Replicate virtual machines with Microsoft Azure Site Recovery Service Tags](azure-to-azure-about-networking.md)
+- [Replicate virtual machines with Azure Site Recovery Service Tags](azure-to-azure-about-networking.md)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -380,7 +377,7 @@ Current TLS versions supported for Site Recovery are TLS 1.0, TLS 1.1, TLS 1.2 i
 
 Implement a third-party solution, as necessary, for compliance purposes.
 
-Azure manages the underlying platform used by Site Recovery and treats all customer content as sensitive and guards against customer data loss and exposure. It has implemented and maintains a suite of robust data protection controls and capabilities to ensure customer data within Azure remains secure. 
+Microsoft manages the underlying platform used by Site Recovery and treats all customer content as sensitive and guards against customer data loss and exposure. It has implemented and maintains a suite of robust data protection controls and capabilities to ensure customer data within Azure remains secure. 
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -408,7 +405,7 @@ Separate work duties with Azure RBAC and grant appropriate access required for t
 
 Site Recovery supports encryption at-rest for data. For Azure IaaS workloads, data is encrypted-at-rest using Storage Service Encryption (SSE). 
 
-Only the customer has access to the encryption key while using a Recovery Services vault encrypted with a customer-managed key. Azure never maintains a copy, does not have access to the key, and does not decrypt the data transferred from primary to Disaster Recovery location at any point. 
+Only the customer has access to the encryption key while using a Recovery Services vault encrypted with a customer-managed key. Microsoft never maintains a copy, does not have access to the key, and does not decrypt the data transferred from primary to Disaster Recovery location at any point. 
 
 - [Customer Managed Keys Support for Azure Site Recovery](azure-to-azure-how-to-enable-replication-cmk-disks.md)
 
@@ -437,7 +434,7 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 - [How to create queries with Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [How to view your Azure Subscriptions](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
+- [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Understand Azure RBAC](../role-based-access-control/overview.md)
 
@@ -519,7 +516,7 @@ Understanding how to create and manage policies in Azure is important for stayin
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "21Vianet Azure Management" App. This can prevent the creation and changes to resources within a high security environment.
+**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "Microsoft Azure Management" App. This can prevent the creation and changes to resources within a high security environment.
 
 - [How to configure Conditional Access to block access to Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -536,7 +533,7 @@ Understanding how to create and manage policies in Azure is important for stayin
 **Guidance**: Define and implement standard security configurations for your Recovery Services vault with Azure Policy. 
 
 Use Azure Policy aliases in the "Microsoft.RecoveryServices" namespace to create custom policies to audit, or enforce the configuration of the Recovery Services vault resources of Site Recovery service.
-- [How to view available Azure Policy Aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
+- [How to view available Azure Policy Aliases](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -559,9 +556,9 @@ Use Azure Policy aliases in the "Microsoft.RecoveryServices" namespace to create
 
 **Guidance**: Choose Azure Repos to securely store and manage your code if you're using custom Azure Policy definitions for your Recovery Services Vaults and related resources.
 
-- [How to store code in Azure DevOps](https://docs.azure.cn/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
+- [How to store code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos Documentation](https://docs.azure.cn/azure/devops/repos/?preserve-view=true&view=azure-devops)
+- [Azure Repos Documentation](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -662,7 +659,7 @@ All the storage resources used by Site Recovery services metadata with configura
 
 This is out of customer scope and Site Recovery team takes care of it internally. Customer can backup Key Vault keys in Azure.
 
-- [How to backup key vault keys in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
+- [How to backup key vault keys in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -672,7 +669,7 @@ This is out of customer scope and Site Recovery team takes care of it internally
 
 **Guidance**: Periodically test restores of backed-up customer-managed keys.
 
-- [How to restore key vault keys in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
+- [How to restore key vault keys in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -736,7 +733,7 @@ Mark subscriptions clearly (for example, production, non-production) and create 
 
 ### 10.4: Provide security incident contact details and configure alert notifications for security incidents
 
-**Guidance**: Security incident contact information will be used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that the customer's data has been accessed by an unlawful or unauthorized party. 
+**Guidance**: Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that the customer's data has been accessed by an unlawful or unauthorized party. 
 
 Create a process to review incidents, post occurrence, to ensure that issues are resolved.
 
@@ -774,9 +771,9 @@ Use the Security Center data connector to stream the alerts to Azure Sentinel, a
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: Follow the Azure Rules of Engagement to ensure your Penetration Tests are not in violation of Azure policies: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Guidance**: Follow the Microsoft Rules of Engagement to ensure your Penetration Tests are not in violation of Microsoft policies: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-- [You can find more information on Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications, here](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [You can find more information on Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications, here](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -786,7 +783,3 @@ Use the Security Center data connector to stream the alerts to Azure Sentinel, a
 
 - See the [Azure Security Benchmark V2 overview](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
-
-
-<!-- Update_Description: new article about security baseline -->
-<!--NEW.date: 12/21/2020-->

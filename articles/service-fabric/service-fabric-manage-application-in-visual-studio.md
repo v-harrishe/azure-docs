@@ -2,11 +2,7 @@
 title: Manage applications in Visual Studio 
 description: Use Visual Studio to create, develop, package, deploy, and debug your Azure Service Fabric applications and services.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 03/26/2018
 ---
 # Use Visual Studio to simplify writing and managing your Service Fabric applications
 You can manage your Azure Service Fabric applications and services through Visual Studio. Once you've [set up your development environment](service-fabric-get-started.md), you can use Visual Studio to create Service Fabric applications, add services, or package, register, and deploy applications in your local development cluster.
@@ -67,7 +63,6 @@ You can perform basic cluster management operations from within Visual Studio us
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-
 ## Next steps
 * [Service Fabric application model](service-fabric-application-model.md)
 * [Service Fabric application deployment](service-fabric-deploy-remove-applications.md)
@@ -76,15 +71,9 @@ You can perform basic cluster management operations from within Visual Studio us
 * [Visualizing your cluster by using Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
-
 [addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
 [newservice]:./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]:./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 [debugmodeproperty]:./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
 [removeapplication]:./media/service-fabric-manage-application-in-visual-studio/removeapplication.png
-
-
-
-<!-- Update_Description: new article about service fabric manage application in visual studio -->
-<!--NEW.date: 12/21/2020-->

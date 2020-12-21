@@ -1,14 +1,11 @@
 ---
 title: Azure security baseline for Batch
 description: The Batch security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-
+author: msmbaldwin
 ms.service: batch
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 12/01/2020
+ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -69,9 +66,9 @@ When applicable, disable public network access by using Azure Private Link to co
 
 **Guidance**: Enable Azure DDoS (distributed denial-of-service) Standard protection on the virtual network protecting your Azure Batch pool for protection against DDoS attacks. Use Azure Security Center Integrated Threat Intelligence to deny communications with known malicious or unused Internet IP addresses.
 
-- [How to configure DDoS protection](https://docs.azure.cn/azure/virtual-network/manage-ddos-protection)
+- [How to configure DDoS protection](/azure/virtual-network/manage-ddos-protection)
 
-- [Understand Azure Security Center Integrated Threat Intelligence](https://docs.azure.cn/azure/security-center/security-center-alerts-service-layer)
+- [Understand Azure Security Center Integrated Threat Intelligence](/azure/security-center/security-center-alerts-service-layer)
 
 **Azure Security Center monitoring**: Yes
 
@@ -99,7 +96,7 @@ Deploy Azure Firewall with a public IP address in the same virtual network as yo
 
 - [How to deploy Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Azure Marketplace](https://market.azure.cn/marketplace/apps/filter?search=Firewall)
+- [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -107,7 +104,7 @@ Deploy Azure Firewall with a public IP address in the same virtual network as yo
 
 ### 1.8: Minimize complexity and administrative overhead of network security rules
 
-**Guidance**: Use virtual network service tags to define network access controls on network security groups or Azure Firewalls associated with your Azure Batch pool(s). You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ApiManagement) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Azure manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
+**Guidance**: Use virtual network service tags to define network access controls on network security groups or Azure Firewalls associated with your Azure Batch pool(s). You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ApiManagement) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change.
 
 - [Understand and using service tags](../virtual-network/service-tags-overview.md)
 
@@ -133,7 +130,7 @@ Use any of the built-in Azure Policy definitions related to tagging, such as "Re
 
 You may use Azure PowerShell or Azure CLI to look-up or perform actions on resources based on their tags.
 
-- [How to create and use tags](https://docs.azure.cn/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 - [How to create a virtual network](../virtual-network/quick-create-portal.md)
 
@@ -150,7 +147,7 @@ detect changes for network resources related to your Azure Batch pools.
 Create alerts within Azure Monitor that will trigger when changes to 
 critical network resources take place.
 
-- [How to view and retrieve Azure Activity Log events](https://docs.azure.cn/azure/azure-monitor/platform/activity-log-view) 
+- [How to view and retrieve Azure Activity Log events](/azure/azure-monitor/platform/activity-log-view) 
 
 - [How to create alerts in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -198,7 +195,7 @@ If required, you maybe connect to your individual pool nodes via Secured Shell (
 
 - [How to collect diagnostic logs from your Azure Batch account](batch-diagnostics.md#batch-diagnostics)
 
-- [How to remotely connect to your Azure Batch pool nodes](https://docs.azure.cn/azure/batch/batch-api-basics#error-handling)
+- [How to remotely connect to your Azure Batch pool nodes](/azure/batch/batch-api-basics#error-handling)
 
 **Azure Security Center monitoring**: Yes
 
@@ -284,7 +281,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Guidance**: When provisioning a Azure Batch pool, you are given the option to create local machine accounts. There are no default passwords to change, however you can specify different passwords for Secured Shell (SSH) and Remote Desktop Protocol (RDP) access. After Azure Batch Pool has been configured, you can generate a random user for individual nodes within the Azure portal, or via Azure Resource Manager API.
 
-- [How to add a user to specific compute node](https://docs.microsoft.com/rest/api/batchservice/computenode/adduser)
+- [How to add a user to specific compute node](/rest/api/batchservice/computenode/adduser)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -322,7 +319,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Guidance**: Use PAWs (privileged access workstations) with multifactor authentication configured to log into and configure your Azure Batch resources.
 
-- [Learn about Privileged Access Workstations](https://docs.azure.cn/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [How to enable multifactor authentication in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -334,7 +331,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Guidance**: If you have integrated authentication for Azure Batch Applications with Azure Active Directory, use Azure Active Directory security reports for generation of logs and alerts when suspicious or unsafe activity occurs in the environment. Use Azure Security Center to monitor identity and access activity.
 
-- [How to identify Azure AD users flagged for risky activity](https://docs.azure.cn/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [How to identify Azure AD users flagged for risky activity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
 - [How to monitor users identity and access activity in Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -388,7 +385,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Guidance**: Use Azure Active Directory Risk Detections and Identity Protection feature to configure automated responses to detected suspicious actions related to user identities. Additionally, you can ingest data into Azure Sentinel for further investigation.
 
-- [How to view Azure AD risky sign-ins](https://docs.azure.cn/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [How to view Azure AD risky sign-ins](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -398,7 +395,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Responsibility**: Customer
 
-### 3.13: Provide Azure with access to relevant customer data during support scenarios  
+### 3.13: Provide Microsoft with access to relevant customer data during support scenarios  
 
 **Guidance**: Not available; Customer Lockbox not yet supported for Azure Batch.
  
@@ -416,7 +413,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 **Guidance**: Use tags to assist in tracking Azure resources that store or process sensitive information.
 
-- [How to create and use tags](https://docs.azure.cn/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -428,7 +425,7 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 - [How to create an Azure Batch Pool within a Virtual Network](batch-virtual-network.md)
 
-- [How to secure Azure Storage Accounts](https://docs.azure.cn/azure/storage/common/storage-security-guide)
+- [How to secure Azure Storage Accounts](/azure/storage/common/storage-security-guide)
 
 **Azure Security Center monitoring**: Yes
 
@@ -440,11 +437,11 @@ In addition, you may use Azure Security Center Identity and Access Management re
 
 Data identification, classification, and loss prevention features are not yet available for Azure Storage or compute resources. Implement third-party solution if required for compliance purposes.
 
-For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
+For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
-- [How to secure Azure Storage Accounts](https://docs.azure.cn/azure/storage/common/storage-security-guide)
+- [How to secure Azure Storage Accounts](/azure/storage/common/storage-security-guide)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -452,7 +449,7 @@ For the underlying platform which is managed by Microsoft, Azure treats all cust
 
 ### 4.4: Encrypt all sensitive information in transit
 
-**Guidance**: Encrypt all sensitive information in transit. Azure Azure resources will negotiate TLS 1.2 by default. Ensure that any clients connecting to your Azure Batch Pools or data stores (Azure Storage Accounts) are able to negotiate TLS 1.2 or greater.
+**Guidance**: Encrypt all sensitive information in transit. Microsoft Azure resources will negotiate TLS 1.2 by default. Ensure that any clients connecting to your Azure Batch Pools or data stores (Azure Storage Accounts) are able to negotiate TLS 1.2 or greater.
 
 Ensure HTTPS is required for accessing the Storage Account containing your Azure Batch data.
 
@@ -468,11 +465,11 @@ Ensure HTTPS is required for accessing the Storage Account containing your Azure
 
 Data identification, classification, and loss prevention features are not yet available for Azure Storage or compute resources. Implement third-party solution if required for compliance purposes.
 
-For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
+For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
-- [How to secure Azure Storage Accounts](https://docs.azure.cn/azure/storage/common/storage-security-guide)
+- [How to secure Azure Storage Accounts](/azure/storage/common/storage-security-guide)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -494,7 +491,7 @@ For the underlying platform which is managed by Microsoft, Azure treats all cust
 
 **Guidance**: Data identification, classification, and loss prevention features are not yet available for Azure Storage or compute resources. Implement third-party solution if required for compliance purposes.
 
-For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
+For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -504,13 +501,13 @@ For the underlying platform which is managed by Microsoft, Azure treats all cust
 
 ### 4.8: Encrypt sensitive information at rest
 
-**Guidance**: For storage accounts associated with your Azure Batch account, it is recommended to allow Azure to manage encryption keys, however, you have the option to manage your own keys if required.
+**Guidance**: For storage accounts associated with your Azure Batch account, it is recommended to allow Microsoft to manage encryption keys, however, you have the option to manage your own keys if required.
 
 Azure disk encryption can be used to help protect and safeguard your data to meet organizational security and compliance commitments. All managed disks, snapshots, images, and data written to existing disks are automatically encrypted-at-rest with platform-managed keys.
 
-- [How to manage encryption keys for Azure Storage Accounts](https://docs.azure.cn/azure/storage/common/storage-encryption-keys-portal)
+- [How to manage encryption keys for Azure Storage Accounts](/azure/storage/common/storage-encryption-keys-portal)
 
-- [How to configure customer-managed encryption keys](https://docs.azure.cn/azure/storage/common/storage-encryption-keys-portal)
+- [How to configure customer-managed encryption keys](/azure/storage/common/storage-encryption-keys-portal)
 
 - [How to create a pool with disk encryption enabled](disk-encryption.md)
 
@@ -548,7 +545,7 @@ Optionally, if you have a Rapid7, Qualys, or any other vulnerability management 
 
 ### 5.2: Deploy automated operating system patch management solution
 
-**Guidance**: Azure to maintain and update base Azure Batch Pool node images. Ensure Azure Batch Pool nodes' operating system remains patched for the duration of the cluster lifetime which may require enabling automatic updates, monitoring the nodes, or performing periodic reboots.
+**Guidance**: Microsoft to maintain and update base Azure Batch Pool node images. Ensure Azure Batch Pool nodes' operating system remains patched for the duration of the cluster lifetime which may require enabling automatic updates, monitoring the nodes, or performing periodic reboots.
 
 **Azure Security Center monitoring**: Yes
 
@@ -602,7 +599,7 @@ Although classic Azure resources may be discovered via Azure Resource Graph Expl
 
 **Guidance**: Apply tags to Azure resources giving metadata to logically organize them into a taxonomy.
 
-- [How to create and use tags](https://docs.azure.cn/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -612,11 +609,11 @@ Although classic Azure resources may be discovered via Azure Resource Graph Expl
 
 **Guidance**: Use tagging, management groups, and separate subscriptions, where appropriate, to organize and track assets. Reconcile inventory on a regular basis and ensure unauthorized resources are deleted from the subscription in a timely manner.
 
-- [How to create additional Azure subscriptions](https://docs.azure.cn/azure/billing/billing-create-subscription)
+- [How to create additional Azure subscriptions](/azure/billing/billing-create-subscription)
 
-- [How to create Management Groups](https://docs.azure.cn/azure/governance/management-groups/create)
+- [How to create Management Groups](/azure/governance/management-groups/create)
 
-- [How to create and use Tags](https://docs.azure.cn/azure/azure-resource-manager/resource-group-using-tags)
+- [How to create and use Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -695,7 +692,7 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "21Vianet Azure Management" App.
+**Guidance**: Use Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "Microsoft Azure Management" App.
 
 - [How to configure Conditional Access to block access to Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -859,7 +856,7 @@ Use Azure Resource Graph to query/discover resources within your subscription(s)
 
 **Guidance**: Microsoft Antimalware is enabled on the underlying host that supports Azure services (for example, Azure Batch), however it does not run on customer content.
 
-Pre-scan any files being uploaded to non-compute Azure resources, such as App Service, Data Lake Storage, Blob Storage, etc. Azure cannot access customer data in these instances.
+Pre-scan any files being uploaded to non-compute Azure resources, such as App Service, Data Lake Storage, Blob Storage, etc. Microsoft cannot access customer data in these instances.
 
 - [Understand Microsoft Antimalware for Azure Cloud Services and Virtual Machines](../security/fundamentals/antimalware.md)
 
@@ -917,7 +914,7 @@ Pre-scan any files being uploaded to non-compute Azure resources, such as App Se
 
 **Guidance**: If Azure Key Vault is being used to hold any keys related to Azure Batch Pool Storage Accounts, enable Soft-Delete in Azure Key Vault to protect keys against accidental or malicious deletion.
 
-- [How to enable Soft Delete in Azure Key Vault](https://docs.azure.cn/azure/key-vault/key-vault-soft-delete-powershell)
+- [How to enable Soft Delete in Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
 
 **Azure Security Center monitoring**: Yes
 
@@ -957,7 +954,7 @@ Pre-scan any files being uploaded to non-compute Azure resources, such as App Se
 
 ### 10.4: Provide security incident contact details and configure alert notifications for security incidents
 
-**Guidance**: Security incident contact information will be used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that the your data has been accessed by an unlawful or unauthorized party.
+**Guidance**: Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that the your data has been accessed by an unlawful or unauthorized party.
 
 - [How to set the Azure Security Center Security Contact](../security-center/security-center-provide-security-contact-details.md)
 
@@ -993,9 +990,9 @@ Pre-scan any files being uploaded to non-compute Azure resources, such as App Se
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: - [Please follow the Azure Rules of Engagement to ensure your Penetration Tests are not in violation of Azure policies](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
+**Guidance**: - [Please follow the Microsoft Rules of Engagement to ensure your Penetration Tests are not in violation of Microsoft policies](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
 
-You can find more information on Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Azure managed cloud infrastructure, services and applications, below: 
+You can find more information on Microsoft’s strategy and execution of Red Teaming and live site penetration testing against Microsoft managed cloud infrastructure, services and applications, below: 
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
@@ -1005,10 +1002,5 @@ You can find more information on Microsoft’s strategy and execution of Red Tea
 
 ## Next steps
 
-- See the [Azure Security Benchmark V2 overview](https://docs.azure.cn/azure/security/benchmarks/overview)
-- Learn more about [Azure security baselines](https://docs.azure.cn/azure/security/benchmarks/security-baselines-overview)
-
-
-
-<!-- Update_Description: new article about security baseline -->
-<!--NEW.date: 12/21/2020-->
+- See the [Azure Security Benchmark V2 overview](/azure/security/benchmarks/overview)
+- Learn more about [Azure security baselines](/azure/security/benchmarks/security-baselines-overview)

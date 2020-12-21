@@ -5,11 +5,7 @@ tags: optional
 
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 03/04/2016
 ms.custom: seodec18
 
 ---
@@ -61,7 +57,7 @@ You configure Local Cache by using a combination of reserved app settings. You c
 You enable Local Cache on a per-web-app basis by using this app setting:
 `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-:::image type="content" source="media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png" alt-text="Azure portal app settings: Local Cache":::
+![Azure portal app settings: Local Cache](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
 ### Configure Local Cache by using Azure Resource Manager
 <a name="Configure-Local-Cache-ARM"></a>
@@ -124,8 +120,3 @@ As part of the step that copies the storage content, any folder that is named re
 
 ### How to flush the local cache logs after a site management operation?
 To flush the local cache logs, stop and restart the app. This action clears the old cache. 
-
-
-
-<!-- Update_Description: new article about overview local cache -->
-<!--NEW.date: 12/21/2020-->

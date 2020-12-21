@@ -1,17 +1,13 @@
 ---
-title: Azure Service Bus Subscription Rule SQL Filter syntax | Azure Docs
+title: Azure Service Bus Subscription Rule SQL Filter syntax | Microsoft Docs
 description: This article provides details about SQL filter grammar. A SQL filter supports a subset of the SQL-92 standard.  
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/24/2020
 ---
 
 # Subscription Rule SQL Filter Syntax
 
-A *SQL filter* is one of the available filter types for Service Bus topic subscriptions. It is a text expression that leans on a subset of the SQL-92 standard. Filter expressions are used with the `sqlExpression` element of the 'sqlFilter' property of a Service Bus `Rule` in an [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md), or the Azure CLI `az servicebus topic subscription rule create` command's [`--filter-sql-expression`](https://docs.azure.cn/cli/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) argument, and several SDK functions that allow managing subscription rules.
+A *SQL filter* is one of the available filter types for Service Bus topic subscriptions. It is a text expression that leans on a subset of the SQL-92 standard. Filter expressions are used with the `sqlExpression` element of the 'sqlFilter' property of a Service Bus `Rule` in an [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md), or the Azure CLI `az servicebus topic subscription rule create` command's [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) argument, and several SDK functions that allow managing subscription rules.
 
 Service Bus Premium also supports the [JMS SQL message selector syntax](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) through the JMS 2.0 API.
 
@@ -49,7 +45,7 @@ Service Bus Premium also supports the [JMS SQL message selector syntax](https://
   
 ## Arguments  
   
-- `<scope>` is an optional string indicating the scope of the `<property_name>`. Valid values are `sys` or `user`. The `sys` value indicates system scope where `<property_name>` is a public property name of the [BrokeredMessage class](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` indicates user scope where `<property_name>` is a key of the [BrokeredMessage class](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) dictionary. `user` scope is the default scope if `<scope>` isn't specified.  
+-   `<scope>` is an optional string indicating the scope of the `<property_name>`. Valid values are `sys` or `user`. The `sys` value indicates system scope where `<property_name>` is a public property name of the [BrokeredMessage class](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` indicates user scope where `<property_name>` is a key of the [BrokeredMessage class](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) dictionary. `user` scope is the default scope if `<scope>` isn't specified.  
   
 ## Remarks
 
@@ -108,9 +104,9 @@ A `<regular_identifier>` can't be a reserved keyword.
   
 `<pattern>` must be an expression that is evaluated as a string. It's used as a pattern for the LIKE operator.      It can contain the following wildcard characters:  
   
-- `%`:  Any string of zero or more characters.  
+-   `%`:  Any string of zero or more characters.  
   
-- `_`: Any single character.  
+-   `_`: Any single character.  
   
 ## escape_char  
   
@@ -134,7 +130,7 @@ A `<regular_identifier>` can't be a reserved keyword.
   
 ### Arguments  
   
-- `<integer_constant>` is a string of numbers that aren't enclosed in quotation marks and don't contain decimal points. The values are stored as `System.Int64` internally, and follow the same range.  
+-   `<integer_constant>` is a string of numbers that aren't enclosed in quotation marks and don't contain decimal points. The values are stored as `System.Int64` internally, and follow the same range.  
   
      Here are examples of long constants:  
   
@@ -143,7 +139,7 @@ A `<regular_identifier>` can't be a reserved keyword.
     2  
     ```  
   
-- `<decimal_constant>` is a string of numbers that aren't enclosed in quotation marks, and contain a decimal point. The values are stored as `System.Double` internally, and follow the same range/precision.  
+-   `<decimal_constant>` is a string of numbers that aren't enclosed in quotation marks, and contain a decimal point. The values are stored as `System.Double` internally, and follow the same range/precision.  
   
      In a future version, this number might be stored in a different data type to support exact number semantics, so you shouldn't rely on the fact the underlying data type is `System.Double` for `<decimal_constant>`.  
   
@@ -154,7 +150,7 @@ A `<regular_identifier>` can't be a reserved keyword.
     2.0  
     ```  
   
-- `<approximate_number_constant>` is a number written in scientific notation. The values are stored as `System.Double` internally, and follow the same range/precision. The following are examples of approximate number constants:  
+-   `<approximate_number_constant>` is a number written in scientific notation. The values are stored as `System.Double` internally, and follow the same range/precision. The following are examples of approximate number constants:  
   
     ```  
     101.5E5  
@@ -198,21 +194,21 @@ The `property(name)` function returns the value of the property referenced by `n
   
 ## Considerations
   
-Consider the following [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter) semantics:  
+Consider the following [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) semantics:  
   
-- Property names are case-insensitive.  
+-   Property names are case-insensitive.  
   
-- Operators follow C# implicit conversion semantics whenever possible.  
+-   Operators follow C# implicit conversion semantics whenever possible.  
   
-- System properties are public properties exposed in [BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) instances.  
+-   System properties are public properties exposed in [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) instances.  
   
 	Consider the following `IS [NOT] NULL` semantics:  
   
-	- `property IS NULL` is evaluated as `true` if either the property doesn't exist or the property's value is `null`.  
+	-   `property IS NULL` is evaluated as `true` if either the property doesn't exist or the property's value is `null`.  
   
 ### Property evaluation semantics  
   
-- An attempt to evaluate a non-existent system property throws a [FilterException](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.filterexception) exception.  
+- An attempt to evaluate a non-existent system property throws a [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) exception.  
   
 - A property that doesn't exist is internally evaluated as **unknown**.  
   
@@ -264,9 +260,9 @@ Consider the following [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.se
   
 ### Operator binding semantics
   
-- Comparison operators such as `>`, `>=`, `<`, `<=`, `!=`, and `=` follow the same semantics as the C# operator binding in data type promotions and implicit conversions.  
+-   Comparison operators such as `>`, `>=`, `<`, `<=`, `!=`, and `=` follow the same semantics as the C# operator binding in data type promotions and implicit conversions.  
   
-- Arithmetic operators such as `+`, `-`, `*`, `/`, and `%` follow the same semantics as the C# operator binding in data type promotions and implicit conversions.
+-   Arithmetic operators such as `+`, `-`, `*`, `/`, and `%` follow the same semantics as the C# operator binding in data type promotions and implicit conversions.
 
 
 ## Examples
@@ -322,13 +318,9 @@ For a C# sample, see [Topic Filters sample on GitHub](https://github.com/Azure/a
 
 ## Next steps
 
-- [SQLFilter class (.NET Framework)](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
-- [SQLFilter class (.NET Standard)](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SqlFilter class (Java)](https://docs.azure.cn/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
-- [SqlRuleFilter (JavaScript)](https://docs.azure.cn/javascript/api/@azure/service-bus/sqlrulefilter)
-- [az servicebus topic subscription rule](https://docs.azure.cn/cli/servicebus/topic/subscription/rule#az-servicebus-topic-subscription-rule)
-- [New-AzServiceBusRule](https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule)
-
-
-<!-- Update_Description: new article about service bus messaging sql filter -->
-<!--NEW.date: 12/21/2020-->
+- [SQLFilter class (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter class (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
+- [SqlFilter class (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

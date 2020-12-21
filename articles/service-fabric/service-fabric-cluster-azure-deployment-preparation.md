@@ -3,11 +3,7 @@ title: Plan an Azure Service Fabric cluster deployment
 description: Learn about planning and preparing for a production Service Fabric cluster deployment to Azure.
 
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 03/20/2019
 ---
 # Plan and prepare for a cluster deployment
 
@@ -122,7 +118,3 @@ Is your application and cluster ready to take production traffic? Before deployi
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
 [durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
-
-
-<!-- Update_Description: new article about service fabric cluster azure deployment preparation -->
-<!--NEW.date: 12/21/2020-->

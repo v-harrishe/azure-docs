@@ -1,13 +1,9 @@
 ---
-title: Get started with Azure Service Bus topics and subscriptions | Azure Docs
+title: Get started with Azure Service Bus topics and subscriptions | Microsoft Docs
 description: Write a C# .NET Core console application that uses Service Bus messaging topics and subscriptions.
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/02/2020
 ms.custom: devx-track-csharp
 ---
 
@@ -22,7 +18,7 @@ This tutorial covers the following steps:
 
 ## Prerequisites
 
-1. An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [Visual Studio or MSDN subscriber benefits](https://www.azure.cn/pricing/1rmb-trial-full).
+1. An Azure subscription. To complete this tutorial, you need an Azure account. You can activate your [Visual Studio or MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) or sign-up for a [free account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Follow steps in the [Quickstart: Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md) to do the following tasks:
     1. Create a Service Bus **namespace**.
     2. Get the **connection string**.
@@ -377,9 +373,4 @@ Check out the Service Bus [GitHub repository with samples](https://github.com/Az
 [createtopic3]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic3.png
 [createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
-[azure-portal]: https://portal.azure.cn
-
-
-
-<!-- Update_Description: new article about service bus dotnet how to use topics subscriptions legacy -->
-<!--NEW.date: 12/21/2020-->
+[azure-portal]: https://portal.azure.com

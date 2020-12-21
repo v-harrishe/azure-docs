@@ -1,16 +1,12 @@
 ---
 title: Understand feature management using Azure App Configuration
 description: Turn features on and off using Azure App Configuration 
-
-
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-dotnet
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 02/20/2020
 ---
 
 # Feature management overview
@@ -84,8 +80,3 @@ Azure App Configuration provides a centralized repository for feature flags. You
 
 > [!div class="nextstepaction"]
 > [Add feature flags to an ASP.NET Core web app](./quickstart-feature-flag-aspnet-core.md)  
-
-
-
-<!-- Update_Description: new article about concept feature management -->
-<!--NEW.date: 12/21/2020-->

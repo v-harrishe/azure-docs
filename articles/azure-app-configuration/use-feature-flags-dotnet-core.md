@@ -1,9 +1,9 @@
 ---
-title: Tutorial for using feature flags in a .NET Core app | Azure Docs
+title: Tutorial for using feature flags in a .NET Core app | Microsoft Docs
 description: In this tutorial, you learn how to implement feature flags in .NET Core apps.
 services: azure-app-configuration
 documentationcenter: ''
-
+author: AlexandraKemperMS
 editor: ''
 
 ms.assetid: 
@@ -11,11 +11,8 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/17/2020
+ms.author: alkemper
 ms.custom: "devx-track-csharp, mvc"
 
 #Customer intent: I want to control feature availability in my app by using the .NET Core Feature Manager library.
@@ -27,7 +24,7 @@ The .NET Core Feature Management libraries provide idiomatic support for impleme
 
 The Feature Management libraries also manage feature flag lifecycles behind the scenes. For example, the libraries refresh and cache flag states, or guarantee a flag state to be immutable during a request call. In addition, the ASP.NET Core library offers out-of-the-box integrations, including MVC controller actions, views, routes, and middleware.
 
-The [Add feature flags to an ASP.NET Core app Quickstart](./quickstart-feature-flag-aspnet-core.md) shows several ways to add feature flags in an ASP.NET Core application. This tutorial explains these methods in more detail. For a complete reference, see the [ASP.NET Core feature management documentation](https://docs.azure.cn/dotnet/api/microsoft.featuremanagement).
+The [Add feature flags to an ASP.NET Core app Quickstart](./quickstart-feature-flag-aspnet-core.md) shows several ways to add feature flags in an ASP.NET Core application. This tutorial explains these methods in more detail. For a complete reference, see the [ASP.NET Core feature management documentation](/dotnet/api/microsoft.featuremanagement).
 
 In this tutorial, you will learn how to:
 
@@ -302,9 +299,5 @@ app.UseForFeature(featureName, appBuilder => {
 In this tutorial, you learned how to implement feature flags in your ASP.NET Core application by using the `Microsoft.FeatureManagement` libraries. For more information about feature management support in ASP.NET Core and App Configuration, see the following resources:
 
 * [ASP.NET Core feature flag sample code](./quickstart-feature-flag-aspnet-core.md)
-* [Microsoft.FeatureManagement documentation](https://docs.azure.cn/dotnet/api/microsoft.featuremanagement)
+* [Microsoft.FeatureManagement documentation](/dotnet/api/microsoft.featuremanagement)
 * [Manage feature flags](./manage-feature-flags.md)
-
-
-<!-- Update_Description: new article about use feature flags dotnet core -->
-<!--NEW.date: 12/21/2020-->

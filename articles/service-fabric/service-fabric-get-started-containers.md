@@ -3,11 +3,7 @@ title: Create an Azure Service Fabric container application
 description: Create your first Windows container application on Azure Service Fabric. Build a Docker image with a Python application, push the image to a container registry, then build and deploy the container to Azure Service Fabric.
 
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 01/25/2019
 ms.custom: devx-track-python
 ---
 
@@ -30,7 +26,7 @@ Running an existing application in a Windows container on a Service Fabric clust
 * A development computer running:
   * Visual Studio 2015 or Visual Studio 2019.
   * [Service Fabric SDK and tools](service-fabric-get-started.md).
-  * Docker for Windows. [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). After installing and starting Docker, right-click on the tray icon and select **Switch to Windows containers**. This step is required to run Docker images based on Windows.
+  *  Docker for Windows. [Get Docker CE for Windows (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). After installing and starting Docker, right-click on the tray icon and select **Switch to Windows containers**. This step is required to run Docker images based on Windows.
 
 * A Windows cluster with three or more nodes running on Windows Server with Containers. 
 
@@ -103,7 +99,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-<a name="Build-Containers"></a>
+<a id="Build-Containers"></a>
 
 ## Login to Docker and build the image
 
@@ -165,7 +161,7 @@ Delete the container from your development machine:
 docker rm my-web-site
 ```
 
-<a name="Push-Containers"></a>
+<a id="Push-Containers"></a>
 ## Push the image to the container registry
 
 After you verify that the container runs on your development machine, push the image to your registry in Azure Container Registry.
@@ -175,19 +171,19 @@ Run ``docker login`` to sign in to your container registry with your [registry c
 The following example passes the ID and password of an Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md). For example, you might have assigned a service principal to your registry for an automation scenario. Or, you could sign in using your registry username and password.
 
 ```
-docker login myregistry.azurecr.cn -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
+docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
 The following command creates a tag, or alias, of the image, with a fully qualified path to your registry. This example places the image in the ```samples``` namespace to avoid clutter in the root of the registry.
 
 ```
-docker tag helloworldapp myregistry.azurecr.cn/samples/helloworldapp
+docker tag helloworldapp myregistry.azurecr.io/samples/helloworldapp
 ```
 
 Push the image to your container registry:
 
 ```
-docker push myregistry.azurecr.cn/samples/helloworldapp
+docker push myregistry.azurecr.io/samples/helloworldapp
 ```
 
 ## Create the containerized service in Visual Studio
@@ -196,7 +192,7 @@ The Service Fabric SDK and tools provide a service template to help you create a
 1. Start Visual Studio. Select **File** > **New** > **Project**.
 2. Select **Service Fabric application**, name it "MyFirstContainer", and click **OK**.
 3. Select **Container** from the list of **service templates**.
-4. In **Image Name** enter "myregistry.azurecr.cn/samples/helloworldapp", the image you pushed to your container repository.
+4. In **Image Name** enter "myregistry.azurecr.io/samples/helloworldapp", the image you pushed to your container repository.
 5. Give your service a name, and click **OK**.
 
 ## Configure communication
@@ -214,7 +210,7 @@ The containerized service needs an endpoint for communication. Add an `Endpoint`
 
 By defining an endpoint, Service Fabric publishes the endpoint to the Naming service. Other services running in the cluster can resolve this container. You can also perform container-to-container communication using the [reverse proxy](service-fabric-reverseproxy.md). Communication is performed by providing the reverse proxy HTTP listening port and the name of the services that you want to communicate with as environment variables.
 
-The service is listening on a specific port (8081 in this example). When the application deploys to a cluster in Azure, both the cluster and the application run behind an Azure load balancer. The application port must be open in the Azure load balancer so that inbound traffic can get through to the service.  You can open this port in the Azure load balancer using a [PowerShell script](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) or in the [Azure portal](https://portal.azure.cn).
+The service is listening on a specific port (8081 in this example). When the application deploys to a cluster in Azure, both the cluster and the application run behind an Azure load balancer. The application port must be open in the Azure load balancer so that inbound traffic can get through to the service.  You can open this port in the Azure load balancer using a [PowerShell script](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) or in the [Azure portal](https://portal.azure.com).
 
 ## Configure and set environment variables
 Environment variables can be specified for each code package in the service manifest. This feature is available for all services irrespective of whether they are deployed as containers or processes or guest executables. You can override environment variable values in the application manifest or specify them during deployment as application parameters.
@@ -299,7 +295,7 @@ The **HEALTHCHECK** instruction pointing to the actual check that is performed f
 
 ![HealthCheckUnhealthyDsp][5]
 
-You can configure **HEALTHCHECK** behavior for each container by specifying **HealthConfig** options as part of **ContainerHostPolicies** in ApplicationManifest.
+You can configure **HEALTHCHECK**  behavior for each container by specifying **HealthConfig** options as part of **ContainerHostPolicies** in ApplicationManifest.
 
 ```xml
 <ServiceManifestImport>
@@ -324,17 +320,17 @@ If you want to the disable the **HEALTHCHECK** integration for the entire Servic
 ## Deploy the container application
 Save all your changes and build the application. To publish your application, right-click on **MyFirstContainer** in Solution Explorer and select **Publish**.
 
-In **Connection Endpoint**, enter the management endpoint for the cluster. For example, `containercluster.chinanorth2.cloudapp.chinacloudapi.cn:19000`. You can find the client connection endpoint in the Overview tab for your cluster in the [Azure portal](https://portal.azure.cn).
+In **Connection Endpoint**, enter the management endpoint for the cluster. For example, `containercluster.westus2.cloudapp.azure.com:19000`. You can find the client connection endpoint in the Overview tab for your cluster in the [Azure portal](https://portal.azure.com).
 
 Click **Publish**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) is a web-based tool for inspecting and managing applications and nodes in a Service Fabric cluster. Open a browser and navigate to `http://containercluster.chinanorth2.cloudapp.chinacloudapi.cn:19080/Explorer/` and follow the application deployment. The application deploys but is in an error state until the image is downloaded on the cluster nodes (which can take some time, depending on the image size):
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) is a web-based tool for inspecting and managing applications and nodes in a Service Fabric cluster. Open a browser and navigate to `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` and follow the application deployment. The application deploys but is in an error state until the image is downloaded on the cluster nodes (which can take some time, depending on the image size):
 ![Error][1]
 
 The application is ready when it's in ```Ready``` state:
 ![Ready][2]
 
-Open a browser and navigate to `http://containercluster.chinanorth2.cloudapp.chinacloudapi.cn:8081`. You should see the heading "Hello World!" display in the browser.
+Open a browser and navigate to `http://containercluster.westus2.cloudapp.azure.com:8081`. You should see the heading "Hello World!" display in the browser.
 
 ## Clean up
 
@@ -344,7 +340,7 @@ After you push the image to the container registry, you can delete the local ima
 
 ```
 docker rmi helloworldapp
-docker rmi myregistry.azurecr.cn/samples/helloworldapp
+docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
 ## Windows Server container OS and host OS compatibility
@@ -355,7 +351,7 @@ Windows Server containers are not compatible across all versions of a host OS. F
 - Windows Server containers built using Windows Server 2016 work in Hyper-V isolation mode only on a host running Windows Server version 1709. 
 - With Windows Server containers built using Windows Server 2016, it might be necessary to ensure that the revision of the container OS and host OS are the same when running in process isolation mode on a host running Windows Server 2016.
  
-To learn more, see [Windows Container Version Compatibility](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+To learn more, see [Windows Container Version Compatibility](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Consider the compatibility of the host OS and your container OS when building and deploying containers to your Service Fabric cluster. For example:
 
@@ -380,9 +376,9 @@ Windows Server containers may not be compatible across different versions of the
 ```xml
       <ContainerHostPolicies> 
          <ImageOverrides> 
-	       <Image Name="myregistry.azurecr.cn/samples/helloworldappDefault" /> 
-               <Image Name="myregistry.azurecr.cn/samples/helloworldapp1701" Os="14393" /> 
-               <Image Name="myregistry.azurecr.cn/samples/helloworldapp1709" Os="16299" /> 
+	       <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
       </ContainerHostPolicies> 
 ```
@@ -390,7 +386,7 @@ The build version for WIndows Server 2016 is 14393, and the build version for Wi
 
 ```xml
 <ContainerHost>
-    <ImageName>myregistry.azurecr.cn/samples/helloworldapp</ImageName> 
+    <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName> 
 </ContainerHost>
 ```
 
@@ -400,7 +396,7 @@ The build version for WIndows Server 2016 is 14393, and the build version for Wi
 
 If the underlying OS on the VM is build 16299 (version 1709), Service Fabric picks the container image corresponding to that Windows Server version. If an untagged container image is also provided alongside tagged container images in the application manifest, then Service Fabric treats the untagged image as one that works across versions. Tag the container images explicitly to avoid issues during upgrades.
 
-The untagged container image will work as an override for the one provide in the ServiceManifest. So image "myregistry.azurecr.cn/samples/helloworldappDefault" will override the ImageName "myregistry.azurecr.cn/samples/helloworldapp" in the ServiceManifest.
+The untagged container image will work as an override for the one provide in the ServiceManifest. So image "myregistry.azurecr.io/samples/helloworldappDefault" will override the ImageName "myregistry.azurecr.io/samples/helloworldapp" in the ServiceManifest.
 
 ## Complete example Service Fabric application and service manifests
 Here are the complete service and application manifests used in this article.
@@ -416,22 +412,17 @@ Here are the complete service and application manifests used in this article.
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->
-
     <StatelessServiceType ServiceTypeName="Guest1Type" UseImplicitHost="true" />
   </ServiceTypes>
 
   <!-- Code package is your service executable. -->
-
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
       <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
-
       <ContainerHost>
-        <ImageName>myregistry.azurecr.cn/samples/helloworldapp</ImageName>
+        <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
         <!-- Pass comma delimited commands to your container: dotnet, myproc.dll, 5" -->
-
         <!--Commands> dotnet, myproc.dll, 5 </Commands-->
-
         <Commands></Commands>
       </ContainerHost>
     </EntryPoint>
@@ -445,7 +436,6 @@ Here are the complete service and application manifests used in this article.
 
   <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
-
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
@@ -453,7 +443,6 @@ Here are the complete service and application manifests used in this article.
       <!-- This endpoint is used by the communication listener to obtain the port on which to
            listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
-
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
     </Endpoints>
   </Resources>
@@ -473,7 +462,6 @@ Here are the complete service and application manifests used in this article.
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
        should match the Name and Version attributes of the ServiceManifest element defined in the
        ServiceManifest.xml file. -->
-
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
     <EnvironmentOverrides CodePackageRef="FrontendService.Code">
@@ -499,7 +487,6 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
          ServiceFabric PowerShell module.
 
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
-
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">
         <SingletonPartition />
@@ -588,7 +575,7 @@ To assist with diagnosing container startup failures, Service Fabric (version 6.
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-The setting **ContainersRetentionCount** specifies the number of containers to retain when they fail. If a negative value is specified, all failing containers will be retained. When the **ContainersRetentionCount** attribute is not specified, no containers will be retained. The attribute **ContainersRetentionCount** also supports Application Parameters so users can specify different values for test and production clusters. Use placement constraints to target the container service to a particular node when using this feature to prevent the container service from moving to other nodes. 
+The setting **ContainersRetentionCount** specifies the number of containers to retain when they fail. If a negative value is specified, all failing containers will be retained. When the **ContainersRetentionCount**  attribute is not specified, no containers will be retained. The attribute **ContainersRetentionCount** also supports Application Parameters so users can specify different values for test and production clusters. Use placement constraints to target the container service to a particular node when using this feature to prevent the container service from moving to other nodes. 
 Any containers retained using this feature must be manually removed.
 
 ## Start the Docker daemon with custom arguments
@@ -622,8 +609,3 @@ With the 6.2 version of the Service Fabric runtime and greater, you can start th
 [3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
 [4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
 [5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png
-
-
-
-<!-- Update_Description: new article about service fabric get started containers -->
-<!--NEW.date: 12/21/2020-->

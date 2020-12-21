@@ -1,19 +1,15 @@
 ---
-title: .NET multi-tier application using Azure Service Bus | Azure Docs
+title: .NET multi-tier application using Azure Service Bus | Microsoft Docs
 description: A .NET tutorial that helps you develop a multi-tier app in Azure that uses Service Bus queues to communicate between tiers.
 ms.devlang: dotnet
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ---
 
 # .NET multi-tier application using Azure Service Bus queues
 
-Developing for Azure Azure is easy using Visual Studio and the free Azure SDK for .NET. This tutorial walks you through the steps to create an application that uses multiple Azure resources running in your local environment.
+Developing for Microsoft Azure is easy using Visual Studio and the free Azure SDK for .NET. This tutorial walks you through the steps to create an application that uses multiple Azure resources running in your local environment.
 
 You will learn the following:
 
@@ -115,11 +111,11 @@ queue and displays status information about the queue.
 3. From the **Roles** pane, double-click **ASP.NET Web
    Role**.
    
-   ![Screenshot of the New Azure Azure Cloud Service dialog box with ASP.NET Web Role selected and WebRole1 also selected.][10]
+   ![Screenshot of the New Microsoft Azure Cloud Service dialog box with ASP.NET Web Role selected and WebRole1 also selected.][10]
 4. Hover over **WebRole1** under **Azure Cloud Service solution**, click
    the pencil icon, and rename the web role to **FrontendWebRole**. Then click **OK**. (Make sure you enter "Frontend" with a lower-case 'e,' not "FrontEnd".)
    
-   ![Screenshot of the New Azure Azure Cloud Service dialog box with the solution renamed to FrontendWebRole.][11]
+   ![Screenshot of the New Microsoft Azure Cloud Service dialog box with the solution renamed to FrontendWebRole.][11]
 5. From the **New ASP.NET Project** dialog box, in the **Select a template** list, click **MVC**.
    
    ![Screenshotof the New ASP.NET Project dialog box with MVC highlighted and outlined in red and the Change Authentication option outlined in red.][12]
@@ -425,7 +421,7 @@ submissions. This example uses the **Worker Role with Service Bus Queue** Visual
     
     ![Screenshot of what appears when you click the emulator icon. Show Compute Emulator UI is in the list of options.][19]
     
-    ![Screenshot of the Azure Azure Compute Emulator (Express) dialog box.][20]
+    ![Screenshot of the Microsoft Azure Compute Emulator (Express) dialog box.][20]
 
 ## Next steps
 To learn more about Service Bus, see the following resources:  
@@ -458,11 +454,6 @@ To learn more about multi-tier scenarios, see:
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbacom]: https://www.azure.cn/home/features/service-bus/  
+[sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
-
-
-
-<!-- Update_Description: new article about service bus dotnet multi tier app using service bus queues -->
-<!--NEW.date: 12/21/2020-->

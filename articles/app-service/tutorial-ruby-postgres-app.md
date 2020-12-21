@@ -1,13 +1,9 @@
 ---
-title: Tutorial - Linux Ruby app with Postgres 
+title: 'Tutorial: Linux Ruby app with Postgres' 
 description: Learn how to get a Linux Ruby app working in Azure App Service, with connection to a PostgreSQL database in Azure. Rails is used in the tutorial.
 ms.devlang: ruby
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ---
 
@@ -100,7 +96,7 @@ rails server
 
 Navigate to `http://localhost:3000` in a browser. Add a few tasks in the page.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/postgres-connect-success.png" alt-text="Ruby on Rails connects successfully to Postgres":::
+![Ruby on Rails connects successfully to Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
 To stop the Rails server, type `Ctrl + C` in the terminal.
 
@@ -115,7 +111,7 @@ In this step, you create a Postgres database in [Azure Database for PostgreSQL](
 ## Create Postgres database in Azure
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1. -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 In this section, you create an Azure Database for PostgreSQL server and database. To start, install the `db-up` extension with the following command:
 
@@ -123,10 +119,9 @@ In this section, you create an Azure Database for PostgreSQL server and database
 az extension add --name db-up
 ```
 
-Create the Postgres database in Azure with the [`az postgres up`](https://docs.azure.cn/cli/ext/db-up/postgres#ext_db_up_az_postgres_up) command, as shown in the following example. Replace *\<postgresql-name>* with a *unique* name (the server endpoint is *https://\<postgresql-name>.postgres.database.chinacloudapi.cn*). For *\<admin-username>* and *\<admin-password>*, specify credentials to create an administrator user for this Postgres server.
+Create the Postgres database in Azure with the [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) command, as shown in the following example. Replace *\<postgresql-name>* with a *unique* name (the server endpoint is *https://\<postgresql-name>.postgres.database.azure.com*). For *\<admin-username>* and *\<admin-password>*, specify credentials to create an administrator user for this Postgres server.
 
 <!-- Issue: without --location -->
-
 ```azurecli
 az postgres up --resource-group myResourceGroup --location westeurope --server-name <postgresql-name> --database-name sampledb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
@@ -145,9 +140,8 @@ You can do all the steps separately with other `az postgres` commands and `psql`
 When the command finishes, find the output lines that being with `Ran Database Query:`. They show the database user that's created for you, with the username `root` and password `Sampledb1`. You'll use them later to connect your app to the database.
 
 <!-- not all locations support az postgres up -->
-
 > [!TIP]
-> `--location <location-name>`, can be set to any one of the [Azure regions](https://azure.microsoft.com/global-infrastructure/regions/). You can get the regions available to your subscription with the [`az account list-locations`](https://docs.azure.cn/cli/account#az_account_list_locations) command. For production apps, put your database and your app in the same location.
+> `--location <location-name>`, can be set to any one of the [Azure regions](https://azure.microsoft.com/global-infrastructure/regions/). You can get the regions available to your subscription with the [`az account list-locations`](/cli/azure/account#az-account-list-locations) command. For production apps, put your database and your app in the same location.
 
 ## Connect app to Azure Postgres
 
@@ -175,7 +169,7 @@ Save the changes.
 Back in the local terminal, set the following environment variables:
 
 ```bash
-export DB_HOST=<postgres-server-name>.postgres.database.chinacloudapi.cn
+export DB_HOST=<postgres-server-name>.postgres.database.azure.com
 export DB_DATABASE=sampledb 
 export DB_USERNAME=root@<postgres-server-name>
 export DB_PASSWORD=Sampledb1
@@ -222,7 +216,7 @@ Navigate to `http://localhost:3000`. If the page loads without errors, the Ruby 
 
 Add a few tasks in the page.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png" alt-text="Ruby on Rails connects successfully to Azure Database for PostgreSQL":::
+![Ruby on Rails connects successfully to Azure Database for PostgreSQL](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
 
 To stop the Rails server, type `Ctrl + C` in the terminal.
 
@@ -255,12 +249,12 @@ In this step, you deploy the Postgres-connected Rails application to Azure App S
 
 ### Configure database settings
 
-In App Service, you set environment variables as _app settings_ by using the [`az webapp config appsettings set`](https://docs.azure.cn/cli/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az_webapp_config_appsettings_set) command in the local Shell.
+In App Service, you set environment variables as _app settings_ by using the [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) command in the Cloud Shell.
 
-The following local Shell command configures the app settings `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`. Replace the placeholders _&lt;appname>_ and _&lt;postgres-server-name>_.
+The following Cloud Shell command configures the app settings `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`. Replace the placeholders _&lt;appname>_ and _&lt;postgres-server-name>_.
 
-```azurecli
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.chinacloudapi.cn" DB_DATABASE="sampledb" DB_USERNAME="root@<postgres-server-name>" DB_PASSWORD="Sampledb1"
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="root@<postgres-server-name>" DB_PASSWORD="Sampledb1"
 ```
 
 ### Configure Rails environment variables
@@ -273,9 +267,9 @@ rails secret
 
 Configure the variables required by Rails production environment.
 
-In the following local Shell command, replace the two _&lt;output-of-rails-secret>_ placeholders with the new secret key you generated in the local terminal.
+In the following Cloud Shell command, replace the two _&lt;output-of-rails-secret>_ placeholders with the new secret key you generated in the local terminal.
 
-```azurecli
+```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
@@ -350,7 +344,7 @@ rake db:migrate
 Open the *app/controllers/tasks_controller.rb* file. At the end of the file, find the following line:
 
 ```rb
-params.require(:task).permit( - Description)
+params.require(:task).permit(:Description)
 ```
 
 Modify this line to include the new `Done` parameter.
@@ -366,7 +360,7 @@ Open the *app/views/tasks/_form.html.erb* file, which is the Edit form.
 Find the line `<%=f.error_span(:Description) %>` and insert the following code directly below it:
 
 ```erb
-<%= f.label :Done, :class => control-label col-lg-2' %>
+<%= f.label :Done, :class => 'control-label col-lg-2' %>
 <div class="col-lg-10">
   <%= f.check_box :Done, :class => 'form-control' %>
 </div>
@@ -405,7 +399,7 @@ rails server
 
 To see the task status change, navigate to `http://localhost:3000` and add or edit items.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox.png" alt-text="Added check box to task":::
+![Added check box to task](./media/tutorial-ruby-postgres-app/complete-checkbox.png)
 
 To stop the Rails server, type `Ctrl + C` in the terminal.
 
@@ -427,7 +421,7 @@ git push azure master
 
 Once the `git push` is complete, navigate to the Azure app and test the new functionality.
 
-:::image type="content" source="media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Model and database changes published to Azure":::
+![Model and database changes published to Azure](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
 If you added any tasks, they are retained in the database. Updates to the data schema leave existing data intact.
 
@@ -437,17 +431,17 @@ If you added any tasks, they are retained in the database. Updates to the data s
 
 ## Manage the Azure app
 
-Go to the [Azure portal](https://portal.azure.cn) to manage the app you created.
+Go to the [Azure portal](https://portal.azure.com) to manage the app you created.
 
 From the left menu, click **App Services**, and then click the name of your Azure app.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/access-portal.png" alt-text="Portal navigation to Azure app":::
+![Portal navigation to Azure app](./media/tutorial-php-mysql-app/access-portal.png)
 
 You see your app's Overview page. Here, you can perform basic management tasks like  stop, start, restart, browse, and delete.
 
 The left menu provides pages for configuring your app.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/web-app-blade.png" alt-text="App Service page in Azure portal":::
+![App Service page in Azure portal](./media/tutorial-php-mysql-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -474,8 +468,3 @@ Or, check out other resources:
 
 > [!div class="nextstepaction"]
 > [Configure Ruby app](configure-language-ruby.md)
-
-
-
-<!-- Update_Description: new article about tutorial ruby postgres app -->
-<!--NEW.date: 12/21/2020-->

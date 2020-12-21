@@ -1,22 +1,18 @@
 ---
 title: 'Create an App Service app using an Azure Resource Manager template'
 description: Create your first app to Azure App Service in seconds using an Azure Resource Manager template (ARM template), which is one of many ways to deploy to App Service.
-
-
+author: msangapu-msft
+ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ---
 
 # Quickstart: Create App Service app using an ARM template
 
-Get started with [Azure App Service](overview.md) by deploying a app to the cloud using an Azure Resource Manager template (ARM template) and [Azure CLI](https://docs.azure.cn/cli/get-started-with-azure-cli) in local Shell. Because you use a free App Service tier, you incur no costs to complete this quickstart.
+Get started with [Azure App Service](overview.md) by deploying a app to the cloud using an Azure Resource Manager template (ARM template) and [Azure CLI](/cli/azure/get-started-with-azure-cli) in Cloud Shell. Because you use a free App Service tier, you incur no costs to complete this quickstart.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -24,11 +20,11 @@ If your environment meets the prerequisites and you're familiar with using ARM t
 
 Use the following button to deploy on **Linux**:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Deploy to Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
+[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
 
 Use the following button to deploy on **Windows**:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Deploy to Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
+[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
 
 ## Prerequisites
 
@@ -43,8 +39,8 @@ The template used in this quickstart is from [Azure Quickstart Templates](https:
 
 Two Azure resources are defined in the template:
 
-* [**Microsoft.Web/serverfarms**](https://docs.azure.cn/azure/templates/microsoft.web/serverfarms): create an App Service plan.
-* [**Microsoft.Web/sites**](https://docs.azure.cn/azure/templates/microsoft.web/sites): create an App Service app.
+* [**Microsoft.Web/serverfarms**](/azure/templates/microsoft.web/serverfarms): create an App Service plan.
+* [**Microsoft.Web/sites**](/azure/templates/microsoft.web/sites): create an App Service app.
 
 This template contains several parameters that are predefined for your convenience. See the table below for parameter defaults and their descriptions:
 
@@ -64,8 +60,8 @@ The template used in this quickstart is from [Azure Quickstart Templates](https:
 
 Two Azure resources are defined in the template:
 
-* [**Microsoft.Web/serverfarms**](https://docs.azure.cn/azure/templates/microsoft.web/serverfarms): create an App Service plan.
-* [**Microsoft.Web/sites**](https://docs.azure.cn/azure/templates/microsoft.web/sites): create an App Service app.
+* [**Microsoft.Web/serverfarms**](/azure/templates/microsoft.web/serverfarms): create an App Service plan.
+* [**Microsoft.Web/sites**](/azure/templates/microsoft.web/sites): create an App Service app.
 
 This template contains several parameters that are predefined for your convenience. See the table below for parameter defaults and their descriptions:
 
@@ -89,8 +85,8 @@ The following code creates a resource group, an App Service plan, and a web app.
 ::: zone pivot="platform-windows"
 Run the code below to deploy a .NET framework app on Windows.
 
-```azurecli
-az group create --name myResourceGroup --location "southchinanorth" &&
+```azurecli-interactive
+az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
 --parameters language=".net" helloWorld="true" webAppName="<app-name>" \
 --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-windows/azuredeploy.json"
@@ -98,22 +94,22 @@ az deployment group create --resource-group myResourceGroup \
 ::: zone pivot="platform-linux"
 Run the code below to create a Python app on Linux.
 
-```azurecli
-az group create --name myResourceGroup --location "southchinanorth" &&
+```azurecli-interactive
+az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup --parameters webAppName="<app-name>" linuxFxVersion="PYTHON|3.7" \
 --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-linux/azuredeploy.json"
 ```
 
-To deploy a different language stack, update `linuxFxVersion` with appropriate values. Samples are shown below. To show current versions, run the following command in the local Shell: `az webapp config show --resource-group myResourceGroup --name <app-name> --query linuxFxVersion`
+To deploy a different language stack, update `linuxFxVersion` with appropriate values. Samples are shown below. To show current versions, run the following command in the Cloud Shell: `az webapp config show --resource-group myResourceGroup --name <app-name> --query linuxFxVersion`
 
 | Language    | Example                                              |
 |-------------|------------------------------------------------------|
-| **.NET** | linuxFxVersion="DOTNETCORE&#124;3.0"                 |
-| **PHP** | linuxFxVersion="PHP&#124;7.4"                        |
+| **.NET**    | linuxFxVersion="DOTNETCORE&#124;3.0"                 |
+| **PHP**     | linuxFxVersion="PHP&#124;7.4"                        |
 | **Node.js** | linuxFxVersion="NODE&#124;10.15"                     |
-| **Java** | linuxFxVersion="JAVA&#124;1.8 &#124;TOMCAT&#124;9.0" |
-| **Python** | linuxFxVersion="PYTHON&#124;3.7"                     |
-| **Ruby** | linuxFxVersion="RUBY&#124;2.6"                       |
+| **Java**    | linuxFxVersion="JAVA&#124;1.8 &#124;TOMCAT&#124;9.0" |
+| **Python**  | linuxFxVersion="PYTHON&#124;3.7"                     |
+| **Ruby**    | linuxFxVersion="RUBY&#124;2.6"                       |
 
 ---
 ::: zone-end
@@ -144,12 +140,7 @@ When no longer needed, [delete the resource group](../azure-resource-manager/man
 > [PHP with MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Connect to Azure SQL database with Java](../azure-sql/database/connect-query-java.md?toc=%2fjava%2ftoc.json)
+> [Connect to Azure SQL database with Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Map custom domain](app-service-web-tutorial-custom-domain.md)
-
-
-
-<!-- Update_Description: new article about quickstart arm template -->
-<!--NEW.date: 12/21/2020-->

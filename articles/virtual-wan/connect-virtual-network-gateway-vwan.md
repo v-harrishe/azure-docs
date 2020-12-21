@@ -2,14 +2,11 @@
 title: 'Connect a virtual network gateway to an Azure Virtual WAN'
 description: This article helps you connect an Azure virtual network gateway to an Azure Virtual WAN VPN gateway
 services: virtual-wan
-
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/22/2020
+ms.author: cherylmc
 
 ---
 
@@ -32,34 +29,29 @@ Azure Virtual Network
 
 * Create a virtual network without any virtual network gateways. Verify that none of the subnets of your on-premises networks overlap with the virtual networks that you want to connect to. To create a virtual network in the Azure portal, see the [Quickstart](../virtual-network/quick-create-portal.md).
 
-<a name="vnetgw"></a>
-## 1. Create a VPN Gateway virtual network gateway
+## <a name="vnetgw"></a>1. Create a VPN Gateway virtual network gateway
 
 Create a **VPN Gateway** virtual network gateway in active-active mode for your virtual network. When you create the gateway, you can either use existing public IP addresses for the two instances of the gateway, or you can create new public IPs. You will use these public IPs when setting up the Virtual WAN sites. For more information about active-active VPN gateways and configuration steps, see [Configure active-active VPN gateways](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
 
-<a name="active-active"></a>
-### Active-active mode setting
+### <a name="active-active"></a>Active-active mode setting
 
 On the Virtual network gateway **Configuration** page, enable active-active mode.
 
 ![active-active](./media/connect-virtual-network-gateway-vwan/active.png "active-active")
 
-<a name="BGP"></a>
-### BGP setting
+### <a name="BGP"></a>BGP setting
 
 On the Virtual network gateway **Configuration** page, you can configure the **BGP ASN**. Change the BGP ASN. The BGP ASN cannot be 65515. 65515 will be used by Azure Virtual WAN.
 
 ![Screenshot shows a virtual network gateway Configuration page with Configure BGP ASN selected.](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
-<a name="pip"></a>
-### Public IP addresses
+### <a name="pip"></a>Public IP addresses
 
 When the gateway is created, navigate to the **Properties** page. The properties and configuration settings will be similar to the following example. Notice the two public IP addresses that are used for the gateway.
 
 ![properties](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
 
-<a name="vwansite"></a>
-## 2. Create Virtual WAN VPN sites
+## <a name="vwansite"></a>2. Create Virtual WAN VPN sites
 
 To create Virtual WAN VPN sites, navigate your to your virtual WAN and, under **Connectivity**, select **VPN sites**. In this section, you will create two Virtual WAN VPN sites that correspond to the virtual network gateways you created in the previous section.
 
@@ -81,8 +73,7 @@ To create Virtual WAN VPN sites, navigate your to your virtual WAN and, under **
 5. Repeat the previous steps to create the second site to match with the second instance of the VPN Gateway virtual network gateway. You'll keep the same settings, except using second public IP address and second BGP peer IP address from VPN Gateway configuration.
 6. You now have two sites successfully provisioned and can proceed to the next section to download configuration files.
 
-<a name="downloadconfig"></a>
-## 3. Download the VPN configuration files
+## <a name="downloadconfig"></a>3. Download the VPN configuration files
 
 In this section, you download the VPN configuration file for each of the sites that you created in the previous section.
 
@@ -92,8 +83,7 @@ In this section, you download the VPN configuration file for each of the sites t
 2. Download and open the configuration file.
 3. Repeat these steps for the second site. Once you have both configuration files open, you can proceed to the next section.
 
-<a name="createlocalgateways"></a>
-## 4. Create the local network gateways
+## <a name="createlocalgateways"></a>4. Create the local network gateways
 
 In this section, you create two Azure VPN Gateway local network gateways. The configuration files from the previous step contain the gateway configuration settings. Use these settings to create and configure the Azure VPN Gateway local network gateways.
 
@@ -109,8 +99,7 @@ In this section, you create two Azure VPN Gateway local network gateways. The co
 
    ![download configuration file](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")
 
-<a name="createlocalgateways"></a>
-## 5. Create connections
+## <a name="createlocalgateways"></a>5. Create connections
 
 In this section, you create a connection between the VPN Gateway local network gateways and virtual network gateway. For steps on how to create a VPN Gateway connection, see [Configure a connection](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
 
@@ -130,8 +119,7 @@ In this section, you create a connection between the VPN Gateway local network g
 5. Repeat the preceding steps to create a second connection. For the second connection, select the other local network gateway that you created.
 6. If the connections are over BGP, after you have created your connections, navigate to a connection and select **Configuration**. On the **Configuration** page, for **BGP**, select **Enabled**. Then, click **Save**. Repeat for the second connection.
 
-<a name="test"></a>
-## 6. Test connections
+## <a name="test"></a>6. Test connections
 
 You can test the connectivity by creating two virtual machines, one on the side of the VPN Gateway virtual network gateway, and one in a virtual network for the Virtual WAN, and then ping the two virtual machines.
 
@@ -150,8 +138,3 @@ You can test the connectivity by creating two virtual machines, one on the side 
 
 For steps to configure a custom IPsec policy, see [Configure a custom IPsec policy for Virtual WAN](virtual-wan-custom-ipsec-portal.md).
 For more information about Virtual WAN, see [About Azure Virtual WAN](virtual-wan-about.md) and the [Azure Virtual WAN FAQ](virtual-wan-faq.md).
-
-
-
-<!-- Update_Description: new article about connect virtual network gateway vwan -->
-<!--NEW.date: 12/21/2020-->

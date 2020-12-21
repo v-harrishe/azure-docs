@@ -2,11 +2,8 @@
 title: Node types and virtual machine scale sets 
 description: Learn how Azure Service Fabric node types relate to virtual machine scale sets and how to remotely connect to a scale set instance or cluster node.
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 03/23/2018
+ms.author: pepogors
 ---
 # Azure Service Fabric node types and virtual machine scale sets
 
@@ -93,12 +90,6 @@ The following are the property descriptions:
 * [Change the admin username and password](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) for cluster VMs
 
 <!--Image references-->
-
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png
 [Resources]: ./media/service-fabric-cluster-nodetypes/Resources.png
 [InboundNatPools]: ./media/service-fabric-cluster-nodetypes/InboundNatPools.png
-
-
-
-<!-- Update_Description: new article about service fabric cluster nodetypes -->
-<!--NEW.date: 12/21/2020-->

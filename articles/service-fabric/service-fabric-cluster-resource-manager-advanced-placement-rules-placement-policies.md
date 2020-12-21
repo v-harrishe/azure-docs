@@ -1,14 +1,11 @@
 ---
 title: Service Fabric Cluster Resource Manager - Placement Policies 
 description: Overview of additional placement policies and rules for Service Fabric Services
-
+author: masnider
 
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 08/18/2017
+ms.author: masnider
 ms.custom: devx-track-csharp
 ---
 # Placement policies for service fabric services
@@ -38,7 +35,6 @@ The **InvalidDomain** placement policy allows you to specify that a particular F
 <center>
 
 ![Invalid Domain Example][Image1]
-
 </center>
 
 Code:
@@ -51,7 +47,7 @@ serviceDescription.PlacementPolicies.Add(invalidDomain);
 
 PowerShell:
 
-```powershell
+```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
 ## Specifying required domains
@@ -60,7 +56,6 @@ The required domain placement policy requires that the service is present only i
 <center>
 
 ![Required Domain Example][Image2]
-
 </center>
 
 Code:
@@ -73,7 +68,7 @@ serviceDescription.PlacementPolicies.Add(requiredDomain);
 
 PowerShell:
 
-```powershell
+```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
@@ -83,19 +78,18 @@ The Preferred Primary Domain specifies the fault domain to place the Primary in.
 <center>
 
 ![Preferred Primary Domains and Failover][Image3]
-
 </center>
 
 ```csharp
 ServicePlacementPreferPrimaryDomainPolicyDescription primaryDomain = new ServicePlacementPreferPrimaryDomainPolicyDescription();
-primaryDomain.DomainName = "fd:/China East/";
+primaryDomain.DomainName = "fd:/EastUS/";
 serviceDescription.PlacementPolicies.Add(primaryDomain);
 ```
 
 PowerShell:
 
-```powershell
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/China East")
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
 ## Requiring replica distribution and disallowing packing
@@ -120,7 +114,7 @@ serviceDescription.PlacementPolicies.Add(distributeDomain);
 
 PowerShell:
 
-```powershell
+```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
@@ -142,7 +136,7 @@ serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
 
 PowerShell:
 
-```powershell
+```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
 ```
 
@@ -151,7 +145,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Currently the policy is only supported for Stateless services with ExclusiveProcess [service package activation mode](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode).
+> Currently the policy is only supported for Stateless services with ExclusiveProcess [service package activation mode](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet).
 >
 
 > [!WARNING]
@@ -159,7 +153,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Using a high value of [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) with this placement policy can lead to stuck Application Upgrades. For example, if you have a five-node cluster and set InstanceCount=10, you will have two instances on each node. If you set MinInstanceCount=9, an attempted app upgrade can get stuck; with MinInstanceCount=8, this can be avoided.
+> Using a high value of [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) with this placement policy can lead to stuck Application Upgrades. For example, if you have a five-node cluster and set InstanceCount=10, you will have two instances on each node. If you set MinInstanceCount=9, an attempted app upgrade can get stuck; with MinInstanceCount=8, this can be avoided.
 >
 
 ## Next steps
@@ -168,7 +162,3 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
 [Image3]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
-
-
-<!-- Update_Description: new article about service fabric cluster resource manager advanced placement rules placement policies -->
-<!--NEW.date: 12/21/2020-->

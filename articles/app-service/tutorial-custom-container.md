@@ -1,12 +1,9 @@
 ---
-title: Tutorial - Build and run a custom image in Azure App Service
+title: 'Tutorial: Build and run a custom image in Azure App Service'
 description: A step-by-step guide to build a custom Linux or Windows image, push the image to Azure Container Registry, and then deploy that image to Azure App Service. Learn how to migrate deploy custom software to App Service in a custom container.
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 07/16/2020
+ms.author: msangapu
 keywords: azure app service, web app, linux, windows, docker, container
 ms.custom: "devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli"
 zone_pivot_groups: app-service-containers-windows-linux
@@ -18,7 +15,7 @@ zone_pivot_groups: app-service-containers-windows-linux
 
 [Azure App Service](overview.md) provides pre-defined application stacks on Windows like ASP.NET or Node.js, running on IIS. The preconfigured Windows environment locks down the operating system from administrative access, software installations, changes to the global assembly cache, and so on (see [Operating system functionality on Azure App Service](operating-system-functionality.md)). However, using a custom Windows container in App Service (Preview) lets you make OS changes that your app needs, so it's easy to migrate on-premises app that requires custom OS and software configuration. This tutorial demonstrates how to migrate to App Service an ASP.NET app that uses custom fonts installed in the Windows font library. You deploy a custom-configured Windows image from Visual Studio to [Azure Container Registry](../container-registry/index.yml), and then run it in App Service.
 
-:::image type="content" source="media/tutorial-custom-container/app-running.png" alt-text="Shows the web app running in a Windows container.":::
+![Shows the web app running in a Windows container.](media/tutorial-custom-container/app-running.png)
 
 ## Prerequisites
 
@@ -108,7 +105,7 @@ In the publish wizard, select **Container Registry** > **Create New Azure Contai
 
 In the **Create a new Azure Container Registry** dialog, select **Add an account**, and sign in to your Azure subscription. If you're already signed in, select the account containing the desired subscription from the dropdown.
 
-:::image type="content" source="./media/tutorial-custom-container/add-an-account.png" alt-text="Sign in to Azure":::
+![Sign in to Azure](./media/tutorial-custom-container/add-an-account.png)
 
 ### Configure the registry
 
@@ -118,16 +115,16 @@ Configure the new container registry based on the suggested values in the follow
 | ----------------- | ------------ | ----|
 |**DNS Prefix**| Keep the generated registry name, or change it to another unique name. |  |
 |**Resource Group**| Click **New**, type **myResourceGroup**, and click **OK**. |  |
-|**SKU**| Basic | [Pricing tiers](https://www.azure.cn/pricing/details/container-registry/)|
+|**SKU**| Basic | [Pricing tiers](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Registry Location**| West Europe | |
 
-:::image type="content" source="./media/tutorial-custom-container/configure-registry.png" alt-text="Configure Azure container registry":::
+![Configure Azure container registry](./media/tutorial-custom-container/configure-registry.png)
 
 A terminal window is opened and displays the image deployment progress. Wait for the deployment to complete.
 
 ## Sign in to Azure
 
-Sign in to the Azure portal at https://portal.azure.cn.
+Sign in to the Azure portal at https://portal.azure.com.
 
 ## Create a web app
 
@@ -149,7 +146,7 @@ In the **Basics** tab, configure the settings according to the following table, 
 
 Your **Basics** tab should look like this:
 
-:::image type="content" source="media/tutorial-custom-container/configure-app-basics.png" alt-text="Shows the Basics tab used to configure the web app.":::
+![Shows the Basics tab used to configure the web app.](media/tutorial-custom-container/configure-app-basics.png)
 
 ### Configure Windows container
 
@@ -170,7 +167,7 @@ Click **Create** and wait for Azure to create the required resources.
 
 When the Azure operation is complete, a notification box is displayed.
 
-:::image type="content" source="media/tutorial-custom-container/portal-create-finished.png" alt-text="Shows that the Azure operation is complete.":::
+![Shows that the Azure operation is complete.](media/tutorial-custom-container/portal-create-finished.png)
 
 1. Click **Go to resource**.
 
@@ -178,11 +175,11 @@ When the Azure operation is complete, a notification box is displayed.
 
 A new browser page is opened to the following page:
 
-:::image type="content" source="media/tutorial-custom-container/app-starting.png" alt-text="Shows the new browser page for the web app.":::
+![Shows the new browser page for the web app.](media/tutorial-custom-container/app-starting.png)
 
 Wait a few minutes and try again, until you get the homepage with the beautiful font you expect:
 
-:::image type="content" source="media/tutorial-custom-container/app-running.png" alt-text="Shows the homepage with the font you configured.":::
+![Shows the homepage with the font you configured.](media/tutorial-custom-container/app-running.png)
 
 **Congratulations!** You've migrated an ASP.NET application to Azure App Service in a Windows container.
 
@@ -196,8 +193,8 @@ https://<app-name>.scm.azurewebsites.net/api/logstream
 The streamed logs looks like this:
 
 ```
-14/09/2018 23:16:19.889 INFO - Site: fonts-win-container - Creating container for image: customfontsample20180914115836.azurecr.cn/customfontsample:latest.
-14/09/2018 23:16:19.928 INFO - Site: fonts-win-container - Create container for image: customfontsample20180914115836.azurecr.cn/customfontsample:latest succeeded. Container Id 329ecfedbe370f1d99857da7352a7633366b878607994ff1334461e44e6f5418
+14/09/2018 23:16:19.889 INFO - Site: fonts-win-container - Creating container for image: customfontsample20180914115836.azurecr.io/customfontsample:latest.
+14/09/2018 23:16:19.928 INFO - Site: fonts-win-container - Create container for image: customfontsample20180914115836.azurecr.io/customfontsample:latest succeeded. Container Id 329ecfedbe370f1d99857da7352a7633366b878607994ff1334461e44e6f5418
 14/09/2018 23:17:23.405 INFO - Site: fonts-win-container - Start container succeeded. Container: 329ecfedbe370f1d99857da7352a7633366b878607994ff1334461e44e6f5418
 14/09/2018 23:17:28.637 INFO - Site: fonts-win-container - Container ready
 14/09/2018 23:17:28.637 INFO - Site: fonts-win-container - Configuring container
@@ -209,7 +206,7 @@ The streamed logs looks like this:
 
 ::: zone pivot="container-linux"
 
-Azure App Service uses the Docker container technology to host both built-in images and custom images. To see a list of built-in images, run the Azure CLI command, ['az webapp list-runtimes --linux'](https://docs.azure.cn/cli/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_list_runtimes). If those images don't satisfy your needs, you can build and deploy a custom image.
+Azure App Service uses the Docker container technology to host both built-in images and custom images. To see a list of built-in images, run the Azure CLI command, ['az webapp list-runtimes --linux'](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes). If those images don't satisfy your needs, you can build and deploy a custom image.
 
 In this tutorial, you learn how to:
 
@@ -226,12 +223,12 @@ Completing this tutorial incurs a small charge in your Azure account for the con
 
 ## Set up your initial environment
 
-- Have an Azure account with an active subscription. [Create an account for free](https://www.azure.cn/free/).
+- Have an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Install [Docker](https://docs.docker.com/get-started/#setup), which you use to build Docker images. Installing Docker may require a computer restart.
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-- This tutorial requires version 2.0.80 or later of the Azure CLI. If using Azure local Shell, the latest version is already installed.
+- This tutorial requires version 2.0.80 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
 
-After installing Docker or running Azure local Shell, open a terminal window and verify that docker is installed:
+After installing Docker or running Azure Cloud Shell, open a terminal window and verify that docker is installed:
 
 ```bash
 docker --version
@@ -325,16 +322,16 @@ ENTRYPOINT ["init.sh"]
 
 1. Browse to `http://localhost:8000` to verify the web app and container are functioning correctly.
 
-    :::image type="content" source="./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png" alt-text="Test web app locally":::
+    ![Test web app locally](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
 
 ## Create a resource group
 
 In this section and those that follow, you provision resources in Azure to which you push the image and then deploy a container to Azure App Service. You start by creating a resource group in which to collect all these resources.
 
-Run the [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest&preserve-view=true#az_group_create) command to create a resource group:
+Run the [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) command to create a resource group:
 
-```azurecli
-az group create --name AppSvc-DockerTutorial-rg --location chinanorth2
+```azurecli-interactive
+az group create --name AppSvc-DockerTutorial-rg --location westus2
 ```
 
 You can change the `--location` value to specify a region near you.
@@ -343,17 +340,17 @@ You can change the `--location` value to specify a region near you.
 
 In this section, you push the image to Azure Container Registry from which App Service can deploy it.
 
-1. Run the [`az acr create`](https://docs.azure.cn/cli/acr?view=azure-cli-latest&preserve-view=true#az_acr_create) command to create an Azure Container Registry:
+1. Run the [`az acr create`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-create) command to create an Azure Container Registry:
 
-    ```azurecli
+    ```azurecli-interactive
     az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
     ```
     
     Replace `<registry-name>` with a suitable name for your registry. The name must contain only letters and numbers and must be unique across all of Azure.
 
-1. Run the [`az acr show`](https://docs.azure.cn/cli/acr?view=azure-cli-latest&preserve-view=true#az_acr_show) command to retrieve credentials for the registry:
+1. Run the [`az acr show`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-show) command to retrieve credentials for the registry:
 
-    ```azurecli
+    ```azurecli-interactive
     az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
     ```
     
@@ -362,7 +359,7 @@ In this section, you push the image to Azure Container Registry from which App S
 1. Use the `docker login` command to sign in to the container registry:
 
     ```bash
-    docker login <registry-name>.azurecr.cn --username <registry-username>
+    docker login <registry-name>.azurecr.io --username <registry-username>
     ```
     
     Replace `<registry-name>` and `<registry-username>` with values from the previous steps. When prompted, type in one of the passwords from the previous step.
@@ -372,13 +369,13 @@ In this section, you push the image to Azure Container Registry from which App S
 1. Once the login succeeds, tag your local Docker image for the registry:
 
     ```bash
-   docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.cn/appsvc-tutorial-custom-image:latest
+   docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```    
 
 1. Use the `docker push` command to push the image to the registry:
 
     ```bash
-    docker push <registry-name>.azurecr.cn/appsvc-tutorial-custom-image:latest
+    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
 
     Uploading the image the first time might take a few minutes because it includes the base image. Subsequent uploads are typically faster.
@@ -387,7 +384,7 @@ In this section, you push the image to Azure Container Registry from which App S
 
 1. Use the `az acr repository list` command to verify that the push was successful:
 
-    ```azurecli
+    ```azurecli-interactive
     az acr repository list -n <registry-name>
     ```
     
@@ -398,25 +395,25 @@ In this section, you push the image to Azure Container Registry from which App S
 
 To deploy a container to Azure App Service, you first create a web app on App Service, then connect the web app to the container registry. When the web app starts, App Service automatically pulls the image from the registry.
 
-1. Create an App Service plan using the [`az appservice plan create`](https://docs.azure.cn/cli/appservice/plan?view=azure-cli-latest&preserve-view=true#az_appservice_plan_create) command:
+1. Create an App Service plan using the [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest&preserve-view=true#az-appservice-plan-create) command:
 
-    ```azurecli
+    ```azurecli-interactive
     az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
     ```
 
-    An App Service plan corresponds to the virtual machine that hosts the web app. By default, the previous command uses an inexpensive [B1 pricing tier](https://www.azure.cn/pricing/details/app-service/linux/) that is free for the first month. You can control the tier with the `--sku` parameter.
+    An App Service plan corresponds to the virtual machine that hosts the web app. By default, the previous command uses an inexpensive [B1 pricing tier](https://azure.microsoft.com/pricing/details/app-service/linux/) that is free for the first month. You can control the tier with the `--sku` parameter.
 
-1. Create the web app with the [`az webpp create`](https://docs.azure.cn/cli/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_create) command:
+1. Create the web app with the [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-create) command:
 
-    ```azurecli
-    az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.cn/appsvc-tutorial-custom-image:latest
+    ```azurecli-interactive
+    az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
     
     Replace `<app-name>` with a name for the web app, which must be unique across all of Azure. Also replace `<registry-name>` with the name of your registry from the previous section.
 
-1. Use [`az webapp config appsettings set`](https://docs.azure.cn/cli/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az_webapp_config_appsettings_set) to set the `WEBSITES_PORT` environment variable as expected by the app code: 
+1. Use [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) to set the `WEBSITES_PORT` environment variable as expected by the app code: 
 
-    ```azurecli
+    ```azurecli-interactive
     az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
     ```
 
@@ -424,9 +421,9 @@ To deploy a container to Azure App Service, you first create a web app on App Se
     
     For more information on this environment variable, see the [readme in the sample's GitHub repository](https://github.com/Azure-Samples/docker-django-webapp-linux).
 
-1. Enable [managed identity](./overview-managed-identity.md) for the web app by using the [`az webapp identity assign`](https://docs.azure.cn/cli/webapp/identity?view=azure-cli-latest&preserve-view=true#az_webapp_identity_assign) command:
+1. Enable [managed identity](./overview-managed-identity.md) for the web app by using the [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest&preserve-view=true#az-webapp-identity-assign) command:
 
-    ```azurecli
+    ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
     ```
 
@@ -434,15 +431,15 @@ To deploy a container to Azure App Service, you first create a web app on App Se
 
     Managed identity allows you to grant permissions to the web app to access other Azure resources without needing any specific credentials.
 
-1. Retrieve your subscription ID with the [`az account show`](https://docs.azure.cn/cli/account?view=azure-cli-latest&preserve-view=true#az_account_show) command, which you need in the next step:
+1. Retrieve your subscription ID with the [`az account show`](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az-account-show) command, which you need in the next step:
 
-    ```azurecli
+    ```azurecli-interactive
     az account show --query id --output tsv
     ``` 
 
 1. Grant the web app permission to access the container registry:
 
-    ```azurecli
+    ```azurecli-interactive
     az role assignment create --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourceGroups/AppSvc-DockerTutorial-rg/providers/Microsoft.ContainerRegistry/registries/<registry-name> --role "AcrPull"
     ```
 
@@ -457,10 +454,10 @@ For more information about these permissions, see [What is Azure role-based acce
 
 You can complete these steps once the image is pushed to the container registry and the App Service is fully provisioned.
 
-1. Use the [`az webapp config container set`](https://docs.azure.cn/cli/webapp/config/container?view=azure-cli-latest&preserve-view=true#az_webapp_config_container_set) command to specify the container registry and the image to deploy for the web app:
+1. Use the [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest&preserve-view=true#az-webapp-config-container-set) command to specify the container registry and the image to deploy for the web app:
 
-    ```azurecli
-    az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.cn/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.cn
+    ```azurecli-interactive
+    az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
     ```
     
     Replace `<app_name>` with the name of your web app and replace `<registry-name>` in two places with the name of your registry. 
@@ -476,7 +473,7 @@ You can complete these steps once the image is pushed to the container registry 
 
     To test the app, browse to `http://<app-name>.azurewebsites.net`, replacing `<app-name>` with the name of your web app. On first access, it may take some time for the app to respond because App Service must pull the entire image from the registry. If the browser times out, just refresh the page. Once the initial image is pulled, subsequent tests will run much faster.
 
-    :::image type="content" source="./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png" alt-text="Successful test of the web app on Azure":::
+    ![Successful test of the web app on Azure](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
 ## Modify the app code and redeploy
 
@@ -507,7 +504,7 @@ In this section, you make a change to the web app code, rebuild the container, a
 1. Update the version number in the image's tag to v1.0.1:
 
     ```bash
-    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.cn/appsvc-tutorial-custom-image:latest
+    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
 
     Replace `<registry-name>` with the name of your registry.
@@ -515,12 +512,12 @@ In this section, you make a change to the web app code, rebuild the container, a
 1. Push the image to the registry:
 
     ```bash
-    docker push <registry-name>.azurecr.cn/appsvc-tutorial-custom-image:latest
+    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
     ```
 
 1. Restart the web app:
 
-    ```azurecli
+    ```azurecli-interactive
     az webapp restart --name <app_name> --resource-group AppSvc-DockerTutorial-rg
     ```
 
@@ -532,13 +529,13 @@ In this section, you make a change to the web app code, rebuild the container, a
 
 1. Turn on container logging:
 
-    ```azurecli
+    ```azurecli-interactive
     az webapp log config --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-container-logging filesystem
     ```
     
 1. Enable the log stream:
 
-    ```azurecli
+    ```azurecli-interactive
     az webapp log tail --name <app-name> --resource-group AppSvc-DockerTutorial-rg
     ```
     
@@ -634,8 +631,3 @@ Or, check out other resources:
 > [!div class="nextstepaction"]
 > [Tutorial: Multi-container WordPress app](tutorial-multi-container-app.md)
 ::: zone-end
-
-
-
-<!-- Update_Description: new article about tutorial custom container -->
-<!--NEW.date: 12/21/2020-->

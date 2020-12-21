@@ -2,11 +2,7 @@
 title: Tutorial to set up Azure VM disaster recovery with Azure Site Recovery
 description: In this tutorial, set up disaster recovery for Azure VMs to another Azure region, using the Site Recovery service.
 ms.topic: tutorial
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/03/2020
 ms.custom: mvc
 #Customer intent: As an Azure admin, I want to set up disaster recovery for my Azure VMs, so that they're available in a secondary region if the primary region becomes unavailable.
 ---
@@ -25,7 +21,7 @@ When you enable replication for a VM to set up disaster recovery, the Site Recov
 > [!NOTE]
 > Tutorials provide instructions with the simplest default settings. If you want to set up Azure VM disaster recovery with customized settings, review [this article](azure-to-azure-how-to-enable-replication.md).
 
-If you don’t have an Azure subscription, create a [trial account](https://www.azure.cn/pricing/1rmb-trial-full/) before you begin.
+If you don’t have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Prerequisites
 
@@ -76,12 +72,12 @@ VMs that you want to replicate need outbound network connectivity.
 
 If you're using a URL-based firewall proxy to control outbound connectivity, allow access to these URLs:
 
-| **Name** | **Commercial** | **Government** | **Description** |
+| **Name**                  | **Commercial**                               | **Government**                                 | **Description** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.chinacloudapi.cn`                  | `*.blob.core.usgovcloudapi.net`	            | Allows data to be written from the VM to the cache storage account in the source region. |
-| Azure Active Directory    | `login.partner.microsoftonline.cn`                | `login.microsoftonline.us`                   | Provides authorization and authentication to Site Recovery service URLs. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`	            | Allows data to be written from the VM to the cache storage account in the source region. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Provides authorization and authentication to Site Recovery service URLs. |
 | Replication               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Allows the VM to communicate with the Site Recovery service. |
-| Service Bus               | `*.servicebus.chinacloudapi.cn`                 | `*.servicebus.usgovcloudapi.net`             | Allows the VM to write Site Recovery monitoring and diagnostics data. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Allows the VM to write Site Recovery monitoring and diagnostics data. |
 
 #### Outbound connectivity for IP address ranges
 
@@ -108,32 +104,32 @@ Check that the VMs have the latest root certificates. Otherwise, the VM can't be
 
 Create a Recovery Services vault in any region, except in the source region from which you want to replicate VMs.
 
-1. Sign in to the [Azure portal](https://portal.azure.cn).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 2. In the search box, type *recovery*. Under **Services**, select **Recovery Services vaults**.
 
-    :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/search.png" alt-text="Search for Recovery Services vaults":::
+    ![Search for Recovery Services vaults](./media/azure-to-azure-tutorial-enable-replication/search.png)
 
 3. In **Recovery Services vaults**, select **Add**.
 4. In **Create Recovery Services vault** > **Basics**, select the subscription in which to create the vault.
 5. In **Resource group**, select an existing resource group for the vault, or create a new one.
 6. In **Vault name**, specify a friendly name to identify the vault.
-7. In **Region**, select the Azure region in which to place the vault. [Check supported regions](https://www.azure.cn/pricing/details/site-recovery/).
+7. In **Region**, select the Azure region in which to place the vault. [Check supported regions](https://azure.microsoft.com/pricing/details/site-recovery/).
 8. Select **Review + create**.
 
-   :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/vault-basics.png" alt-text="Vault settings on page for creating a new vault":::
+   ![Vault settings on page for creating a new vault](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 
 9. In **Review + create**, select **Create**.
 
 10. Vault deployment begins. Follow progress in the notifications.
 11. After the vault is deployed, select **Pin to dashboard** to save it for quick reference. Select **Go to resource** to open the new vault. 
     
-    :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png" alt-text="Buttons for opening the vault after deployment, and pinning to dashboard":::
+    ![Buttons for opening the vault after deployment, and pinning to dashboard](./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png)
 
 ### Enable Site Recovery
 
 In the vault settings, select **Enable Site Recovery**.
 
-:::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/enable-site-recovery.png" alt-text="Selection to enable Site Recovery in the vault":::
+![Selection to enable Site Recovery in the vault](./media/azure-to-azure-tutorial-enable-replication/enable-site-recovery.png)
 
 ## Enable replication
 
@@ -143,7 +139,7 @@ Select the source settings, and enable VM replication.
 
 1. In the vault > **Site Recovery** page, under **Azure virtual machines**, select **Enable replication**.
 
-    :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/enable-replication.png" alt-text="Selection to enable replication for Azure VMs":::
+    ![Selection to enable replication for Azure VMs](./media/azure-to-azure-tutorial-enable-replication/enable-replication.png)
 
 2. In **Source**> **Source location**, select the source Azure region in which VMs are currently running.
 3. In **Azure virtual machine deployment model**, leave the default **Resource Manager** setting.
@@ -151,7 +147,7 @@ Select the source settings, and enable VM replication.
 5. In **Source resource group**, select the resource group containing the VMs.
 6. In **Disaster recovery between availability zones**, leave the default **No** setting.
 
-     :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/source.png" alt-text="Set up source":::
+     ![Set up source](./media/azure-to-azure-tutorial-enable-replication/source.png)
 
 7. Select **Next**.
 
@@ -161,7 +157,7 @@ Site Recovery retrieves the VMs associated with the selected subscription/resour
 
 1. In **Virtual Machines**, select the VMs you want to enable for disaster recovery.
 
-     :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/select-vm.png" alt-text="Page to select VMs for replication":::
+     ![Page to select VMs for replication](./media/azure-to-azure-tutorial-enable-replication/select-vm.png)
 
 2. Select **Next**.
 
@@ -170,16 +166,16 @@ Site Recovery retrieves the VMs associated with the selected subscription/resour
 1. In **Replication settings**, review the settings. Site Recovery creates default settings/policy for the target region. For the purposes of this tutorial, we use the default settings.
 2. Select **Enable replication**.
 
-    :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/enable-vm-replication.png" alt-text="Page to customize settings and enable replication":::   
+    ![Page to customize settings and enable replication](./media/azure-to-azure-tutorial-enable-replication/enable-vm-replication.png)   
 
 3. Track replication progress in the notifications.
 
-     :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/notification.png" alt-text="Track progress in notifications":::
-    :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/notification-success.png" alt-text="Track successful replication notification":::
+     ![Track progress in notifications](./media/azure-to-azure-tutorial-enable-replication/notification.png)
+    ![Track successful replication notification](./media/azure-to-azure-tutorial-enable-replication/notification-success.png)
 
 4. The VMs you enable appear on the vault > **Replicated items** page.
 
-    :::image type="content" source="./media/azure-to-azure-tutorial-enable-replication/replicated-items.png" alt-text="VM on the Replicated Items page":::
+    ![VM on the Replicated Items page](./media/azure-to-azure-tutorial-enable-replication/replicated-items.png)
 
 
 ## Next steps
@@ -188,8 +184,3 @@ In this tutorial, you enabled disaster recovery for an Azure VM. Now, run a dril
 
 > [!div class="nextstepaction"]
 > [Run a disaster recovery drill](azure-to-azure-tutorial-dr-drill.md)
-
-
-
-<!-- Update_Description: new article about azure to azure tutorial enable replication -->
-<!--NEW.date: 12/21/2020-->

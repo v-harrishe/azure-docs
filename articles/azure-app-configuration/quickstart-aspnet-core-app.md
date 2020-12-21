@@ -1,18 +1,15 @@
 ---
-title: Quickstart for Azure App Configuration with ASP.NET Core | Azure Docs
+title: Quickstart for Azure App Configuration with ASP.NET Core | Microsoft Docs
 description: Create an ASP.NET Core app with Azure App Configuration to centralize storage and management of application settings for an ASP.NET Core application.
 services: azure-app-configuration
-
+author: AlexandraKemperMS
 
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: "devx-track-csharp, contperf-fy21q1"
 ms.topic: quickstart
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/25/2020
+ms.author: alkemper
 
 #Customer intent: As an ASP.NET Core developer, I want to learn how to manage all my app settings in one place.
 ---
@@ -22,11 +19,11 @@ In this quickstart, you'll use Azure App Configuration to centralize storage and
 
 ## Prerequisites
 
-* Azure subscription - [create one for free](https://www.azure.cn/free/dotnet)
+* Azure subscription - [create one for free](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 > [!TIP]
-> The Azure local Shell is a free, interactive shell that you can use to run the command line instructions in this article. It has common Azure tools preinstalled, including the .NET Core SDK. If you're logged in to your Azure subscription, launch your [Azure local Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) from shell.azure.com. You can learn more about Azure local Shell by [reading our documentation](../cloud-shell/overview.md)
+> The Azure Cloud Shell is a free, interactive shell that you can use to run the command line instructions in this article. It has common Azure tools preinstalled, including the .NET Core SDK. If you're logged in to your Azure subscription, launch your [Azure Cloud Shell](https://shell.azure.com) from shell.azure.com. You can learn more about Azure Cloud Shell by [reading our documentation](../cloud-shell/overview.md)
 
 ## Create an App Configuration store
 
@@ -36,16 +33,16 @@ In this quickstart, you'll use Azure App Configuration to centralize storage and
 
     | Key                                | Value                               |
     |------------------------------------|-------------------------------------|
-    | `TestApp:Settings:BackgroundColor` | *#FFF* |
-    | `TestApp:Settings:FontColor`       | *#000* |
-    | `TestApp:Settings:FontSize`        | *24* |
+    | `TestApp:Settings:BackgroundColor` | *#FFF*                              |
+    | `TestApp:Settings:FontColor`       | *#000*                              |
+    | `TestApp:Settings:FontSize`        | *24*                                |
     | `TestApp:Settings:Message`         | *Data from Azure App Configuration* |
 
     Leave **Label** and **Content type** empty for now. Select **Apply**.
 
 ## Create an ASP.NET Core web app
 
-Use the [.NET Core command-line interface (CLI)](https://docs.microsoft.com/dotnet/core/tools) to create a new ASP.NET Core MVC project. The [Azure local Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) ) provides these tools for you. They're also available across the Windows, macOS, and Linux platforms.
+Use the [.NET Core command-line interface (CLI)](/dotnet/core/tools) to create a new ASP.NET Core MVC project. The [Azure Cloud Shell](https://shell.azure.com) provides these tools for you. They're also available across the Windows, macOS, and Linux platforms.
 
 Run the following command to create an ASP.NET Core MVC project in a new *TestAppConfig* folder:
 
@@ -72,9 +69,9 @@ dotnet new mvc --no-https --output TestAppConfig
     > [!IMPORTANT]
     > Some shells will truncate the connection string unless it's enclosed in quotes. Ensure that the output of the `dotnet user-secrets` command shows the entire connection string. If it doesn't, rerun the command, enclosing the connection string in quotes.
 
-    Secret Manager is used only to test the web app locally. When the app is deployed to [Azure App Service](https://www.azure.cn/home/features/app-service/web), use the **Connection Strings** application setting in App Service instead of Secret Manager to store the connection string.
+    Secret Manager is used only to test the web app locally. When the app is deployed to [Azure App Service](https://azure.microsoft.com/services/app-service/web), use the **Connection Strings** application setting in App Service instead of Secret Manager to store the connection string.
 
-    Access this secret using the .NET Core Configuration API. A colon (`:`) works in the configuration name with the Configuration API on all supported platforms. For more information, see [Configuration keys and values](https://docs.azure.cn/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
+    Access this secret using the .NET Core Configuration API. A colon (`:`) works in the configuration name with the Configuration API on all supported platforms. For more information, see [Configuration keys and values](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
 1. In *Program.cs*, add a reference to the .NET Core Configuration API namespace:
 
@@ -117,7 +114,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
     ---
 
-    With the preceding change, the [configuration provider for App Configuration](https://docs.azure.cn/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) has been registered with the .NET Core Configuration API.
+    With the preceding change, the [configuration provider for App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) has been registered with the .NET Core Configuration API.
 
 ## Read from the App Configuration store
 
@@ -163,9 +160,9 @@ In the preceding code, the App Configuration store's keys are used as follows:
     dotnet run
     ```
 
-1. If you're working on your local machine, use a browser to navigate to `http://localhost:5000`. This address is the default URL for the locally hosted web app. If you're working in the Azure local Shell, select the **Web Preview** button followed by **Configure**.
+1. If you're working on your local machine, use a browser to navigate to `http://localhost:5000`. This address is the default URL for the locally hosted web app. If you're working in the Azure Cloud Shell, select the **Web Preview** button followed by **Configure**.
 
-    :::image type="content" source="./media/quickstarts/cloud-shell-web-preview.png" alt-text="Locate the Web Preview button":::
+    ![Locate the Web Preview button](./media/quickstarts/cloud-shell-web-preview.png)
 
     When prompted to configure the port for preview, enter *5000* and select **Open and browse**. The web page will read "Data from Azure App Configuration."
 
@@ -186,7 +183,3 @@ To learn how to configure your ASP.NET Core app to dynamically refresh configura
 
 > [!div class="nextstepaction"]
 > [Enable dynamic configuration](./enable-dynamic-configuration-aspnet-core.md)
-
-
-<!-- Update_Description: new article about quickstart aspnet core app -->
-<!--NEW.date: 12/21/2020-->

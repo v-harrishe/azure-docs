@@ -1,15 +1,12 @@
 ---
 title: Monitor Azure Site Recovery with Azure Monitor Logs 
 description: Learn how to monitor Azure Site Recovery with Azure Monitor Logs (Log Analytics)
-
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/15/2019
+ms.author: raynew
 
 ---
 # Monitor Site Recovery with Azure Monitor Logs
@@ -26,7 +23,7 @@ For Site Recovery, you can use Azure Monitor Logs to help you do the following:
 Using Azure Monitor Logs with Site Recovery is supported for **Azure to Azure** replication, and **VMware VM/physical server to Azure** replication.
 
 > [!NOTE]
-> To get the churn data logs and upload rate logs for VMware and physical machines, you need to install a Azure monitoring agent on the Process Server. This agent sends the logs of the replicating machines to the workspace. This capability is available only for 9.30 mobility agent version onwards.
+> To get the churn data logs and upload rate logs for VMware and physical machines, you need to install a Microsoft monitoring agent on the Process Server. This agent sends the logs of the replicating machines to the workspace. This capability is available only for 9.30 mobility agent version onwards.
 
 ## Before you start
 
@@ -42,20 +39,20 @@ We recommend that you review [common monitoring questions](monitoring-common-que
 
 1. In the vault, click **Diagnostic settings** > **Add diagnostic setting**.
 
-    :::image type="content" source="./media/monitoring-log-analytics/add-diagnostic.png" alt-text="Screenshot showing the Add diagnostic setting option.":::
+    ![Screenshot showing the Add diagnostic setting option.](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. In **Diagnostic settings**, specify a name, and check the box **Send to Log Analytics**.
 3. Select the Azure Monitor Logs subscription, and the Log Analytics workspace.
 4. Select **Azure Diagnostics** in the toggle.
 5. From the log list, select all the logs with the prefix **AzureSiteRecovery**. Then click **OK**.
 
-    :::image type="content" source="./media/monitoring-log-analytics/select-workspace.png" alt-text="Screenshot of the Diagnostics setting screen.":::
+    ![Screenshot of the Diagnostics setting screen.](./media/monitoring-log-analytics/select-workspace.png)
 
 The Site Recovery logs start to feed into a table (**AzureDiagnostics**) in the selected workspace.
 
-## Configure Azure monitoring agent on the Process Server to send churn and upload rate logs
+## Configure Microsoft monitoring agent on the Process Server to send churn and upload rate logs
 
-You can capture the data churn rate information and source data upload rate information for your VMware/physical machines at on-premises. To enable this, a Azure monitoring agent is required to be installed on the Process Server.
+You can capture the data churn rate information and source data upload rate information for your VMware/physical machines at on-premises. To enable this, a Microsoft monitoring agent is required to be installed on the Process Server.
 
 1. Go to the Log Analytics workspace and click on **Advanced Settings**.
 2. Click on **Connected Sources** page and further select **Windows Servers**.
@@ -123,7 +120,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-:::image type="content" source="./media/monitoring-log-analytics/example1.png" alt-text="Screenshot showing a bar chart of Azure VMs replicated with Site Recovery.":::
+![Screenshot showing a bar chart of Azure VMs replicated with Site Recovery.](./media/monitoring-log-analytics/example1.png)
 
 ### Query Site Recovery jobs
 
@@ -188,7 +185,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-:::image type="content" source="./media/monitoring-log-analytics/example2.png" alt-text="Screenshot of a trend graph tracking the RPO of a specific Azure VM.":::
+![Screenshot of a trend graph tracking the RPO of a specific Azure VM.](./media/monitoring-log-analytics/example2.png)
 
 ### Query data change rate (churn) and upload rate for an Azure VM
 
@@ -205,7 +202,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-:::image type="content" source="./media/monitoring-log-analytics/example3.png" alt-text="screenshot of a trend graph for a specific Azure VM.":::
+![screenshot of a trend graph for a specific Azure VM.](./media/monitoring-log-analytics/example3.png)
 
 ### Query data change rate (churn) and upload rate for a VMware or physical machine
 
@@ -360,7 +357,3 @@ For the alert, set **Threshold value** to 1, and **Period** to 1440 minutes, to 
 ## Next steps
 
 [Learn about](site-recovery-monitor-and-troubleshoot.md) inbuilt Site Recovery monitoring.
-
-
-<!-- Update_Description: new article about monitor log analytics -->
-<!--NEW.date: 12/21/2020-->

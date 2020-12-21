@@ -3,11 +3,8 @@ title: Configure CI/CD with GitHub Actions
 description: Learn how to deploy your code to Azure App Service from a CI/CD pipeline with GitHub Actions. Customize the build tasks and execute complex deployments.
 ms.devlang: na
 ms.topic: article
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/14/2020
+ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
 
@@ -19,7 +16,7 @@ Get started with [GitHub Actions](https://help.github.com/en/articles/about-gith
 
 ## Prerequisites 
 
-- An Azure account with an active subscription. [Create an account for free](https://www.azure.cn/pricing/1rmb-trial-full/).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A GitHub account. If you don't have one, sign up for [free](https://github.com/join).  
 - A working Azure App Service app. 
     - .NET: [Create an ASP.NET Core web app in Azure](quickstart-dotnetcore.md)
@@ -79,9 +76,9 @@ A publish profile is an app-level credential. Set up your publish profile as a G
 
 # [Service principal](#tab/userlevel)
 
-You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) with the [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac) command in the [Azure CLI](https://docs.azure.cn/cli/). Run this command with [Azure local Shell](https://shell.azure.com (THIS WEB SITE IS NOT AVAILABLE ON AZURE CHINA CLOUD) /) in the Azure portal or by selecting the **Try it** button.
+You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) with the [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). Run this command with [Azure Cloud Shell](https://shell.azure.com/) in the Azure portal or by selecting the **Try it** button.
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
                             --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
                             --sdk-auth
@@ -141,13 +138,13 @@ When you configure the workflow file later, you use the secret for the input `cr
 
 Setting up the environment can be done using one of the setup actions.
 
-|**Language** |**Setup Action** |
+|**Language**  |**Setup Action**  |
 |---------|---------|
-|**.NET** | `actions/setup-dotnet` |
-|**ASP.NET** | `actions/setup-dotnet` |
-|**Java** | `actions/setup-java` |
+|**.NET**     | `actions/setup-dotnet` |
+|**ASP.NET**     | `actions/setup-dotnet` |
+|**Java**     | `actions/setup-java` |
 |**JavaScript** | `actions/setup-node` |
-|**Python** | `actions/setup-python` |
+|**Python**     | `actions/setup-python` |
 
 The following examples show how to set up the environment for the different supported languages:
 
@@ -274,7 +271,7 @@ For Node.js, you can set `working-directory` or change for npm directory in `pus
 
 To deploy your code to an App Service app, use the `azure/webapps-deploy@v2` action. This action has four parameters:
 
-| **Parameter** | **Explanation** |
+| **Parameter**  | **Explanation**  |
 |---------|---------|
 | **app-name** | (Required) Name of the App Service app | 
 | **publish-profile** | (Optional) Publish profile file contents with Web Deploy secrets |
@@ -750,8 +747,3 @@ You can find our set of Actions grouped into different repositories on GitHub, e
 - [K8s deploy](https://github.com/Azure/k8s-deploy)
 
 - [Starter Workflows](https://github.com/actions/starter-workflows)
-
-
-
-<!-- Update_Description: new article about deploy github actions -->
-<!--NEW.date: 12/21/2020-->

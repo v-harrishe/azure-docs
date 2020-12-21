@@ -1,16 +1,12 @@
 ---
-title: Azure Service Bus messaging overview | Azure Docs
+title: Azure Service Bus messaging overview | Microsoft Docs
 description: This article provides a high-level overview of Azure Service Bus, a fully managed enterprise integration message broker. 
 ms.topic: overview
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 11/20/2020
 ---
 
 # What is Azure Service Bus?
-Azure Azure Service Bus is a fully managed enterprise message broker with message queues and public-subscribe topics. Service Bus is used to decouple applications and services from each other, providing the following benefits:
+Microsoft Azure Service Bus is a fully managed enterprise message broker with message queues and public-subscribe topics. Service Bus is used to decouple applications and services from each other, providing the following benefits:
 
 - Load-balancing work across competing workers
 - Safely routing and transferring data and control across service and application boundaries
@@ -22,9 +18,9 @@ Data is transferred between different applications and services using *messages*
 Some common messaging scenarios are:
 
 * *Messaging*. Transfer business data, such as sales or purchase orders, journals, or inventory movements.
-* *Decouple applications*. Improve reliability and scalability of applications and services. Producer and consumer don't have to be online or readily available at the same time. The [load is leveled](https://docs.azure.cn/azure/architecture/patterns/queue-based-load-leveling) such that traffic spikes don't overtax a service. 
-* *Load Balancing*. Allow for multiple [competing consumers](https://docs.azure.cn/azure/architecture/patterns/competing-consumers) to read from a queue at the same time, each safely obtaining exclusive ownership to specific messages. 
-* *Topics and subscriptions*. Enable 1:*n* relationships between [publishers and subscribers](https://docs.azure.cn/azure/architecture/patterns/publisher-subscriber), allowing subscribers to select particular messages from a published message stream.
+* *Decouple applications*. Improve reliability and scalability of applications and services. Producer and consumer don't have to be online or readily available at the same time. The [load is leveled](/azure/architecture/patterns/queue-based-load-leveling) such that traffic spikes don't overtax a service. 
+* *Load Balancing*. Allow for multiple [competing consumers](/azure/architecture/patterns/competing-consumers) to read from a queue at the same time, each safely obtaining exclusive ownership to specific messages. 
+* *Topics and subscriptions*. Enable 1:*n* relationships between [publishers and subscribers](/azure/architecture/patterns/publisher-subscriber), allowing subscribers to select particular messages from a published message stream.
 * *Transactions*. Allows you to do several operations, all in the scope of an atomic transaction. For example, the following operations can be done in the scope of a transaction.  
 
     1. Obtain a message from one queue.
@@ -59,7 +55,7 @@ A namespace can be compared to a "server" in the terminology of other brokers, b
 ### Queues
 Messages are sent to and received from *queues*. Queues store messages until the receiving application is available to receive and process them.
 
-:::image type="content" source="./media/service-bus-messaging-overview/about-service-bus-queue.png" alt-text="Queue":::
+![Queue](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
 Messages in queues are ordered and timestamped on arrival. Once accepted by the broker, the message is always held durably in triple-redundant storage, spread across availability zones if the namespace is zone-enabled. Service Bus never leaves messages in memory or volatile storage after they've been reported to the client as accepted.
 
@@ -69,7 +65,7 @@ Messages are delivered in *pull* mode, only delivering messages when requested. 
 
 You can also use *topics* to send and receive messages. While a queue is often used for point-to-point communication, topics are useful in publish/subscribe scenarios.
 
-:::image type="content" source="./media/service-bus-messaging-overview/about-service-bus-topic.png" alt-text="Topic":::
+![Topic](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
 Topics can have multiple, independent subscriptions, which attach to the topic and otherwise work exactly like queues from the receiver side. A subscriber to a topic can receive a copy of each message sent to that topic. Subscriptions are named entities. Subscriptions are durable by default, but can be configured to expire and then be automatically deleted. Via the JMS API, Service Bus Premium also allows you to create volatile subscriptions that exist for the duration of the connection.
 
@@ -118,7 +114,7 @@ A transaction groups two or more operations together into an *execution scope*. 
 
 ### Autodelete on idle
 
-Autodelete on idle enables you to specify an idle interval after which a queue or topic subscription is automatically deleted. The minimum duration is 5 minutes. For more information, see the [QueueDescription.AutoDeleteOnIdle Property](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Autodelete on idle enables you to specify an idle interval after which a queue or topic subscription is automatically deleted. The minimum duration is 5 minutes. For more information, see the [QueueDescription.AutoDeleteOnIdle Property](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
 
 ### Duplicate detection
 The duplicate detection feature enables the sender to resend the same message again and for the broker to drop a potential duplicate. The duplicate detection is based on tracking the `message-id` property of a message, meaning the application needs to take care to use the same value when resending the message, which might be directly derived from some application-specific context. For more information, see [Duplicate detection](duplicate-detection.md).
@@ -129,7 +125,7 @@ When an Azure region experiences downtime, the disaster recovery feature enables
 
 ### Security
 
-Service Bus supports standard [AMQP 1.0](service-bus-amqp-overview.md) and [HTTP or REST](https://docs.microsoft.com/rest/api/servicebus/) protocols and their respective security facilities, including transport-level security (TLS). Clients can be authorized for access using [Shared Access Signature](service-bus-sas.md) or [Azure Active Directory](service-bus-authentication-and-authorization.md) role-based security. 
+Service Bus supports standard [AMQP 1.0](service-bus-amqp-overview.md) and [HTTP or REST](/rest/api/servicebus/) protocols and their respective security facilities, including transport-level security (TLS). Clients can be authorized for access using [Shared Access Signature](service-bus-sas.md) or [Azure Active Directory](service-bus-authentication-and-authorization.md) role-based security. 
 
 For protection against unwanted traffic, Service Bus provides [security features](network-security.md) such as IP firewall and integration with virtual networks. 
 
@@ -137,11 +133,11 @@ For protection against unwanted traffic, Service Bus provides [security features
 
 Fully supported Service Bus client libraries are available via the Azure SDK.
 
-- [Azure Service Bus for .NET](https://docs.azure.cn/dotnet/api/overview/service-bus?preserve-view=true&view=azure-dotnet)
-- [Azure Service Bus libraries for Java](https://docs.azure.cn/java/api/overview/servicebus?preserve-view=true&view=azure-java-stable)
+- [Azure Service Bus for .NET](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [Azure Service Bus libraries for Java](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [Azure Service Bus provider for Java JMS 2.0](how-to-use-java-message-service-20.md)
-- [Azure Service Bus Modules for JavaScript and TypeScript](https://docs.azure.cn/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Azure Service Bus libraries for Python](https://docs.azure.cn/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [Azure Service Bus Modules for JavaScript and TypeScript](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [Azure Service Bus libraries for Python](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [Azure Service Bus' primary protocol is AMQP 1.0](service-bus-amqp-overview.md) and it can be used from any AMQP 1.0 compliant protocol client. Several open-source AMQP clients have samples that explicitly demonstrate Service Bus interoperability. Review the [AMQP 1.0 protocol guide](service-bus-amqp-protocol-guide.md) to understand how to use Service Bus'
 features with AMQP 1.0 clients directly.
@@ -150,25 +146,21 @@ features with AMQP 1.0 clients directly.
 
 ## Integration
 
-Service Bus fully integrates with many Azure and Azure services, for instance:
+Service Bus fully integrates with many Microsoft and Azure services, for instance:
 
-* [Event Grid](https://www.azure.cn/home/features/event-grid/)
-* [Logic Apps](https://www.azure.cn/home/features/logic-apps/)
-* [Azure Functions](https://www.azure.cn/home/features/functions/)
+* [Event Grid](https://azure.microsoft.com/services/event-grid/)
+* [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
+* [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Power Platform](https://powerplatform.microsoft.com/)
 * [Dynamics 365](https://dynamics.microsoft.com)
-* [Azure Stream Analytics](https://www.azure.cn/home/features/stream-analytics/)
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
 
 ## Next steps
 
 To get started using Service Bus messaging, see the following articles:
 
-* To compare Azure messaging services, see [Comparison of services](../event-grid/compare-messaging-services.md?toc=%2fservice-bus-messaging%2ftoc.json&bc=%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json).
+* To compare Azure messaging services, see [Comparison of services](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json).
 * Try the quickstarts for [.NET](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), or [JMS](service-bus-java-how-to-use-jms-api-amqp.md).
 * To manage Service Bus resources, see [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases).
-* To learn more about Standard and Premium tiers and their pricing, see [Service Bus pricing](https://www.azure.cn/pricing/details/service-bus/).
+* To learn more about Standard and Premium tiers and their pricing, see [Service Bus pricing](https://azure.microsoft.com/pricing/details/service-bus/).
 * To learn about  performance and latency for the Premium tier, see [Premium Messaging](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722).
-
-
-<!-- Update_Description: new article about service bus messaging overview -->
-<!--NEW.date: 12/21/2020-->

@@ -1,14 +1,11 @@
 ---
 title: Azure security baseline for Service Bus
 description: The Service Bus security baseline provides procedural guidance and resources for implementing the security recommendations specified in the Azure Security Benchmark.
-
+author: msmbaldwin
 ms.service: service-bus-messaging
 ms.topic: conceptual
-author: rockboyfor
-ms.date: 12/21/2020
-ms.testscope: yes|no
-ms.testdate: 12/21/2020null
-ms.author: v-yeche
+ms.date: 09/25/2020
+ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 
 # Important: This content is machine generated; do not modify this topic directly. Contact mbaldwin for more information.
@@ -83,7 +80,7 @@ Use Azure Security Center and follow network protection recommendations to help 
 
 **Guidance**: If using Azure virtual machines to access your Service Bus entities, select an offer from the Azure Marketplace that supports IDS/IPS functionality with payload inspection capabilities. If intrusion detection and/or prevention based on payload inspection is not required for your organization, you may use Azure Service Bus's built-in firewall feature. You can limit access to your Service Bus namespace for a limited range of IP addresses, or a specific IP address by using Firewall rules.
 
-- [Azure Marketplace](https://market.azure.cn/marketplace/apps/filter?search=Firewall)
+- [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
 - [How to add a firewall rule in Service Bus namespaces for a specified IP address](service-bus-ip-filtering.md)
 
@@ -93,7 +90,7 @@ Use Azure Security Center and follow network protection recommendations to help 
 
 ### 1.8: Minimize complexity and administrative overhead of network security rules
 
-**Guidance**: Use Virtual Network Service Tags to define network access controls on Network Security Groups or Azure Firewall which filter traffic to and from Service Bus resources. You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ServiceBus) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Azure manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change. 
+**Guidance**: Use Virtual Network Service Tags to define network access controls on Network Security Groups or Azure Firewall which filter traffic to and from Service Bus resources. You can use service tags in place of specific IP addresses when creating security rules. By specifying the service tag name (e.g., ServiceBus) in the appropriate source or destination field of a rule, you can allow or deny the traffic for the corresponding service. Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change. 
 
 - [Understand and use Service Tags](../virtual-network/service-tags-overview.md)
 
@@ -232,9 +229,9 @@ You may use Azure PowerShell or Azure CLI to look-up or perform actions on resou
 
 - [Built-in roles for Azure Service Bus](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [How to get a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [How to get a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [How to get members of a directory role in Azure AD with PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [How to get members of a directory role in Azure AD with PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center monitoring**: Yes
 
@@ -274,7 +271,7 @@ You may also construct custom policy definitions if the built-in definitions do 
 
 ### 3.4: Use Azure Active Directory single sign-on (SSO)
 
-**Guidance**: Azure Azure provides integrated access control management for resources and applications based on Azure Active Directory (Azure AD). A key advantage of using Azure AD with Azure Service Bus is that you don't need to store your credentials in the code anymore. Instead, you can request an OAuth 2.0 access token from the Azure Identity platform. The resource name to request a token is https://www.azure.cn/home/features/service-bus/. Azure AD authenticates the security principal (a user, group, or service principal) running the application. If the authentication succeeds, Azure AD returns an access token to the application, and the application can then use the access token to authorize request to Azure Service Bus resources.
+**Guidance**: Microsoft Azure provides integrated access control management for resources and applications based on Azure Active Directory (Azure AD). A key advantage of using Azure AD with Azure Service Bus is that you don't need to store your credentials in the code anymore. Instead, you can request an OAuth 2.0 access token from the Microsoft Identity platform. The resource name to request a token is https://azure.microsoft.com/services/service-bus/. Azure AD authenticates the security principal (a user, group, or service principal) running the application. If the authentication succeeds, Azure AD returns an access token to the application, and the application can then use the access token to authorize request to Azure Service Bus resources.
 
 - [How to authenticate an application with Azure AD to access Service Bus resources](authenticate-application.md)
 
@@ -300,7 +297,7 @@ You may also construct custom policy definitions if the built-in definitions do 
 
 **Guidance**: Use privileged access workstations (PAW) with Multi-Factor Authentication (MFA) configured to log into and configure Service Bus-enabled resources.
 
-- [Learn about Privileged Access Workstations](https://docs.azure.cn/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
 - [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -388,7 +385,7 @@ You can streamline this process by creating diagnostic settings for Azure AD use
 
 **Responsibility**: Customer
 
-### 3.13: Provide Azure with access to relevant customer data during support scenarios
+### 3.13: Provide Microsoft with access to relevant customer data during support scenarios
 
 **Guidance**: Currently not available; Customer Lockbox is not yet supported for Service Bus.
 
@@ -432,7 +429,7 @@ You can streamline this process by creating diagnostic settings for Azure AD use
 
 **Guidance**: When using virtual machines to access your Service Bus entities, make use of virtual networks, private endpoints, Service Bus firewall, network security groups, and service tags to mitigate the possibility of data exfiltration.
 
-Azure manages the underlying infrastructure for Azure Service Bus and has implemented strict controls to prevent the loss or exposure of customer data.
+Microsoft manages the underlying infrastructure for Azure Service Bus and has implemented strict controls to prevent the loss or exposure of customer data.
 
 - [Configure IP firewall rules for Azure Service Bus namespaces](service-bus-ip-filtering.md)
 
@@ -462,7 +459,7 @@ Azure manages the underlying infrastructure for Azure Service Bus and has implem
 
 **Guidance**: Data identification, classification, and loss prevention features are not yet available for Azure Service Bus. Implement third-party solution if required for compliance purposes.
 
-For the underlying platform which is managed by Microsoft, Azure treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Azure has implemented and maintains a suite of robust data protection controls and capabilities.
+For the underlying platform which is managed by Microsoft, Microsoft treats all customer content as sensitive and goes to great lengths to guard against customer data loss and exposure. To ensure customer data within Azure remains secure, Microsoft has implemented and maintains a suite of robust data protection controls and capabilities.
 
 - [Understand customer data protection in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -482,7 +479,7 @@ For the underlying platform which is managed by Microsoft, Azure treats all cust
 
 ### 4.8: Encrypt sensitive information at rest
 
-**Guidance**: Azure Service Bus supports the option of encrypting data at rest with either Azure-managed keys or customer-managed keys. This feature enables you to create, rotate, disable, and revoke access to the customer-managed keys that are used for encrypting Azure Service Bus data at rest.
+**Guidance**: Azure Service Bus supports the option of encrypting data at rest with either Microsoft-managed keys or customer-managed keys. This feature enables you to create, rotate, disable, and revoke access to the customer-managed keys that are used for encrypting Azure Service Bus data at rest.
 
 - [How to configure customer-managed keys for encrypting Azure Service Bus](configure-customer-managed-key.md)
 
@@ -510,7 +507,7 @@ For the underlying platform which is managed by Microsoft, Azure treats all cust
 
 - [How to create queries with Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [How to view your Azure Subscriptions](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [How to view your Azure Subscriptions](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Understand Azure RBAC](../role-based-access-control/overview.md)
 
@@ -585,7 +582,7 @@ You may also construct custom policy definitions if the built-in definitions do 
 
 ### 6.11: Limit users' ability to interact with Azure Resource Manager
 
-**Guidance**: Configure Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "21Vianet Azure Management" App.
+**Guidance**: Configure Azure Conditional Access to limit users' ability to interact with Azure Resource Manager by configuring "Block access" for the "Microsoft Azure Management" App.
 
 - [How to configure Conditional Access to block access to Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -608,7 +605,7 @@ Use Azure Policy aliases in the "Microsoft.ServiceBus" namespace to create custo
 
 - [Azure Built-in policies for Service Bus ](./policy-reference.md)
 
-- [How to view available Azure Policy aliases](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [How to view available Azure Policy aliases](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -692,9 +689,9 @@ Use Managed Identities to provide Azure services with an automatically managed i
 
 ### 8.2: Pre-scan files to be uploaded to non-compute Azure resources
 
-**Guidance**: Pre-scan any content being uploaded to non-compute Azure resources, such as Azure Service Bus, App Service, Data Lake Storage, Blob Storage, Azure Database for PostgreSQL, etc. Azure cannot access your data in these instances.
+**Guidance**: Pre-scan any content being uploaded to non-compute Azure resources, such as Azure Service Bus, App Service, Data Lake Storage, Blob Storage, Azure Database for PostgreSQL, etc. Microsoft cannot access your data in these instances.
 
-Azure anti-malware is enabled on the underlying host that supports Azure services, however it does not run on customer content.
+Microsoft anti-malware is enabled on the underlying host that supports Azure services, however it does not run on customer content.
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -716,13 +713,13 @@ Azure anti-malware is enabled on the underlying host that supports Azure service
 
 ### 9.2: Perform complete system backups and backup any customer-managed keys
 
-**Guidance**: Azure Service Bus provides encryption of data at rest with Azure Storage Service Encryption (Azure SSE). Service Bus relies on Azure Storage to store the data and by default, all the data that is stored with Azure Storage is encrypted using Azure-managed keys. If you use Azure Key Vault for storing customer-managed keys, ensure regular automated backups of your Keys.
+**Guidance**: Azure Service Bus provides encryption of data at rest with Azure Storage Service Encryption (Azure SSE). Service Bus relies on Azure Storage to store the data and by default, all the data that is stored with Azure Storage is encrypted using Microsoft-managed keys. If you use Azure Key Vault for storing customer-managed keys, ensure regular automated backups of your Keys.
 
 Ensure regular automated backups of your Key Vault Secrets with the following PowerShell command: Backup-AzKeyVaultSecret
 
 - [How to configure customer-managed keys for encrypting Azure Service Bus data at rest](configure-customer-managed-key.md)
 
-- [How to backup Key Vault Secrets](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret)
+- [How to backup Key Vault Secrets](/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -734,7 +731,7 @@ Ensure regular automated backups of your Key Vault Secrets with the following Po
 
 - [How to configure customer-managed keys for encrypting Azure Service Bus data at rest](configure-customer-managed-key.md)
 
-- [How to restore key vault keys in Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [How to restore key vault keys in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -798,7 +795,7 @@ Additionally, mark subscriptions using tags and create a naming system to identi
 ### 10.4: Provide security incident contact details and configure alert notifications for security incidents
 
 **Guidance**: 
-Security incident contact information will be used by Azure to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved. 
+Security incident contact information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that your data has been accessed by an unlawful or unauthorized party. Review incidents after the fact to ensure that issues are resolved. 
 
 - [How to set the Azure Security Center security contact](../security-center/security-center-provide-security-contact-details.md)
 
@@ -837,7 +834,7 @@ Use workflow automation feature Azure Security Center to automatically trigger r
 
 ### 11.1: Conduct regular penetration testing of your Azure resources and ensure remediation of all critical security findings
 
-**Guidance**: Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Azure policies. Use Azure's strategy and execution of Red Teaming and live site penetration testing against Azure-managed cloud infrastructure, services, and applications. 
+**Guidance**: Follow the Microsoft Cloud Penetration Testing Rules of Engagement to ensure your penetration tests are not in violation of Microsoft policies. Use Microsoft's strategy and execution of Red Teaming and live site penetration testing against Microsoft-managed cloud infrastructure, services, and applications. 
 
 - [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
@@ -851,7 +848,3 @@ Use workflow automation feature Azure Security Center to automatically trigger r
 
 - See the [Azure security benchmark](../security/benchmarks/overview.md)
 - Learn more about [Azure security baselines](../security/benchmarks/security-baselines-overview.md)
-
-
-<!-- Update_Description: new article about security baseline -->
-<!--NEW.date: 12/21/2020-->
